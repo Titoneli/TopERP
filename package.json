@@ -1,0 +1,19 @@
+{
+  "name": "toperp",
+  "version": "1.0.0",
+  "description": "Sistema ERP (Enterprise Resource Planning) - Documentação de Product Owner",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "html-pdf-node": "^1.0.8",
+    "md-to-pdf": "^5.2.5"
+  }
+}
