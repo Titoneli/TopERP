@@ -1,0 +1,24 @@
+[main ca07440] backup: Auto-backup 2026-01-22 12:33:01
+ Committer: User <user@MacBook-Air-de-User-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 7 files changed, 217 insertions(+)
+ create mode 100644 scripts/BACKUP-README.md
+ create mode 100755 scripts/backup-git.sh
+ create mode 100644 scripts/backup.log
+ create mode 100644 scripts/com.toperp.backup.plist
+ create mode 100644 scripts/launchd-stderr.log
+ create mode 100644 scripts/launchd-stdout.log
+[2026-01-22 12:33:01] ✅ SUCESSO: Backup realizado com 7 arquivo(s) alterado(s)
+[0;32m✅ Backup realizado com sucesso![0m
+[2026-01-22 12:33:01] ----------------------------------------
