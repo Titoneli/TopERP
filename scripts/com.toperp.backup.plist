@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.toperp.backup</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/user/Top/TopERP/scripts/backup-git.sh</string>
+    </array>
+    
+    <!-- Executar a cada hora (3600 segundos) -->
+    <key>StartInterval</key>
+    <integer>3600</integer>
+    
+    <!-- Também executar quando o arquivo for carregado -->
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <!-- Logs de output e erro -->
+    <key>StandardOutPath</key>
+    <string>/Users/user/Top/TopERP/scripts/launchd-stdout.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/user/Top/TopERP/scripts/launchd-stderr.log</string>
+    
+    <!-- Variáveis de ambiente -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+</dict>
+</plist>
