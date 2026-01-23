@@ -165,7 +165,14 @@ https://crm.toptechbr.com.br/cotacao?cod_origem=2&cod_colaborador=1234&utm_campa
 - **Então** o lead **NÃO é atribuído** a nenhum consultor
 - **E** aguarda atribuição manual ou via automatição
 
-### Cenário 9 — Consultor inválido no parâmetro
+### Cenário 4 — Não existe plano para o veículo/local
+- **Dado que** completei as 3 etapas
+- **Quando** finalizo o formulário
+- **Então** não é encontrado nenhum plano para os dados informados
+- **E** não é atribuído automaticamente a um consultor e é exibida uma mensagem informando que um consultor entrará em contato
+
+
+### Cenário 10 — Consultor inválido no parâmetro
 - **Dado que** acesso com `?cod_colaborador=9999` (inexistente ou inativo)
 - **Quando** o lead é qualificado
 - **Então** o lead **NÃO é atribuído** a nenhum consultor
