@@ -7,11 +7,18 @@ Este documento apresenta a visão do produto CRM desenvolvido especificamente pa
 
 ### 1.2 Escopo
 O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção veicular:
-- Captação de leads
-- Cotação de planos
+- Captação e gestão de leads
+- Cotação de planos e envio de propostas
 - Negociação e fechamento
-- Vistoria e pagamento
-- Pós-venda e fidelização
+- Vistoria, assinatura e pagamento
+- Gestão de negociações
+- Gestão de comissionamento
+- Gestão de equipes de vendas
+- Pós-venda, follow-up e fidelização
+- Dashboards para consultores e gestores
+- Gestão de usuários e perfis de acesso
+- Automações e integrações (banco digial, erp, sistemas legados)
+- Aplicativos App CRM e App Consultor
 
 ## 2. Problema a Resolver
 
@@ -24,14 +31,14 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
    - Perda de oportunidades por esquecimento de follow-ups
 
 2. **Processo de cotação lento e trabalhoso**
-   - Cálculos manuais propensos a erros
+   - Cálculos complexos propensos a erros
    - Tempo excessivo para elaborar propostas
    - Dificuldade em apresentar múltiplas opções
 
 3. **Falta de visibilidade do funil de vendas**
    - Não sabe em que etapa cada negociação está
    - Dificuldade em prever fechamentos
-   - Impossibilidade de acompanhar performance
+   - Impossibilidade de acompanhar performance individual e da equipe
 
 4. **Comunicação ineficiente com leads**
    - Necessidade de usar múltiplas ferramentas
@@ -39,7 +46,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
    - Demora no envio de propostas
 
 5. **Coleta de leads ineficaz**
-   - Processo manual e trabalhoso
+   - Processo manual e trabalhoso e sem possibilidade de automação/integração
    - Dificuldade em integrar diferentes fontes
    - Perda de leads por demora no atendimento
 
@@ -52,12 +59,12 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 2. **Inconsistência de processos**
    - Cada consultor trabalha de forma diferente
    - Dificuldade em padronizar atendimento
-   - Risco de não conformidade com regulamentações
+   - Risco de não conformidade com regulamento interno
 
 3. **Baixa taxa de conversão**
    - Muitos leads não são convertidos
    - Negociações "morrem" no meio do funil
-   - Falta de nurturing adequado
+   - Falta de um caminho bem definido que leve os leads do estágio de conscientização até a fase final de tomada de decisão
 
 #### Para Leads/Clientes:
 1. **Experiência frustrante**
@@ -67,20 +74,20 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 
 2. **Falta de transparência**
    - Não consegue acompanhar status da proposta
-   - Comunicação não acontece de forma proativa
+   - Comunicação não acontece de forma proativa ou de forma fluida
    - Processo de contratação complexo
 
 ## 3. Visão da Solução
 
 ### 3.1 Declaração de Posicionamento
 
-**Para** consultores de proteção veicular e associações  
-**Que** precisam gerenciar leads, cotações e vendas de forma eficiente  
 **O** CRM TopBrasil  
 **É um** sistema de gestão de relacionamento com clientes  
 **Que** automatiza processos, organiza informações e aumenta a produtividade  
+**Para**  consultores de proteção veicular da TopBrasil  
+**Que** precisam gerenciar leads, cotações e vendas de forma eficiente  
 **Diferente de** CRMs genéricos  
-**Nosso produto** é especializado no setor de proteção veicular, com funcionalidades específicas como cotação automática, integração com vistorias e tabelas personalizadas por regional.
+**Nossa aplicação** será especializado no setor de proteção veicular, com funcionalidades específicas como cotação automática, funis personalizados, integração com app de vistoria e tabelas personalizadas.
 
 ### 3.2 Principais Capacidades
 
@@ -91,13 +98,13 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
    - Distribuição automática para consultores
 
 2. **Cotação Rápida e Precisa**
-   - Busca automática de dados de veículos (API FIPE)
+   - Busca automática de dados de veículos (API FIPE/BD Próprio)
    - Cálculo automático baseado em tabelas personalizadas
    - Comparativo de planos lado a lado
    - Geração de PDF profissional em segundos
 
-3. **Funil de Vendas Visual**
-   - Pipeline Kanban intuitivo
+3. **Funis de Vendas Personalizados**
+   - Pipelines Kanban intuitivos e sequenciais
    - Arrastar e soltar para movimentar negociações
    - Alertas automáticos para follow-ups
    - Métricas em tempo real
@@ -108,42 +115,45 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
    - Rastreamento de abertura
    - Histórico completo de interações
 
-5. **Gestão de Pagamentos e Vistorias**
+5. **Gestão de Pagamentos**
    - Geração de links de pagamento
-   - Integração com gateways (PIX, boleto, cartão)
-   - Agendamento e acompanhamento de vistorias
+   - Integração com banco digital próprio através de gateways (PIX, boleto, cartão)
+   - Agendamento e acompanhamento pagamentos em funil específico
    - Confirmação automática
 
-6. **Analytics e Inteligência**
+6. **Gestão de Vistorias**
+   - Geração de links de vistoria e/ou vistoria via aplicativo de última geração 
+   - Integração com gateways de validação de dados (Detran, Denatran, Renavam e outros)
+   - Agendamento e acompanhamento de vistorias em funil específico
+   - Confirmação automática da vistoria para o consultor e para o lead
+
+7. **Analytics e Inteligência**
    - Dashboards personalizados
-   - Previsão de faturamento
+   - Dashboards específicos para gestão de equipes
+   - Previsão de faturamento próprio e das equipes 
    - Análise de conversão por etapa
    - Identificação de gargalos
 
 ## 4. Objetivos do Negócio
 
 ### 4.1 Objetivos Primários
-1. **Aumentar taxa de conversão em 30%**
-   - De média de 20% para 26%
+1. **Aumentar taxa de conversão**
    - Através de melhor acompanhamento e follow-up
 
-2. **Reduzir tempo de fechamento em 40%**
-   - De 25 dias para 15 dias em média
+2. **Reduzir tempo de fechamento**
    - Através de automações e agilidade
 
-3. **Aumentar produtividade do consultor em 50%**
-   - De 6 para 9 cotações por dia
+3. **Aumentar produtividade do consultor**
    - Através de simplificação de processos
 
-4. **Aumentar ticket médio em 15%**
-   - De R$ 1.300 para R$ 1.500
+4. **Aumentar ticket médio**
    - Através de upsell inteligente
 
 ### 4.2 Objetivos Secundários
-- Reduzir perda de leads por falta de atendimento em 80%
-- Aumentar satisfação do consultor para 4,5/5
+- Reduzir perda de leads por falta de atendimento
+- Aumentar satisfação do consultor
 - Padronizar processos em 100% das regionais
-- Reduzir erros em cotações para < 1%
+- Reduzir erros em cotações
 
 ## 5. Personas
 
@@ -163,7 +173,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 **Como o CRM ajuda**:
 - Cotações automáticas em menos de 5 minutos
 - Alertas automáticos de follow-up
-- Funil visual para não perder oportunidades
+- Funis visuais para não perder oportunidades e sequências das negociações
 
 ### 5.2 Coordenador - Maria Santos
 **Perfil**: Coordenadora comercial, 42 anos, gerencia 15 consultores
@@ -192,7 +202,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 - Ter processo rápido e sem burocracia
 
 **Dores**:
-- Não entende diferenças técnicas entre planos
+- Não entende diferenças técnicas entre associações e seguradores e entre planos 
 - Demora para receber resposta dos consultores
 - Processo de contratação confuso
 

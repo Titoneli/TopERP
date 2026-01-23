@@ -96,42 +96,42 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 #### CRM-Leads: Fase 1 - Captação e Comparação ✅
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-LED-001 | Captação de Lead via Landing Page | Essencial | ✅ Pronto | 13 |
-| US-CRM-LED-002 | Comparativo de Planos de Proteção Veicular | Essencial | ✅ Pronto | 13 |
-| US-CRM-LED-003 | Dashboard de Leads e Analytics | Essencial | ✅ Pronto | 13 |
+| US-CRM-LEAD-001 | Captação de Lead via Landing Page | Essencial | ✅ Pronto | 13 |
+| US-CRM-LEAD-002 | Comparativo de Planos de Proteção Veicular | Essencial | ✅ Pronto | 13 |
+| US-CRM-LEAD-003 | Dashboard de Leads e Analytics | Essencial | ✅ Pronto | 13 |
 
 #### CRM-Leads: Fase 2 - Captura Avançada
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-LED-004 | Captura via Formulário Embarcado | Importante | Backlog | 8 |
-| US-CRM-LED-005 | Captura via WhatsApp Business | Importante | Backlog | 13 |
-| US-CRM-LED-006 | Qualificar Lead (BANT) | Importante | Backlog | 5 |
+| US-CRM-LEAD-004 | Captura via Formulário Embarcado | Importante | Backlog | 8 |
+| US-CRM-LEAD-005 | Captura via WhatsApp Business | Importante | Backlog | 13 |
+| US-CRM-LEAD-006 | Qualificar Lead (BANT) | Importante | Backlog | 5 |
 
 #### CRM-Leads: Fase 3 - Gestão Avançada
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-LED-007 | Importar Leads em Massa (CSV/Excel) | Importante | Backlog | 8 |
-| US-CRM-LED-008 | Marcar Lead como Inativo | Importante | Backlog | 3 |
-| US-CRM-LED-009 | Exportar Leads | Importante | Backlog | 5 |
+| US-CRM-LEAD-007 | Importar Leads em Massa (CSV/Excel) | Importante | Backlog | 8 |
+| US-CRM-LEAD-008 | Marcar Lead como Inativo | Importante | Backlog | 3 |
+| US-CRM-LEAD-009 | Exportar Leads | Importante | Backlog | 5 |
 
 #### CRM-Leads: Fase 4 - Integrações Externas
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-LED-010 | Integração com Facebook Lead Ads | Desejável | Backlog | 13 |
-| US-CRM-LED-011 | Integração com Google Ads | Desejável | Backlog | 13 |
-| US-CRM-LED-012 | Score Automático de Lead | Desejável | Backlog | 8 |
-| US-CRM-LED-013 | Detecção de Lead Duplicado | Desejável | Backlog | 5 |
-| US-CRM-LED-014 | Enriquecimento de Dados (APIs externas) | Desejável | Backlog | 8 |
+| US-CRM-LEAD-010 | Integração com Facebook Lead Ads | Desejável | Backlog | 13 |
+| US-CRM-LEAD-011 | Integração com Google Ads | Desejável | Backlog | 13 |
+| US-CRM-LEAD-012 | Score Automático de Lead | Desejável | Backlog | 8 |
+| US-CRM-LEAD-013 | Detecção de Lead Duplicado | Desejável | Backlog | 5 |
+| US-CRM-LEAD-014 | Enriquecimento de Dados (APIs externas) | Desejável | Backlog | 8 |
 
 #### CRM-Leads: Fase 5 - Gestão de Leads
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-LED-015 | Cadastrar Lead Manualmente | Essencial | Backlog | 8 |
-| US-CRM-LED-016 | Visualizar Lista de Leads | Essencial | Backlog | 5 |
-| US-CRM-LED-017 | Buscar e Filtrar Leads | Essencial | Backlog | 5 |
-| US-CRM-LED-018 | Atribuir Lead a Consultor | Essencial | Backlog | 5 |
-| US-CRM-LED-019 | Editar Dados do Lead | Essencial | Backlog | 5 |
-| US-CRM-LED-020 | Visualizar Detalhes do Lead | Essencial | Backlog | 5 |
+| US-CRM-LEAD-015 | Cadastrar Lead Manualmente | Essencial | Backlog | 8 |
+| US-CRM-LEAD-016 | Visualizar Lista de Leads | Essencial | Backlog | 5 |
+| US-CRM-LEAD-017 | Buscar e Filtrar Leads | Essencial | Backlog | 5 |
+| US-CRM-LEAD-018 | Atribuir Lead a Consultor | Essencial | Backlog | 5 |
+| US-CRM-LEAD-019 | Editar Dados do Lead | Essencial | Backlog | 5 |
+| US-CRM-LEAD-020 | Visualizar Detalhes do Lead | Essencial | Backlog | 5 |
 
 #### CRM-Autenticação
 | ID | História | Prioridade | Status | SP |

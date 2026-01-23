@@ -1,4 +1,4 @@
-# US-CRM-LED-003 — Dashboard de Leads e Analytics
+# US-CRM-LEAD-003 — Dashboard de Leads e Analytics
 
 ## História de Usuário
 
@@ -18,14 +18,14 @@ Essencial
 
 ## Contexto de Negócio
 
-Os dados capturados durante a captação de leads ([US-CRM-LED-001](US-CRM-LED-001.md)) precisam ser visualizados de forma analítica para apoiar decisões de negócio. Este dashboard consolida métricas por DDD, origem, consultor e funil de conversão.
+Os dados capturados durante a captação de leads ([US-CRM-LEAD-001](US-CRM-LEAD-001.md)) precisam ser visualizados de forma analítica para apoiar decisões de negócio. Este dashboard consolida métricas por DDD, origem, consultor e funil de conversão.
 
 ---
 
 ## Dependência
 
 Esta user story depende da captura de dados implementada em:
-- [US-CRM-LED-001](US-CRM-LED-001.md) - Captação de Lead via Landing Page
+- [US-CRM-LEAD-001](US-CRM-LEAD-001.md) - Captação de Lead via Landing Page
 
 ---
 

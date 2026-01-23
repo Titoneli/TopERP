@@ -1,4 +1,4 @@
-# US-CRM-LED-004 — Captura via Formulário Embarcado
+# US-CRM-LEAD-004 — Captura via Formulário Embarcado
 
 ## História de Usuário
 
@@ -382,7 +382,7 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 
 | Dependência | Tipo | Status |
 |-------------|------|--------|
-| US-CRM-LED-001 | Interna | ✅ Disponível |
+| US-CRM-LEAD-001 | Interna | ✅ Disponível |
 | Blacklist de Consultores | Interna | ✅ Disponível |
 | Sistema de Tokens (JWT/UUID) | Interna | Pendente |
 | Cadastro de Parceiros | Interna | Pendente |

@@ -1,4 +1,4 @@
-# US-CRM-LED-005 — Captura via WhatsApp Business
+# US-CRM-LEAD-005 — Captura via WhatsApp Business
 
 ## História de Usuário
 
@@ -431,7 +431,7 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 
 | Dependência | Tipo | Status |
 |-------------|------|--------|
-| US-CRM-LED-001 | Interna | ✅ Disponível |
+| US-CRM-LEAD-001 | Interna | ✅ Disponível |
 | WhatsApp Business API | Externa | Pendente |
 | Meta Business Account | Externa | Pendente |
 | Blacklist de Consultores | Interna | ✅ Disponível |

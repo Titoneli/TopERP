@@ -1,4 +1,4 @@
-# US-CRM-LED-001 — Captação de Lead via Landing Page
+# US-CRM-LEAD-001 — Captação de Lead via Landing Page
 
 ## História de Usuário
 

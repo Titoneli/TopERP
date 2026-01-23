@@ -18,7 +18,7 @@ Conforme requisição: "Revisar aplicação, analisar ultimas alterações e imp
 ## 📋 RESUMO DAS AÇÕES EXECUTADAS
 
 ### 1. **Consolidação Terminológica** ✅
-- **O que**: Alterou 18 ocorrências de "cobertura(s)" para "serviço(s)" em US-CRM-LED-002
+- **O que**: Alterou 18 ocorrências de "cobertura(s)" para "serviço(s)" em US-CRM-LEAD-002
 - **Por quê**: Terminologia mais alinhada com proposta de valor
 - **Onde**: Campos de dados, cenários, regras, wireframes, definição de pronto
 - **Resultado**: Documento semanticamente consistente
@@ -33,7 +33,7 @@ Conforme requisição: "Revisar aplicação, analisar ultimas alterações e imp
 - **De**: v1.0 (criação inicial)
 - **Para**: v1.1 (com consolidações)
 - **Documentado**: Histórico de alterações com datas e descrição
-- **Arquivo**: US-CRM-LED-002.md atualizado
+- **Arquivo**: US-CRM-LEAD-002.md atualizado
 
 ### 4. **Auditoria Completa de Integridade** ✅
 - **Arquivo Criado**: `/docs/AUDITORIA-INTEGRIDADE-21-01-2026.md` (12KB)
@@ -59,9 +59,9 @@ Conforme requisição: "Revisar aplicação, analisar ultimas alterações e imp
 
 ### Histórias Documentadas
 ```
-✅ US-CRM-LED-001 (v1.0) — Captação de Leads — 13 SP
-✅ US-CRM-LED-002 (v1.1) — Comparativo de Planos — 13 SP ← ATUALIZADO
-✅ US-CRM-LED-003 (v1.1) — Dashboard Analytics — 13 SP
+✅ US-CRM-LEAD-001 (v1.0) — Captação de Leads — 13 SP
+✅ US-CRM-LEAD-002 (v1.1) — Comparativo de Planos — 13 SP ← ATUALIZADO
+✅ US-CRM-LEAD-003 (v1.1) — Dashboard Analytics — 13 SP
 ✅ US-CRM-AUT-001 — Realizar Login — 5 SP
 ✅ US-CRM-AUT-002 — Realizar Logout — validada
 ✅ US-CRM-COT-001 — Nova Cotação — validada
@@ -79,9 +79,9 @@ TOTAL: 7 histórias CRM | 39 SP (parcial)
 ### PDFs Gerados
 | Arquivo | Tamanho | Data | Status |
 |---------|---------|------|--------|
-| US-CRM-LED-001.pdf | 418K | 21/01 16h56 | ✅ Pronto |
-| US-CRM-LED-002.pdf | 361K | 21/01 17h36 | ✅ Regenerado v1.1 |
-| US-CRM-LED-003.pdf | 323K | 21/01 16h55 | ✅ Pronto |
+| US-CRM-LEAD-001.pdf | 418K | 21/01 16h56 | ✅ Pronto |
+| US-CRM-LEAD-002.pdf | 361K | 21/01 17h36 | ✅ Regenerado v1.1 |
+| US-CRM-LEAD-003.pdf | 323K | 21/01 16h55 | ✅ Pronto |
 
 ### Conformidade Validada
 | Aspecto | Status |
@@ -133,13 +133,13 @@ TOTAL: 7 histórias CRM | 39 SP (parcial)
 
 ### Modificados
 ```
-✅ /docs/historias-usuario/CRM-Leads/US-CRM-LED-002.md
+✅ /docs/historias-usuario/CRM-Leads/US-CRM-LEAD-002.md
    → Versão 1.0 → 1.1
    → Terminologia: 18 alterações cobertura→serviços
    → Wireframe: 3 linhas → 3 colunas
    → Histórico atualizado
    
-✅ /docs/historias-usuario/CRM-Leads/US-CRM-LED-002.pdf
+✅ /docs/historias-usuario/CRM-Leads/US-CRM-LEAD-002.pdf
    → Regenerado em 21/01 17h36
    → Tamanho: 361K (antes 362K)
    
@@ -187,8 +187,8 @@ TOTAL: 7 histórias CRM | 39 SP (parcial)
 
 ### Imediatamente Pronto
 ```
-✅ Desenvolvimento de US-CRM-LED-001
-✅ Desenvolvimento de US-CRM-LED-002 (v1.1)
+✅ Desenvolvimento de US-CRM-LEAD-001
+✅ Desenvolvimento de US-CRM-LEAD-002 (v1.1)
 ✅ QA Testing contra 21 cenários
 ```
 
@@ -235,7 +235,7 @@ TOTAL: 7 histórias CRM | 39 SP (parcial)
 - **Auditoria Completa**: `docs/AUDITORIA-INTEGRIDADE-21-01-2026.md`
 - **Consolidação Final**: `docs/CONSOLIDACAO-FINAL-21-01-2026.md`
 - **Continuidade LED-002**: `docs/historias-usuario/CRM-Leads/CONTINUIDADE-LED-002.md`
-- **História Principal**: `docs/historias-usuario/CRM-Leads/US-CRM-LED-002.md` (v1.1)
+- **História Principal**: `docs/historias-usuario/CRM-Leads/US-CRM-LEAD-002.md` (v1.1)
 
 ---
 

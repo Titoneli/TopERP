@@ -86,14 +86,14 @@ Painéis de visualização com métricas e indicadores de performance.
 Captação, qualificação e gestão de leads (prospects).
 
 **User Stories:**
-- US-CRM-LED-001 - Cadastrar Novo Lead ⭐ Essencial
-- US-CRM-LED-002 - Importar Leads em Massa
-- US-CRM-LED-003 - Qualificar Lead
-- US-CRM-LED-004 - Atribuir Lead a Consultor
-- US-CRM-LED-005 - Captura via Landing Page
-- US-CRM-LED-006 - Captura via Formulário Web
-- US-CRM-LED-007 - Captura via WhatsApp
-- US-CRM-LED-008 - Buscar e Filtrar Leads
+- US-CRM-LEAD-001 - Cadastrar Novo Lead ⭐ Essencial
+- US-CRM-LEAD-002 - Importar Leads em Massa
+- US-CRM-LEAD-003 - Qualificar Lead
+- US-CRM-LEAD-004 - Atribuir Lead a Consultor
+- US-CRM-LEAD-005 - Captura via Landing Page
+- US-CRM-LEAD-006 - Captura via Formulário Web
+- US-CRM-LEAD-007 - Captura via WhatsApp
+- US-CRM-LEAD-008 - Buscar e Filtrar Leads
 
 ### 📁 [CRM-Funil-Vendas](CRM-Funil-Vendas/)
 Gestão visual do pipeline de vendas e negociações.

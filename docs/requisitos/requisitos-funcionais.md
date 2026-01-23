@@ -142,14 +142,14 @@ Este documento lista os requisitos funcionais do sistema TopERP, organizados por
 |-----------|----------------------|--------------|
 | REQ-FIN-001 | US-FIN-001 | UC-FIN-001 |
 | REQ-FIN-002 | US-FIN-002 | UC-FIN-002 |
-| REQ-CRM-LED-001 | US-CRM-LED-001 | - |
-| REQ-CRM-LED-002 | US-CRM-LED-001 | - |
-| REQ-CRM-LED-003 | US-CRM-LED-001 | - |
-| REQ-CRM-LED-004 | US-CRM-LED-001 | - |
-| REQ-CRM-LED-005 | US-CRM-LED-001 | - |
-| REQ-CRM-LED-006 | US-CRM-LED-001 | - |
-| REQ-CRM-LED-007 | US-CRM-LED-001 | - |
-| REQ-CRM-LED-008 | US-CRM-LED-001 | - |
+| REQ-CRM-LED-001 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LED-002 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LED-003 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LED-004 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LED-005 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LED-006 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LED-007 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LED-008 | US-CRM-LEAD-001 | - |
 | REQ-VEN-001 | US-VEN-001 | UC-VEN-001 |
 | REQ-EST-001 | US-EST-001 | UC-EST-001 |
 

@@ -185,3 +185,26 @@ After doing this, you may fix the identity used for this commit with:
 [2026-01-23 15:15:23] ✅ SUCESSO: Backup realizado com 2 arquivo(s) alterado(s)
 [0;32m✅ Backup realizado com sucesso![0m
 [2026-01-23 15:15:23] ----------------------------------------
+[main ade10f9] backup: Auto-backup 2026-01-23 16:15:23
+ Committer: User <user@MacBook-Air-de-User-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 11 files changed, 2589 insertions(+), 112 deletions(-)
+ create mode 100644 PROCEDIMENTOS-TOPERP.md
+ create mode 100644 PROCEDIMENTOS.md
+ create mode 100644 docs/historias-usuario/CRM-Leads/US-CRM-LED-004.md
+ create mode 100644 docs/historias-usuario/CRM-Leads/US-CRM-LED-005.md
+ create mode 100644 docs/historias-usuario/CRM-Leads/US-CRM-LED-006.md
+[2026-01-23 16:15:23] ✅ SUCESSO: Backup realizado com 11 arquivo(s) alterado(s)
+[0;32m✅ Backup realizado com sucesso![0m
+[2026-01-23 16:15:23] ----------------------------------------

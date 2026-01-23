@@ -16,7 +16,7 @@ Revisão completa realizada do módulo CRM-Leads do TopERP. Todas as histórias 
 
 ## AÇÕES EXECUTADAS
 
-### ✅ 1. CONSOLIDAÇÃO TERMINOLÓGICA (US-CRM-LED-002)
+### ✅ 1. CONSOLIDAÇÃO TERMINOLÓGICA (US-CRM-LEAD-002)
 
 **Alterações**: 18 ocorrências de "cobertura(s)" → "serviço(s)"
 
@@ -32,7 +32,7 @@ Revisão completa realizada do módulo CRM-Leads do TopERP. Todas as histórias 
 
 ---
 
-### ✅ 2. AJUSTE DE LAYOUT WIREFRAME (US-CRM-LED-002)
+### ✅ 2. AJUSTE DE LAYOUT WIREFRAME (US-CRM-LEAD-002)
 
 **De**: 3 planos em linhas sequenciais  
 **Para**: 3 planos em 3 colunas lado a lado
@@ -53,7 +53,7 @@ Revisão completa realizada do módulo CRM-Leads do TopERP. Todas as histórias 
 
 ---
 
-### ✅ 3. ATUALIZAÇÃO DE VERSIONAMENTO (US-CRM-LED-002)
+### ✅ 3. ATUALIZAÇÃO DE VERSIONAMENTO (US-CRM-LEAD-002)
 
 **De**: v1.0 (criação)  
 **Para**: v1.1 (com consolidações)
@@ -103,21 +103,21 @@ Revisão completa realizada do módulo CRM-Leads do TopERP. Todas as histórias 
 
 ```
 TopERP/CRM-Leads/
-├── US-CRM-LED-001 (v1.0) ✅
-│   ├── Arquivo: US-CRM-LED-001.md
-│   ├── PDF: US-CRM-LED-001.pdf (418K)
+├── US-CRM-LEAD-001 (v1.0) ✅
+│   ├── Arquivo: US-CRM-LEAD-001.md
+│   ├── PDF: US-CRM-LEAD-001.pdf (418K)
 │   └── Status: Pronto para Dev
 │
-├── US-CRM-LED-002 (v1.1) ✅
-│   ├── Arquivo: US-CRM-LED-002.md (conforme)
-│   ├── PDF: US-CRM-LED-002.pdf (362K, regenerado)
+├── US-CRM-LEAD-002 (v1.1) ✅
+│   ├── Arquivo: US-CRM-LEAD-002.md (conforme)
+│   ├── PDF: US-CRM-LEAD-002.pdf (362K, regenerado)
 │   ├── Terminologia: Atualizada
 │   ├── Wireframe: Atualizado (3 colunas)
 │   └── Status: Pronto para Dev
 │
-├── US-CRM-LED-003 (v1.1) ✅
-│   ├── Arquivo: US-CRM-LED-003.md
-│   ├── PDF: US-CRM-LED-003.pdf (323K)
+├── US-CRM-LEAD-003 (v1.1) ✅
+│   ├── Arquivo: US-CRM-LEAD-003.md
+│   ├── PDF: US-CRM-LEAD-003.pdf (323K)
 │   └── Status: Pronto para Dev
 │
 └── Suporte
@@ -143,7 +143,7 @@ TopERP/CRM-Leads/
 ## STORYTELLING DAS MUDANÇAS
 
 ### Antes (v1.0 - 21/01 16h00)
-- US-CRM-LED-002 criado com terminologia "coberturas"
+- US-CRM-LEAD-002 criado com terminologia "coberturas"
 - Layout wireframe com 3 planos em linhas sequenciais
 - Necessidade de revisão pendente
 

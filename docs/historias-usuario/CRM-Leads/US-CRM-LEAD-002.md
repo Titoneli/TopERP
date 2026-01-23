@@ -1,4 +1,4 @@
-# US-CRM-LED-002 — Comparativo de Planos de Proteção Veicular
+# US-CRM-LEAD-002 — Comparativo de Planos de Proteção Veicular
 
 ## História de Usuário
 
@@ -25,7 +25,7 @@ Após a conclusão da Etapa 3 de captação, o lead deve ser imediatamente direc
 ## Dependência da Etapa Anterior
 
 Este user story depende de:
-- [US-CRM-LED-001](US-CRM-LED-001.md) - Captação de Lead via Landing Page (Etapa 3 completa)
+- [US-CRM-LEAD-001](US-CRM-LEAD-001.md) - Captação de Lead via Landing Page (Etapa 3 completa)
 
 ---
 
@@ -33,13 +33,13 @@ Este user story depende de:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│              US-CRM-LED-001: ETAPA 3 COMPLETA                   │
+│              US-CRM-LEAD-001: ETAPA 3 COMPLETA                   │
 │         (Lead qualificado com dados do veículo)                 │
 └────────────────────────────┬────────────────────────────────────┘
                              │
                              ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                    US-CRM-LED-002                               │
+│                    US-CRM-LEAD-002                               │
 │              COMPARATIVO DE PLANOS                              │
 │    (Busca e exibe planos conforme parâmetros do lead)           │
 └─────────────────────────────────────────────────────────────────┘
@@ -49,7 +49,7 @@ Este user story depende de:
 
 ## Critérios de Busca de Planos
 
-A exibição de planos deve estar vinculada aos parâmetros coletados em US-CRM-LED-001:
+A exibição de planos deve estar vinculada aos parâmetros coletados em US-CRM-LEAD-001:
 
 | Parâmetro | Fonte | Descrição |
 |-----------|-------|-----------|
@@ -96,7 +96,7 @@ A exibição de planos deve estar vinculada aos parâmetros coletados em US-CRM-
 - **Dado que** estou visualizando planos
 - **Quando** clico em "Falar com Consultor"
 - **Então** visualizo chat/telefone para atendimento
-- **E** o consultor (se atribuído em US-CRM-LED-001) pode me auxiliar na escolha
+- **E** o consultor (se atribuído em US-CRM-LEAD-001) pode me auxiliar na escolha
 
 ---
 
@@ -206,7 +206,7 @@ Esta user story é responsável pela captura de métricas de visualização e se
 
 | Dependência | Tipo | Status |
 |-------------|------|--------|
-| US-CRM-LED-001 (Lead Qualificado) | Interna | Essencial |
+| US-CRM-LEAD-001 (Lead Qualificado) | Interna | Essencial |
 | Base de Dados de Planos (CRM_TABELA_PLANO) | Interna | Disponível |
 | Integração com Motor de Preços CRM_TAB_PLANO_VALOR | Interno | Pendente |
 | Sistema de Notificações Automatizadas | Interno | Pendente |
@@ -222,4 +222,4 @@ Esta user story é responsável pela captura de métricas de visualização e se
 | Versão | Data | Alteração |
 |--------|------|----------|
 | 1.1 | 21/01/2026 | Atualização terminológica (cobertura→serviços) e layout wireframe (3 colunas). Refletindo melhor a proposta de valor e usabilidade visual. |
-| 1.0 | 21/01/2026 | Versão inicial - Continuidade de US-CRM-LED-001 |
+| 1.0 | 21/01/2026 | Versão inicial - Continuidade de US-CRM-LEAD-001 |

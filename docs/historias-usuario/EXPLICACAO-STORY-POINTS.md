@@ -69,7 +69,7 @@ Suponha que sua equipe já completou essas histórias:
 
 ### 2. Estimando uma Nova História
 
-**Nova História:** "Captação de Lead via Landing Page (US-CRM-LED-001)"
+**Nova História:** "Captação de Lead via Landing Page (US-CRM-LEAD-001)"
 
 **Análise:**
 - Formulário com validações
@@ -89,7 +89,7 @@ Suponha que sua equipe já completou essas histórias:
 
 ---
 
-## Por que US-CRM-LED-001 = 13 Story Points?
+## Por que US-CRM-LEAD-001 = 13 Story Points?
 
 ### Fatores que Aumentam a Complexidade
 
@@ -198,13 +198,13 @@ Sprint Duration: 2 semanas
 Target Velocity: 40 SP
 
 Histórias Disponíveis:
-- US-CRM-LED-001: 13 SP ← Esta
-- US-CRM-LED-003: 13 SP
+- US-CRM-LEAD-001: 13 SP ← Esta
+- US-CRM-LEAD-003: 13 SP
 - US-CRM-AUTH-001: 5 SP
 - US-CRM-DASH-001: 21 SP
 
 Decisão:
-"Vamos fazer US-CRM-LED-001 (13 SP) + US-CRM-LED-003 (13 SP) 
+"Vamos fazer US-CRM-LEAD-001 (13 SP) + US-CRM-LEAD-003 (13 SP) 
 + US-CRM-AUTH-001 (5 SP) neste sprint = 26 SP"
 
 Restam 14 SP de capacidade para tarefas extras/bugs.
@@ -212,9 +212,9 @@ Restam 14 SP de capacidade para tarefas extras/bugs.
 
 ### 2. Tracking (Acompanhamento)
 ```
-Dia 1: US-CRM-LED-001 iniciada (13 SP em progresso)
+Dia 1: US-CRM-LEAD-001 iniciada (13 SP em progresso)
 Dia 4: Testes começam (ainda em progresso)
-Dia 7: US-CRM-LED-001 COMPLETA (13 SP concluídos)
+Dia 7: US-CRM-LEAD-001 COMPLETA (13 SP concluídos)
 
 Burn-down (Progressão):
 Sprint Capacity: 40 SP
@@ -245,7 +245,7 @@ Próximo Sprint pode planejar: ~39 SP de histórias
 | Simples | Baixa       | 1-2          | 0,5-1      | Corrigir typo, ajustar CSS |
 | Pequena | Baixa-Média | 3-5          | 1-2        | Login básico, form simples |
 | Média   | Média       | 8            | 2-3        | CRUD com validações |
-| Grande  | Média-Alta  | **13**       | **3-4**    | **US-CRM-LED-001 (Esta)** |
+| Grande  | Média-Alta  | **13**       | **3-4**    | **US-CRM-LEAD-001 (Esta)** |
 | XL      | Alta        | 21           | 5-7        | Dashboard completo com 10+ gráficos |
 | XXL     | Muito Alta  | 34+          | 8+         | Refatoração de legacy ou integração complexa |
 
@@ -291,7 +291,7 @@ Qual usar? Story Points ignora isso:
 
 ---
 
-## Exemplo Prático: US-CRM-LED-001 em Ação
+## Exemplo Prático: US-CRM-LEAD-001 em Ação
 
 ### Cenário 1: Planning do Sprint 1
 
@@ -299,17 +299,17 @@ Qual usar? Story Points ignora isso:
 Time tem capacidade de 40 SP
 
 Histórias disponíveis:
-1. US-CRM-LED-001 (13 SP) ← Esta
+1. US-CRM-LEAD-001 (13 SP) ← Esta
 2. US-CRM-CONS-005 (5 SP) - Validar Consultor
 3. US-CRM-AUT-002 (8 SP) - Two-Factor Authentication
 4. US-CRM-NOTI-001 (21 SP) - Sistema de Notificações
 
 Decisão do PO:
-"Vamos fazer: US-CRM-LED-001 (13) + US-CRM-CONS-005 (5) 
+"Vamos fazer: US-CRM-LEAD-001 (13) + US-CRM-CONS-005 (5) 
 + US-CRM-AUT-002 (8) = 26 SP no Sprint"
 
 Por quê?
-- US-CRM-LED-001 e US-CRM-CONS-005 são dependência de tudo
+- US-CRM-LEAD-001 e US-CRM-CONS-005 são dependência de tudo
 - US-CRM-AUT-002 é importante para segurança
 - US-CRM-NOTI-001 (21 SP) é muito grande, deixa para próximo sprint
 ```
@@ -318,7 +318,7 @@ Por quê?
 
 ```
 Dia 1 (Segunda):
-- Dev A começa US-CRM-LED-001
+- Dev A começa US-CRM-LEAD-001
 - Dev B começa US-CRM-CONS-005
 - Dev C começa US-CRM-AUT-002
 
@@ -328,7 +328,7 @@ Dia 3 (Quarta):
   Por quê? Porque era incerteza conhecida, está sendo resolvido agora.
 
 Dia 7 (Próxima Segunda):
-- Dev A completa US-CRM-LED-001 (13 SP Done)
+- Dev A completa US-CRM-LEAD-001 (13 SP Done)
 - Dev B completa US-CRM-CONS-005 (5 SP Done)
 - Dev C está 80% em US-CRM-AUT-002 (8 SP, 80% progresso)
 
@@ -408,4 +408,4 @@ Velocity: 35 SP/Sprint
 
 ## Criado por: Gustavo Titoneli (Product Owner TopERP)
 ## Data: 21/01/2026
-## Referência: US-CRM-LED-001 = 13 Story Points
+## Referência: US-CRM-LEAD-001 = 13 Story Points

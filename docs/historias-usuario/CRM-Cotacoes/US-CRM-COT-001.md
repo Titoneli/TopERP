@@ -159,7 +159,7 @@ Essencial
 
 ## Dependências
 - US-CRM-FUN-002 (Criar Negociação) implementado
-- US-CRM-LED-001 (Cadastro de Lead) implementado
+- US-CRM-LEAD-001 (Cadastro de Lead) implementado
 - Integração com API FIPE configurada
 - Tabelas de marcas e modelos cadastradas
 

@@ -114,9 +114,9 @@ docs/
 │   │   └── US-CRM-AUT-002.md             ✅
 │   ├── CRM-Leads/
 │   │   ├── README.md                     ✅
-│   │   ├── US-CRM-LED-001.md             ✅
-│   │   ├── US-CRM-LED-002.md             ✅
-│   │   ├── US-CRM-LED-003.md             ✅
+│   │   ├── US-CRM-LEAD-001.md             ✅
+│   │   ├── US-CRM-LEAD-002.md             ✅
+│   │   ├── US-CRM-LEAD-003.md             ✅
 │   │   └── CONTINUIDADE-CRM-LEADS.md     ✅
 │   ├── CRM-Cotacoes/
 │   │   ├── README.md                     ✅
@@ -241,14 +241,14 @@ docs/
 - Atualização do roadmap para v2.0
 
 ### 6.3 Auditoria 21/01/2026 (v2.0)
-- Renumeração US-CRM-LED-019 → US-CRM-LED-003
+- Renumeração US-CRM-LEAD-019 → US-CRM-LEAD-003
 - Atualização de referências em todos os arquivos
 - Consolidação de arquivos de auditoria
 - Geração de PDFs atualizados
 
 ### 6.4 Auditoria 21/01/2026 (v1.0)
 - Criação inicial das User Stories CRM-Leads
-- Documentação de US-CRM-LED-001, LED-002
+- Documentação de US-CRM-LEAD-001, LED-002
 - Estrutura básica do projeto
 
 ---

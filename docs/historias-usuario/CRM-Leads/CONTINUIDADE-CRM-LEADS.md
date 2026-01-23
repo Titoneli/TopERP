@@ -118,26 +118,26 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 ### Histórias Documentadas
 
-- [x] US-CRM-LED-001 (v1.0) — Arquivo criado e validado
-- [x] US-CRM-LED-002 (v1.1) — Arquivo criado, terminologia atualizada, wireframe otimizado
-- [x] US-CRM-LED-003 (v1.1) — Arquivo renumerado, validado e pronto
-- [x] US-CRM-LED-004 (v1.0) — Formulário Embarcado (iframe/widget, token parceiro)
-- [x] US-CRM-LED-005 (v1.0) — WhatsApp Business (chatbot, webhook Meta)
-- [x] US-CRM-LED-006 (v1.0) — Qualificar Lead BANT (score 0-12, temperaturas)
-- [ ] US-CRM-LED-007 — Importar Leads em Massa
-- [ ] US-CRM-LED-008 — Marcar Lead como Inativo
-- [ ] US-CRM-LED-009 — Exportar Leads
-- [ ] US-CRM-LED-010 — Integração Facebook Lead Ads
-- [ ] US-CRM-LED-011 — Integração Google Ads
-- [ ] US-CRM-LED-012 — Score Automático de Lead
-- [ ] US-CRM-LED-013 — Detecção de Lead Duplicado
-- [ ] US-CRM-LED-014 — Enriquecimento de Dados
-- [ ] US-CRM-LED-015 — Cadastrar Lead Manualmente
-- [ ] US-CRM-LED-016 — Visualizar Lista de Leads
-- [ ] US-CRM-LED-017 — Buscar e Filtrar Leads
-- [ ] US-CRM-LED-018 — Atribuir Lead a Consultor
-- [ ] US-CRM-LED-019 — Editar Dados do Lead
-- [ ] US-CRM-LED-020 — Visualizar Detalhes do Lead
+- [x] US-CRM-LEAD-001 (v1.0) — Arquivo criado e validado
+- [x] US-CRM-LEAD-002 (v1.1) — Arquivo criado, terminologia atualizada, wireframe otimizado
+- [x] US-CRM-LEAD-003 (v1.1) — Arquivo renumerado, validado e pronto
+- [x] US-CRM-LEAD-004 (v1.0) — Formulário Embarcado (iframe/widget, token parceiro)
+- [x] US-CRM-LEAD-005 (v1.0) — WhatsApp Business (chatbot, webhook Meta)
+- [x] US-CRM-LEAD-006 (v1.0) — Qualificar Lead BANT (score 0-12, temperaturas)
+- [ ] US-CRM-LEAD-007 — Importar Leads em Massa
+- [ ] US-CRM-LEAD-008 — Marcar Lead como Inativo
+- [ ] US-CRM-LEAD-009 — Exportar Leads
+- [ ] US-CRM-LEAD-010 — Integração Facebook Lead Ads
+- [ ] US-CRM-LEAD-011 — Integração Google Ads
+- [ ] US-CRM-LEAD-012 — Score Automático de Lead
+- [ ] US-CRM-LEAD-013 — Detecção de Lead Duplicado
+- [ ] US-CRM-LEAD-014 — Enriquecimento de Dados
+- [ ] US-CRM-LEAD-015 — Cadastrar Lead Manualmente
+- [ ] US-CRM-LEAD-016 — Visualizar Lista de Leads
+- [ ] US-CRM-LEAD-017 — Buscar e Filtrar Leads
+- [ ] US-CRM-LEAD-018 — Atribuir Lead a Consultor
+- [ ] US-CRM-LEAD-019 — Editar Dados do Lead
+- [ ] US-CRM-LEAD-020 — Visualizar Detalhes do Lead
 
 ### Artefatos de Suporte
 

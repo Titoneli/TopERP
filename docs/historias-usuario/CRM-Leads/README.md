@@ -36,18 +36,18 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 ### Fase 1: CAPTAÇÃO E COMPARAÇÃO ✅
 | ID | História | Status | SP |
 |----|----------|--------|----|
-| [LED-001](US-CRM-LED-001.md) | Captação de Lead via Landing Page | ✅ Pronto | 13 |
-| [LED-002](US-CRM-LED-002.md) | Comparativo de Planos de Proteção | ✅ Pronto | 13 |
-| [LED-003](US-CRM-LED-003.md) | Dashboard de Leads e Analytics | ✅ Pronto | 13 |
+| [LED-001](US-CRM-LEAD-001.md) | Captação de Lead via Landing Page | ✅ Pronto | 13 |
+| [LED-002](US-CRM-LEAD-002.md) | Comparativo de Planos de Proteção | ✅ Pronto | 13 |
+| [LED-003](US-CRM-LEAD-003.md) | Dashboard de Leads e Analytics | ✅ Pronto | 13 |
 
 **Subtotal Fase 1**: 39 SP | **Status**: Completa
 
 ### Fase 2: CAPTURA AVANÇADA ✅
 | ID | História | Status | SP |
 |----|----------|--------|----|
-| [LED-004](US-CRM-LED-004.md) | Captura via Formulário Embarcado | ✅ Pronto | 8 |
-| [LED-005](US-CRM-LED-005.md) | Captura via WhatsApp Business | ✅ Pronto | 13 |
-| [LED-006](US-CRM-LED-006.md) | Qualificar Lead (BANT) | ✅ Pronto | 5 |
+| [LED-004](US-CRM-LEAD-004.md) | Captura via Formulário Embarcado | ✅ Pronto | 8 |
+| [LED-005](US-CRM-LEAD-005.md) | Captura via WhatsApp Business | ✅ Pronto | 13 |
+| [LED-006](US-CRM-LEAD-006.md) | Qualificar Lead (BANT) | ✅ Pronto | 5 |
 
 **Subtotal Fase 2**: 26 SP | **Status**: Completa
 
