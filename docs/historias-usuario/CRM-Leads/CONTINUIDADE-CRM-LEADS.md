@@ -1,8 +1,8 @@
 # ACOMPANHAMENTO DE CONTINUIDADE — Módulo CRM-Leads
 
-**Última Atualização**: 21 de janeiro de 2026  
+**Última Atualização**: 23 de janeiro de 2026  
 **Status**: Em Desenvolvimento  
-**Versão**: 1.1
+**Versão**: 2.0
 
 ---
 
@@ -11,10 +11,10 @@
 Sabemos **exatamente onde paramos**:
 
 ```
-Sprint Atual: Sprint 0 - Planejamento
-Histórias Prontas para Dev: LED-001 (v1.0) + LED-002 (v1.1) + LED-003 (v1.1)
-Próximas: LED-004, LED-005, LED-006, ...
-Status: ✅ Auditoria de Integridade Concluída (21/01/2026)
+Sprint Atual: Sprint 1 - Fase 2 Captura Avançada
+Histórias Prontas para Dev: LED-001, LED-002, LED-003, LED-004, LED-005, LED-006
+Próximas: LED-007, LED-008, LED-009 (Fase 3)
+Status: ✅ Fase 2 Especificada (23/01/2026)
 ```
 
 ---
@@ -33,56 +33,56 @@ Status: ✅ Auditoria de Integridade Concluída (21/01/2026)
 
 ---
 
-### Fase 2: GESTÃO DE LEADS (⏳ NÃO INICIADA)
+### Fase 2: CAPTURA AVANÇADA (✅ ESPECIFICADA)
 
-| ID | Histórias | Status | SP | Prioridade | Dependências |
-|----|-----------|--------|----|-----------|----|
-| **LED-004** | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial | LED-001 Qualificado |
-| **LED-005** | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial | LED-001, LED-004 |
-| **LED-006** | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial | LED-005 |
-| **LED-007** | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial | LED-005 |
-| **LED-008** | Editar Dados do Lead | 📋 Planejado | 5 | Essencial | LED-004, LED-005 |
-| **LED-009** | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial | LED-005 |
+| ID | Histórias | Status | Versão | SP | PDF | Notas |
+|----|-----------|--------|--------|----|-----|-------|
+| **LED-004** | Captura via Formulário Embarcado | ✅ Pronto | v1.0 | 8 | ⏳ | iframe/widget, token parceiro, CORS |
+| **LED-005** | Captura via WhatsApp Business | ✅ Pronto | v1.0 | 13 | ⏳ | Chatbot, webhook Meta, fluxo BANT |
+| **LED-006** | Qualificar Lead (BANT) | ✅ Pronto | v1.0 | 5 | ⏳ | Score 0-12, temperatura FRIO/MORNO/QUENTE |
 
-**Subtotal Fase 2**: 33 SP | Status: **Aguardando Especificação**
+**Subtotal Fase 2**: 26 SP | Status: **✅ Especificação Completa**
 
 ---
 
-### Fase 3: CAPTURA AVANÇADA (⏳ NÃO INICIADA)
+### Fase 3: GESTÃO AVANÇADA (⏳ NÃO INICIADA)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
 |----|-----------|--------|----|-----------|----|
-| **LED-010** | Captura via Formulário Embarcado | 📋 Planejado | 8 | Importante | LED-001 |
-| **LED-011** | Captura via WhatsApp Business | 📋 Planejado | 13 | Importante | Webhook WhatsApp |
-| **LED-012** | Qualificar Lead (BANT) | 📋 Planejado | 5 | Importante | LED-001, LED-005 |
+| **LED-007** | Importar Leads em Massa (CSV/Excel) | 📋 Planejado | 8 | Importante | LED-001 |
+| **LED-008** | Marcar Lead como Inativo | 📋 Planejado | 3 | Importante | LED-001 |
+| **LED-009** | Exportar Leads | 📋 Planejado | 5 | Importante | LED-001 |
 
-**Subtotal Fase 3**: 26 SP | Status: **Aguardando Especificação**
+**Subtotal Fase 3**: 16 SP | Status: **Aguardando Especificação**
 
 ---
 
-### Fase 4: GESTÃO AVANÇADA (⏳ NÃO INICIADA)
+### Fase 4: INTEGRAÇÕES EXTERNAS (⏳ NÃO INICIADA)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
 |----|-----------|--------|----|-----------|----|
-| **LED-013** | Importar Leads em Massa (CSV/Excel) | 📋 Planejado | 8 | Importante | LED-004 |
-| **LED-014** | Marcar Lead como Inativo | 📋 Planejado | 3 | Importante | LED-005, LED-007 |
-| **LED-015** | Exportar Leads | 📋 Planejado | 5 | Importante | LED-005 |
+| **LED-010** | Integração com Facebook Lead Ads | 📋 Planejado | 13 | Desejável | Webhook Meta |
+| **LED-011** | Integração com Google Ads | 📋 Planejado | 13 | Desejável | Google Ads API |
+| **LED-012** | Score Automático de Lead | 📋 Planejado | 8 | Desejável | ML Engine |
+| **LED-013** | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável | LED-001 |
+| **LED-014** | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável | Integrações externas |
 
-**Subtotal Fase 4**: 16 SP | Status: **Aguardando Especificação**
+**Subtotal Fase 4**: 47 SP | Status: **Backlog Futuro**
 
 ---
 
-### Fase 5: INTEGRAÇÕES EXTERNAS (⏳ NÃO INICIADA)
+### Fase 5: GESTÃO DE LEADS (⏳ NÃO INICIADA)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
 |----|-----------|--------|----|-----------|----|
-| **LED-016** | Integração com Facebook Lead Ads | 📋 Planejado | 13 | Desejável | Webhook Meta |
-| **LED-017** | Integração com Google Ads | 📋 Planejado | 13 | Desejável | Google Ads API |
-| **LED-018** | Score Automático de Lead | 📋 Planejado | 8 | Desejável | ML Engine |
-| **LED-019** | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável | LED-001, LED-005 |
-| **LED-020** | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável | Integrações externas |
+| **LED-015** | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial | LED-001 |
+| **LED-016** | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial | LED-001, LED-015 |
+| **LED-017** | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial | LED-016 |
+| **LED-018** | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial | LED-016 |
+| **LED-019** | Editar Dados do Lead | 📋 Planejado | 5 | Essencial | LED-015, LED-016 |
+| **LED-020** | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial | LED-016 |
 
-**Subtotal Fase 5**: 47 SP | Status: **Backlog Futuro**
+**Subtotal Fase 5**: 33 SP | Status: **Aguardando Especificação**
 
 ---
 
@@ -93,14 +93,17 @@ Status: ✅ Auditoria de Integridade Concluída (21/01/2026)
 ✅ LED-001 (v1.0) — Pronto para Dev
 ✅ LED-002 (v1.1) — Pronto para Dev
 ✅ LED-003 (v1.1) — Pronto para Dev
-📋 LED-004 até LED-009 — Especificação Pendente
-🎯 Total: 7 histórias | 72 SP (39 prontos + 33 planejados)
+✅ LED-015 até LED-020 — Gestão de Leads (Fase 5) - Aguardando
+🎯 Total: 9 histórias | 72 SP (39 prontos + 33 planejados)
 ```
 
 ### Importante (Should-Have)
 ```
-📋 LED-010 até LED-015 — Especificação Pendente
-🎯 Total: 6 histórias | 42 SP (0 prontos + 42 planejados)
+✅ LED-004 (v1.0) — Formulário Embarcado - ESPECIFICADO
+✅ LED-005 (v1.0) — WhatsApp Business - ESPECIFICADO
+✅ LED-006 (v1.0) — Qualificar BANT - ESPECIFICADO
+📋 LED-007 até LED-009 — Gestão Avançada (Fase 3) - Pendente
+🎯 Total: 6 histórias | 42 SP (26 prontos + 16 planejados)
 ```
 
 ### Desejável (Could-Have)
@@ -118,18 +121,23 @@ Status: ✅ Auditoria de Integridade Concluída (21/01/2026)
 - [x] US-CRM-LED-001 (v1.0) — Arquivo criado e validado
 - [x] US-CRM-LED-002 (v1.1) — Arquivo criado, terminologia atualizada, wireframe otimizado
 - [x] US-CRM-LED-003 (v1.1) — Arquivo renumerado, validado e pronto
-- [ ] US-CRM-LED-004 — Após LED-001
-- [ ] US-CRM-LED-005 — Após LED-004
-- [ ] US-CRM-LED-006 — Após LED-005
-- [ ] US-CRM-LED-007 — Após LED-005
-- [ ] US-CRM-LED-008 — Após LED-004, LED-005
-- [ ] US-CRM-LED-009 — Após LED-005
-- [ ] US-CRM-LED-010 — Após LED-001
-- [ ] US-CRM-LED-011 — Após webhook WhatsApp
-- [ ] US-CRM-LED-012 — Após LED-001, LED-005
-- [ ] US-CRM-LED-013 — Após LED-004
-- [ ] US-CRM-LED-014 — Após LED-005, LED-007
-- [ ] US-CRM-LED-015 — Após LED-005
+- [x] US-CRM-LED-004 (v1.0) — Formulário Embarcado (iframe/widget, token parceiro)
+- [x] US-CRM-LED-005 (v1.0) — WhatsApp Business (chatbot, webhook Meta)
+- [x] US-CRM-LED-006 (v1.0) — Qualificar Lead BANT (score 0-12, temperaturas)
+- [ ] US-CRM-LED-007 — Importar Leads em Massa
+- [ ] US-CRM-LED-008 — Marcar Lead como Inativo
+- [ ] US-CRM-LED-009 — Exportar Leads
+- [ ] US-CRM-LED-010 — Integração Facebook Lead Ads
+- [ ] US-CRM-LED-011 — Integração Google Ads
+- [ ] US-CRM-LED-012 — Score Automático de Lead
+- [ ] US-CRM-LED-013 — Detecção de Lead Duplicado
+- [ ] US-CRM-LED-014 — Enriquecimento de Dados
+- [ ] US-CRM-LED-015 — Cadastrar Lead Manualmente
+- [ ] US-CRM-LED-016 — Visualizar Lista de Leads
+- [ ] US-CRM-LED-017 — Buscar e Filtrar Leads
+- [ ] US-CRM-LED-018 — Atribuir Lead a Consultor
+- [ ] US-CRM-LED-019 — Editar Dados do Lead
+- [ ] US-CRM-LED-020 — Visualizar Detalhes do Lead
 
 ### Artefatos de Suporte
 

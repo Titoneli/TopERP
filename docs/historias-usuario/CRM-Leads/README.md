@@ -33,32 +33,68 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 ## Histórias de Usuário
 
-### Essencial — Fluxo de Captação e Comparativo
-- [US-CRM-LED-001](US-CRM-LED-001.md) - Captação de Lead via Landing Page (Multi-Step Form com rastreio de origem e DDD)
-- [US-CRM-LED-002](US-CRM-LED-002.md) - Comparativo de Planos de Proteção Veicular (Após Etapa 3 de LED-001)
-- [US-CRM-LED-003](US-CRM-LED-003.md) - Dashboard de Leads e Analytics (Etapa 3)
+### Fase 1: CAPTAÇÃO E COMPARAÇÃO ✅
+| ID | História | Status | SP |
+|----|----------|--------|----|
+| [LED-001](US-CRM-LED-001.md) | Captação de Lead via Landing Page | ✅ Pronto | 13 |
+| [LED-002](US-CRM-LED-002.md) | Comparativo de Planos de Proteção | ✅ Pronto | 13 |
+| [LED-003](US-CRM-LED-003.md) | Dashboard de Leads e Analytics | ✅ Pronto | 13 |
 
-### Essencial — Gestão de Leads
-- US-CRM-LED-004 - Cadastrar Lead Manualmente
-- US-CRM-LED-005 - Visualizar Lista de Leads
-- US-CRM-LED-006 - Buscar e Filtrar Leads
-- US-CRM-LED-007 - Atribuir Lead a Consultor
-- US-CRM-LED-008 - Editar Dados do Lead
-- US-CRM-LED-009 - Visualizar Detalhes do Lead
+**Subtotal Fase 1**: 39 SP | **Status**: Completa
 
-### Importante
-- US-CRM-LED-010 - Importar Leads em Massa (CSV/Excel)
-- US-CRM-LED-011 - Captura via Formulário Embarcado
-- US-CRM-LED-012 - Captura via WhatsApp Business
-- US-CRM-LED-013 - Qualificar Lead (BANT)
-- US-CRM-LED-014 - Marcar Lead como Inativo
-- US-CRM-LED-015 - Exportar Leads
+### Fase 2: CAPTURA AVANÇADA ✅
+| ID | História | Status | SP |
+|----|----------|--------|----|
+| [LED-004](US-CRM-LED-004.md) | Captura via Formulário Embarcado | ✅ Pronto | 8 |
+| [LED-005](US-CRM-LED-005.md) | Captura via WhatsApp Business | ✅ Pronto | 13 |
+| [LED-006](US-CRM-LED-006.md) | Qualificar Lead (BANT) | ✅ Pronto | 5 |
 
-### Desejável
-- US-CRM-LED-016 - Integração com Facebook Lead Ads
-- US-CRM-LED-017 - Integração com Google Ads
-- US-CRM-LED-018 - Score Automático de Lead
-- US-CRM-LED-019 - Enriquecimento de Dados (APIs externas)
+**Subtotal Fase 2**: 26 SP | **Status**: Completa
+
+### Fase 3: GESTÃO AVANÇADA ⏳
+| ID | História | Status | SP | Prioridade |
+|----|----------|--------|----|-----------|
+| LED-007 | Importar Leads em Massa (CSV/Excel) | 📋 Planejado | 8 | Importante |
+| LED-008 | Marcar Lead como Inativo | 📋 Planejado | 3 | Importante |
+| LED-009 | Exportar Leads | 📋 Planejado | 5 | Importante |
+
+**Subtotal Fase 3**: 16 SP | **Status**: Aguardando Especificação
+
+### Fase 4: INTEGRAÇÕES EXTERNAS ⏳
+| ID | História | Status | SP | Prioridade |
+|----|----------|--------|----|-----------|
+| LED-010 | Integração com Facebook Lead Ads | 📋 Planejado | 13 | Desejável |
+| LED-011 | Integração com Google Ads | 📋 Planejado | 13 | Desejável |
+| LED-012 | Score Automático de Lead | 📋 Planejado | 8 | Desejável |
+| LED-013 | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável |
+| LED-014 | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável |
+
+**Subtotal Fase 4**: 47 SP | **Status**: Backlog Futuro
+
+### Fase 5: GESTÃO DE LEADS ⏳
+| ID | História | Status | SP | Prioridade |
+|----|----------|--------|----|-----------|
+| LED-015 | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial |
+| LED-016 | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial |
+| LED-017 | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial |
+| LED-018 | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial |
+| LED-019 | Editar Dados do Lead | 📋 Planejado | 5 | Essencial |
+| LED-020 | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial |
+
+**Subtotal Fase 5**: 33 SP | **Status**: Aguardando Especificação
+
+---
+
+### 📊 Resumo por Fase
+
+| Fase | Nome | Histórias | SP | Status |
+|------|------|-----------|----|---------|
+| 1 | Captação e Comparação | LED-001 a LED-003 | 39 | ✅ Completa |
+| 2 | Captura Avançada | LED-004 a LED-006 | 26 | ✅ Completa |
+| 3 | Gestão Avançada | LED-007 a LED-009 | 16 | ⏳ Planejado |
+| 4 | Integrações Externas | LED-010 a LED-014 | 47 | ⏳ Backlog |
+| 5 | Gestão de Leads | LED-015 a LED-020 | 33 | ⏳ Planejado |
+| **TOTAL** | | **20 histórias** | **161 SP** | **65 SP prontos** |
 
 ---
 
@@ -132,12 +168,14 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 ---
 
-**Versão**: 1.2  
-**Atualizado em**: 21/01/2026
+**Versão**: 2.1  
+**Atualizado em**: 23/01/2026
 
 **Histórico:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 2.1 | 23/01/2026 | Fase 2 especificada: LED-004, LED-005, LED-006 prontos (65 SP totais) |
+| 2.0 | 23/01/2026 | Reorganização completa por fases: Gestão de Leads movida para Fase 5, IDs renumerados |
 | 1.2 | 21/01/2026 | Renumeração: LED-003 (Dashboard) e sequências Essencial/Importante/Desejável |
 | 1.1 | 21/01/2026 | Atualizado com `cod_origem`, `cod_colaborador`, métricas por DDD e etapas do formulário |
 | 1.0 | 21/01/2026 | Versão inicial |

@@ -2,8 +2,8 @@
 
 | Metadado | Valor |
 |----------|-------|
-| **Versão** | 2.0 |
-| **Data** | 22/01/2026 |
+| **Versão** | 2.1 |
+| **Data** | 23/01/2026 |
 | **Autor** | Product Owner |
 | **Metodologia** | Domain-Driven Design |
 
@@ -62,9 +62,12 @@ Este documento apresenta o planejamento de releases do TopERP, incluindo o módu
 |----|--------|----------|--------|
 | US-CRM-AUT-001 | Login no sistema | CRM-AUT | 5 |
 | US-CRM-AUT-002 | Logout do sistema | CRM-AUT | 2 |
-| US-CRM-LED-001 | Cadastrar novo lead | CRM-LED | 8 |
-| US-CRM-LED-002 | Listar leads | CRM-LED | 5 |
-| US-CRM-LED-003 | Visualizar dashboard de leads | CRM-LED | 13 |
+| US-CRM-LED-001 | Captação de Lead via Landing Page | CRM-LED | 13 |
+| US-CRM-LED-002 | Comparativo de Planos de Proteção | CRM-LED | 13 |
+| US-CRM-LED-003 | Dashboard de Leads e Analytics | CRM-LED | 13 |
+| US-CRM-LED-004 | Captura via Formulário Embarcado | CRM-LED | 8 |
+| US-CRM-LED-005 | Captura via WhatsApp Business | CRM-LED | 13 |
+| US-CRM-LED-006 | Qualificar Lead (BANT) | CRM-LED | 5 |
 | US-CRM-COT-001 | Criar cotação para lead | CRM-COT | 8 |
 | US-CRM-FUN-001 | Visualizar funil de vendas | CRM-FUN | 13 |
 
@@ -320,6 +323,6 @@ Este documento apresenta o planejamento de releases do TopERP, incluindo o módu
 
 ---
 
-**Última Atualização**: 22 de janeiro de 2026  
-**Versão**: 2.0  
+**Última Atualização**: 23 de janeiro de 2026  
+**Versão**: 2.1  
 **Aprovado por**: Product Owner

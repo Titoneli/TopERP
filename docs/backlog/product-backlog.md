@@ -4,7 +4,7 @@
 
 Este documento contém o Product Backlog do TopERP, organizado por módulo e prioridade.
 
-**Última Atualização**: 21 de janeiro de 2026  
+**Última Atualização**: 23 de janeiro de 2026  
 **Product Owner**: Gustavo Titoneli  
 **Sprint Atual**: Sprint 0 - Planejamento
 
@@ -93,26 +93,61 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 ### 🤝 Módulo CRM (CRM)
 
-#### Essencial
-| ID | História | Prioridade | Status | Sprint |
-|----|----------|------------|--------|--------|
-| US-CRM-LED-001 | Captação de Lead via Landing Page | Essencial | Backlog | - |
-| US-CRM-LED-002 | Comparativo de Planos de Proteção Veicular | Essencial | Backlog | - |
-| US-CRM-LED-003 | Dashboard de Leads e Analytics | Essencial | Backlog | - |
-| US-CRM-AUT-001 | Realizar Login no Sistema | Essencial | Backlog | - |
-| US-CRM-AUT-002 | Realizar Logout do Sistema | Essencial | Backlog | - |
-| US-CRM-COT-001 | Iniciar Nova Cotação | Essencial | Backlog | - |
-| US-CRM-FUN-001 | Visualizar Funil de Vendas | Essencial | Backlog | - |
+#### CRM-Leads: Fase 1 - Captação e Comparação ✅
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-LED-001 | Captação de Lead via Landing Page | Essencial | ✅ Pronto | 13 |
+| US-CRM-LED-002 | Comparativo de Planos de Proteção Veicular | Essencial | ✅ Pronto | 13 |
+| US-CRM-LED-003 | Dashboard de Leads e Analytics | Essencial | ✅ Pronto | 13 |
 
-#### Importante
-| ID | História | Prioridade | Status | Sprint |
-|----|----------|------------|--------|--------|
-| US-CRM-LED-010 | Importar Leads em Massa (CSV/Excel) | Importante | Backlog | - |
-| US-CRM-LED-011 | Captura via Formulário Embarcado | Importante | Backlog | - |
-| US-CRM-LED-012 | Captura via WhatsApp Business | Importante | Backlog | - |
-| US-CRM-LED-013 | Qualificar Lead (BANT) | Importante | Backlog | - |
-| US-CRM-LED-014 | Marcar Lead como Inativo | Importante | Backlog | - |
-| US-CRM-LED-015 | Exportar Leads | Importante | Backlog | - |
+#### CRM-Leads: Fase 2 - Captura Avançada
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-LED-004 | Captura via Formulário Embarcado | Importante | Backlog | 8 |
+| US-CRM-LED-005 | Captura via WhatsApp Business | Importante | Backlog | 13 |
+| US-CRM-LED-006 | Qualificar Lead (BANT) | Importante | Backlog | 5 |
+
+#### CRM-Leads: Fase 3 - Gestão Avançada
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-LED-007 | Importar Leads em Massa (CSV/Excel) | Importante | Backlog | 8 |
+| US-CRM-LED-008 | Marcar Lead como Inativo | Importante | Backlog | 3 |
+| US-CRM-LED-009 | Exportar Leads | Importante | Backlog | 5 |
+
+#### CRM-Leads: Fase 4 - Integrações Externas
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-LED-010 | Integração com Facebook Lead Ads | Desejável | Backlog | 13 |
+| US-CRM-LED-011 | Integração com Google Ads | Desejável | Backlog | 13 |
+| US-CRM-LED-012 | Score Automático de Lead | Desejável | Backlog | 8 |
+| US-CRM-LED-013 | Detecção de Lead Duplicado | Desejável | Backlog | 5 |
+| US-CRM-LED-014 | Enriquecimento de Dados (APIs externas) | Desejável | Backlog | 8 |
+
+#### CRM-Leads: Fase 5 - Gestão de Leads
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-LED-015 | Cadastrar Lead Manualmente | Essencial | Backlog | 8 |
+| US-CRM-LED-016 | Visualizar Lista de Leads | Essencial | Backlog | 5 |
+| US-CRM-LED-017 | Buscar e Filtrar Leads | Essencial | Backlog | 5 |
+| US-CRM-LED-018 | Atribuir Lead a Consultor | Essencial | Backlog | 5 |
+| US-CRM-LED-019 | Editar Dados do Lead | Essencial | Backlog | 5 |
+| US-CRM-LED-020 | Visualizar Detalhes do Lead | Essencial | Backlog | 5 |
+
+#### CRM-Autenticação
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-AUT-001 | Realizar Login no Sistema | Essencial | Backlog | 5 |
+| US-CRM-AUT-002 | Realizar Logout do Sistema | Essencial | Backlog | 2 |
+
+#### CRM-Cotações
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-COT-001 | Iniciar Nova Cotação | Essencial | Backlog | 8 |
+
+#### CRM-Funil de Vendas
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FUN-001 | Visualizar Funil de Vendas | Essencial | Backlog | 13 |
 
 ---
 
@@ -120,12 +155,17 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Métrica | Valor |
 |---------|-------|
-| Total de Histórias | 35 |
-| Essencial | 21 |
-| Importante | 14 |
-| Desejável | 0 |
-| Não Priorizado | 0 |
-| Story Points Total | Em estimativa (parcial CRM: 75 SP) |
+| Total de Histórias CRM-Leads | 20 |
+| Fase 1 (Completa) | 3 histórias / 39 SP |
+| Fase 2 (Captura) | 3 histórias / 26 SP |
+| Fase 3 (Gestão Avançada) | 3 histórias / 16 SP |
+| Fase 4 (Integrações) | 5 histórias / 47 SP |
+| Fase 5 (Gestão Leads) | 6 histórias / 33 SP |
+| **Total CRM-Leads** | **20 histórias / 161 SP** |
+| Total CRM-AUT | 2 histórias / 7 SP |
+| Total CRM-COT | 1 história / 8 SP |
+| Total CRM-FUN | 1 história / 13 SP |
+| **TOTAL CRM** | **24 histórias / 189 SP** |
 
 ---
 
@@ -143,5 +183,6 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
-| 21/01/2026 | 1.0 | Criação inicial do backlog | PO |
+| 23/01/2026 | 2.0 | Reorganização CRM-Leads por fases (Gestão de Leads movida para Fase 5) | PO |
 | 21/01/2026 | 1.1 | Renumeração CRM-Leads (LED-003 dashboard Essencial) e inclusão de sequências | PO |
+| 21/01/2026 | 1.0 | Criação inicial do backlog | PO |
