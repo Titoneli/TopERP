@@ -71,13 +71,13 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 │          ┌─────────────────────────┼─────────────────────────┐              │
 │          │                         │                         │              │
 │          ▼                         ▼                         ▼              │
-│   ┌─────────────┐          ┌─────────────┐          ┌─────────────┐        │
-│   │    FRIO     │          │    MORNO    │          │   QUENTE    │        │
-│   │   (0-4)     │          │   (5-8)     │          │   (9-12)    │        │
-│   │             │          │             │          │             │        │
-│   │ Nurturing   │          │ Follow-up   │          │ Prioridade  │        │
-│   │ Automático  │          │  Regular    │          │   Máxima    │        │
-│   └─────────────┘          └─────────────┘          └─────────────┘        │
+│   ┌─────────────┐          ┌─────────────┐          ┌─────────────┐         │
+│   │    FRIO     │          │    MORNO    │          │   QUENTE    │         │
+│   │   (0-4)     │          │   (5-8)     │          │   (9-12)    │         │
+│   │             │          │             │          │             │         │
+│   │ Nurturing   │          │ Follow-up   │          │ Prioridade  │         │
+│   │ Automático  │          │  Regular    │          │   Máxima    │         │
+│   └─────────────┘          └─────────────┘          └─────────────┘         │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -393,7 +393,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 │     │              │                      │              │      │
 │     │              ├─ QUENTE ────────────►│              │      │
 │     │              │                      │              │      │
-│     │              ├─ MORNO ──► Nurture ─►│              │      │
+│     │              ├─ MORNO ► Aquecimento►│              │      │
 │     │              │                      │              │      │
 │     │              └─ FRIO ──► E-mail ───►│              │      │
 │     │                                     │              │      │
