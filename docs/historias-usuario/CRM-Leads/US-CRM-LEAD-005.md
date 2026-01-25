@@ -10,7 +10,7 @@
 
 | Origem | Número WhatsApp | Atendimento | cod_colaborador |
 |--------|-----------------|-------------|------------------|
-| **Landing Page Exclusiva** | Número pessoal do **CONSULTOR** (conectado ao TopCRM) | Conversa DIRETA com o consultor | ✅ Preenchido automaticamente |
+| **Landing Page Exclusiva** | Número pessoal do **CONSULTOR** (conectado ao TopCRM) | Conversa DIRETA com o consultor | Preenchido automaticamente |
 | **Link Direto TopCRM** | Número oficial da **TOPBRASIL** | Atendimento via **CHATBOT** | NULL (fila de distribuição) |
 
 ## Prioridade
@@ -178,13 +178,11 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 │     │ [Usuário responde e-mail]                                 │
 │     ▼                                                           │
 │  ┌───────────────────────────────────────────────────────────┐  │
-│  │  "Perfeito! Em qual estado você mora?"                    │  │
+│  │  "Perfeito! Em qual cidade/uf você circula com o veiculo?"│  │
 │  │                                                           │  │
-│  │  1️⃣ São Paulo          2️⃣ Rio de Janeiro                   │  │
-│  │  3️⃣ Minas Gerais       4️⃣ Outro estado                     │  │
 │  └───────────────────────────────────────────────────────────┘  │
 │     │                                                           │
-│     │ [Usuário seleciona opção]                                 │
+│     │ [Usuário informa nome da cidade/estado]                   │
 │     ▼                                                           │
 │  [LEAD CRIADO NO CRM]                                           │
 │     │                                                           │
@@ -370,10 +368,10 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 ┌─────────────────────────────────────────────────────────┐
 │  Ótima escolha! 🚗                                      │
 │                                                         │
-│  Para começar sua cotação personalizada, preciso de    │
+│  Para começar sua cotação personalizada, preciso de     │
 │  algumas informações.                                   │
 │                                                         │
-│  *Qual é o seu nome completo?*                         │
+│  *Qual é o seu nome completo?*                          │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -381,32 +379,32 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  Prazer em te conhecer, *{nome}*! 😊                   │
+│  Prazer em te conhecer, *{nome}*! 😊                    │
 │                                                         │
-│  Agora preciso do seu e-mail para enviar a cotação     │
+│  Agora preciso do seu e-mail para enviar a cotação      │
 │  detalhada.                                             │
 │                                                         │
-│  *Qual seu melhor e-mail?*                             │
+│  *Qual seu melhor e-mail?*                              │
 └─────────────────────────────────────────────────────────┘
 ```
 
-### Solicitação de Estado
+### Solicitação de Placa ou Marca/Modelo/Ano
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Otimo! 📍                                              │
+│                                                         │
+│  *Qual a placa ou marca/modelo/ano do veículo?*         │
+└─────────────────────────────────────────────────────────┘
+``````
+
+### Solicitação de Cidade/Estado
 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Perfeito! 📍                                           │
 │                                                         │
-│  *Em qual estado você mora?*                            │
-│                                                         │
-│  1️⃣ São Paulo                                           │
-│  2️⃣ Rio de Janeiro                                      │
-│  3️⃣ Minas Gerais                                        │
-│  4️⃣ Paraná                                              │
-│  5️⃣ Rio Grande do Sul                                   │
-│  6️⃣ Santa Catarina                                      │
-│  7️⃣ Outro estado                                        │
-│                                                         │
-│  _Digite o número da opção_                             │
+│  *Em qual cidade/estado você circula com o veiculo?*    │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -417,12 +415,6 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 │  ✅ *Pronto, {nome}!*                                   │
 │                                                         │
 │  Seu cadastro foi realizado com sucesso!                │
-│                                                         │
-│  📋 *Resumo:*                                           │
-│  • Nome: {nome}                                         │
-│  • E-mail: {email}                                      │
-│  • Estado: {estado}                                     │
-│                                                         │
 │  Um consultor especializado vai entrar em contato       │
 │  em breve pelo WhatsApp. 📱                             │
 │                                                         │

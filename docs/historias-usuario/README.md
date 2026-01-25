@@ -260,6 +260,41 @@ Acompanhamento de clientes após fechamento do contrato.
 | **Rateio** | Divisão das despesas entre associados |
 | **Cobertura** | Tipo de proteção oferecida (roubo, colisão, etc) |
 
+## 📄 Geração de PDFs
+
+User Stories com status **"✅ Pronto"** devem ser exportadas para PDF para distribuição e arquivamento.
+
+### Ferramenta
+- **mdpdf** via npx (não requer instalação global)
+
+### Comando
+```bash
+cd docs/historias-usuario/[MODULO]
+npx mdpdf [ARQUIVO].md --output [ARQUIVO].pdf
+```
+
+### Exemplo
+```bash
+cd docs/historias-usuario/CRM-Leads
+npx mdpdf US-CRM-LEAD-005.md --output US-CRM-LEAD-005.pdf
+```
+
+### Convenções
+- PDF deve ter o **mesmo nome** do arquivo .md
+- PDF deve estar na **mesma pasta** do .md
+- Atualizar PDF sempre que o .md for alterado
+- Registrar no **CONTINUIDADE** do módulo com ✅
+
+### Checklist
+- [ ] User Story com status "✅ Pronto"
+- [ ] Documento revisado (DDD, ortografia)
+- [ ] Versão atualizada no documento
+- [ ] PDF gerado com sucesso
+- [ ] PDF verificado (formatação ok)
+- [ ] CONTINUIDADE atualizado
+
+---
+
 ## Referências
 
 - **DRS CRM TOPBR.pdf**: Documento de Requisitos do Sistema
@@ -269,7 +304,7 @@ Acompanhamento de clientes após fechamento do contrato.
 
 ---
 
-**Versão**: 1.0  
+**Versão**: 1.1  
 **Data**: 21 de janeiro de 2026  
 **Product Owner**: A definir  
 **Status**: 📋 Em planejamento

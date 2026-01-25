@@ -49,6 +49,34 @@ TopERP/
 - SIN: Eventos
 - CRM: Gestão de Clientes
 
+## Geração de PDFs
+
+### Ferramenta Utilizada
+- **mdpdf** via npx (não requer instalação global)
+
+### Comando para Gerar PDF
+```bash
+# Navegar até a pasta do arquivo
+cd docs/historias-usuario/CRM-Leads
+
+# Gerar PDF
+npx mdpdf US-CRM-LEAD-001.md --output US-CRM-LEAD-001.pdf
+```
+
+### Convenções de PDFs
+- Gerar PDF sempre que uma User Story estiver com status "✅ Pronto"
+- Nome do PDF deve ser idêntico ao arquivo .md (ex: `US-CRM-LEAD-001.md` → `US-CRM-LEAD-001.pdf`)
+- PDFs devem estar na mesma pasta do arquivo .md correspondente
+- Atualizar PDF sempre que o .md for alterado
+- Registrar no CONTINUIDADE do módulo qual PDF foi gerado
+
+### Checklist de Geração de PDF
+- [ ] User Story com status "✅ Pronto"
+- [ ] Documento revisado (DDD, ortografia, diagramas)
+- [ ] Versão atualizada no documento
+- [ ] Comando `npx mdpdf` executado com sucesso
+- [ ] PDF verificado (abrir e conferir formatação)
+
 
 ## Regras de Edição
 

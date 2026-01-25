@@ -42,7 +42,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        FLUXO DE QUALIFICAÇÃO BANT                          │
+│                        FLUXO DE QUALIFICAÇÃO BANT                           │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │   ┌─────────────┐                                                           │
@@ -54,18 +54,18 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 │   ┌──────────────────────────────────────────────────────────────────────┐  │
 │   │                    QUESTIONÁRIO BANT                                 │  │
 │   │                                                                      │  │
-│   │  ┌───────────┐   ┌───────────┐   ┌───────────┐   ┌───────────┐      │  │
-│   │  │  BUDGET   │   │ AUTHORITY │   │   NEED    │   │  TIMELINE │      │  │
-│   │  │ Orçamento │   │ Decisor?  │   │Necessidade│   │   Prazo   │      │  │
-│   │  │   0-3     │   │   0-3     │   │   0-3     │   │   0-3     │      │  │
-│   │  └─────┬─────┘   └─────┬─────┘   └─────┬─────┘   └─────┬─────┘      │  │
-│   │        │               │               │               │            │  │
-│   │        └───────────────┴───────┬───────┴───────────────┘            │  │
-│   │                                │                                    │  │
-│   │                                ▼                                    │  │
-│   │                    ┌───────────────────────┐                        │  │
-│   │                    │   SCORE TOTAL (0-12)  │                        │  │
-│   │                    └───────────┬───────────┘                        │  │
+│   │  ┌───────────┐   ┌───────────┐   ┌───────────┐   ┌───────────┐       │  │
+│   │  │  BUDGET   │   │ AUTHORITY │   │   NEED    │   │  TIMELINE │       │  │
+│   │  │ Orçamento │   │ Decisor?  │   │Necessidade│   │   Prazo   │       │  │
+│   │  │   0-3     │   │   0-3     │   │   0-3     │   │   0-3     │       │  │
+│   │  └─────┬─────┘   └─────┬─────┘   └─────┬─────┘   └─────┬─────┘       │  │
+│   │        │               │               │               │             │  │
+│   │        └───────────────┴───────┬───────┴───────────────┘             │  │
+│   │                                │                                     │  │
+│   │                                ▼                                     │  │
+│   │                    ┌───────────────────────┐                         │  │
+│   │                    │   SCORE TOTAL (0-12)  │                         │  │
+│   │                    └───────────┬───────────┘                         │  │
 │   └──────────────────────────────────────────────────────────────────────┘  │
 │                                    │                                        │
 │          ┌─────────────────────────┼─────────────────────────┐              │
@@ -195,14 +195,14 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 ### Cenário 2 — Lead quente (score 9-12)
 - **Dado que** qualifiquei um lead com score 10
 - **Quando** a qualificação é salva
-- **Então** o lead recebe temperatura `QUENTE`
+- **Então** o lead recebe temperatura `QUENTE` (dom_ind_temperatura)
 - **E** aparece no topo da minha fila de atendimento
 - **E** recebo notificação: "Lead quente! Contate imediatamente"
 
 ### Cenário 3 — Lead frio (score 0-4)
 - **Dado que** qualifiquei um lead com score 3
 - **Quando** a qualificação é salva
-- **Então** o lead recebe temperatura `FRIO`
+- **Então** o lead recebe temperatura `FRIO` (dom_ind_temperatura)
 - **E** é direcionado para fluxo de nurturing automático
 - **E** não aparece na fila de prioridade do consultor
 
@@ -216,12 +216,12 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 ### Cenário 5 — Desqualificação automática
 - **Dado que** marquei Budget = 0 e Authority = 0
 - **Quando** salvo a qualificação
-- **Então** o lead é automaticamente classificado como `FRIO`
+- **Então** o lead é automaticamente classificado como `FRIO` (dom_ind_temperatura)
 - **E** recebo alerta: "Lead desqualificado por falta de orçamento e autoridade"
 
 ### Cenário 6 — Visualização de temperatura na lista
 - **Dado que** estou na lista de leads
-- **Quando** visualizo a coluna de temperatura
+- **Quando** visualizo a coluna de temperatura (dom_ind_temperatura)
 - **Então** vejo indicador colorido (🔵🟡🔴)
 - **E** posso filtrar por temperatura
 
@@ -239,7 +239,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 | ID | Regra |
 |----|-------|
 | RN-001 | Score BANT é a soma dos 4 critérios (0-12) |
-| RN-002 | Temperatura: FRIO (0-4), MORNO (5-8), QUENTE (9-12) |
+| RN-002 | Temperatura (dom_ind_temperatura): FRIO (0-4), MORNO (5-8), QUENTE (9-12) |
 | RN-003 | Budget=0 + Authority=0 = FRIO automático |
 | RN-004 | Apenas consultores podem qualificar leads |
 | RN-005 | Histórico de qualificações é mantido |
@@ -257,7 +257,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 |------|---------|-----------|
 | Qualificar Lead | Consultor preenche BANT | Score e temperatura calculados |
 | Requalificar | Consultor edita BANT | Nova qualificação, histórico mantido |
-| Filtrar por Temperatura | Seleção de filtro | Lista filtrada |
+| Filtrar por Temperatura (dom_ind_temperatura) | Seleção de filtro | Lista filtrada |
 | Ordenar por Score | Click no header | Lista ordenada |
 | Notificar | Lead QUENTE qualificado | Push para consultor |
 | Iniciar Nurturing | Lead FRIO qualificado | Fluxo automático |
@@ -307,7 +307,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 │                                                                 │
 │  📝 Observações                                                 │
 │  ┌─────────────────────────────────────────────────────────┐    │
-│  │ Cliente demonstrou interesse em plano Plus. Ligou       │    │
+│  │ Cliente demonstrou interesse em plano OURO. Ligou       │    │
 │  │ porque o seguro atual está caro.                        │    │
 │  └─────────────────────────────────────────────────────────┘    │
 │                                                                 │
@@ -328,18 +328,18 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 
 ```
 ┌───────────────────────────────────────────────────────────────────────────┐
-│  📋 MEUS LEADS                                   Filtro: [Todos ▼]       │
+│  📋 MEUS LEADS                                   Filtro: [Todos ▼]        │
 ├───────────────────────────────────────────────────────────────────────────┤
 │                                                                           │
 │  │ Nome           │ Telefone       │ BANT │ Temp  │ Status    │ Ações  │  │
 │  │────────────────│────────────────│──────│───────│───────────│────────│  │
 │  │ João da Silva  │ (11) 99999-9999│ 10   │ 🔥    │ Qualific. │ [Ver]  │  │
-│  │ Maria Santos   │ (21) 88888-8888│ 7    │ 🌤️   │ Qualific. │ [Ver]  │  │
+│  │ Maria Santos   │ (21) 88888-8888│ 7    │ 🌤️    │ Qualific. │ [Ver]  │  │
 │  │ Pedro Oliveira │ (31) 77777-7777│ 3    │ ❄️    │ Nurturing │ [Ver]  │  │
 │  │ Ana Costa      │ (11) 66666-6666│ 11   │ 🔥    │ Qualific. │ [Ver]  │  │
 │  │ Carlos Lima    │ (41) 55555-5555│ -    │ ⚪    │ Pendente  │ [Qual] │  │
 │                                                                           │
-│  ⚪ Não qualificado  ❄️ Frio (0-4)  🌤️ Morno (5-8)  🔥 Quente (9-12)      │
+│  ⚪ Não qualificado  ❄️ Frio (0-4)  🌤️ Morno (5-8)  🔥 Quente (9-12)       │
 │                                                                           │
 └───────────────────────────────────────────────────────────────────────────┘
 ```
@@ -367,7 +367,6 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 - [ ] Filtro por temperatura funcionando
 - [ ] Histórico de qualificações implementado
 - [ ] Notificação para lead QUENTE
-- [ ] Integração com fluxo de nurturing (FRIO)
 - [ ] Regra de desqualificação automática
 - [ ] Testes de aceitação realizados
 
@@ -380,7 +379,6 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 | US-CRM-LEAD-001 | Interna | ✅ Disponível |
 | Lista de Leads | Interna | Pendente (LEAD-016) |
 | Sistema de Notificações | Interna | Pendente |
-| Fluxo de Nurturing | Interna | Pendente |
 
 ---
 
@@ -391,7 +389,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 │                     INTEGRAÇÃO COM FUNIL                        │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  CAPTAÇÃO ──► QUALIFICAÇÃO (BANT) ──► NEGOCIAÇÃO ──► CONVERSÃO │
+│  CAPTAÇÃO ──► QUALIFICAÇÃO (BANT) ──► NEGOCIAÇÃO ──► CONVERSÃO  │
 │     │              │                      │              │      │
 │     │              ├─ QUENTE ────────────►│              │      │
 │     │              │                      │              │      │

@@ -201,6 +201,80 @@ Ao tentar fazer commit com formato incorreto:
 
 ---
 
+## 📄 Geração de PDFs
+
+### Ferramenta
+
+| Item | Valor |
+|------|-------|
+| **Ferramenta** | mdpdf (via npx) |
+| **Versão** | 3.1.0+ |
+| **Instalação** | Não requer (usa npx) |
+
+### Comando Básico
+
+```bash
+# Navegar até a pasta do arquivo
+cd docs/historias-usuario/CRM-Leads
+
+# Gerar PDF (nome igual ao .md)
+npx mdpdf US-CRM-LEAD-001.md --output US-CRM-LEAD-001.pdf
+```
+
+### Gerar Todos os PDFs de uma Pasta
+
+```bash
+# Gerar PDF para todos os arquivos .md da pasta
+for file in US-CRM-LEAD-*.md; do
+  npx mdpdf "$file" --output "${file%.md}.pdf"
+done
+```
+
+### Convenções
+
+| Regra | Descrição |
+|-------|----------|
+| **Nome** | PDF deve ter mesmo nome do .md |
+| **Local** | PDF na mesma pasta do .md |
+| **Timing** | Gerar quando US estiver "✅ Pronto" |
+| **Atualização** | Regerar PDF após alterações no .md |
+
+### Checklist de Geração
+
+- [ ] User Story com status "✅ Pronto"
+- [ ] Documento revisado (DDD, ortografia, diagramas)
+- [ ] Versão atualizada no documento
+- [ ] Comando `npx mdpdf` executado com sucesso
+- [ ] PDF verificado (abrir e conferir formatação)
+- [ ] Registrado no CONTINUIDADE do módulo
+
+### Exemplos de Uso
+
+```bash
+# Exemplo 1: Gerar PDF de uma User Story
+cd /Users/user/Top/TopERP/docs/historias-usuario/CRM-Leads
+npx mdpdf US-CRM-LEAD-005.md --output US-CRM-LEAD-005.pdf
+
+# Exemplo 2: Verificar se PDF foi gerado
+ls -la US-CRM-LEAD-005.pdf
+
+# Exemplo 3: Gerar vários PDFs
+for i in 001 002 003 004 005 006; do
+  npx mdpdf US-CRM-LEAD-$i.md --output US-CRM-LEAD-$i.pdf
+done
+```
+
+### Troubleshooting
+
+| Problema | Solução |
+|----------|--------|
+| "command not found: npx" | Instalar Node.js |
+| PDF não gerado | Verificar se arquivo .md existe |
+| Formatação quebrada | Verificar diagramas ASCII no .md |
+| Emojis não aparecem | Normal em alguns visualizadores |
+
+---
+
 ## ⚠️ Regras de Desenvolvimento
 
 ### ✅ Obrigatório
