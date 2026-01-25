@@ -37,9 +37,9 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
-| **LEAD-004** | Captura via Formulário Embarcado | ✅ Pronto | v1.2 | 8 | ⏳ | iframe/widget, token parceiro, CORS |
+| **LEAD-004** | Captura via Formulário Embarcado | ✅ Pronto | v1.2 | 8 | ✅ | iframe/widget, token parceiro, CORS |
 | **LEAD-005** | Captura via WhatsApp Business | ✅ Pronto | v1.2 | 13 | ✅ | 2 modos: Landing Page + Link Direto |
-| **LEAD-006** | Qualificar Lead (BANT) | ✅ Pronto | v1.0 | 5 | ⏳ | Score 0-12, temperatura FRIO/MORNO/QUENTE |
+| **LEAD-006** | Qualificar Lead (BANT) | ✅ Pronto | v1.0 | 5 | ✅ | Score 0-12, temperatura FRIO/MORNO/QUENTE |
 
 **Subtotal Fase 2**: 26 SP | Status: **✅ Especificação Completa**
 
