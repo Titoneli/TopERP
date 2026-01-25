@@ -2,8 +2,8 @@
 
 ## História de Usuário
 
-**Como** consulor, parceiro ou afiliado da TopBrasil,  
-**Quero** incorporar um formulário de captação de leads em site ou blog proprio ou de terceiros,  
+**Como** consultor, parceiro ou afiliado da TopBrasil,  
+**Quero** incorporar um formulário de captação de leads em site ou blog próprio ou de terceiros,  
 **Para** capturar leads interessados em proteção veicular e receber comissão por conversões.
 
 ## Prioridade
@@ -16,9 +16,34 @@ Importante
 
 ---
 
+## Bounded Context (DDD)
+
+| Elemento | Valor |
+|----------|-------|
+| **Bounded Context** | CRM-Leads (Captação e Qualificação) |
+| **Aggregate Root** | Lead |
+| **Entidades** | Lead, Parceiro, Colaborador |
+| **Value Objects** | Telefone (com DDD), Email, TokenParceiro, OrigemLead |
+| **Domain Events** | `LeadCriadoViaEmbed`, `ParceiroNotificado`, `ConsultorNotificado` |
+| **Relacionamento** | CRM-Leads → CRM-COT (Downstream) |
+
+### Linguagem Ubíqua
+
+| Termo | Definição |
+|-------|-----------|
+| **Lead** | Prospect que demonstrou interesse em proteção veicular |
+| **Parceiro** | Pessoa física ou jurídica que capta leads para TopBrasil |
+| **Token** | Identificador único e secreto do parceiro para autenticação |
+| **Formulário Embarcado** | Widget ou iframe incorporado em site externo |
+| **cod_origem** | Código numérico que identifica o canal de captação (12 = FORMULARIO_EMBARCADO) |
+| **cod_parceiro** | Identificador único do parceiro para rastreabilidade e comissionamento |
+| **cod_colaborador** | Identificador do consultor responsável pelo lead |
+
+---
+
 ## Contexto de Negócio
 
-A captura via formulário embarcado permite expandir os canais de aquisição de leads através de parceiros, afiliados e sites de terceiros, vinculando ou não o lead a um consultor específico. O formulário é incorporado via iframe ou widget JavaScript, mantendo a identidade visual do parceiro enquanto envia os dados diretamente para o CRM TopBrasil.
+A captura via formulário embarcado permite expandir os canais de aquisição de leads através de parceiros, afiliados e sites de terceiros, vinculando ou não o lead a um consultor específico. O formulário é incorporado via iframe ou widget JavaScript, mantendo a identidade visual do parceiro enquanto envia os dados diretamente para o CRM TopBrasil. O lead será capturado independente da situação do parceiro (INATIVO, SUSPENSO), o objetivo é captar o máximo de leads possíveis.
 
 ### Benefícios
 
@@ -133,7 +158,7 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 |-------|------|-------------|-----------|
 | Nome Completo | text | Sim | Mín. 3 caracteres |
 | Telefone | tel | Sim | Formato brasileiro, DDD obrigatório |
-| E-mail | email | Não | Formato válido |
+| E-mail | email | Não | Formato válido (recomendado para follow-up) |
 
 > **Nota**: O formulário embarcado é **simplificado** (apenas Etapa 1). O lead pode completar dados de veículo e localização posteriormente via link enviado por e-mail/WhatsApp.
 
@@ -147,9 +172,9 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 - **E** clica em "Quero uma Cotação"
 - **Então** o lead é criado no CRM com `cod_origem = 12` (FORMULARIO_EMBARCADO)
 - **E** o `cod_parceiro` é registrado para rastreabilidade
-- **E** o `cod_colaborado` é registrado para vínculo a um consultor 
+- **E** o `cod_colaborador` é registrado para vínculo a um consultor (se informado)
 - **E** exibe mensagem de sucesso no iframe
-- **E** é acionado uma automacao interna para notificar o consultor e o parceiro sobre a criação do lead
+- **E** é acionada uma automação interna para notificar o consultor e o parceiro sobre a criação do lead
 ### Cenário 2 — Embed via Widget JavaScript
 - **Dado que** um parceiro incorporou o widget JS em seu site
 - **Quando** o script carrega
@@ -160,14 +185,14 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 - **Dado que** o parceiro configurou `redirect_url`
 - **Quando** o lead é criado com sucesso
 - **Então** o visitante é redirecionado para a URL configurada
-- **E** é acionado uma automacao interna para notificar o consultor e o parceiro sobre a criação do lead
+- **E** é acionada uma automação interna para notificar o consultor e o parceiro sobre a criação do lead
 
 ### Cenário 4 — Webhook de notificação
 - **Dado que** o parceiro configurou `callback_url`
 - **Quando** o lead é criado com sucesso
 - **Então** uma notificação POST é enviada para o webhook
 - **E** contém o ID do lead e timestamp
-- **E** é acionado uma automacao interna para notificar o consultor e o parceiro sobre a criação do lead
+- **E** é acionada uma automação interna para notificar o consultor e o parceiro sobre a criação do lead
 
 ---
 
@@ -179,9 +204,21 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 | RN-002 | Cada parceiro tem um token único e intransferível |
 | RN-003 | Lead criado via embed recebe `cod_origem = 12` (FORMULARIO_EMBARCADO) |
 | RN-004 | O `cod_parceiro` é registrado para comissionamento futuro |
-| RN-005 | O `cod_colaborador`é registrado no lead para direcionamento caso exista |
+| RN-005 | O `cod_colaborador` é registrado no lead para direcionamento caso exista |
 | RN-006 | DDD é extraído e armazenado automaticamente |
 | RN-007 | Lead embarcado inicia com status `NOVO` e `etapa_abandono = 'FORM_PROSPECT'` |
+| RN-008 | E-mail é opcional mas recomendado para envio de link de continuação |
+
+---
+
+## Domain Events (DDD)
+
+| Evento | Trigger | Payload | Consumers |
+|--------|---------|---------|----------|
+| `LeadCriadoViaEmbed` | Lead criado com sucesso | `{ lead_id, cod_parceiro, cod_colaborador, cod_origem, timestamp }` | Notificações, Analytics |
+| `ParceiroNotificado` | Webhook enviado ao parceiro | `{ parceiro_id, lead_id, webhook_url, status }` | Auditoria |
+| `ConsultorNotificado` | Consultor informado do novo lead | `{ colaborador_id, lead_id, canal }` | Auditoria |
+| `TokenParceiroValidado` | Token verificado na requisição | `{ token, parceiro_id, is_valid }` | Segurança |
 
 ---
 
@@ -222,7 +259,7 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 │  └───────────────────────────────────────────────────┘  │
 │                                                         │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  E-mail *                                         │  │
+│  │  E-mail (opcional)                                │  │
 │  │  ┌─────────────────────────────────────────────┐  │  │
 │  │  │                                             │  │  │
 │  │  └─────────────────────────────────────────────┘  │  │
@@ -285,6 +322,7 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 |------|-----------|---------------|
 | `cod_origem` | Sempre 12 para embarcado | Identificar canal |
 | `cod_parceiro` | ID do parceiro | Comissionamento e performance |
+| `cod_colaborador` | ID do consultor | Direcionamento do lead e performance |
 | `dominio_origem` | Domínio de onde veio o lead | Análise de fontes |
 | `ddd_telefone` | DDD extraído | Análise regional |
 | `data_criacao` | Timestamp | Análise temporal |
@@ -338,14 +376,11 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 
 - [ ] Endpoint POST /api/v1/leads/embed funcionando
 - [ ] Validação de token de parceiro implementada
-- [ ] CORS configurado por domínio de parceiro
 - [ ] Iframe responsivo criado e testado
 - [ ] Widget JavaScript criado e testado
-- [ ] Validação de telefone contra blacklist funcionando
 - [ ] Extração de DDD implementada
 - [ ] Webhook de notificação funcionando
 - [ ] Redirecionamento pós-envio funcionando
-- [ ] Rate limiting implementado (100 leads/hora)
 - [ ] CRUD de parceiros implementado (admin)
 - [ ] Documentação de integração para parceiros
 - [ ] Testes de integração realizados
@@ -357,10 +392,8 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 | Dependência | Tipo | Status |
 |-------------|------|--------|
 | US-CRM-LEAD-001 | Interna | ✅ Disponível |
-| Blacklist de Consultores | Interna | ✅ Disponível |
 | Sistema de Tokens (JWT/UUID) | Interna | Pendente |
 | Cadastro de Parceiros | Interna | Pendente |
-| Infraestrutura CORS | Interna | Pendente |
 
 ---
 
@@ -376,9 +409,11 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 
 **Criado por**: Gustavo Titoneli (Product Owner)  
 **Data**: 23/01/2026  
-**Versão**: 1.0
+**Versão**: 1.2
 
 **Histórico de Alterações:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 1.2 | 25/01/2026 | Correção ortográfica: automação, situação, possíveis; espaçamento RN-005 |
+| 1.1 | 25/01/2026 | Revisão DDD: Bounded Context, Domain Events, Linguagem Ubíqua, correção typos |
 | 1.0 | 23/01/2026 | Versão inicial |
