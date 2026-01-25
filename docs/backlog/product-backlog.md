@@ -183,6 +183,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
+| 25/01/2026 | 2.1 | Correção DDD: IDs sequenciais por fase (007-011 Fase 3, 012-017 Fase 4) | PO |
 | 23/01/2026 | 2.0 | Reorganização CRM-Leads por fases (Gestão de Leads movida para Fase 5) | PO |
 | 21/01/2026 | 1.1 | Renumeração CRM-Leads (LEAD-003 dashboard Essencial) e inclusão de sequências | PO |
 | 21/01/2026 | 1.0 | Criação inicial do backlog | PO |

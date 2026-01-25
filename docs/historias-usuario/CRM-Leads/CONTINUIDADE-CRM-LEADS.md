@@ -1,8 +1,8 @@
 # ACOMPANHAMENTO DE CONTINUIDADE — Módulo CRM-Leads
 
-**Última Atualização**: 23 de janeiro de 2026  
+**Última Atualização**: 25 de janeiro de 2026  
 **Status**: Em Desenvolvimento  
-**Versão**: 2.0
+**Versão**: 2.1
 
 ---
 
@@ -11,10 +11,10 @@
 Sabemos **exatamente onde paramos**:
 
 ```
-Sprint Atual: Sprint 1 - Fase 2 Captura Avançada
-Histórias Prontas para Dev: LEAD-001, LEAD-002, LEAD-003, LEAD-004, LEAD-005, LEAD-006
-Próximas: LEAD-007, LEAD-008, LEAD-009 (Fase 3)
-Status: ✅ Fase 2 Especificada (23/01/2026)
+Sprint Atual: Sprint 2 - Fase 2 Captura Avançada (COMPLETA)
+Histórias Prontas para Dev: LEAD-001 a LEAD-006 (65 SP)
+Próximas: LEAD-007 a LEAD-011 (Fase 3 - Gestão Avançada + Ads)
+Status: ✅ Fase 2 Especificada (25/01/2026)
 ```
 
 ---
@@ -45,22 +45,24 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 ---
 
-### Fase 3: GESTÃO AVANÇADA (⏳ NÃO INICIADA)
+### Fase 3: GESTÃO AVANÇADA E INTEGRAÇÕES ADS (⏳ NÃO INICIADA)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
-|----|-----------|--------|----|-----------|----|
-| **LEAD-007** | Importar Leads em Massa (CSV/Excel) | 📋 Planejado | 8 | Importante | LEAD-001 |
-| **LEAD-008** | Marcar Lead como Inativo | 📋 Planejado | 3 | Importante | LEAD-001 |
+|----|-----------|--------|----|-----------|--------------|
+| **LEAD-007** | Importar Leads em Massa (CSV/Excel/API) | 📋 Planejado | 8 | Importante | LEAD-001 |
+| **LEAD-008** | Marcar Lead como Arquivado | 📋 Planejado | 3 | Importante | LEAD-001 |
 | **LEAD-009** | Exportar Leads | 📋 Planejado | 5 | Importante | LEAD-001 |
+| **LEAD-010** | Integração Facebook Lead Ads | 📋 Planejado | 13 | Importante | LEAD-001, Webhook Meta |
+| **LEAD-011** | Integração Google Ads | 📋 Planejado | 13 | Importante | LEAD-001, API Google |
 
-**Subtotal Fase 3**: 16 SP | Status: **Aguardando Especificação**
+**Subtotal Fase 3**: 42 SP | Status: **Aguardando Especificação**
 
 ---
 
 ### Fase 4: GESTÃO DE LEADS (⏳ NÃO INICIADA)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
-|----|-----------|--------|----|-----------|----|
+|----|-----------|--------|----|-----------|--------------| 
 | **LEAD-012** | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial | LEAD-001 |
 | **LEAD-013** | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial | LEAD-001, LEAD-012 |
 | **LEAD-014** | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial | LEAD-013 |
@@ -178,22 +180,42 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 │  QA:                                                    │
 │  • 21 Cenários de Aceitação                            │
 │                                                         │
-│  Planejamento Fase 2:                                  │
-│  • Especificar LEAD-004 até LEAD-009                     |
+│  Planejamento Fase 3:                                  │
+│  • Especificar LEAD-007 até LEAD-011                     |
 │  • Estimar SP                                          │
 │  • Validar dependências                                │
 └─────────────────────────────────────────────────────────┘
                         │
                         ▼
 ┌─────────────────────────────────────────────────────────┐
-│  SPRINT 2 — Gestão de Leads (LEAD-004 a LEAD-009)        │
+│  SPRINT 2 — Captura Avançada (LEAD-004 a LEAD-006)       │
 ├─────────────────────────────────────────────────────────┤
-│  • Cadastro Manual (LEAD-004)                           │
-│  • Lista de Leads (LEAD-005)                            │
-│  • Busca/Filtro (LEAD-006)                              │
-│  • Atribuição (LEAD-007)                                │
-│  • Edição (LEAD-008)                                    │
-│  • Visualização Detalhes (LEAD-009)                     │
+│  • Formulário Embarcado (LEAD-004)                      │
+│  • WhatsApp Business (LEAD-005)                         │
+│  • Qualificar BANT (LEAD-006)                           │
+└─────────────────────────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────────┐
+│  SPRINT 3 — Gestão Avançada (LEAD-007 a LEAD-011)        │
+├─────────────────────────────────────────────────────────┤
+│  • Importar Leads (LEAD-007)                            │
+│  • Arquivar Lead (LEAD-008)                             │
+│  • Exportar Leads (LEAD-009)                            │
+│  • Facebook Ads (LEAD-010)                              │
+│  • Google Ads (LEAD-011)                                │
+└─────────────────────────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────────┐
+│  SPRINT 4 — Gestão de Leads (LEAD-012 a LEAD-017)        │
+├─────────────────────────────────────────────────────────┤
+│  • Cadastro Manual (LEAD-012)                           │
+│  • Lista de Leads (LEAD-013)                            │
+│  • Busca/Filtro (LEAD-014)                              │
+│  • Atribuição (LEAD-015)                                │
+│  • Edição (LEAD-016)                                    │
+│  • Visualização Detalhes (LEAD-017)                     │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -201,22 +223,35 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 ## 📌 PONTOS CRÍTICOS PARA CONTINUIDADE
 
-### 1. **LEAD-004 é o Próximo**
-- Depende de LEAD-001 estar qualificado
-- Base para LEAD-005, LEAD-006, LEAD-007, LEAD-008, LEAD-009
+### 1. **LEAD-007 é o Próximo**
+- Primeira história da Fase 3 (Gestão Avançada)
+- Importação em massa de leads (CSV/Excel/API)
 - **Ação**: Especificar em próxima sessão
 
 ### 2. **Dependências Críticas**
 ```
-LEAD-001 ├─→ LEAD-002 (Fluxo principal)
-        ├─→ LEAD-003 (Dashboard)
-        ├─→ LEAD-004 (Cadastro manual)
-        └─→ LEAD-005 (Visualização)
+Fase 1 (Captação):
+LEAD-001 ├─→ LEAD-002 (Comparativo)
+        └─→ LEAD-003 (Dashboard)
 
-LEAD-005 ├─→ LEAD-006 (Busca)
-        ├─→ LEAD-007 (Atribuição)
-        ├─→ LEAD-008 (Edição)
-        └─→ LEAD-009 (Detalhes)
+Fase 2 (Captura Avançada):
+LEAD-001 ├─→ LEAD-004 (Formulário Embarcado)
+        ├─→ LEAD-005 (WhatsApp Business)
+        └─→ LEAD-006 (Qualificar BANT)
+
+Fase 3 (Gestão Avançada + Ads):
+LEAD-001 ├─→ LEAD-007 (Importar)
+        ├─→ LEAD-008 (Arquivar)
+        ├─→ LEAD-009 (Exportar)
+        ├─→ LEAD-010 (Facebook Ads)
+        └─→ LEAD-011 (Google Ads)
+
+Fase 4 (Gestão de Leads):
+LEAD-001 ├─→ LEAD-012 (Cadastro Manual)
+        └─→ LEAD-013 (Lista) ├─→ LEAD-014 (Busca)
+                             ├─→ LEAD-015 (Atribuição)
+                             ├─→ LEAD-016 (Edição)
+                             └─→ LEAD-017 (Detalhes)
 ```
 
 ### 3. **Métricas de Sucesso**

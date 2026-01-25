@@ -53,7 +53,7 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 ### Fase 3: GESTÃO AVANÇADA E INTEGRAÇÕES ADS ⏳
 | ID | História | Status | SP | Prioridade |
-|----|----------|--------|----|-----------|
+|----|----------|--------|----|------------|
 | LEAD-007 | Importar Leads em Massa (CSV/Excel/API) | 📋 Planejado | 8 | Importante |
 | LEAD-008 | Marcar Lead como Arquivado | 📋 Planejado | 3 | Importante |
 | LEAD-009 | Exportar Leads | 📋 Planejado | 5 | Importante |
@@ -64,7 +64,7 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 ### Fase 4: GESTÃO DE LEADS ⏳
 | ID | História | Status | SP | Prioridade |
-|----|----------|--------|----|-----------|
+|----|----------|--------|----|------------|
 | LEAD-012 | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial |
 | LEAD-013 | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial |
 | LEAD-014 | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial |
@@ -168,12 +168,13 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 ---
 
-**Versão**: 2.3  
+**Versão**: 2.4  
 **Atualizado em**: 25/01/2026
 
 **Histórico:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 2.4 | 25/01/2026 | Correção DDD: Fase 3 (LEAD-007 a 011), Fase 4 (LEAD-012 a 017) em ordem sequencial |
 | 2.3 | 25/01/2026 | Renumeração: Gestão de Leads (Fase 4: LEAD-012 a 017), Inteligência/IA (Fase 5: LEAD-018 a 020) |
 | 2.2 | 25/01/2026 | Padronização IDs: LED-XXX → LEAD-XXX (Ubiquitous Language DDD) |
 | 2.1 | 23/01/2026 | Fase 2 especificada: LEAD-004, LEAD-005, LEAD-006 prontos (65 SP totais) |
