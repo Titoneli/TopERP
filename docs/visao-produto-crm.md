@@ -204,7 +204,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 **Dores**:
 - Não entende diferenças técnicas entre associações e seguradores e entre planos 
 - Demora para receber resposta dos consultores
-- Processo de contratação confuso
+- Processo de contratação confuso e com excesso de etapas
 
 **Como o CRM ajuda**:
 - Propostas claras e comparativas
@@ -215,56 +215,56 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 
 ### 6.1 Funcionais
 - Sistema de autenticação com controle de perfis
-- Cadastro e qualificação de leads
-- Funil de vendas Kanban
-- Motor de cotação com integração FIPE
-- Geração e envio de propostas
-- Integração com pagamentos
-- Integração com vistorias
+- Captação e qualificação de leads 
+- Funis de vendas Kanban personalizados para gestão dos leads
+- Motor de cotação com integração FIPE e IBGE
+- Geração e envio de propostas por whatsapp, telegram e email
+- Integração com banco digital para recebimentos e pagamentos
+- Integração com aplicativo de vistorias próprio
 - Dashboards e relatórios
+- Integração com sistemas legados
 
 ### 6.2 Não Funcionais
 - **Performance**: Tempo de resposta < 2 segundos
 - **Disponibilidade**: 99,5% uptime
 - **Segurança**: Criptografia de dados, LGPD compliant
 - **Usabilidade**: Interface intuitiva, < 2h de treinamento
-- **Escalabilidade**: Suportar 1.000 usuários simultâneos
-- **Mobile**: Responsivo para tablets e smartphones
+- **Escalabilidade**: Suportar 10.000 usuários simultâneos
+- **Mobile**: Responsivo para tablets e smartphones com aplicativo para os consultores
 
 ## 7. Restrições
 
 ### 7.1 Técnicas
-- Deve integrar com TopERP existente
+- Deve integrar com sistmas legados SGA e PowerCRM ou sistema próprio SAV (à ser implantado)
 - Deve usar arquitetura RESTful
 - Banco de dados relacional (PostgreSQL)
 - Frontend web (React/Vue)
 
 ### 7.2 Negócio
-- Orçamento limitado para MVP: R$ 150.000
-- Prazo para MVP: 4 meses
-- Equipe de desenvolvimento: 5 pessoas
+- Prazo para MVP: 2 meses
+- Equipe de desenvolvimento: 3 pessoas
 - Lançamento piloto em 1 regional
 
 ### 7.3 Regulatórias
 - Conformidade com LGPD
-- Seguir normas SUSEP para proteção veicular
-- Armazenamento de dados no Brasil
+- Seguir regulamento interno e estatuto social da TopBrasil proteção veicular
 
 ## 8. Premissas
 
 1. Consultores têm acesso a smartphone ou computador
 2. Internet banda larga disponível
-3. Leads respondem por WhatsApp e e-mail
-4. Tabelas de preços serão fornecidas pela associação
+3. Maior aderência possível, buscar manter o fluxo de trabalho que existe hoje no PowerCRM
+4. Tabelas de preços serão aprimoradas do que existe no PowerCRM
 5. Integração com gateway de pagamento disponível
 
 ## 9. Dependências
 
 1. **API FIPE** para consulta de veículos
 2. **Gateway de Pagamento** (Asaas/Iugu)
-3. **Sistema Vistocar** para vistorias
-4. **TopERP** para cadastros base
+3. **Sistema VistorAI ** para vistorias
+4. **SGA/SAV** para cadastros base
 5. **WhatsApp Business API** para comunicação
+6. **Servidor de Automação (N8N)** para integrações e automações
 
 ## 10. Critérios de Sucesso
 
@@ -287,28 +287,28 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 
 ## 11. Roadmap de Alto Nível
 
-### Fase 1: MVP (Meses 1-4)
+### Fase 1: MVP (Meses 1-2)
 - Autenticação e segurança
-- Gestão básica de leads
-- Funil de vendas
-- Cotações automáticas
+- Gestão completa de usuários, consultores, equipes de vendas, serviços, planos e tabelas de preços
+- Captação de leads multicanais com cotações e comparativos de planos automáticos
+- Cotações com propostas e comparativos de planos formais
+- Funis personalizados para gestão de negocia, pagamentos, vistorias e análise final
+- Gestão completa de leads
 
-### Fase 2: Comercial Completo (Meses 5-6)
-- Propostas formais
-- Pagamentos integrados
-- Vistorias
-- Assinatura digital
+### Fase 2: Comercial Completo (Meses 1-2)
+- Pagamentos e recebimentos integrados com banco digital próprio
+- Vistorias via aplicativo VistorAI
+- Assinatura digital ou via Aplicativo de Vistoria
 
-### Fase 3: Gestão Avançada (Meses 7-9)
+### Fase 3: Gestão Avançada (Meses 2-3)
 - Dashboards e analytics
 - Pós-venda
 - Automações
 - Inteligência artificial (scoring de leads)
 
-### Fase 4: Expansão (Meses 10-12)
+### Fase 4: Expansão (Meses 3-4)
 - App mobile nativo
 - Integração com ERPs externos
-- Marketplace de seguros complementares
 - Gamificação para consultores
 
 ---
