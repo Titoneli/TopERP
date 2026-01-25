@@ -2,8 +2,8 @@
 
 ## História de Usuário
 
-**Como** parceiro ou afiliado da TopBrasil,  
-**Quero** incorporar um formulário de captação de leads em meu site ou blog,  
+**Como** consulor, parceiro ou afiliado da TopBrasil,  
+**Quero** incorporar um formulário de captação de leads em site ou blog proprio ou de terceiros,  
 **Para** capturar leads interessados em proteção veicular e receber comissão por conversões.
 
 ## Prioridade
@@ -18,7 +18,7 @@ Importante
 
 ## Contexto de Negócio
 
-A captura via formulário embarcado permite expandir os canais de aquisição de leads através de parceiros, afiliados e sites de terceiros. O formulário é incorporado via iframe ou widget JavaScript, mantendo a identidade visual do parceiro enquanto envia os dados diretamente para o CRM TopBrasil.
+A captura via formulário embarcado permite expandir os canais de aquisição de leads através de parceiros, afiliados e sites de terceiros, vinculando ou não o lead a um consultor específico. O formulário é incorporado via iframe ou widget JavaScript, mantendo a identidade visual do parceiro enquanto envia os dados diretamente para o CRM TopBrasil.
 
 ### Benefícios
 
@@ -133,7 +133,7 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 |-------|------|-------------|-----------|
 | Nome Completo | text | Sim | Mín. 3 caracteres |
 | Telefone | tel | Sim | Formato brasileiro, DDD obrigatório |
-| E-mail | email | Sim | Formato válido |
+| E-mail | email | Não | Formato válido |
 
 > **Nota**: O formulário embarcado é **simplificado** (apenas Etapa 1). O lead pode completar dados de veículo e localização posteriormente via link enviado por e-mail/WhatsApp.
 
@@ -147,48 +147,27 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 - **E** clica em "Quero uma Cotação"
 - **Então** o lead é criado no CRM com `cod_origem = 12` (FORMULARIO_EMBARCADO)
 - **E** o `cod_parceiro` é registrado para rastreabilidade
+- **E** o `cod_colaborado` é registrado para vínculo a um consultor 
 - **E** exibe mensagem de sucesso no iframe
-
+- **E** é acionado uma automacao interna para notificar o consultor e o parceiro sobre a criação do lead
 ### Cenário 2 — Embed via Widget JavaScript
 - **Dado que** um parceiro incorporou o widget JS em seu site
 - **Quando** o script carrega
 - **Então** o formulário é renderizado no container especificado
 - **E** respeita as configurações de tema e cor
 
-### Cenário 3 — Validação de token
-- **Dado que** o formulário é carregado com um token inválido
-- **Quando** tento enviar os dados
-- **Então** recebo erro "Token de parceiro inválido"
-- **E** o lead não é criado
-
-### Cenário 4 — Token expirado ou parceiro inativo
-- **Dado que** o parceiro está com status inativo
-- **Quando** o formulário tenta enviar dados
-- **Então** recebo erro "Parceiro temporariamente indisponível"
-- **E** o lead não é criado
-
-### Cenário 5 — Validação de telefone
-- **Dado que** informo um telefone já cadastrado como consultor
-- **Quando** tento enviar o formulário
-- **Então** recebo erro "Este telefone já está cadastrado"
-- **E** o lead não é criado
-
-### Cenário 6 — Redirecionamento pós-envio
+### Cenário 3 — Redirecionamento pós-envio
 - **Dado que** o parceiro configurou `redirect_url`
 - **Quando** o lead é criado com sucesso
 - **Então** o visitante é redirecionado para a URL configurada
+- **E** é acionado uma automacao interna para notificar o consultor e o parceiro sobre a criação do lead
 
-### Cenário 7 — Webhook de notificação
+### Cenário 4 — Webhook de notificação
 - **Dado que** o parceiro configurou `callback_url`
 - **Quando** o lead é criado com sucesso
 - **Então** uma notificação POST é enviada para o webhook
 - **E** contém o ID do lead e timestamp
-
-### Cenário 8 — Proteção CORS
-- **Dado que** uma requisição vem de um domínio não autorizado
-- **Quando** tenta enviar dados via API
-- **Então** a requisição é bloqueada por CORS
-- **E** retorna erro 403
+- **E** é acionado uma automacao interna para notificar o consultor e o parceiro sobre a criação do lead
 
 ---
 
@@ -200,12 +179,9 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 | RN-002 | Cada parceiro tem um token único e intransferível |
 | RN-003 | Lead criado via embed recebe `cod_origem = 12` (FORMULARIO_EMBARCADO) |
 | RN-004 | O `cod_parceiro` é registrado para comissionamento futuro |
-| RN-005 | Validação de telefone contra blacklist de consultores é obrigatória |
+| RN-005 | O `cod_colaborador`é registrado no lead para direcionamento caso exista |
 | RN-006 | DDD é extraído e armazenado automaticamente |
-| RN-007 | Parceiro inativo não pode captar novos leads |
-| RN-008 | Rate limiting: máximo 100 leads/hora por token |
-| RN-009 | CORS configurado apenas para domínios autorizados do parceiro |
-| RN-010 | Lead embarcado inicia com status `NOVO` e `etapa_abandono = 'FORM_PROSPECT'` |
+| RN-007 | Lead embarcado inicia com status `NOVO` e `etapa_abandono = 'FORM_PROSPECT'` |
 
 ---
 
@@ -216,8 +192,7 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 | Criar Lead | Formulário submetido | Lead status `NOVO` no CRM |
 | Notificar Parceiro | Lead criado | Webhook POST (se configurado) |
 | Redirecionar | Lead criado | Navega para redirect_url (se configurado) |
-| Bloquear | Token inválido/expirado | Erro 401/403 |
-| Rate Limit | Excede 100 leads/hora | Erro 429 (Too Many Requests) |
+| Notificar Consultor | Lead criado | Webhook POST (se configurado) |
 
 ---
 
@@ -289,7 +264,6 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 |-------|------|-------------|-----------|
 | Nome do Parceiro | text | Sim | Nome comercial |
 | CNPJ/CPF | text | Sim | Documento do parceiro |
-| Domínios Autorizados | array | Sim | URLs onde o embed pode ser usado |
 | E-mail de Contato | email | Sim | Para notificações |
 | Webhook URL | url | Não | Para notificação de leads |
 | Redirect URL | url | Não | Redirecionamento pós-envio |
