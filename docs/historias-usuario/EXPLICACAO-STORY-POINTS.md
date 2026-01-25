@@ -342,7 +342,7 @@ Previsão: +6.4 SP na próxima segunda (80% de 8 SP)
 Sprint 1 Resultado:
 - Planejado: 26 SP
 - Alcançado: 24 SP (92% - Dev A foi de férias 2 dias)
-- Completed Stories: 3 (LED-001, CONS-005, AUT-002)
+- Completed Stories: 3 (LEAD-001, CONS-005, AUT-002)
 
 Velocity: 24 SP completados
 
@@ -400,7 +400,7 @@ Velocity: 35 SP/Sprint
 | **Escala** | Fibonacci: 1, 2, 3, 5, 8, 13, 21, 34... |
 | **13 SP significa** | Funcionalidade complexa, requer 3-4 dias para 1 dev |
 | **Não significa** | Exatamente 40 horas ou 3 dias específicos |
-| **Por quê 13 em LED-001** | 3 APIs, 3 etapas, validações, 8 cenários teste, regras negócio |
+| **Por quê 13 em LEAD-001** | 3 APIs, 3 etapas, validações, 8 cenários teste, regras negócio |
 | **Usado para** | Planejamento de sprints, previsão, tracking |
 | **Vantagem** | Absorve incerteza, independente de pessoa, velocidade |
 

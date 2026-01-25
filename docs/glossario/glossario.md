@@ -178,6 +178,55 @@ Padrão utilizado para quantificar produtos (un, kg, m, etc.).
 ### User Story
 História de usuário - descrição de uma funcionalidade do ponto de vista do usuário.
 
+---
+
+## Termos DDD (Domain-Driven Design)
+
+### Aggregate (Agregado)
+Cluster de objetos de domínio tratados como unidade. Ex: `Lead` é o Aggregate Root do CRM-LED.
+
+### Anti-Corruption Layer (ACL)
+Camada de proteção contra modelos externos. Ex: `FipeAdapter`, `VistoriaAdapter`.
+
+### Bounded Context
+Fronteira explícita onde um modelo de domínio é definido e aplicável. Ex: CRM-LED (Leads), CRM-COT (Cotações).
+
+### CQRS (Command Query Responsibility Segregation)
+Separação entre comandos (escrita) e consultas (leitura). Usado em CRM-DAS e CRM-REL.
+
+### Domain Event
+Registro de algo que aconteceu no domínio. Ex: `LeadCaptado`, `PagamentoConfirmado`.
+
+### Entity (Entidade)
+Objeto com identidade única e ciclo de vida. Ex: Lead, Cotação, Proposta.
+
+### Repository
+Abstração para persistência de agregados.
+
+### Shared Kernel
+Código/modelo compartilhado entre contextos. Ex: tabelas `COR_PESSOA`, `COR_CLIENTE`.
+
+### Ubiquitous Language
+Linguagem comum compartilhada entre desenvolvedores e especialistas de domínio.
+
+### Value Object
+Objeto imutável sem identidade própria. Ex: Telefone, Email, DDD, UTM Parameters.
+
+---
+
+## Personas do CRM
+
+### Consultor (Persona)
+Vendedor externo responsável pela comercialização de proteção veicular. Aggregate: `Colaborador` (CRM-CAD).
+
+### Coordenador (Persona)
+Gestor comercial que gerencia equipes de consultores. Aggregates: `Colaborador` + `Equipe` (CRM-CAD).
+
+### Lead (Persona)
+Potencial cliente interessado em proteção veicular. Aggregate: `Lead` (CRM-LED).
+
+---
+
 ## V
 
 ### Valor Presente
@@ -188,5 +237,12 @@ Colaborador responsável pela comercialização de produtos ou serviços.
 
 ---
 
-**Última Atualização**: 21 de janeiro de 2026  
-**Versão**: 1.0
+**Última Atualização**: 25 de janeiro de 2026  
+**Versão**: 1.1
+
+**Histórico de Alterações**
+
+| Data | Versão | Alteração | Autor |
+|------|--------|-----------|-------|
+| 25/01/2026 | 1.1 | Adicionados termos DDD e Personas do CRM | PO |
+| 21/01/2026 | 1.0 | Versão inicial | PO |

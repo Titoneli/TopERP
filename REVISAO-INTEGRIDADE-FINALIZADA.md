@@ -48,7 +48,7 @@ Conforme requisição: "Revisar aplicação, analisar ultimas alterações e imp
 - **Para**: Registro histórico e rastreabilidade
 
 ### 6. **Documentação de Continuidade Atualizada** ✅
-- **Arquivo**: `/docs/historias-usuario/CRM-Leads/CONTINUIDADE-LED-002.md`
+- **Arquivo**: `/docs/historias-usuario/CRM-Leads/CONTINUIDADE-LEAD-002.md`
 - **Adição**: Seção "Alterações de Consolidação (21/01/2026)"
 - **Conteúdo**: Matriz de validações, próximas ações
 - **Status**: v1.1 Conforme
@@ -71,9 +71,9 @@ TOTAL: 7 histórias CRM | 39 SP (parcial)
 ```
 
 ### Cenários de Aceitação
-- LED-001: **8 cenários** ✅
-- LED-002: **8 cenários** ✅
-- LED-003: **5 cenários** ✅
+- LEAD-001: **8 cenários** ✅
+- LEAD-002: **8 cenários** ✅
+- LEAD-003: **5 cenários** ✅
 - **Total**: **21 cenários** validados ✅
 
 ### PDFs Gerados
@@ -143,7 +143,7 @@ TOTAL: 7 histórias CRM | 39 SP (parcial)
    → Regenerado em 21/01 17h36
    → Tamanho: 361K (antes 362K)
    
-✅ /docs/historias-usuario/CRM-Leads/CONTINUIDADE-LED-002.md
+✅ /docs/historias-usuario/CRM-Leads/CONTINUIDADE-LEAD-002.md
    → Adicionada seção "Alterações de Consolidação"
    → Matriz de validações incluída
    → Status atualizado para v1.1
@@ -234,7 +234,7 @@ TOTAL: 7 histórias CRM | 39 SP (parcial)
 
 - **Auditoria Completa**: `docs/AUDITORIA-INTEGRIDADE-21-01-2026.md`
 - **Consolidação Final**: `docs/CONSOLIDACAO-FINAL-21-01-2026.md`
-- **Continuidade LED-002**: `docs/historias-usuario/CRM-Leads/CONTINUIDADE-LED-002.md`
+- **Continuidade LEAD-002**: `docs/historias-usuario/CRM-Leads/CONTINUIDADE-LEAD-002.md`
 - **História Principal**: `docs/historias-usuario/CRM-Leads/US-CRM-LEAD-002.md` (v1.1)
 
 ---

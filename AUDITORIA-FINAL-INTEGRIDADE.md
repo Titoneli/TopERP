@@ -248,7 +248,7 @@ docs/
 
 ### 6.4 Auditoria 21/01/2026 (v1.0)
 - Criação inicial das User Stories CRM-Leads
-- Documentação de US-CRM-LEAD-001, LED-002
+- Documentação de US-CRM-LEAD-001, LEAD-002
 - Estrutura básica do projeto
 
 ---

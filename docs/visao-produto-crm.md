@@ -20,6 +20,25 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 - Automações e integrações (banco digial, erp, sistemas legados)
 - Aplicativos App CRM e App Consultor
 
+### 1.3 Mapeamento para Bounded Contexts (DDD)
+
+| Escopo | Bounded Context | Código | Tipo |
+|--------|-----------------|--------|------|
+| Autenticação e Perfis | Autenticação | CRM-AUT | Generic |
+| Captação e Gestão de Leads | Leads | CRM-LED | Core |
+| Cotação de Planos | Cotações | CRM-COT | Core |
+| Negociação e Fechamento | Funil de Vendas | CRM-FUN | Core |
+| Envio de Propostas | Propostas | CRM-PRO | Core |
+| Pagamentos | Pagamentos | CRM-PAG | Core |
+| Vistorias | Vistorias | CRM-VIS | Core |
+| Análise e Aprovação | Análise | CRM-ANA | Core |
+| Comissionamento | Comissionamento | CRM-COM | Supporting |
+| Pós-venda e Follow-up | Pós-Venda | CRM-POS | Supporting |
+| Dashboards | Dashboard | CRM-DAS | CQRS Read |
+| App Consultor | App Consultor | CRM-APP | Supporting |
+
+> 📚 **Referência**: Ver [Context Map](ddd/context-map.md) para diagrama completo de relacionamentos.
+
 ## 2. Problema a Resolver
 
 ### 2.1 Dores Identificadas
@@ -292,8 +311,9 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 - Gestão completa de usuários, consultores, equipes de vendas, serviços, planos e tabelas de preços
 - Captação de leads multicanais com cotações e comparativos de planos automáticos
 - Cotações com propostas e comparativos de planos formais
-- Funis personalizados para gestão de negocia, pagamentos, vistorias e análise final
+- Funis personalizados para gestão de negociações, pagamentos, vistorias e análise final
 - Gestão completa de leads
+- Gestão de tarefas e agendas dos consultores
 
 ### Fase 2: Comercial Completo (Meses 1-2)
 - Pagamentos e recebimentos integrados com banco digital próprio
@@ -302,18 +322,26 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 
 ### Fase 3: Gestão Avançada (Meses 2-3)
 - Dashboards e analytics
-- Pós-venda
-- Automações
-- Inteligência artificial (scoring de leads)
+- Gestão de pagamento de comissionamento, residuais, variáveis (bonificações e premiações), campanhas e controle de descontos dde valores (rrasteamento, estornos e cancelamentos)
+- Pós-venda - Follow-Up Automatizado e gerido por inteligência artifical, com acompanhamentos de contatos, temperatura dos leads, motivos de perdas e desistências, qualificação dos leads
+- Automações e Integrações
+- Inteligência artificial (scoring de leads, regiões, campanhas, consultores e equipes de vendas)
 
 ### Fase 4: Expansão (Meses 3-4)
 - App mobile nativo
-- Integração com ERPs externos
+- Integração com ERP prório
 - Gamificação para consultores
 
 ---
 
 **Aprovado por**: [Pendente]  
 **Data de Aprovação**: [Pendente]  
-**Versão**: 1.0  
-**Data**: 21 de janeiro de 2026
+**Versão**: 1.1  
+**Data**: 25 de janeiro de 2026
+
+**Histórico de Alterações**
+
+| Data | Versão | Alteração | Autor |
+|------|--------|-----------|-------|
+| 25/01/2026 | 1.1 | Adicionado mapeamento para Bounded Contexts (DDD) na seção 1.3 | PO |
+| 21/01/2026 | 1.0 | Versão inicial | PO |

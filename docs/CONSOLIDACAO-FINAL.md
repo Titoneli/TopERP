@@ -74,7 +74,7 @@ Revisão completa realizada do módulo CRM-Leads do TopERP. Todas as histórias 
 
 | Item | Status |
 |------|--------|
-| Histórias Essenciais | ✅ 3/3 (LED-001, LED-002, LED-003) |
+| Histórias Essenciais | ✅ 3/3 (LEAD-001, LEAD-002, LEAD-003) |
 | Atribuição de Autoria | ✅ Gustavo Titoneli (PO) em todos |
 | PDFs Gerados | ✅ 3/3 com sucesso |
 | Versionamento | ✅ Consistente e documentado |
@@ -87,7 +87,7 @@ Revisão completa realizada do módulo CRM-Leads do TopERP. Todas as histórias 
 
 ### ✅ 5. DOCUMENTAÇÃO CONSOLIDADA
 
-**Arquivo Atualizado**: `/docs/historias-usuario/CRM-Leads/CONTINUIDADE-LED-002.md`
+**Arquivo Atualizado**: `/docs/historias-usuario/CRM-Leads/CONTINUIDADE-LEAD-002.md`
 
 **Adições**:
 - Seção "Alterações de Consolidação (21/01/2026)"
@@ -121,7 +121,7 @@ TopERP/CRM-Leads/
 │   └── Status: Pronto para Dev
 │
 └── Suporte
-    ├── CONTINUIDADE-LED-002.md (Atualizado v1.1)
+    ├── CONTINUIDADE-LEAD-002.md (Atualizado v1.1)
     ├── README.md (CRM-Leads)
     └── AUDITORIA-INTEGRIDADE-21-01-2026.md (Novo)
 ```
@@ -134,7 +134,7 @@ TopERP/CRM-Leads/
 | **Estrutura** | Layout alinhado com UX? | ✅ Sim - 3 colunas visualizável |
 | **Versão** | Documentação versionada? | ✅ Sim - v1.1 com histórico |
 | **Autoria** | Propriedade clara? | ✅ Sim - PO identificado |
-| **Rastreabilidade** | Dependências claras? | ✅ Sim - LED-001 → LED-002 |
+| **Rastreabilidade** | Dependências claras? | ✅ Sim - LEAD-001 → LEAD-002 |
 | **Padrões** | Conformidade DDD? | ✅ Sim - Bounded Context |
 | **Completude** | Histórias faltantes? | ✅ Não - 7/7 CRM encontradas |
 
@@ -162,18 +162,18 @@ TopERP/CRM-Leads/
 
 | História | SP | Cumulative |
 |----------|----|----|
-| LED-001 | 13 | 13 |
-| LED-002 | 13 | 26 |
-| LED-003 | 13 | 39 |
+| LEAD-001 | 13 | 13 |
+| LEAD-002 | 13 | 26 |
+| LEAD-003 | 13 | 39 |
 | **Subtotal CRM** | **39** | — |
 
 ### Cenários de Aceitação Documentados
 
 | História | Cenários | Total |
 |----------|----------|-------|
-| LED-001 | 8 | 8 |
-| LED-002 | 8 | 16 |
-| LED-003 | 5 | 21 |
+| LEAD-001 | 8 | 8 |
+| LEAD-002 | 8 | 16 |
+| LEAD-003 | 5 | 21 |
 | **Total Validações** | — | **21** |
 
 ---
@@ -181,8 +181,8 @@ TopERP/CRM-Leads/
 ## PRÓXIMAS AÇÕES RECOMENDADAS
 
 ### 🟢 PRONTAS (Sprint Imediato)
-- ✅ Desenvolvimento de LED-001
-- ✅ Desenvolvimento de LED-002 (v1.1)
+- ✅ Desenvolvimento de LEAD-001
+- ✅ Desenvolvimento de LEAD-002 (v1.1)
 - ✅ QA validar contra 21 cenários
 
 ### 🟡 EM PLANEJAMENTO (Próximos 7 dias)

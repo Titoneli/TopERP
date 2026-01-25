@@ -101,6 +101,41 @@ Este documento especifica os requisitos não-funcionais do sistema TopERP.
 
 ---
 
+## Escalabilidade
+
+### RNF-045: Capacidade de Usuários CRM
+- **Descrição**: O módulo CRM deve suportar 10.000 usuários simultâneos
+- **Métrica**: Performance estável com carga máxima
+- **Prioridade**: Must Have
+- **Origem**: visao-produto-crm.md (Seção 6.2)
+
+### RNF-046: Escalabilidade Horizontal
+- **Descrição**: A arquitetura deve permitir escalabilidade horizontal
+- **Métrica**: Adicionar instâncias sem downtime
+- **Prioridade**: Should Have
+
+---
+
+## Conformidade e Privacidade
+
+### RNF-060: LGPD Compliance
+- **Descrição**: O sistema deve estar em conformidade com a Lei Geral de Proteção de Dados
+- **Métrica**: Consentimento explícito, direito ao esquecimento, portabilidade
+- **Prioridade**: Must Have
+- **Origem**: visao-produto-crm.md (Seção 6.2)
+
+### RNF-061: Anonimização de Dados
+- **Descrição**: Dados pessoais devem ser anonimizados em relatórios agregados
+- **Métrica**: Nenhum dado identificável em exports de analytics
+- **Prioridade**: Should Have
+
+### RNF-062: Consentimento de Lead
+- **Descrição**: O sistema deve registrar consentimento do lead para contato
+- **Métrica**: Checkbox obrigatório com timestamp de aceite
+- **Prioridade**: Must Have
+
+---
+
 ## Integração
 
 ### RNF-050: APIs
@@ -115,5 +150,24 @@ Este documento especifica os requisitos não-funcionais do sistema TopERP.
 
 ---
 
-**Última Atualização**: 21 de janeiro de 2026  
-**Versão**: 1.0
+## Rastreabilidade
+
+| Requisito | Documento Origem | Bounded Context |
+|-----------|------------------|------------------|
+| RNF-001 | visao-produto-crm.md | Todos |
+| RNF-002 | Análise técnica | Todos |
+| RNF-020 | visao-produto-crm.md | Todos |
+| RNF-045 | visao-produto-crm.md | CRM-* |
+| RNF-060 | visao-produto-crm.md | CRM-LED, CRM-CAD |
+
+---
+
+**Última Atualização**: 25 de janeiro de 2026  
+**Versão**: 1.1
+
+**Histórico de Alterações**
+
+| Data | Versão | Alteração | Autor |
+|------|--------|-----------|-------|
+| 25/01/2026 | 1.1 | Adicionados requisitos de Escalabilidade e LGPD (origem: visao-produto-crm.md) | PO |
+| 21/01/2026 | 1.0 | Versão inicial | PO |

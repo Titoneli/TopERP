@@ -378,7 +378,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 | Dependência | Tipo | Status |
 |-------------|------|--------|
 | US-CRM-LEAD-001 | Interna | ✅ Disponível |
-| Lista de Leads | Interna | Pendente (LED-016) |
+| Lista de Leads | Interna | Pendente (LEAD-016) |
 | Sistema de Notificações | Interna | Pendente |
 | Fluxo de Nurturing | Interna | Pendente |
 

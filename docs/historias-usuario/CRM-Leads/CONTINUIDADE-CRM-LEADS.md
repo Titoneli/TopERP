@@ -12,8 +12,8 @@ Sabemos **exatamente onde paramos**:
 
 ```
 Sprint Atual: Sprint 1 - Fase 2 Captura Avançada
-Histórias Prontas para Dev: LED-001, LED-002, LED-003, LED-004, LED-005, LED-006
-Próximas: LED-007, LED-008, LED-009 (Fase 3)
+Histórias Prontas para Dev: LEAD-001, LEAD-002, LEAD-003, LEAD-004, LEAD-005, LEAD-006
+Próximas: LEAD-007, LEAD-008, LEAD-009 (Fase 3)
 Status: ✅ Fase 2 Especificada (23/01/2026)
 ```
 
@@ -25,9 +25,9 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|---------|-----------|----|-----|----|
-| **LED-001** | Captação de Lead via Landing Page | ✅ Pronto | v1.0 | 13 | ✅ | 3-step form, 12 códigos origem, DDD extract |
-| **LED-002** | Comparativo de Planos de Proteção | ✅ Pronto | v1.1 | 13 | ✅ | 3 colunas, 18 termos ajustados |
-| **LED-003** | Dashboard de Leads e Analytics | ✅ Pronto | v1.1 | 13 | ✅ | 10 métricas de conversão, análise por DDD/origem |
+| **LEAD-001** | Captação de Lead via Landing Page | ✅ Pronto | v1.0 | 13 | ✅ | 3-step form, 12 códigos origem, DDD extract |
+| **LEAD-002** | Comparativo de Planos de Proteção | ✅ Pronto | v1.1 | 13 | ✅ | 3 colunas, 18 termos ajustados |
+| **LEAD-003** | Dashboard de Leads e Analytics | ✅ Pronto | v1.1 | 13 | ✅ | 10 métricas de conversão, análise por DDD/origem |
 
 **Subtotal Fase 1**: 39 SP | 21 Cenários de Aceitação
 
@@ -37,9 +37,9 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
-| **LED-004** | Captura via Formulário Embarcado | ✅ Pronto | v1.0 | 8 | ⏳ | iframe/widget, token parceiro, CORS |
-| **LED-005** | Captura via WhatsApp Business | ✅ Pronto | v1.0 | 13 | ⏳ | Chatbot, webhook Meta, fluxo BANT |
-| **LED-006** | Qualificar Lead (BANT) | ✅ Pronto | v1.0 | 5 | ⏳ | Score 0-12, temperatura FRIO/MORNO/QUENTE |
+| **LEAD-004** | Captura via Formulário Embarcado | ✅ Pronto | v1.0 | 8 | ⏳ | iframe/widget, token parceiro, CORS |
+| **LEAD-005** | Captura via WhatsApp Business | ✅ Pronto | v1.0 | 13 | ⏳ | Chatbot, webhook Meta, fluxo BANT |
+| **LEAD-006** | Qualificar Lead (BANT) | ✅ Pronto | v1.0 | 5 | ⏳ | Score 0-12, temperatura FRIO/MORNO/QUENTE |
 
 **Subtotal Fase 2**: 26 SP | Status: **✅ Especificação Completa**
 
@@ -49,9 +49,9 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
 |----|-----------|--------|----|-----------|----|
-| **LED-007** | Importar Leads em Massa (CSV/Excel) | 📋 Planejado | 8 | Importante | LED-001 |
-| **LED-008** | Marcar Lead como Inativo | 📋 Planejado | 3 | Importante | LED-001 |
-| **LED-009** | Exportar Leads | 📋 Planejado | 5 | Importante | LED-001 |
+| **LEAD-007** | Importar Leads em Massa (CSV/Excel) | 📋 Planejado | 8 | Importante | LEAD-001 |
+| **LEAD-008** | Marcar Lead como Inativo | 📋 Planejado | 3 | Importante | LEAD-001 |
+| **LEAD-009** | Exportar Leads | 📋 Planejado | 5 | Importante | LEAD-001 |
 
 **Subtotal Fase 3**: 16 SP | Status: **Aguardando Especificação**
 
@@ -61,11 +61,11 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
 |----|-----------|--------|----|-----------|----|
-| **LED-010** | Integração com Facebook Lead Ads | 📋 Planejado | 13 | Desejável | Webhook Meta |
-| **LED-011** | Integração com Google Ads | 📋 Planejado | 13 | Desejável | Google Ads API |
-| **LED-012** | Score Automático de Lead | 📋 Planejado | 8 | Desejável | ML Engine |
-| **LED-013** | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável | LED-001 |
-| **LED-014** | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável | Integrações externas |
+| **LEAD-010** | Integração com Facebook Lead Ads | 📋 Planejado | 13 | Desejável | Webhook Meta |
+| **LEAD-011** | Integração com Google Ads | 📋 Planejado | 13 | Desejável | Google Ads API |
+| **LEAD-012** | Score Automático de Lead | 📋 Planejado | 8 | Desejável | ML Engine |
+| **LEAD-013** | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável | LEAD-001 |
+| **LEAD-014** | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável | Integrações externas |
 
 **Subtotal Fase 4**: 47 SP | Status: **Backlog Futuro**
 
@@ -75,12 +75,12 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
 |----|-----------|--------|----|-----------|----|
-| **LED-015** | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial | LED-001 |
-| **LED-016** | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial | LED-001, LED-015 |
-| **LED-017** | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial | LED-016 |
-| **LED-018** | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial | LED-016 |
-| **LED-019** | Editar Dados do Lead | 📋 Planejado | 5 | Essencial | LED-015, LED-016 |
-| **LED-020** | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial | LED-016 |
+| **LEAD-015** | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial | LEAD-001 |
+| **LEAD-016** | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial | LEAD-001, LEAD-015 |
+| **LEAD-017** | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial | LEAD-016 |
+| **LEAD-018** | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial | LEAD-016 |
+| **LEAD-019** | Editar Dados do Lead | 📋 Planejado | 5 | Essencial | LEAD-015, LEAD-016 |
+| **LEAD-020** | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial | LEAD-016 |
 
 **Subtotal Fase 5**: 33 SP | Status: **Aguardando Especificação**
 
@@ -90,25 +90,25 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 ### Essencial (Must-Have)
 ```
-✅ LED-001 (v1.0) — Pronto para Dev
-✅ LED-002 (v1.1) — Pronto para Dev
-✅ LED-003 (v1.1) — Pronto para Dev
-✅ LED-015 até LED-020 — Gestão de Leads (Fase 5) - Aguardando
+✅ LEAD-001 (v1.0) — Pronto para Dev
+✅ LEAD-002 (v1.1) — Pronto para Dev
+✅ LEAD-003 (v1.1) — Pronto para Dev
+✅ LEAD-015 até LEAD-020 — Gestão de Leads (Fase 5) - Aguardando
 🎯 Total: 9 histórias | 72 SP (39 prontos + 33 planejados)
 ```
 
 ### Importante (Should-Have)
 ```
-✅ LED-004 (v1.0) — Formulário Embarcado - ESPECIFICADO
-✅ LED-005 (v1.0) — WhatsApp Business - ESPECIFICADO
-✅ LED-006 (v1.0) — Qualificar BANT - ESPECIFICADO
-📋 LED-007 até LED-009 — Gestão Avançada (Fase 3) - Pendente
+✅ LEAD-004 (v1.0) — Formulário Embarcado - ESPECIFICADO
+✅ LEAD-005 (v1.0) — WhatsApp Business - ESPECIFICADO
+✅ LEAD-006 (v1.0) — Qualificar BANT - ESPECIFICADO
+📋 LEAD-007 até LEAD-009 — Gestão Avançada (Fase 3) - Pendente
 🎯 Total: 6 histórias | 42 SP (26 prontos + 16 planejados)
 ```
 
 ### Desejável (Could-Have)
 ```
-📋 LED-015 até LED-020 — Backlog Futuro
+📋 LEAD-015 até LEAD-020 — Backlog Futuro
 🎯 Total: 6 histórias | 47 SP
 ```
 
@@ -142,7 +142,7 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 ### Artefatos de Suporte
 
 - [x] README.md (CRM-Leads) — Estrutura e mapeamento
-- [x] CONTINUIDADE-LED-002.md — **Transformado em acompanhamento geral**
+- [x] CONTINUIDADE-LEAD-002.md — **Transformado em acompanhamento geral**
 - [ ] Diagramas de Sequência — Desejável, não crítico
 - [ ] Glossário CRM — Desejável, não crítico
 - [ ] Relatório de Cenários Aceitos (RCA) — Importante, próximos 7 dias
@@ -153,7 +153,7 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 - [x] Conformidade DDD (100%)
 - [x] Rastreabilidade (Dependências mapeadas)
 - [x] PDFs Gerados (3/3 prontos)
-- [ ] QA Testing — Próximo: LED-001 + LED-002
+- [ ] QA Testing — Próximo: LEAD-001 + LEAD-002
 
 ---
 
@@ -164,7 +164,7 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 │  SPRINT 0 (ATUAL) — Validação e Planejamento            │
 ├─────────────────────────────────────────────────────────┤
 │  ✅ Auditoria Concluída (21/01)                         │
-│  ✅ 3 Histórias Prontas (LED-001, LED-002, LED-003)    │
+│  ✅ 3 Histórias Prontas (LEAD-001, LEAD-002, LEAD-003)    │
 │  📋 Próximo: QA + Dev Sprint 1                          │
 └─────────────────────────────────────────────────────────┘
                         │
@@ -173,29 +173,29 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 │  SPRINT 1 — Desenvolvimento Fase 1 + Planejamento Fase 2│
 ├─────────────────────────────────────────────────────────┤
 │  Dev:                                                   │
-│  • LED-001 (Captação)                                   │
-│  • LED-002 (Comparativo)                                │
-│  • LED-003 (Dashboard)                                  │
+│  • LEAD-001 (Captação)                                   │
+│  • LEAD-002 (Comparativo)                                │
+│  • LEAD-003 (Dashboard)                                  │
 │                                                         │
 │  QA:                                                    │
 │  • 21 Cenários de Aceitação                            │
 │                                                         │
 │  Planejamento Fase 2:                                  │
-│  • Especificar LED-004 até LED-009                     |
+│  • Especificar LEAD-004 até LEAD-009                     |
 │  • Estimar SP                                          │
 │  • Validar dependências                                │
 └─────────────────────────────────────────────────────────┘
                         │
                         ▼
 ┌─────────────────────────────────────────────────────────┐
-│  SPRINT 2 — Gestão de Leads (LED-004 a LED-009)        │
+│  SPRINT 2 — Gestão de Leads (LEAD-004 a LEAD-009)        │
 ├─────────────────────────────────────────────────────────┤
-│  • Cadastro Manual (LED-004)                           │
-│  • Lista de Leads (LED-005)                            │
-│  • Busca/Filtro (LED-006)                              │
-│  • Atribuição (LED-007)                                │
-│  • Edição (LED-008)                                    │
-│  • Visualização Detalhes (LED-009)                     │
+│  • Cadastro Manual (LEAD-004)                           │
+│  • Lista de Leads (LEAD-005)                            │
+│  • Busca/Filtro (LEAD-006)                              │
+│  • Atribuição (LEAD-007)                                │
+│  • Edição (LEAD-008)                                    │
+│  • Visualização Detalhes (LEAD-009)                     │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -203,28 +203,28 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 ## 📌 PONTOS CRÍTICOS PARA CONTINUIDADE
 
-### 1. **LED-004 é o Próximo**
-- Depende de LED-001 estar qualificado
-- Base para LED-005, LED-006, LED-007, LED-008, LED-009
+### 1. **LEAD-004 é o Próximo**
+- Depende de LEAD-001 estar qualificado
+- Base para LEAD-005, LEAD-006, LEAD-007, LEAD-008, LEAD-009
 - **Ação**: Especificar em próxima sessão
 
 ### 2. **Dependências Críticas**
 ```
-LED-001 ├─→ LED-002 (Fluxo principal)
-        ├─→ LED-003 (Dashboard)
-        ├─→ LED-004 (Cadastro manual)
-        └─→ LED-005 (Visualização)
+LEAD-001 ├─→ LEAD-002 (Fluxo principal)
+        ├─→ LEAD-003 (Dashboard)
+        ├─→ LEAD-004 (Cadastro manual)
+        └─→ LEAD-005 (Visualização)
 
-LED-005 ├─→ LED-006 (Busca)
-        ├─→ LED-007 (Atribuição)
-        ├─→ LED-008 (Edição)
-        └─→ LED-009 (Detalhes)
+LEAD-005 ├─→ LEAD-006 (Busca)
+        ├─→ LEAD-007 (Atribuição)
+        ├─→ LEAD-008 (Edição)
+        └─→ LEAD-009 (Detalhes)
 ```
 
 ### 3. **Métricas de Sucesso**
-- ✅ LED-001: 12 códigos de origem, DDD extract, 3 etapas
-- ✅ LED-002: 3 planos em comparação paralela, terminologia "serviços"
-- ✅ LED-003: 10 KPIs de conversão definidos
+- ✅ LEAD-001: 12 códigos de origem, DDD extract, 3 etapas
+- ✅ LEAD-002: 3 planos em comparação paralela, terminologia "serviços"
+- ✅ LEAD-003: 10 KPIs de conversão definidos
 
 ---
 
@@ -232,9 +232,9 @@ LED-005 ├─→ LED-006 (Busca)
 
 | História | Valor | Impacto |
 |----------|-------|---------|
-| **LED-001** | Captação de qualidade | Alimenta todo o funil |
-| **LED-002** | Conversão de planos | Monetização imediata |
-| **LED-003** | Inteligência de negócio | Otimização contínua |
+| **LEAD-001** | Captação de qualidade | Alimenta todo o funil |
+| **LEAD-002** | Conversão de planos | Monetização imediata |
+| **LEAD-003** | Inteligência de negócio | Otimização contínua |
 
 ---
 
@@ -242,9 +242,9 @@ LED-005 ├─→ LED-006 (Busca)
 
 | Período | Ação | Status |
 |---------|------|--------|
-| **21-24 Jan** | QA Testing (LED-001, LED-002) | ✅ Pronto |
-| **24-25 Jan** | Especificar LED-004 | 📋 Próximo |
-| **25-26 Jan** | Especificar LED-005 a LED-009 | 📋 Planejado |
+| **21-24 Jan** | QA Testing (LEAD-001, LEAD-002) | ✅ Pronto |
+| **24-25 Jan** | Especificar LEAD-004 | 📋 Próximo |
+| **25-26 Jan** | Especificar LEAD-005 a LEAD-009 | 📋 Planejado |
 | **27-28 Jan** | Sprint Planning Semana 2 | 📋 Planejado |
 | **28 Jan+** | Dev Sprint 1 | 📋 Futuro |
 
@@ -258,7 +258,7 @@ LED-005 ├─→ LED-006 (Busca)
 | **Data Atualização** | 21 de janeiro de 2026 |
 | **Versão** | 1.1 |
 | **Status** | ✅ Conforme - Checkpoint Documentado |
-| **Próxima Revisão** | 25 de janeiro de 2026 (Antes de LED-003) |
+| **Próxima Revisão** | 25 de janeiro de 2026 (Antes de LEAD-003) |
 
 ---
 
@@ -266,6 +266,6 @@ LED-005 ├─→ LED-006 (Busca)
 
 - Todos os 3 user stories prontos têm PDFs gerados
 - Auditoria de integridade validou 100% conformidade
-- Próxima ação: QA Testing e Especificação LED-003
+- Próxima ação: QA Testing e Especificação LEAD-003
 - Manter este documento atualizado a cada novo user story
 - Usar como referência rápida para "onde paramos"

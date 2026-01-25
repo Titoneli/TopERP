@@ -94,42 +94,42 @@ Este documento lista os requisitos funcionais do sistema TopERP, organizados por
 
 ## Módulo CRM - Leads (CRM-LED)
 
-### REQ-CRM-LED-001: Captação de Lead via Landing Page
+### REQ-CRM-LEAD-001: Captação de Lead via Landing Page
 - **Descrição**: O sistema deve permitir a captação de leads através de formulário multi-etapas em landing page
 - **Prioridade**: Essencial
 - **Status**: Em análise
 
-### REQ-CRM-LED-002: Validação de Telefone contra Blacklist
+### REQ-CRM-LEAD-002: Validação de Telefone contra Blacklist
 - **Descrição**: O sistema deve validar se o telefone informado não pertence a um consultor ativo
 - **Prioridade**: Essencial
 - **Status**: Em análise
 
-### REQ-CRM-LED-003: Extração e Armazenamento de DDD
+### REQ-CRM-LEAD-003: Extração e Armazenamento de DDD
 - **Descrição**: O sistema deve extrair e armazenar o DDD do telefone para análise regional
 - **Prioridade**: Essencial
 - **Status**: Em análise
 
-### REQ-CRM-LED-004: Rastreabilidade de Origem
+### REQ-CRM-LEAD-004: Rastreabilidade de Origem
 - **Descrição**: O sistema deve capturar e armazenar o código de origem (`cod_origem`) via query string
 - **Prioridade**: Essencial
 - **Status**: Em análise
 
-### REQ-CRM-LED-005: Direcionamento para Consultor
+### REQ-CRM-LEAD-005: Direcionamento para Consultor
 - **Descrição**: O sistema deve permitir direcionar lead para consultor específico via parâmetro `cod_colaborador`
 - **Prioridade**: Essencial
 - **Status**: Em análise
 
-### REQ-CRM-LED-006: Cadastro Progressivo em Etapas
+### REQ-CRM-LEAD-006: Cadastro Progressivo em Etapas
 - **Descrição**: O sistema deve cadastrar o lead na Etapa 1, atualizando nas etapas subsequentes
 - **Prioridade**: Essencial
 - **Status**: Em análise
 
-### REQ-CRM-LED-007: Métricas por DDD
+### REQ-CRM-LEAD-007: Métricas por DDD
 - **Descrição**: O sistema deve fornecer dashboard com distribuição de leads por DDD
 - **Prioridade**: Importante
 - **Status**: Em análise
 
-### REQ-CRM-LED-008: Métricas por Origem
+### REQ-CRM-LEAD-008: Métricas por Origem
 - **Descrição**: O sistema deve fornecer dashboard com distribuição de leads por código de origem
 - **Prioridade**: Importante
 - **Status**: Em análise
@@ -142,14 +142,14 @@ Este documento lista os requisitos funcionais do sistema TopERP, organizados por
 |-----------|----------------------|--------------|
 | REQ-FIN-001 | US-FIN-001 | UC-FIN-001 |
 | REQ-FIN-002 | US-FIN-002 | UC-FIN-002 |
-| REQ-CRM-LED-001 | US-CRM-LEAD-001 | - |
-| REQ-CRM-LED-002 | US-CRM-LEAD-001 | - |
-| REQ-CRM-LED-003 | US-CRM-LEAD-001 | - |
-| REQ-CRM-LED-004 | US-CRM-LEAD-001 | - |
-| REQ-CRM-LED-005 | US-CRM-LEAD-001 | - |
-| REQ-CRM-LED-006 | US-CRM-LEAD-001 | - |
-| REQ-CRM-LED-007 | US-CRM-LEAD-001 | - |
-| REQ-CRM-LED-008 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LEAD-001 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LEAD-002 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LEAD-003 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LEAD-004 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LEAD-005 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LEAD-006 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LEAD-007 | US-CRM-LEAD-001 | - |
+| REQ-CRM-LEAD-008 | US-CRM-LEAD-001 | - |
 | REQ-VEN-001 | US-VEN-001 | UC-VEN-001 |
 | REQ-EST-001 | US-EST-001 | UC-EST-001 |
 
