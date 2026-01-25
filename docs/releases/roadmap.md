@@ -2,7 +2,7 @@
 
 | Metadado | Valor |
 |----------|-------|
-| **Versão** | 2.1 |
+| **Versão** | 2.2 |
 | **Data** | 23/01/2026 |
 | **Autor** | Product Owner |
 | **Metodologia** | Domain-Driven Design |
@@ -324,5 +324,5 @@ Este documento apresenta o planejamento de releases do TopERP, incluindo o módu
 ---
 
 **Última Atualização**: 23 de janeiro de 2026  
-**Versão**: 2.1  
+**Versão**: 2.2  
 **Aprovado por**: Product Owner

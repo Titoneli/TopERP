@@ -57,32 +57,30 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 
 ---
 
-### Fase 4: INTEGRAÇÕES EXTERNAS (⏳ NÃO INICIADA)
+### Fase 4: GESTÃO DE LEADS (⏳ NÃO INICIADA)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
 |----|-----------|--------|----|-----------|----|
-| **LEAD-010** | Integração com Facebook Lead Ads | 📋 Planejado | 13 | Desejável | Webhook Meta |
-| **LEAD-011** | Integração com Google Ads | 📋 Planejado | 13 | Desejável | Google Ads API |
-| **LEAD-012** | Score Automático de Lead | 📋 Planejado | 8 | Desejável | ML Engine |
-| **LEAD-013** | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável | LEAD-001 |
-| **LEAD-014** | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável | Integrações externas |
+| **LEAD-012** | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial | LEAD-001 |
+| **LEAD-013** | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial | LEAD-001, LEAD-012 |
+| **LEAD-014** | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial | LEAD-013 |
+| **LEAD-015** | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial | LEAD-013 |
+| **LEAD-016** | Editar Dados do Lead | 📋 Planejado | 5 | Essencial | LEAD-012, LEAD-013 |
+| **LEAD-017** | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial | LEAD-013 |
 
-**Subtotal Fase 4**: 47 SP | Status: **Backlog Futuro**
+**Subtotal Fase 4**: 33 SP | Status: **Aguardando Especificação**
 
 ---
 
-### Fase 5: GESTÃO DE LEADS (⏳ NÃO INICIADA)
+### Fase 5: INTEGRAÇÕES E INTELIGÊNCIA (⏳ NÃO INICIADA)
 
 | ID | Histórias | Status | SP | Prioridade | Dependências |
 |----|-----------|--------|----|-----------|----|
-| **LEAD-015** | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial | LEAD-001 |
-| **LEAD-016** | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial | LEAD-001, LEAD-015 |
-| **LEAD-017** | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial | LEAD-016 |
-| **LEAD-018** | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial | LEAD-016 |
-| **LEAD-019** | Editar Dados do Lead | 📋 Planejado | 5 | Essencial | LEAD-015, LEAD-016 |
-| **LEAD-020** | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial | LEAD-016 |
+| **LEAD-018** | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável | Integrações externas |
+| **LEAD-019** | Score Automático de Lead | 📋 Planejado | 8 | Desejável | ML Engine |
+| **LEAD-020** | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável | LEAD-001 |
 
-**Subtotal Fase 5**: 33 SP | Status: **Aguardando Especificação**
+**Subtotal Fase 5**: 21 SP | Status: **Backlog Futuro**
 
 ---
 
@@ -93,7 +91,7 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 ✅ LEAD-001 (v1.0) — Pronto para Dev
 ✅ LEAD-002 (v1.1) — Pronto para Dev
 ✅ LEAD-003 (v1.1) — Pronto para Dev
-✅ LEAD-015 até LEAD-020 — Gestão de Leads (Fase 5) - Aguardando
+📋 LEAD-012 até LEAD-017 — Gestão de Leads (Fase 4) - Aguardando
 🎯 Total: 9 histórias | 72 SP (39 prontos + 33 planejados)
 ```
 
@@ -102,14 +100,14 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 ✅ LEAD-004 (v1.0) — Formulário Embarcado - ESPECIFICADO
 ✅ LEAD-005 (v1.0) — WhatsApp Business - ESPECIFICADO
 ✅ LEAD-006 (v1.0) — Qualificar BANT - ESPECIFICADO
-📋 LEAD-007 até LEAD-009 — Gestão Avançada (Fase 3) - Pendente
-🎯 Total: 6 histórias | 42 SP (26 prontos + 16 planejados)
+📋 LEAD-007 até LEAD-011 — Gestão Avançada + Integrações Ads (Fase 3) - Pendente
+🎯 Total: 8 histórias | 68 SP (26 prontos + 42 planejados)
 ```
 
 ### Desejável (Could-Have)
 ```
-📋 LEAD-015 até LEAD-020 — Backlog Futuro
-🎯 Total: 6 histórias | 47 SP
+📋 LEAD-018 até LEAD-020 — Inteligência e IA (Fase 5)
+🎯 Total: 3 histórias | 21 SP
 ```
 
 ---
@@ -124,25 +122,25 @@ Status: ✅ Fase 2 Especificada (23/01/2026)
 - [x] US-CRM-LEAD-004 (v1.0) — Formulário Embarcado (iframe/widget, token parceiro)
 - [x] US-CRM-LEAD-005 (v1.0) — WhatsApp Business (chatbot, webhook Meta)
 - [x] US-CRM-LEAD-006 (v1.0) — Qualificar Lead BANT (score 0-12, temperaturas)
-- [ ] US-CRM-LEAD-007 — Importar Leads em Massa
-- [ ] US-CRM-LEAD-008 — Marcar Lead como Inativo
-- [ ] US-CRM-LEAD-009 — Exportar Leads
-- [ ] US-CRM-LEAD-010 — Integração Facebook Lead Ads
+- [ ] US-CRM-LEAD-007 — Importar Leads em Massa (arquivo ou API/BD)
+- [ ] US-CRM-LEAD-008 — Marcar Lead como Arquivado
+- [ ] US-CRM-LEAD-009 — Exportar Leads para arquivos
+- [ ] US-CRM-LEAD-010 — Integração Facebook / Meta Lead Ads
 - [ ] US-CRM-LEAD-011 — Integração Google Ads
-- [ ] US-CRM-LEAD-012 — Score Automático de Lead
-- [ ] US-CRM-LEAD-013 — Detecção de Lead Duplicado
-- [ ] US-CRM-LEAD-014 — Enriquecimento de Dados
-- [ ] US-CRM-LEAD-015 — Cadastrar Lead Manualmente
-- [ ] US-CRM-LEAD-016 — Visualizar Lista de Leads
-- [ ] US-CRM-LEAD-017 — Buscar e Filtrar Leads
-- [ ] US-CRM-LEAD-018 — Atribuir Lead a Consultor
-- [ ] US-CRM-LEAD-019 — Editar Dados do Lead
-- [ ] US-CRM-LEAD-020 — Visualizar Detalhes do Lead
+- [ ] US-CRM-LEAD-012 — Cadastrar Lead Manualmente
+- [ ] US-CRM-LEAD-013 — Visualizar Lista de Leads
+- [ ] US-CRM-LEAD-014 — Buscar e Filtrar Leads
+- [ ] US-CRM-LEAD-015 — Atribuir Lead a Consultor
+- [ ] US-CRM-LEAD-016 — Editar Dados do Lead
+- [ ] US-CRM-LEAD-017 — Visualizar Detalhes do Lead
+- [ ] US-CRM-LEAD-018 — Enriquecimento de Dados
+- [ ] US-CRM-LEAD-019 — Score Automático de Lead
+- [ ] US-CRM-LEAD-020 — Detecção de Lead Duplicado
 
 ### Artefatos de Suporte
 
 - [x] README.md (CRM-Leads) — Estrutura e mapeamento
-- [x] CONTINUIDADE-LEAD-002.md — **Transformado em acompanhamento geral**
+- [x] CONTINUIDADE-CRM-LEADS.md — Acompanhamento geral
 - [ ] Diagramas de Sequência — Desejável, não crítico
 - [ ] Glossário CRM — Desejável, não crítico
 - [ ] Relatório de Cenários Aceitos (RCA) — Importante, próximos 7 dias

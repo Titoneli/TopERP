@@ -51,37 +51,37 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 **Subtotal Fase 2**: 26 SP | **Status**: Completa
 
-### Fase 3: GESTÃO AVANÇADA ⏳
+### Fase 3: GESTÃO AVANÇADA E INTEGRAÇÕES ADS ⏳
 | ID | História | Status | SP | Prioridade |
 |----|----------|--------|----|-----------|
-| LEAD-007 | Importar Leads em Massa (CSV/Excel) | 📋 Planejado | 8 | Importante |
-| LEAD-008 | Marcar Lead como Inativo | 📋 Planejado | 3 | Importante |
+| LEAD-007 | Importar Leads em Massa (CSV/Excel/API) | 📋 Planejado | 8 | Importante |
+| LEAD-008 | Marcar Lead como Arquivado | 📋 Planejado | 3 | Importante |
 | LEAD-009 | Exportar Leads | 📋 Planejado | 5 | Importante |
+| LEAD-010 | Integração com Facebook Lead Ads | 📋 Planejado | 13 | Importante |
+| LEAD-011 | Integração com Google Ads | 📋 Planejado | 13 | Importante |
 
-**Subtotal Fase 3**: 16 SP | **Status**: Aguardando Especificação
+**Subtotal Fase 3**: 42 SP | **Status**: Aguardando Especificação
 
-### Fase 4: INTEGRAÇÕES EXTERNAS ⏳
+### Fase 4: GESTÃO DE LEADS ⏳
 | ID | História | Status | SP | Prioridade |
 |----|----------|--------|----|-----------|
-| LEAD-010 | Integração com Facebook Lead Ads | 📋 Planejado | 13 | Desejável |
-| LEAD-011 | Integração com Google Ads | 📋 Planejado | 13 | Desejável |
-| LEAD-012 | Score Automático de Lead | 📋 Planejado | 8 | Desejável |
-| LEAD-013 | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável |
-| LEAD-014 | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável |
+| LEAD-012 | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial |
+| LEAD-013 | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial |
+| LEAD-014 | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial |
+| LEAD-015 | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial |
+| LEAD-016 | Editar Dados do Lead | 📋 Planejado | 5 | Essencial |
+| LEAD-017 | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial |
 
-**Subtotal Fase 4**: 47 SP | **Status**: Backlog Futuro
+**Subtotal Fase 4**: 33 SP | **Status**: Aguardando Especificação
 
-### Fase 5: GESTÃO DE LEADS ⏳
+### Fase 5: INTELIGÊNCIA E IA ⏳
 | ID | História | Status | SP | Prioridade |
 |----|----------|--------|----|-----------|
-| LEAD-015 | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial |
-| LEAD-016 | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial |
-| LEAD-017 | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial |
-| LEAD-018 | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial |
-| LEAD-019 | Editar Dados do Lead | 📋 Planejado | 5 | Essencial |
-| LEAD-020 | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial |
+| LEAD-018 | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável |
+| LEAD-019 | Score Automático de Lead | 📋 Planejado | 8 | Desejável |
+| LEAD-020 | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável |
 
-**Subtotal Fase 5**: 33 SP | **Status**: Aguardando Especificação
+**Subtotal Fase 5**: 21 SP | **Status**: Backlog Futuro
 
 ---
 
@@ -91,9 +91,9 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 |------|------|-----------|----|---------|
 | 1 | Captação e Comparação | LEAD-001 a LEAD-003 | 39 | ✅ Completa |
 | 2 | Captura Avançada | LEAD-004 a LEAD-006 | 26 | ✅ Completa |
-| 3 | Gestão Avançada | LEAD-007 a LEAD-009 | 16 | ⏳ Planejado |
-| 4 | Integrações Externas | LEAD-010 a LEAD-014 | 47 | ⏳ Backlog |
-| 5 | Gestão de Leads | LEAD-015 a LEAD-020 | 33 | ⏳ Planejado |
+| 3 | Gestão Avançada + Integrações | LEAD-007 a LEAD-011 | 42 | ⏳ Planejado |
+| 4 | Gestão de Leads | LEAD-012 a LEAD-017 | 33 | ⏳ Planejado |
+| 5 | Inteligência e IA | LEAD-018 a LEAD-020 | 21 | ⏳ Backlog |
 | **TOTAL** | | **20 histórias** | **161 SP** | **65 SP prontos** |
 
 ---
@@ -168,12 +168,13 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 ---
 
-**Versão**: 2.2  
+**Versão**: 2.3  
 **Atualizado em**: 25/01/2026
 
 **Histórico:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 2.3 | 25/01/2026 | Renumeração: Gestão de Leads (Fase 4: LEAD-012 a 017), Inteligência/IA (Fase 5: LEAD-018 a 020) |
 | 2.2 | 25/01/2026 | Padronização IDs: LED-XXX → LEAD-XXX (Ubiquitous Language DDD) |
 | 2.1 | 23/01/2026 | Fase 2 especificada: LEAD-004, LEAD-005, LEAD-006 prontos (65 SP totais) |
 | 2.0 | 23/01/2026 | Reorganização completa por fases: Gestão de Leads movida para Fase 5, IDs renumerados |
