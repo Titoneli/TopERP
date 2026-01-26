@@ -11,7 +11,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 - Cotação de planos e envio de propostas
 - Negociação e fechamento
 - Vistoria, assinatura e pagamento
-- Gestão de negociações
+- Gestão de leads e negociações
 - Gestão de comissionamento
 - Gestão de equipes de vendas
 - Pós-venda, follow-up e fidelização
