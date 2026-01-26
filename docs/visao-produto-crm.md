@@ -11,13 +11,14 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 - Cotação de planos e envio de propostas
 - Negociação e fechamento
 - Vistoria, assinatura e pagamento
-- Gestão de leads e negociações
+- Gestão de tarefas, agendamentos e negociações
 - Gestão de comissionamento
 - Gestão de equipes de vendas
-- Pós-venda, follow-up e fidelização
 - Dashboards para consultores e gestores
 - Gestão de usuários e perfis de acesso
 - Automações e integrações (banco digial, erp, sistemas legados)
+- Pós-venda, follow-up e fidelização
+- Integração com whatsapp do consultor (Evolution API/Similar)
 - Aplicativos App CRM e App Consultor
 
 ### 1.3 Mapeamento para Bounded Contexts (DDD)
