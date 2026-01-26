@@ -45,44 +45,44 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 ---
 
-### Fase 3: GESTÃO AVANÇADA E INTEGRAÇÕES ADS (⏳ NÃO INICIADA)
+### Fase 3: GESTÃO AVANÇADA E INTEGRAÇÕES ADS (✅ ESPECIFICADA)
 
-| ID | Histórias | Status | SP | Prioridade | Dependências |
-|----|-----------|--------|----|-----------|--------------|
-| **LEAD-007** | Importar Leads em Massa (CSV/Excel/API) | 📋 Planejado | 8 | Importante | LEAD-001 |
-| **LEAD-008** | Marcar Lead como Arquivado | 📋 Planejado | 3 | Importante | LEAD-001 |
-| **LEAD-009** | Exportar Leads | 📋 Planejado | 5 | Importante | LEAD-001 |
-| **LEAD-010** | Integração Facebook Lead Ads | 📋 Planejado | 13 | Importante | LEAD-001, Webhook Meta |
-| **LEAD-011** | Integração Google Ads | 📋 Planejado | 13 | Importante | LEAD-001, API Google |
+| ID | Histórias | Status | Versão | SP | PDF | Notas |
+|----|-----------|--------|--------|----|-----|-------|
+| **LEAD-007** | Importar Leads em Massa (CSV/Excel/API) | ✅ Pronto | v1.0 | 8 | ⏳ | Template, mapeamento, validação |
+| **LEAD-008** | Marcar Lead como Arquivado | ✅ Pronto | v1.0 | 3 | ⏳ | 7 motivos, reativação |
+| **LEAD-009** | Exportar Leads | ✅ Pronto | v1.0 | 5 | ⏳ | CSV/XLSX, campos selecionáveis |
+| **LEAD-010** | Integração Facebook Lead Ads | ✅ Pronto | v1.0 | 13 | ⏳ | Webhook Meta, mapeamento campos |
+| **LEAD-011** | Integração Google Ads | ✅ Pronto | v1.0 | 13 | ⏳ | Lead Form Extensions, OAuth |
 
-**Subtotal Fase 3**: 42 SP | Status: **Aguardando Especificação**
-
----
-
-### Fase 4: GESTÃO DE LEADS (⏳ NÃO INICIADA)
-
-| ID | Histórias | Status | SP | Prioridade | Dependências |
-|----|-----------|--------|----|-----------|--------------| 
-| **LEAD-012** | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial | LEAD-001 |
-| **LEAD-013** | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial | LEAD-001, LEAD-012 |
-| **LEAD-014** | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial | LEAD-013 |
-| **LEAD-015** | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial | LEAD-013 |
-| **LEAD-016** | Editar Dados do Lead | 📋 Planejado | 5 | Essencial | LEAD-012, LEAD-013 |
-| **LEAD-017** | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial | LEAD-013 |
-
-**Subtotal Fase 4**: 33 SP | Status: **Aguardando Especificação**
+**Subtotal Fase 3**: 42 SP | Status: **✅ Especificação Completa**
 
 ---
 
-### Fase 5: INTEGRAÇÕES E INTELIGÊNCIA (⏳ NÃO INICIADA)
+### Fase 4: GESTÃO DE LEADS (✅ ESPECIFICADA)
 
-| ID | Histórias | Status | SP | Prioridade | Dependências |
-|----|-----------|--------|----|-----------|----|
-| **LEAD-018** | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável | Integrações externas |
-| **LEAD-019** | Score Automático de Lead | 📋 Planejado | 8 | Desejável | ML Engine |
-| **LEAD-020** | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável | LEAD-001 |
+| ID | Histórias | Status | Versão | SP | PDF | Notas |
+|----|-----------|--------|--------|----|-----|-------|
+| **LEAD-012** | Cadastrar Lead Manualmente | ✅ Pronto | v1.0 | 8 | ⏳ | Venda própria, indicação |
+| **LEAD-013** | Visualizar Lista de Leads | ✅ Pronto | v1.0 | 5 | ⏳ | Colunas, paginação, temperatura |
+| **LEAD-014** | Buscar e Filtrar Leads | ✅ Pronto | v1.0 | 5 | ⏳ | Filtros avançados, salvos |
+| **LEAD-015** | Atribuir Lead a Consultor | ✅ Pronto | v1.0 | 5 | ⏳ | Manual, carga trabalho |
+| **LEAD-016** | Editar Dados do Lead | ✅ Pronto | v1.0 | 5 | ⏳ | Histórico alterações |
+| **LEAD-017** | Visualizar Detalhes do Lead | ✅ Pronto | v1.0 | 5 | ⏳ | Timeline, ações rápidas |
 
-**Subtotal Fase 5**: 21 SP | Status: **Backlog Futuro**
+**Subtotal Fase 4**: 33 SP | Status: **✅ Especificação Completa**
+
+---
+
+### Fase 5: INTEGRAÇÕES E INTELIGÊNCIA (✅ ESPECIFICADA)
+
+| ID | Histórias | Status | Versão | SP | PDF | Notas |
+|----|-----------|--------|--------|----|-----|-------|
+| **LEAD-018** | Enriquecimento de Dados (APIs externas) | ✅ Pronto | v1.0 | 8 | ⏳ | FIPE, IBGE, automático |
+| **LEAD-019** | Score Automático de Lead (ML) | ✅ Pronto | v1.0 | 8 | ⏳ | Gradient Boosting, 0-100% |
+| **LEAD-020** | Detecção de Lead Duplicado | ✅ Pronto | v1.0 | 5 | ⏳ | Match exato/fuzzy, mesclagem |
+
+**Subtotal Fase 5**: 21 SP | Status: **✅ Especificação Completa**
 
 ---
 
@@ -93,23 +93,34 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 ✅ LEAD-001 (v1.0) — Pronto para Dev
 ✅ LEAD-002 (v1.1) — Pronto para Dev
 ✅ LEAD-003 (v1.1) — Pronto para Dev
-📋 LEAD-012 até LEAD-017 — Gestão de Leads (Fase 4) - Aguardando
-🎯 Total: 9 histórias | 72 SP (39 prontos + 33 planejados)
+✅ LEAD-012 (v1.0) — Cadastro Manual - ESPECIFICADO
+✅ LEAD-013 (v1.0) — Lista de Leads - ESPECIFICADO
+✅ LEAD-014 (v1.0) — Buscar e Filtrar - ESPECIFICADO
+✅ LEAD-015 (v1.0) — Atribuir Consultor - ESPECIFICADO
+✅ LEAD-016 (v1.0) — Editar Lead - ESPECIFICADO
+✅ LEAD-017 (v1.0) — Detalhes Lead - ESPECIFICADO
+🎯 Total: 9 histórias | 72 SP (100% especificados)
 ```
 
 ### Importante (Should-Have)
 ```
-✅ LEAD-004 (v1.0) — Formulário Embarcado - ESPECIFICADO
-✅ LEAD-005 (v1.0) — WhatsApp Business - ESPECIFICADO
+✅ LEAD-004 (v1.2) — Formulário Embarcado - ESPECIFICADO
+✅ LEAD-005 (v1.2) — WhatsApp Business - ESPECIFICADO
 ✅ LEAD-006 (v1.0) — Qualificar BANT - ESPECIFICADO
-📋 LEAD-007 até LEAD-011 — Gestão Avançada + Integrações Ads (Fase 3) - Pendente
-🎯 Total: 8 histórias | 68 SP (26 prontos + 42 planejados)
+✅ LEAD-007 (v1.0) — Importar Leads - ESPECIFICADO
+✅ LEAD-008 (v1.0) — Arquivar Lead - ESPECIFICADO
+✅ LEAD-009 (v1.0) — Exportar Leads - ESPECIFICADO
+✅ LEAD-010 (v1.0) — Facebook Lead Ads - ESPECIFICADO
+✅ LEAD-011 (v1.0) — Google Ads - ESPECIFICADO
+🎯 Total: 8 histórias | 68 SP (100% especificados)
 ```
 
 ### Desejável (Could-Have)
 ```
-📋 LEAD-018 até LEAD-020 — Inteligência e IA (Fase 5)
-🎯 Total: 3 histórias | 21 SP
+✅ LEAD-018 (v1.0) — Enriquecimento - ESPECIFICADO
+✅ LEAD-019 (v1.0) — Score ML - ESPECIFICADO
+✅ LEAD-020 (v1.0) — Duplicados - ESPECIFICADO
+🎯 Total: 3 histórias | 21 SP (100% especificados)
 ```
 
 ---
@@ -121,23 +132,23 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 - [x] US-CRM-LEAD-001 (v1.0) — Arquivo criado e validado
 - [x] US-CRM-LEAD-002 (v1.1) — Arquivo criado, terminologia atualizada, wireframe otimizado
 - [x] US-CRM-LEAD-003 (v1.1) — Arquivo renumerado, validado e pronto
-- [x] US-CRM-LEAD-004 (v1.0) — Formulário Embarcado (iframe/widget, token parceiro)
-- [x] US-CRM-LEAD-005 (v1.0) — WhatsApp Business (chatbot, webhook Meta)
+- [x] US-CRM-LEAD-004 (v1.2) — Formulário Embarcado (iframe/widget, token parceiro)
+- [x] US-CRM-LEAD-005 (v1.2) — WhatsApp Business (2 modos: Landing + Link Direto)
 - [x] US-CRM-LEAD-006 (v1.0) — Qualificar Lead BANT (score 0-12, temperaturas)
-- [ ] US-CRM-LEAD-007 — Importar Leads em Massa (arquivo ou API/BD)
-- [ ] US-CRM-LEAD-008 — Marcar Lead como Arquivado
-- [ ] US-CRM-LEAD-009 — Exportar Leads para arquivos
-- [ ] US-CRM-LEAD-010 — Integração Facebook / Meta Lead Ads
-- [ ] US-CRM-LEAD-011 — Integração Google Ads
-- [ ] US-CRM-LEAD-012 — Cadastrar Lead Manualmente
-- [ ] US-CRM-LEAD-013 — Visualizar Lista de Leads
-- [ ] US-CRM-LEAD-014 — Buscar e Filtrar Leads
-- [ ] US-CRM-LEAD-015 — Atribuir Lead a Consultor
-- [ ] US-CRM-LEAD-016 — Editar Dados do Lead
-- [ ] US-CRM-LEAD-017 — Visualizar Detalhes do Lead
-- [ ] US-CRM-LEAD-018 — Enriquecimento de Dados
-- [ ] US-CRM-LEAD-019 — Score Automático de Lead
-- [ ] US-CRM-LEAD-020 — Detecção de Lead Duplicado
+- [x] US-CRM-LEAD-007 (v1.0) — Importar Leads em Massa (CSV/Excel/API)
+- [x] US-CRM-LEAD-008 (v1.0) — Marcar Lead como Arquivado (7 motivos)
+- [x] US-CRM-LEAD-009 (v1.0) — Exportar Leads (CSV/XLSX)
+- [x] US-CRM-LEAD-010 (v1.0) — Integração Facebook Lead Ads (Webhook)
+- [x] US-CRM-LEAD-011 (v1.0) — Integração Google Ads (OAuth)
+- [x] US-CRM-LEAD-012 (v1.0) — Cadastrar Lead Manualmente
+- [x] US-CRM-LEAD-013 (v1.0) — Visualizar Lista de Leads
+- [x] US-CRM-LEAD-014 (v1.0) — Buscar e Filtrar Leads
+- [x] US-CRM-LEAD-015 (v1.0) — Atribuir Lead a Consultor
+- [x] US-CRM-LEAD-016 (v1.0) — Editar Dados do Lead
+- [x] US-CRM-LEAD-017 (v1.0) — Visualizar Detalhes do Lead
+- [x] US-CRM-LEAD-018 (v1.0) — Enriquecimento de Dados (FIPE, IBGE)
+- [x] US-CRM-LEAD-019 (v1.0) — Score Automático de Lead (ML)
+- [x] US-CRM-LEAD-020 (v1.0) — Detecção de Lead Duplicado
 
 ### Artefatos de Suporte
 
@@ -152,7 +163,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 - [x] Auditoria de Integridade (21/01/2026)
 - [x] Conformidade DDD (100%)
 - [x] Rastreabilidade (Dependências mapeadas)
-- [x] PDFs Gerados (3/3 prontos)
+- [x] PDFs Gerados (6/20 prontos)
 - [ ] QA Testing — Próximo: LEAD-001 + LEAD-002
 
 ---
@@ -164,31 +175,26 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 │  SPRINT 0 (ATUAL) — Validação e Planejamento            │
 ├─────────────────────────────────────────────────────────┤
 │  ✅ Auditoria Concluída (21/01)                         │
-│  ✅ 3 Histórias Prontas (LEAD-001, LEAD-002, LEAD-003)    │
-│  📋 Próximo: QA + Dev Sprint 1                          │
+│  ✅ 20 Histórias Especificadas (100% do módulo)         │
+│  📋 Próximo: Gerar PDFs + QA + Dev Sprint 1             │
 └─────────────────────────────────────────────────────────┘
                         │
                         ▼
 ┌─────────────────────────────────────────────────────────┐
-│  SPRINT 1 — Desenvolvimento Fase 1 + Planejamento Fase 2│
+│  SPRINT 1 — Desenvolvimento Fase 1                      │
 ├─────────────────────────────────────────────────────────┤
 │  Dev:                                                   │
-│  • LEAD-001 (Captação)                                   │
-│  • LEAD-002 (Comparativo)                                │
-│  • LEAD-003 (Dashboard)                                  │
+│  • LEAD-001 (Captação)                                  │
+│  • LEAD-002 (Comparativo)                               │
+│  • LEAD-003 (Dashboard)                                 │
 │                                                         │
 │  QA:                                                    │
-│  • 21 Cenários de Aceitação                            │
-│                                                         │
-│  Planejamento Fase 3:                                  │
-│  • Especificar LEAD-007 até LEAD-011                     |
-│  • Estimar SP                                          │
-│  • Validar dependências                                │
+│  • 21 Cenários de Aceitação                             │
 └─────────────────────────────────────────────────────────┘
                         │
                         ▼
 ┌─────────────────────────────────────────────────────────┐
-│  SPRINT 2 — Captura Avançada (LEAD-004 a LEAD-006)       │
+│  SPRINT 2 — Captura Avançada (LEAD-004 a LEAD-006)      │
 ├─────────────────────────────────────────────────────────┤
 │  • Formulário Embarcado (LEAD-004)                      │
 │  • WhatsApp Business (LEAD-005)                         │
@@ -223,10 +229,10 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 ## 📌 PONTOS CRÍTICOS PARA CONTINUIDADE
 
-### 1. **LEAD-007 é o Próximo**
-- Primeira história da Fase 3 (Gestão Avançada)
-- Importação em massa de leads (CSV/Excel/API)
-- **Ação**: Especificar em próxima sessão
+### 1. **Todas as 20 Histórias Especificadas ✅**
+- Fases 1-5 completamente documentadas
+- 161 Story Points totais mapeados
+- **Próxima Ação**: Gerar PDFs pendentes (14 de 20)
 
 ### 2. **Dependências Críticas**
 ```
@@ -258,28 +264,36 @@ LEAD-001 ├─→ LEAD-012 (Cadastro Manual)
 - ✅ LEAD-001: 12 códigos de origem, DDD extract, 3 etapas
 - ✅ LEAD-002: 3 planos em comparação paralela, terminologia "serviços"
 - ✅ LEAD-003: 10 KPIs de conversão definidos
+- ✅ LEAD-004: Formulário embarcado (iframe/widget)
+- ✅ LEAD-005: WhatsApp Business (2 modos)
+- ✅ LEAD-006: BANT Score 0-12, temperaturas
+- ✅ LEAD-007 a LEAD-011: Gestão Avançada + Ads (42 SP)
+- ✅ LEAD-012 a LEAD-017: Gestão de Leads (33 SP)
+- ✅ LEAD-018 a LEAD-020: Inteligência ML (21 SP)
 
 ---
 
-## 🎁 BENEFÍCIOS DAS 3 HISTÓRIAS PRONTAS
+## 🎁 BENEFÍCIOS DAS 20 HISTÓRIAS ESPECIFICADAS
 
-| História | Valor | Impacto |
-|----------|-------|---------|
-| **LEAD-001** | Captação de qualidade | Alimenta todo o funil |
-| **LEAD-002** | Conversão de planos | Monetização imediata |
-| **LEAD-003** | Inteligência de negócio | Otimização contínua |
+| Fase | Histórias | Valor | Impacto |
+|------|-----------|-------|---------|
+| **Fase 1** | LEAD-001 a LEAD-003 | Captação de qualidade | Alimenta todo o funil |
+| **Fase 2** | LEAD-004 a LEAD-006 | Captura multicanal | Escala de aquisição |
+| **Fase 3** | LEAD-007 a LEAD-011 | Gestão avançada + Ads | Automação + Integrações |
+| **Fase 4** | LEAD-012 a LEAD-017 | Gestão completa | Operação diária |
+| **Fase 5** | LEAD-018 a LEAD-020 | Inteligência ML | Otimização contínua |
 
 ---
 
-## 📅 TIMELINE RECOMENDADA
+## 📅 TIMELINE ATUALIZADA
 
 | Período | Ação | Status |
 |---------|------|--------|
-| **21-24 Jan** | QA Testing (LEAD-001, LEAD-002) | ✅ Pronto |
-| **24-25 Jan** | Especificar LEAD-004 | 📋 Próximo |
-| **25-26 Jan** | Especificar LEAD-005 a LEAD-009 | 📋 Planejado |
-| **27-28 Jan** | Sprint Planning Semana 2 | 📋 Planejado |
-| **28 Jan+** | Dev Sprint 1 | 📋 Futuro |
+| **21 Jan** | Especificação completa (20 histórias) | ✅ Concluído |
+| **22-24 Jan** | Gerar PDFs pendentes (14 histórias) | 📋 Próximo |
+| **24-25 Jan** | QA Testing (LEAD-001, LEAD-002, LEAD-003) | 📋 Planejado |
+| **26-27 Jan** | Sprint Planning Sprint 1 | 📋 Planejado |
+| **28 Jan+** | Dev Sprint 1 (Fase 1) | 📋 Futuro |
 
 ---
 
@@ -289,16 +303,17 @@ LEAD-001 ├─→ LEAD-012 (Cadastro Manual)
 |-------|-------|
 | **Responsável** | Gustavo Titoneli (Product Owner) |
 | **Data Atualização** | 21 de janeiro de 2026 |
-| **Versão** | 1.1 |
-| **Status** | ✅ Conforme - Checkpoint Documentado |
-| **Próxima Revisão** | 25 de janeiro de 2026 (Antes de LEAD-003) |
+| **Versão** | 2.0 |
+| **Status** | ✅ Módulo 100% Especificado |
+| **Próxima Revisão** | 25 de janeiro de 2026 |
 
 ---
 
 ## 📝 NOTAS OPERACIONAIS
 
-- Todos os 3 user stories prontos têm PDFs gerados
-- Auditoria de integridade validou 100% conformidade
-- Próxima ação: QA Testing e Especificação LEAD-003
-- Manter este documento atualizado a cada novo user story
-- Usar como referência rápida para "onde paramos"
+- Todas as 20 histórias do módulo CRM-Leads especificadas
+- 6 PDFs gerados (LEAD-001 a LEAD-006), 14 pendentes
+- Auditoria de integridade validou 100% conformidade DDD
+- Próxima ação: Gerar PDFs + QA Testing
+- Total: 161 Story Points distribuídos em 5 fases
+- Manter este documento atualizado conforme PDFs são gerados
