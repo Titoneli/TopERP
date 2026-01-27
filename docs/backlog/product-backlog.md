@@ -142,12 +142,42 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 |----|----------|------------|--------|----|
 | US-CRM-COT-001 | Iniciar Nova Cotação | Essencial | Backlog | 8 |
 
-#### CRM-Funil de Vendas
+#### CRM-Funil de Vendas: Essenciais
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-FUN-001 | Visualizar Funil de Vendas | Essencial | Backlog | 13 |
+| US-CRM-FUN-001 | Visualizar Funil de Vendas | Essencial | ✅ Pronto | 13 |
+| US-CRM-FUN-002 | Criar Nova Negociação | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-003 | Mover Negociação entre Etapas | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-004 | Adicionar Atividade/Tarefa | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-005 | Registrar Interação com Lead | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-006 | Filtrar e Buscar Negociações | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-007 | Visualizar Detalhes da Negociação | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-008 | Marcar Negociação como Ganha | Essencial | ✅ Pronto | 8 |
+| US-CRM-FUN-009 | Marcar Negociação como Perdida | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-010 | Agendar Follow-up | Essencial | ✅ Pronto | 3 |
+
+#### CRM-Funil de Vendas: Importantes
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FUN-011 | Configurar Funil Personalizado | Importante | ✅ Pronto | 13 |
+| US-CRM-FUN-012 | Visualizar Métricas do Funil | Importante | ✅ Pronto | 8 |
+| US-CRM-FUN-013 | Automação de Movimentação | Importante | ✅ Pronto | 13 |
+| US-CRM-FUN-014 | Alertas de Negociações Paradas | Importante | ✅ Pronto | 5 |
+| US-CRM-FUN-015 | Duplicar Negociação | Importante | ✅ Pronto | 3 |
+
+#### CRM-Funil de Vendas: Desejáveis
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FUN-016 | Funil por Regional/Filial | Desejável | ✅ Pronto | 8 |
+| US-CRM-FUN-017 | Previsão de Faturamento | Desejável | ✅ Pronto | 8 |
+| US-CRM-FUN-018 | Análise de Tempo por Etapa | Desejável | ✅ Pronto | 5 |
+| US-CRM-FUN-019 | Comparativo de Performance | Desejável | ✅ Pronto | 8 |
+
+#### CRM-Funil de Vendas: Movidos de CRM-Leads (DDD)
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
 | US-CRM-FUN-020 | Visualizar Lista de Leads/Negociações | Essencial | ✅ Pronto | 5 |
-| US-CRM-FUN-021 | Buscar e Filtrar Negociações | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-021 | Buscar e Filtrar Negociações (Lista) | Essencial | ✅ Pronto | 5 |
 | US-CRM-FUN-022 | Editar Dados da Negociação/Lead | Essencial | ✅ Pronto | 5 |
 | US-CRM-FUN-023 | Visualizar Detalhes da Negociação/Lead | Essencial | ✅ Pronto | 5 |
 
@@ -157,17 +187,20 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Métrica | Valor |
 |---------|-------|
-| Total de Histórias CRM-Leads | 16 |
-| Fase 1 (Captação) | 3 histórias / 39 SP |
-| Fase 2 (Captura Avançada) | 3 histórias / 26 SP |
-| Fase 3 (Gestão + Ads) | 5 histórias / 42 SP |
-| Fase 4 (Atribuição/Cadastro) | 2 histórias / 13 SP |
-| Fase 5 (Inteligência/IA) | 3 histórias / 21 SP |
-| **Total CRM-Leads** | **16 histórias / 141 SP** |
-| Total CRM-AUT | 2 histórias / 7 SP |
-| Total CRM-COT | 1 história / 8 SP |
-| Total CRM-FUN | 5 histórias / 33 SP |
-| **TOTAL CRM** | **24 histórias / 189 SP** |
+| **CRM-Leads** | **16 histórias / 141 SP** |
+| • Fase 1 (Captação) | 3 histórias / 39 SP |
+| • Fase 2 (Captura Avançada) | 3 histórias / 26 SP |
+| • Fase 3 (Gestão + Ads) | 5 histórias / 42 SP |
+| • Fase 4 (Atribuição/Cadastro) | 2 histórias / 13 SP |
+| • Fase 5 (Inteligência/IA) | 3 histórias / 21 SP |
+| **CRM-Funil-Vendas** | **23 histórias / 147 SP** |
+| • Essenciais (FUN-001 a FUN-010) | 10 histórias / 59 SP |
+| • Importantes (FUN-011 a FUN-015) | 5 histórias / 42 SP |
+| • Desejáveis (FUN-016 a FUN-019) | 4 histórias / 29 SP |
+| • Movidos de Leads (FUN-020 a FUN-023) | 4 histórias / 20 SP |
+| **CRM-Autenticação** | **2 histórias / 7 SP** |
+| **CRM-Cotações** | **1 história / 8 SP** |
+| **TOTAL CRM** | **42 histórias / 303 SP** |
 
 ---
 
@@ -185,6 +218,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
+| 27/01/2026 | 2.4 | Adição de FUN-002 a FUN-019: Funil completo com DDD (18 novas histórias) | PO |
 | 27/01/2026 | 2.3 | Renumeração sequencial: LEAD-015→013, LEAD-018→014, LEAD-019→015, LEAD-020→016 | PO |
 | 27/01/2026 | 2.2 | DDD: Mover LEAD-013, 014, 016, 017 para CRM-FUN-020 a 023 | PO |
 | 25/01/2026 | 2.1 | Correção DDD: IDs sequenciais por fase (007-011 Fase 3, 012-017 Fase 4) | PO |

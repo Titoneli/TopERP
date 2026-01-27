@@ -297,7 +297,7 @@ interface AtividadeRepository {
 
 | ID | História | Story Points |
 |----|----------|--------------|
-| [US-CRM-FUN-001](US-CRM-FUN-001.md) | Visualizar Funil de Vendas | 8 |
+| [US-CRM-FUN-001](US-CRM-FUN-001.md) | Visualizar Funil de Vendas | 13 |
 | [US-CRM-FUN-002](US-CRM-FUN-002.md) | Criar Nova Negociação | 5 |
 | [US-CRM-FUN-003](US-CRM-FUN-003.md) | Mover Negociação entre Etapas | 5 |
 | [US-CRM-FUN-004](US-CRM-FUN-004.md) | Adicionar Atividade/Tarefa | 5 |
@@ -378,10 +378,21 @@ interface AtividadeRepository {
 | 21/01/2026 | 1.0 | Product Owner | Versão inicial |
 | 21/01/2026 | 2.0 | Product Owner | Reestruturação completa para padrão DDD |
 | 27/01/2026 | 2.1 | Product Owner | DDD: Incorporar FUN-020 a FUN-023 (ex-LEAD-013, 014, 016, 017). Total +20 SP |
+| 27/01/2026 | 2.2 | Product Owner | DDD Completo: Criar FUN-002 a FUN-019 (18 novas histórias, +127 SP) |
 
 ---
 
-**Versão**: 2.1  
+**Versão**: 2.2  
 **Data**: 27/01/2026  
 **Responsável**: Product Owner - CRM  
 **Tipo DDD**: Core Domain
+
+## 8. Resumo de Story Points
+
+| Categoria | Histórias | Story Points |
+|-----------|-----------|--------------|
+| Essenciais (FUN-001 a FUN-010) | 10 | 59 SP |
+| Importantes (FUN-011 a FUN-015) | 5 | 42 SP |
+| Desejáveis (FUN-016 a FUN-019) | 4 | 29 SP |
+| Movidos de Leads (FUN-020 a FUN-023) | 4 | 20 SP |
+| **TOTAL CRM-Funil-Vendas** | **23** | **150 SP** |
