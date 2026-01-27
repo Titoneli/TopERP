@@ -53,8 +53,8 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 | **LEAD-007** | Importar Leads em Massa (CSV/Excel/API) | ✅ Pronto | v1.1 | 8 | ✅ | Template, mapeamento, validação, DDD |
 | **LEAD-008** | Marcar Lead como Arquivado | ✅ Pronto | v1.1 | 3 | ✅ | 14 motivos, reativação |
 | **LEAD-009** | Exportar Leads | ✅ Pronto | v1.1 | 5 | ✅ | CSV/XLSX, terminologia DDD |
-| **LEAD-010** | Integração Facebook Lead Ads | ✅ Pronto | v1.0 | 13 | ✅ | Webhook Meta, mapeamento campos |
-| **LEAD-011** | Integração Google Ads | ✅ Pronto | v1.1 | 13 | ⏳ | Lead Form Extensions, notif. push+WhatsApp |
+| **LEAD-010** | Integração Facebook Lead Ads | ✅ Pronto | v1.1 | 13 | ✅ | Webhook Meta, DDD padronizado |
+| **LEAD-011** | Integração Google Ads | ✅ Pronto | v1.2 | 13 | ⏳ | Lead Form Extensions, DDD padronizado |
 
 **Subtotal Fase 3**: 42 SP | Status: **✅ Especificação Completa**
 
@@ -139,8 +139,8 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 - [x] US-CRM-LEAD-007 (v1.1) — Importar Leads em Massa (DDD padronizado)
 - [x] US-CRM-LEAD-008 (v1.1) — Marcar Lead como Arquivado (14 motivos)
 - [x] US-CRM-LEAD-009 (v1.1) — Exportar Leads (terminologia DDD)
-- [x] US-CRM-LEAD-010 (v1.0) — Integração Facebook Lead Ads (notif. push+WhatsApp)
-- [x] US-CRM-LEAD-011 (v1.1) — Integração Google Ads (notif. push+WhatsApp)
+- [x] US-CRM-LEAD-010 (v1.1) — Integração Facebook Lead Ads (DDD padronizado)
+- [x] US-CRM-LEAD-011 (v1.2) — Integração Google Ads (DDD padronizado)
 - [x] US-CRM-LEAD-012 (v1.1) — Cadastrar Lead Manualmente (DDD padronizado)
 - [x] US-CRM-LEAD-013 (v1.0) — Visualizar Lista de Leads
 - [x] US-CRM-LEAD-014 (v1.1) — Buscar e Filtrar Leads (filtro motivo arquivamento)

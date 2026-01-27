@@ -43,7 +43,7 @@ Essencial
 
 ## Contexto de Negócio
 
-Nem todos os leads chegam por canais digitais. Consultores recebem indicações, participam de eventos, fazem prospecção em campo. O cadastro manual permite registrar esses leads no CRM para acompanhamento.
+Nem todos os leads chegam por canais digitais. Consultores recebem indicações, participam de eventos, fazem prospecção em campo. O cadastro manual permite registrar esses leads no CRM para acompanhamento. A ideia aqui é termos uma forma de cadastro no estilo landing page, que seja simples e intuitiva para o cadastro rápido de um lead.
 
 ### Origens de Cadastro Manual
 

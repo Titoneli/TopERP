@@ -136,6 +136,8 @@ O Facebook Lead Ads permite capturar leads diretamente no feed do Facebook/Insta
 
 ### Campos do Formulário Meta → TopCRM
 
+> **Nota DDD:** O campo `cod_origem` é gravado no campo `dom_ind_origem` da tabela `crm_negociacao`.
+
 | Campo Meta | Campo TopCRM | Transformação |
 |------------|--------------|---------------|
 | full_name | nome | Direto |
@@ -143,7 +145,7 @@ O Facebook Lead Ads permite capturar leads diretamente no feed do Facebook/Insta
 | email | email | Lowercase |
 | city | cidade | Direto |
 | state | uf | Mapear para sigla |
-| -- | cod_origem | Fixo: 4 (ADS_META) |
+| -- | dom_ind_origem | Fixo: 4 (ADS_META) |
 | form_id | meta_form_id | Armazenar para rastreio |
 | ad_id | meta_ad_id | Armazenar para rastreio |
 | campaign_id | meta_campaign_id | Armazenar para rastreio |
@@ -363,6 +365,7 @@ Verify Token: [token_configurado]
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Padronização DDD: cod_origem → dom_ind_origem (crm_negociacao) |
 
 ---
 
@@ -370,4 +373,4 @@ Verify Token: [token_configurado]
 **Módulo**: CRM-Leads  
 **Fase**: 3 - Gestão Avançada e Integrações Ads  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1

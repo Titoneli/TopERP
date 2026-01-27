@@ -137,14 +137,20 @@ O Google Ads Lead Form Extensions permite capturar leads diretamente nos resulta
 
 ### Campos do Formulário Google → TopCRM
 
+> **Nota DDD:** O campo `cod_origem` é gravado no campo `dom_ind_origem` da tabela `crm_negociacao`.
+
 | Campo Google | Campo TopCRM | Transformação |
 |--------------|--------------|---------------|
-| user_column_data.full_name | nome | Direto |
-| user_column_data.phone_number | telefone | Formatar para padrão BR |
+| user_column_data.nome | nome | Direto |
+| user_column_data.whatsapp | telefone | Formatar para padrão BR |
 | user_column_data.email | email | Lowercase |
+| user_column_data.placa | placa | Direto |
+| user_column_data.marca | marca | Direto |
+| user_column_data.modelo | modelo | Direto |
+| user_column_data.ano_modelo | ano_modelo | Direto |
 | user_column_data.city | cidade | Direto |
 | user_column_data.region | uf | Mapear para sigla |
-| -- | cod_origem | Fixo: 3 (ADS_GOOGLE) |
+| -- | dom_ind_origem | Fixo: 3 (ADS_GOOGLE) |
 | form_id | google_form_id | Armazenar para rastreio |
 | campaign_id | google_campaign_id | Armazenar para rastreio |
 | ad_group_id | google_adgroup_id | Armazenar para rastreio |
@@ -167,11 +173,11 @@ O Google Ads Lead Form Extensions permite capturar leads diretamente nos resulta
   "lead_form_id": "LEAD_FORM_ID",
   "user_column_data": [
     {
-      "column_id": "FULL_NAME",
+      "column_id": "NOME",
       "string_value": "João da Silva"
     },
     {
-      "column_id": "PHONE_NUMBER",
+      "column_id": "WHATSAPP",
       "string_value": "+5511999998888"
     },
     {
@@ -246,7 +252,7 @@ O Google Ads Lead Form Extensions permite capturar leads diretamente nos resulta
 ### Cenário 7 — Notificação de novo lead
 - **Dado que** um lead foi criado via Google
 - **Quando** há consultor atribuído
-- **Então** consultor recebe notificação push e WhatsApp
+- **Então** consultor recebe notificação Push(APP CRM/Consultor) e WhatsApp
 - **E** mensagem: "Novo lead do Google: [nome]"
 
 ### Cenário 8 — Dashboard de integração
@@ -273,12 +279,11 @@ O Google Ads Lead Form Extensions permite capturar leads diretamente nos resulta
 | RN-003 | Palavra-chave e GCLID são registrados |
 | RN-004 | Telefone é formatado para padrão brasileiro |
 | RN-005 | DDD é extraído automaticamente do telefone |
-| RN-006 | Leads duplicados não são bloqueados |
-| RN-007 | Webhook deve responder em menos de 5 segundos |
-| RN-008 | Retry automático em caso de falha (3x com backoff) |
-| RN-009 | Token expirado gera alerta para admin |
-| RN-010 | Logs de webhook mantidos por 30 dias |
-| RN-011 | Permissão necessária: `integracoes.google` |
+| RN-006 | Webhook deve responder em menos de 5 segundos |
+| RN-007 | Retry automático em caso de falha (3x com backoff) |
+| RN-008 | Token expirado gera alerta para admin |
+| RN-009 | Logs de webhook mantidos por 30 dias |
+| RN-010 | Permissão necessária: `integracoes.google` |
 
 ---
 
@@ -356,6 +361,7 @@ Authentication: OAuth 2.0
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
 | 27/01/2026 | 1.1 | PO | Notificação consultor: push e WhatsApp |
+| 27/01/2026 | 1.2 | PO | Padronização DDD: cod_origem → dom_ind_origem (crm_negociacao) |
 
 ---
 
@@ -363,4 +369,4 @@ Authentication: OAuth 2.0
 **Módulo**: CRM-Leads  
 **Fase**: 3 - Gestão Avançada e Integrações Ads  
 **Status**: ✅ Pronto  
-**Versão**: 1.1
+**Versão**: 1.2
