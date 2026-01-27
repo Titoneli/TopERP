@@ -968,3 +968,42 @@ After doing this, you may fix the identity used for this commit with:
 [2026-01-27 14:21:46] ✅ SUCESSO: Push para origin realizado
 [0;32m✅ Push para origin realizado![0m
 [2026-01-27 14:21:46] ----------------------------------------
+[main 0e98219] backup: Auto-backup 2026-01-27 15:21:46
+ Committer: User <user@MacBook-Air-de-User-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 20 files changed, 3148 insertions(+), 16 deletions(-)
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-002.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-003.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-004.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-005.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-006.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-007.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-008.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-009.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-010.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-011.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-012.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-013.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-014.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-015.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-016.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-017.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-018.md
+ create mode 100644 docs/historias-usuario/CRM-Funil-Vendas/US-CRM-FUN-019.md
+[2026-01-27 15:21:47] ✅ SUCESSO: Backup realizado com 20 arquivo(s) alterado(s)
+[0;32m✅ Backup realizado com sucesso![0m
+[2026-01-27 15:21:47] INFO: Tentando push para origin...
+[2026-01-27 15:21:48] ✅ SUCESSO: Push para origin realizado
+[0;32m✅ Push para origin realizado![0m
+[2026-01-27 15:21:48] ----------------------------------------
