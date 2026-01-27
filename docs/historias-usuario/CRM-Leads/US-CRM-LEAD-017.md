@@ -197,6 +197,43 @@ Antes de contatar um lead, o consultor precisa ter visão completa do histórico
 - **Quando** clico em "Editar"
 - **Então** sou direcionado para a página de edição
 
+### Cenário 11 — Visualizar lead arquivado
+- **Dado que** o lead está com status ARQUIVADO
+- **Quando** visualizo a página de detalhes
+- **Então** vejo banner destacado com status "ARQUIVADO"
+- **E** vejo o motivo do arquivamento (dos 14 disponíveis)
+- **E** vejo data e usuário que arquivou
+- **E** vejo botão "Reativar Lead"
+- **E** as ações de contato ficam desabilitadas
+
+### Cenário 12 — Reativar lead arquivado
+- **Dado que** visualizo um lead arquivado
+- **Quando** clico em "Reativar Lead"
+- **Então** o lead volta para o status anterior ao arquivamento
+- **E** evento `LeadUnarchived` é disparado
+- **E** o lead volta a aparecer na fila de atendimento
+
+---
+
+## Motivos de Arquivamento (Referência)
+
+| Código | Motivo | Descrição |
+|--------|--------|-----------|
+| 1 | Sem interesse | Lead informou que não tem interesse |
+| 2 | Concorrente | Contratou com outra associação |
+| 3 | Seguradora | Contratou com seguradora |
+| 4 | Região não coberta | Região fora da área de abrangência |
+| 5 | Valor não coberto | Valor do veículo superior ao aceito |
+| 6 | Veículo não coberto | Modelo não aceito |
+| 7 | Adesão alta | Valor da adesão superior ao esperado |
+| 8 | Mensalidade alta | Valor da mensalidade superior ao esperado |
+| 9 | Telefone inválido | Telefone/e-mail não funcionam |
+| 10 | Não localizado | Sem retorno após tentativas |
+| 11 | Duplicado | Lead duplicado |
+| 12 | Fora do perfil | Não se enquadra no perfil |
+| 13 | Teste | Lead de teste |
+| 14 | Outros | Outro motivo (observação) |
+
 ---
 
 ## Regras de Negócio
@@ -227,8 +264,35 @@ Antes de contatar um lead, o consultor precisa ter visão completa do histórico
 | Editar | Click "Editar" | Abre página de edição |
 | Arquivar | Click "Arquivar" | Abre modal de arquivamento |
 | Qualificar | Click "Qualificar" | Abre formulário BANT |
+| Reativar | Click "Reativar" | Reativa lead arquivado |
 | Nova Interação | Click "Nova Interação" | Abre registro de atividade |
 | Voltar | Click "Voltar" | Retorna para lista |
+
+---
+
+## Wireframe — Lead Arquivado
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  ◀ Voltar para lista                                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │  ⚠️ LEAD ARQUIVADO                                    [🔄 Reativar]     ││
+│  │  ─────────────────────────────────────────────────────────────────────  ││
+│  │  Motivo: Contratou com concorrente (associação)                         ││
+│  │  Arquivado por: Carlos Silva em 26/01/2026 às 15:30                     ││
+│  │  Observação: Cliente optou pela concorrência por oferta promocional     ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                             │
+│  ┌─────────────────────────────────────────────────────────────────────────┐│
+│  │  João da Silva Santos                                                   ││
+│  │  Status: 📦 ARQUIVADO                                                   ││
+│  │  [📞 Ligar] [💬 WhatsApp]  ← Desabilitados para leads arquivados        ││
+│  └─────────────────────────────────────────────────────────────────────────┘│
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -237,6 +301,7 @@ Antes de contatar um lead, o consultor precisa ter visão completa do histórico
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Adicionar cenários e wireframe para lead arquivado com 14 motivos |
 
 ---
 
@@ -244,4 +309,4 @@ Antes de contatar um lead, o consultor precisa ter visão completa do histórico
 **Módulo**: CRM-Leads  
 **Fase**: 4 - Gestão de Leads  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1

@@ -270,7 +270,7 @@ Maria Santos,(21) 98888-7777,maria@email.com,Honda,Civic,2022,35000,RJ,Rio de Ja
 │  │      📁 Arraste o arquivo aqui ou clique para           │    │
 │  │              selecionar                                 │    │
 │  │                                                         │    │
-│  │      Formatos: CSV, XLSX | Máximo: 5.000 leads         │    │
+│  │      Formatos: CSV, XLSX | Máximo: 5.000 leads          │    │
 │  │                                                         │    │
 │  └─────────────────────────────────────────────────────────┘    │
 │                                                                 │
@@ -309,6 +309,8 @@ Content-Type: application/json
       "email": "joao@email.com",
       "marca": "Fiat",
       "modelo": "Strada"
+      "ano": "2005"
+      "valor_fipe": "50000"            
     }
   ]
 }

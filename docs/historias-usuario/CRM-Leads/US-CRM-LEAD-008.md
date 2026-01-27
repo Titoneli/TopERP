@@ -37,6 +37,7 @@ Importante
 | **Arquivar** | Mover lead para lista inativa |
 | **Reativar** | Restaurar lead arquivado para lista ativa |
 | **Motivo de Arquivamento** | Razão pela qual o lead foi arquivado |
+| **Data  Desarquivamento** | Até qual data o lead ficará arquivado |
 | **Lead Ativo** | Lead na fila de trabalho do consultor |
 
 ---
@@ -50,12 +51,19 @@ Nem todo lead vai converter. Leads que não têm interesse, já contrataram com 
 | Código | Motivo | Descrição |
 |--------|--------|-----------|
 | 1 | `SEM_INTERESSE` | Lead informou que não tem interesse |
-| 2 | `CONCORRENTE` | Contratou com outra empresa |
-| 3 | `DADOS_INVALIDOS` | Telefone/e-mail não funcionam |
-| 4 | `NAO_LOCALIZADO` | Não conseguiu contato após X tentativas |
-| 5 | `DUPLICADO` | Lead duplicado (manter outro) |
-| 6 | `FORA_PERFIL` | Não se enquadra no perfil de cliente |
-| 7 | `OUTROS` | Outro motivo (especificar) |
+| 2 | `CONCORRENTE` | Contratou com outra associacao |
+| 3 | `SEGURADORA` | Contratou com seguradora |
+| 4 | `REGIAO_NAO_COBERTA` | Regiào de circulação fora da area de abrangencia da Top |
+| 5 | `VALOR_NAO_COBERTO` | Valor do Veículo superior ao aceito pela Top |
+| 6 | `VEICULO_NAO_COBERTO` | Modelo do Veículo não aceito pela Top |
+| 7 | `ADESAO_ALTA` | Valor da Adesão superior ao esperado |
+| 8 | `MENSALIDADE` | Valor da Mensalidade superior ao esperado |
+| 9 | `TELEFONE_INVALIDO` | Telefone/e-mail não funcionam |
+| 10 | `NAO_LOCALIZADO` | Não conseguiu contato após X tentativas |
+| 11 | `DUPLICADO` | Lead duplicado (manter outro) |
+| 12 | `FORA_PERFIL` | Não se enquadra no perfil de cliente |
+| 13 | `TESTE` | Lead de Teste |
+| 14 | `OUTROS` | Outro motivo (especificar) |
 
 ---
 
@@ -74,18 +82,32 @@ Nem todo lead vai converter. Leads que não têm interesse, já contrataram com 
 │          │                                                      │
 │          ▼                                                      │
 │  ┌───────────────────────────────────────────────────────────┐  │
-│  │             MOTIVO DE ARQUIVAMENTO                        │  │
+│  │           MOTIVO DE ARQUIVAMENTO (14 opções)              │  │
 │  │                                                           │  │
-│  │  ○ Sem interesse     ○ Concorrente    ○ Dados inválidos   │  │
-│  │  ○ Não localizado    ○ Duplicado      ○ Fora do perfil    │  │
-│  │  ○ Outros: [__________________________________]           │  │
+│  │  ┌─────────────────────────────────────────────────────┐  │  │
+│  │  │ INTERESSE/CONTRATAÇÃO                               │  │  │
+│  │  │ ○ Sem interesse  ○ Concorrente  ○ Seguradora        │  │  │
+│  │  ├─────────────────────────────────────────────────────┤  │  │
+│  │  │ COBERTURA/POLÍTICA                                  │  │  │
+│  │  │ ○ Região não coberta  ○ Valor não coberto           │  │  │
+│  │  │ ○ Veículo não coberto ○ Fora do perfil              │  │  │
+│  │  ├─────────────────────────────────────────────────────┤  │  │
+│  │  │ VALORES                                             │  │  │
+│  │  │ ○ Adesão alta         ○ Mensalidade alta            │  │  │
+│  │  ├─────────────────────────────────────────────────────┤  │  │
+│  │  │ CONTATO                                             │  │  │
+│  │  │ ○ Telefone inválido   ○ Não localizado              │  │  │
+│  │  ├─────────────────────────────────────────────────────┤  │  │
+│  │  │ OUTROS                                              │  │  │
+│  │  │ ○ Duplicado  ○ Teste  ○ Outros: [__________]        │  │  │
+│  │  └─────────────────────────────────────────────────────┘  │  │
 │  │                                                           │  │
 │  └───────────────────────────────────────────────────────────┘  │
 │          │                                                      │
 │          ▼                                                      │
 │  ┌───────────────┐                                              │
 │  │    LEAD       │                                              │
-│  │  ARQUIVADO    │◄──────── Pode ser reativado a qualquer      │
+│  │  ARQUIVADO    │◄──────── Pode ser reativado a qualquer       │
 │  │               │          momento pelo consultor              │
 │  └───────────────┘                                              │
 │                                                                 │
@@ -209,15 +231,26 @@ Nem todo lead vai converter. Leads que não têm interesse, já contrataram com 
 │                                                                 │
 │  Por que você está arquivando este lead?                        │
 │                                                                 │
-│  ○ Sem interesse                                                │
-│  ○ Contratou com concorrente                                    │
-│  ○ Dados inválidos (telefone/e-mail não funcionam)              │
-│  ○ Não localizado (sem retorno após tentativas)                 │
-│  ○ Lead duplicado                                               │
-│  ○ Fora do perfil de cliente                                    │
-│  ● Outros                                                       │
+│  ┌─────────────────────────────────────────────────────────┐    │
+│  │ Motivo: [Selecione o motivo__________________ ▼]        │    │
+│  │                                                         │    │
+│  │  ○ Sem interesse                                        │    │
+│  │  ○ Contratou com concorrente (associação)               │    │
+│  │  ○ Contratou com seguradora                             │    │
+│  │  ○ Região não coberta                                   │    │
+│  │  ○ Valor do veículo não coberto                         │    │
+│  │  ○ Modelo do veículo não coberto                        │    │
+│  │  ○ Adesão alta (valor acima do esperado)                │    │
+│  │  ○ Mensalidade alta (valor acima do esperado)           │    │
+│  │  ○ Telefone/e-mail inválido                             │    │
+│  │  ○ Não localizado (sem retorno)                         │    │
+│  │  ○ Lead duplicado                                       │    │
+│  │  ○ Fora do perfil de cliente                            │    │
+│  │  ○ Lead de teste                                        │    │
+│  │  ● Outros (especificar)                                 │    │
+│  └─────────────────────────────────────────────────────────┘    │
 │                                                                 │
-│  Especifique: [_________________________________________]       │
+│  Observação: [______________________________________]           │
 │                                                                 │
 │  ─────────────────────────────────────────────────────────────  │
 │                                                                 │
@@ -236,6 +269,7 @@ Nem todo lead vai converter. Leads que não têm interesse, já contrataram com 
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Expandir motivos de arquivamento de 7 para 14, atualizar wireframe |
 
 ---
 
@@ -243,4 +277,4 @@ Nem todo lead vai converter. Leads que não têm interesse, já contrataram com 
 **Módulo**: CRM-Leads  
 **Fase**: 3 - Gestão Avançada e Integrações Ads  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1

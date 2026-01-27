@@ -4,6 +4,9 @@ Este documento contém os termos e definições utilizados no sistema TopERP.
 
 ## A
 
+### Arquivamento de Lead
+Processo de mover um lead para lista inativa, removendo-o da fila de atendimento. Requer seleção de um dos 14 motivos padronizados.
+
 ### Ativo
 Bem ou direito que a empresa possui e que pode ser convertido em valor monetário.
 
@@ -101,6 +104,9 @@ Conjunto de produtos fabricados ou recebidos em uma mesma ocasião.
 ### Margem de Contribuição
 Diferença entre o preço de venda e os custos variáveis de um produto.
 
+### Motivo de Arquivamento
+Razão padronizada pela qual um lead é removido da fila ativa de atendimento. O sistema oferece 14 motivos: Sem interesse, Concorrente, Seguradora, Região não coberta, Valor não coberto, Veículo não coberto, Adesão alta, Mensalidade alta, Telefone inválido, Não localizado, Duplicado, Fora do perfil, Teste e Outros.
+
 ### MVP
 Minimum Viable Product - Produto mínimo viável com funcionalidades essenciais.
 
@@ -144,6 +150,9 @@ Reserva de recursos para obrigações futuras.
 
 ### Rastreabilidade
 Capacidade de identificar a origem e o histórico de um produto.
+
+### Reativação de Lead
+Processo de restaurar um lead arquivado para a fila ativa de atendimento, retornando-o ao status anterior ao arquivamento.
 
 ### Requisição de Compra
 Solicitação interna para aquisição de materiais ou serviços.

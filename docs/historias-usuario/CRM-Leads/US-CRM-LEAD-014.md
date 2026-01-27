@@ -94,6 +94,26 @@ Com uma base de leads crescente, é essencial encontrar leads específicos rapid
 | Com E-mail | boolean | Tem e-mail cadastrado |
 | Sem Contato há | number | Dias sem interação |
 | Arquivados | boolean | Incluir/Excluir arquivados |
+| Motivo Arquivamento | multiselect | Filtrar por motivo (quando arquivados incluídos) |
+
+### Motivos de Arquivamento (para filtro)
+
+| Código | Motivo |
+|--------|--------|
+| 1 | Sem interesse |
+| 2 | Contratou com concorrente (associação) |
+| 3 | Contratou com seguradora |
+| 4 | Região não coberta |
+| 5 | Valor do veículo não coberto |
+| 6 | Modelo do veículo não coberto |
+| 7 | Adesão alta |
+| 8 | Mensalidade alta |
+| 9 | Telefone/e-mail inválido |
+| 10 | Não localizado |
+| 11 | Lead duplicado |
+| 12 | Fora do perfil |
+| 13 | Lead de teste |
+| 14 | Outros |
 
 ---
 
@@ -132,6 +152,16 @@ Com uma base de leads crescente, é essencial encontrar leads específicos rapid
 │  Score BANT: [5] até [12]                                                   │
 │  Sem contato há: [__] dias                                                  │
 │  ☐ Incluir arquivados    ☐ Apenas com veículo    ☐ Apenas com e-mail        │
+│                                                                             │
+│  MOTIVO ARQUIVAMENTO (se incluir arquivados)                                │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │ ▼ Todos os motivos                                                  │    │
+│  │   ☐ Sem interesse         ☐ Concorrente         ☐ Seguradora        │    │
+│  │   ☐ Região não coberta    ☐ Valor não coberto   ☐ Veículo não cob.  │    │
+│  │   ☐ Adesão alta           ☐ Mensalidade alta    ☐ Tel. inválido     │    │
+│  │   ☐ Não localizado        ☐ Duplicado           ☐ Fora do perfil    │    │
+│  │   ☐ Teste                 ☐ Outros                                  │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
 │                                                                             │
 │  ─────────────────────────────────────────────────────────────────────────  │
 │                                                                             │
@@ -237,6 +267,7 @@ Com uma base de leads crescente, é essencial encontrar leads específicos rapid
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Adicionar filtro por motivo de arquivamento (14 motivos) |
 
 ---
 
@@ -244,4 +275,4 @@ Com uma base de leads crescente, é essencial encontrar leads específicos rapid
 **Módulo**: CRM-Leads  
 **Fase**: 4 - Gestão de Leads  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1
