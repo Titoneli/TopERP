@@ -30,7 +30,6 @@ Importante
 |--------|---------|------------|
 | `LeadsBatchImported` | Importação concluída | Analytics, Notificações |
 | `LeadImportFailed` | Erro na importação | Logs, Alertas |
-| `LeadDuplicateDetected` | Lead já existe | Relatório de Importação |
 
 ### Linguagem Ubíqua
 | Termo | Definição |
@@ -44,13 +43,13 @@ Importante
 
 ## Contexto de Negócio
 
-A importação em massa permite que leads de campanhas externas, eventos, feiras ou bases antigas sejam centralizados no CRM. Isso agiliza o processo de prospecção e evita entrada manual de grandes volumes.
+A importação em massa permite que leads de campanhas externas, eventos, relatórios ou bases antigas sejam centralizados no CRM. Isso agiliza o processo de prospecção e evita entrada manual de grandes volumes.
 
 ### Fontes de Importação
 
 | Fonte | Formato | Cenário de Uso |
 |-------|---------|----------------|
-| Planilha Excel | .xlsx | Feiras, eventos, bases legadas |
+| Planilha Excel | .xlsx | Relatórios, eventos, bases legadas |
 | CSV | .csv | Exportações de outras ferramentas |
 | API | JSON | Integrações automatizadas |
 
@@ -129,6 +128,7 @@ A importação em massa permite que leads de campanhas externas, eventos, feiras
 | marca | text | Marca do veículo | Fiat |
 | modelo | text | Modelo do veículo | Strada |
 | ano | integer | Ano do veículo | 2023 |
+| valor_fipe | numeric | Fipe do veículo | 35.000,00 |
 | uf | text | Estado | SP |
 | cidade | text | Cidade | São Paulo |
 | observacoes | text | Notas adicionais | Interessado em plano completo |
@@ -137,8 +137,8 @@ A importação em massa permite que leads de campanhas externas, eventos, feiras
 
 ```csv
 nome,telefone,email,marca,modelo,ano,uf,cidade,observacoes
-João da Silva,(11) 99999-8888,joao@email.com,Fiat,Strada,2023,SP,São Paulo,Interessado
-Maria Santos,(21) 98888-7777,maria@email.com,Honda,Civic,2022,RJ,Rio de Janeiro,
+João da Silva,(11) 99999-8888,joao@email.com,Fiat,Strada,2023,53000,SP,São Paulo,Interessado
+Maria Santos,(21) 98888-7777,maria@email.com,Honda,Civic,2022,35000,RJ,Rio de Janeiro,
 ```
 
 ---
