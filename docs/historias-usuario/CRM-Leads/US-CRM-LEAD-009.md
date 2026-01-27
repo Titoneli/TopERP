@@ -273,13 +273,13 @@ A exportação de leads permite que gestores analisem dados em ferramentas exter
 │  📋 CAMPOS A EXPORTAR                                           │
 │                                                                 │
 │  Dados do Lead:                                                 │
-│  ☑ Nome  ☑ Telefone  ☑ E-mail  ☑ Status  ☑ Temperatura         │
+│  ☑ Nome  ☑ Telefone  ☑ E-mail  ☑ Status  ☑ Temperatura          │
 │                                                                 │
 │  Dados de Origem:                                               │
 │  ☑ Origem  ☐ UTM Source  ☐ UTM Medium  ☐ UTM Campaign           │
 │                                                                 │
 │  Dados do Veículo:                                              │
-│  ☐ Marca  ☐ Modelo  ☐ Ano  ☐ Tipo de Uso                        │
+│  ☐ Marca  ☐ Modelo  ☐ Ano  ☐ Tipo de Uso  ☐ Valor FIPE          │
 │                                                                 │
 │  Localização:                                                   │
 │  ☑ UF  ☑ Cidade                                                 │
@@ -310,6 +310,7 @@ A exportação de leads permite que gestores analisem dados em ferramentas exter
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Corrigir terminologia DDD no wireframe (UTM Source/Medium/Campaign) |
 
 ---
 
@@ -317,4 +318,4 @@ A exportação de leads permite que gestores analisem dados em ferramentas exter
 **Módulo**: CRM-Leads  
 **Fase**: 3 - Gestão Avançada e Integrações Ads  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1

@@ -51,7 +51,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 |----|-----------|--------|--------|----|-----|-------|
 | **LEAD-007** | Importar Leads em Massa (CSV/Excel/API) | ✅ Pronto | v1.0 | 8 | ⏳ | Template, mapeamento, validação |
 | **LEAD-008** | Marcar Lead como Arquivado | ✅ Pronto | v1.1 | 3 | ⏳ | 14 motivos, reativação |
-| **LEAD-009** | Exportar Leads | ✅ Pronto | v1.0 | 5 | ⏳ | CSV/XLSX, campos selecionáveis |
+| **LEAD-009** | Exportar Leads | ✅ Pronto | v1.1 | 5 | ⏳ | CSV/XLSX, terminologia DDD |
 | **LEAD-010** | Integração Facebook Lead Ads | ✅ Pronto | v1.0 | 13 | ⏳ | Webhook Meta, mapeamento campos |
 | **LEAD-011** | Integração Google Ads | ✅ Pronto | v1.0 | 13 | ⏳ | Lead Form Extensions, OAuth |
 
@@ -137,7 +137,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 - [x] US-CRM-LEAD-006 (v1.0) — Qualificar Lead BANT (score 0-12, temperaturas)
 - [x] US-CRM-LEAD-007 (v1.0) — Importar Leads em Massa (CSV/Excel/API)
 - [x] US-CRM-LEAD-008 (v1.1) — Marcar Lead como Arquivado (14 motivos)
-- [x] US-CRM-LEAD-009 (v1.0) — Exportar Leads (CSV/XLSX)
+- [x] US-CRM-LEAD-009 (v1.1) — Exportar Leads (terminologia DDD)
 - [x] US-CRM-LEAD-010 (v1.0) — Integração Facebook Lead Ads (Webhook)
 - [x] US-CRM-LEAD-011 (v1.0) — Integração Google Ads (OAuth)
 - [x] US-CRM-LEAD-012 (v1.0) — Cadastrar Lead Manualmente
