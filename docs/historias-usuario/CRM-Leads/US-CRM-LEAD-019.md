@@ -225,10 +225,13 @@ O score automático de conversão usa machine learning para prever quais leads t
 - **Quando** filtro por Score ML >= 60%
 - **Então** a lista exibe apenas leads promissores
 
-### Cenário 9 — Aproveitar enriquecimento de leads
-- **Dado que** quero leads foram enriquecidos
-- **Quando** filtro por Score ML >= 60%
-- **Então** a lista exibe apenas leads promissores
+### Cenário 9 — Score melhora com enriquecimento
+- **Dado que** um lead foi enriquecido com dados de FIPE/IBGE
+- **Quando** o score é recalculado
+- **Então** o modelo usa as features de enriquecimento (valor_fipe, região, etc.)
+- **E** a assertividade do score aumenta
+- **E** indicador "Score completo" é exibido (vs "Score parcial")
+
 ---
 
 ## Regras de Negócio
