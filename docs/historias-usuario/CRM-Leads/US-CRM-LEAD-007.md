@@ -80,7 +80,7 @@ A importação em massa permite que leads de campanhas externas, eventos, relat�
 │  │              PREVIEW E MAPEAMENTO                         │  │
 │  │  • Exibe primeiras 10 linhas                              │  │
 │  │  • Mapeia colunas do arquivo → campos do sistema          │  │
-│  │  • Define origem (cod_origem)                             │  │
+│  │  • Define origem (dom_ind_origem)                         │  │
 │  └───────────────────────────────────────────────────────────┘  │
 │          │                                                      │
 │          ▼                                                      │
@@ -150,7 +150,7 @@ Maria Santos,(21) 98888-7777,maria@email.com,Honda,Civic,2022,35000,RJ,Rio de Ja
 | Campo | Tipo | Obrigatório | Validação |
 |-------|------|-------------|-----------|
 | arquivo | file | Sim | .csv ou .xlsx, máx 10MB |
-| cod_origem | select | Sim | Código da origem (tabela dom_origem) |
+| cod_origem | select | Sim | Código da origem (grava no campo `dom_ind_origem` da tabela `crm_negociacao`) |
 | cod_colaborador | select | Não | Consultor para atribuição |
 | ignorar_duplicados | checkbox | Não | Se true, pula leads existentes |
 
@@ -333,6 +333,7 @@ Response 200:
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Padronização DDD: cod_origem grava no campo dom_ind_origem da tabela crm_negociacao |
 
 ---
 
@@ -340,4 +341,4 @@ Response 200:
 **Módulo**: CRM-Leads  
 **Fase**: 3 - Gestão Avançada e Integrações Ads  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1

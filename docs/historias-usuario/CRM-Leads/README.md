@@ -20,7 +20,7 @@ O módulo **CRM-Leads** representa o contexto de **Captação e Qualificação d
 - Localização (UF/Cidade)
 - UTM Parameters
 - **DDD** (extraído do telefone para analytics)
-- **Código de Origem** (`cod_origem`)
+- **Código de Origem** (`cod_origem`) → gravado no campo `dom_ind_origem` da tabela `crm_negociacao`
 - **Código de Colaborador** (`cod_colaborador`)
 
 ---
@@ -99,6 +99,8 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 ---
 
 ## Fontes de Captação
+
+> **Nota DDD:** O valor de `cod_origem` é armazenado no campo `dom_ind_origem` da tabela `crm_negociacao`.
 
 | Fonte | Identificador | `cod_origem` | Prioridade |
 |-------|---------------|--------------|------------|

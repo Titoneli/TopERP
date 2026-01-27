@@ -36,7 +36,7 @@ Código Fiscal de Operações e Prestações - identifica a natureza da operaç�
 Parâmetro de URL utilizado na landing page para direcionar o lead a um consultor específico.
 
 ### cod_origem
-Código que identifica a fonte/campanha de captação do lead (1=Link Direto, 2=Influencer, 3=Google Ads, etc.).
+Parâmetro de URL que identifica a fonte/campanha de captação do lead (1=Link Direto, 2=Influencer, 3=Google Ads, etc.). O valor recebido é gravado no campo `dom_ind_origem` da tabela `crm_negociacao`.
 
 ### Contas a Pagar
 Obrigações financeiras da empresa com fornecedores e terceiros.
@@ -46,6 +46,9 @@ Direitos de crédito da empresa sobre clientes e terceiros.
 
 ### Consultor
 Colaborador responsável pela comercialização de proteção veicular e atendimento de leads.
+
+### crm_negociacao
+Tabela principal do módulo CRM que armazena os dados dos leads/negociações. Contém informações como nome, telefone, email, status, origem (`dom_ind_origem`), consultor responsável e histórico de interações.
 
 ## D
 
@@ -59,7 +62,7 @@ Discagem Direta à Distância - código de área telefônica. Extraído do telef
 Redução do valor de um ativo ao longo do tempo devido ao uso ou obsolescência.
 
 ### dom_ind_origem
-Tabela de domínio que armazena os indicadores de origem dos leads. Contém os códigos padronizados para rastreabilidade de captação:
+Campo da tabela `crm_negociacao` que armazena o indicador de origem do lead. Recebe o valor do parâmetro `cod_origem` da URL. Códigos padronizados para rastreabilidade de captação:
 - 1: LINK_DIRETO
 - 2: INFLUENCER_INSTAGRAM  
 - 3: ADS_GOOGLE

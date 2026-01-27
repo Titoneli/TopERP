@@ -55,7 +55,9 @@ A landing page deve capturar parâmetros da URL para rastreabilidade e direciona
 | `utm_medium` | Meio de marketing | Não | `?utm_medium=cpc` |
 | `utm_campaign` | Nome da campanha | Não | `?utm_campaign=black_friday` |
 
-### Tabela de Códigos de Origem (dom_ind_origem)
+### Tabela de Códigos de Origem
+
+> **Nota DDD:** O parâmetro `cod_origem` recebido via URL é gravado no campo `dom_ind_origem` da tabela `crm_negociacao`.
 
 | Código | Origem | Descrição |
 |--------|--------|----------|
@@ -347,16 +349,17 @@ Esta user story é responsável apenas pela **captura** das métricas. A visuali
 | Cadastro de Colaboradores/Consultores | Interno | Disponível |
 | Cadastro de Marcas COR_MARCA / Modelos COR_MODELO, Anos Modelos | Interno | Disponível |
 | Blacklist de Telefones (Consultores) | Interno | Disponível |
-| Tabela de Origens (COR_VAL_DOMINIO) | Interno | Disponível |
+| Tabela de Origens (valores de dom_ind_origem) | Interno | Disponível |
 | Sistema de Notificações e Automações | Interno | Pendente |
 
 ---
 
 **Criado por**: Gustavo Titoneli (Product Owner)  
 **Data**: 21/01/2026  
-**Versão**: 1.0
+**Versão**: 1.1
 
 **Histórico de Alterações:**
 | Versão | Data | Alteração |
 |--------|------|----------|
 | 1.0 | 21/01/2026 | Versão inicial |
+| 1.1 | 27/01/2026 | Padronização DDD: cod_origem grava no campo dom_ind_origem da tabela crm_negociacao |

@@ -121,7 +121,7 @@ Nem todos os leads chegam por canais digitais. Consultores recebem indicações,
 |-------|------|-----------|
 | nome | text | Mín. 3 caracteres |
 | telefone | tel | Formato BR, DDD obrigatório |
-| cod_origem | select | Código da tabela de origens |
+| cod_origem | select | Código da origem (grava no campo `dom_ind_origem` da tabela `crm_negociacao`) |
 
 #### Opcionais
 
@@ -300,6 +300,7 @@ Nem todos os leads chegam por canais digitais. Consultores recebem indicações,
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Padronização DDD: cod_origem grava no campo dom_ind_origem da tabela crm_negociacao |
 
 ---
 
@@ -307,4 +308,4 @@ Nem todos os leads chegam por canais digitais. Consultores recebem indicações,
 **Módulo**: CRM-Leads  
 **Fase**: 4 - Gestão de Leads  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1

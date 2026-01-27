@@ -1,8 +1,8 @@
 # ACOMPANHAMENTO DE CONTINUIDADE — Módulo CRM-Leads
 
-**Última Atualização**: 25 de janeiro de 2026  
+**Última Atualização**: 27 de janeiro de 2026  
 **Status**: Em Desenvolvimento  
-**Versão**: 2.1
+**Versão**: 2.2
 
 ---
 
@@ -15,6 +15,7 @@ Sprint Atual: Sprint 2 - Fase 2 Captura Avançada (COMPLETA)
 Histórias Prontas para Dev: LEAD-001 a LEAD-006 (65 SP)
 Próximas: LEAD-007 a LEAD-011 (Fase 3 - Gestão Avançada + Ads)
 Status: ✅ Fase 2 Especificada (25/01/2026)
+Última Alteração: Padronização DDD - cod_origem → dom_ind_origem (crm_negociacao)
 ```
 
 ---
@@ -49,10 +50,10 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
-| **LEAD-007** | Importar Leads em Massa (CSV/Excel/API) | ✅ Pronto | v1.0 | 8 | ⏳ | Template, mapeamento, validação |
-| **LEAD-008** | Marcar Lead como Arquivado | ✅ Pronto | v1.1 | 3 | ⏳ | 14 motivos, reativação |
-| **LEAD-009** | Exportar Leads | ✅ Pronto | v1.1 | 5 | ⏳ | CSV/XLSX, terminologia DDD |
-| **LEAD-010** | Integração Facebook Lead Ads | ✅ Pronto | v1.0 | 13 | ⏳ | Webhook Meta, mapeamento campos |
+| **LEAD-007** | Importar Leads em Massa (CSV/Excel/API) | ✅ Pronto | v1.1 | 8 | ✅ | Template, mapeamento, validação, DDD |
+| **LEAD-008** | Marcar Lead como Arquivado | ✅ Pronto | v1.1 | 3 | ✅ | 14 motivos, reativação |
+| **LEAD-009** | Exportar Leads | ✅ Pronto | v1.1 | 5 | ✅ | CSV/XLSX, terminologia DDD |
+| **LEAD-010** | Integração Facebook Lead Ads | ✅ Pronto | v1.0 | 13 | ✅ | Webhook Meta, mapeamento campos |
 | **LEAD-011** | Integração Google Ads | ✅ Pronto | v1.1 | 13 | ⏳ | Lead Form Extensions, notif. push+WhatsApp |
 
 **Subtotal Fase 3**: 42 SP | Status: **✅ Especificação Completa**
@@ -63,7 +64,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
-| **LEAD-012** | Cadastrar Lead Manualmente | ✅ Pronto | v1.0 | 8 | ⏳ | Venda própria, indicação |
+| **LEAD-012** | Cadastrar Lead Manualmente | ✅ Pronto | v1.1 | 8 | ⏳ | Venda própria, indicação, DDD |
 | **LEAD-013** | Visualizar Lista de Leads | ✅ Pronto | v1.0 | 5 | ⏳ | Colunas, paginação, temperatura |
 | **LEAD-014** | Buscar e Filtrar Leads | ✅ Pronto | v1.1 | 5 | ⏳ | Filtros avançados + motivo arquiv. |
 | **LEAD-015** | Atribuir Lead a Consultor | ✅ Pronto | v1.1 | 5 | ⏳ | Manual, notif. push+WhatsApp |
@@ -129,18 +130,18 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 ### Histórias Documentadas
 
-- [x] US-CRM-LEAD-001 (v1.0) — Arquivo criado e validado
+- [x] US-CRM-LEAD-001 (v1.1) — Arquivo criado, validado, DDD padronizado
 - [x] US-CRM-LEAD-002 (v1.1) — Arquivo criado, terminologia atualizada, wireframe otimizado
 - [x] US-CRM-LEAD-003 (v1.1) — Arquivo renumerado, validado e pronto
 - [x] US-CRM-LEAD-004 (v1.3) — Formulário Embarcado (notif. push+WhatsApp)
 - [x] US-CRM-LEAD-005 (v1.3) — WhatsApp Business (notif. push+WhatsApp)
 - [x] US-CRM-LEAD-006 (v1.1) — Qualificar Lead BANT (notif. push+WhatsApp)
-- [x] US-CRM-LEAD-007 (v1.0) — Importar Leads em Massa (CSV/Excel/API)
+- [x] US-CRM-LEAD-007 (v1.1) — Importar Leads em Massa (DDD padronizado)
 - [x] US-CRM-LEAD-008 (v1.1) — Marcar Lead como Arquivado (14 motivos)
 - [x] US-CRM-LEAD-009 (v1.1) — Exportar Leads (terminologia DDD)
 - [x] US-CRM-LEAD-010 (v1.0) — Integração Facebook Lead Ads (notif. push+WhatsApp)
 - [x] US-CRM-LEAD-011 (v1.1) — Integração Google Ads (notif. push+WhatsApp)
-- [x] US-CRM-LEAD-012 (v1.0) — Cadastrar Lead Manualmente
+- [x] US-CRM-LEAD-012 (v1.1) — Cadastrar Lead Manualmente (DDD padronizado)
 - [x] US-CRM-LEAD-013 (v1.0) — Visualizar Lista de Leads
 - [x] US-CRM-LEAD-014 (v1.1) — Buscar e Filtrar Leads (filtro motivo arquivamento)
 - [x] US-CRM-LEAD-015 (v1.1) — Atribuir Lead a Consultor (notif. push+WhatsApp)
@@ -163,7 +164,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 - [x] Auditoria de Integridade (21/01/2026)
 - [x] Conformidade DDD (100%)
 - [x] Rastreabilidade (Dependências mapeadas)
-- [x] PDFs Gerados (6/20 prontos)
+- [x] PDFs Gerados (10/20 prontos)
 - [ ] QA Testing — Próximo: LEAD-001 + LEAD-002
 
 ---
