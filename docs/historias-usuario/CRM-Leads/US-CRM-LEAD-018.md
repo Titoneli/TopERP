@@ -213,12 +213,11 @@ O enriquecimento de dados permite complementar informações do lead automaticam
 | RN-002 | Re-enriquecimento bloqueado por 7 dias (configurável) |
 | RN-003 | Forçar re-enriquecimento disponível para gestores |
 | RN-004 | Job noturno processa leads não enriquecidos |
-| RN-005 | Limite de 1000 leads por execução de lote |
-| RN-006 | Falhas são registradas para retry (3 tentativas) |
-| RN-007 | Valor FIPE é informativo, não vinculante |
-| RN-008 | APIs externas têm rate limit respeitado |
-| RN-009 | Dados de enriquecimento são armazenados em histórico |
-| RN-010 | Permissão necessária: `leads.enriquecer` |
+| RN-005 | Falhas são registradas para retry (3 tentativas) |
+| RN-006 | Valor FIPE é informativo, não vinculante |
+| RN-007 | APIs externas têm rate limit respeitado |
+| RN-008 | Dados de enriquecimento são armazenados em histórico |
+| RN-009 | Permissão necessária: `leads.enriquecer` |
 
 ---
 
@@ -228,7 +227,7 @@ O enriquecimento de dados permite complementar informações do lead automaticam
 |--------------|------|--------|-----------|
 | enriquecimento_automatico | boolean | true | Enriquecer ao criar |
 | dias_reenriquecimento | integer | 7 | Dias entre enriquecimentos |
-| apis_ativas | array | ["fipe", "ibge"] | APIs habilitadas |
+| apis_ativas | array | ["fipe", "ibge", "puxacapivara", "denatran"] | APIs habilitadas |
 | limite_lote | integer | 1000 | Leads por lote |
 
 ---

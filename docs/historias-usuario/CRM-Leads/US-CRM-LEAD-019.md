@@ -45,7 +45,7 @@ Desejável
 
 ## Contexto de Negócio
 
-O score automático de conversão usa machine learning para prever quais leads têm maior probabilidade de se tornarem clientes. Isso permite priorização inteligente e alocação eficiente de recursos.
+O score automático de conversão usa machine learning para prever quais leads têm maior probabilidade de se tornarem clientes. Isso permite priorização inteligente e alocação eficiente de recursos. O enriquecimento de leads ajuda o machine learning a chegar em uma taxa de assertividade bem mais próxim do esperados.
 
 ### Diferença entre Score BANT e Score ML
 
@@ -77,6 +77,9 @@ O score automático de conversão usa machine learning para prever quais leads t
 | ddd_telefone | categorical | Médio |
 | tem_email | boolean | Médio |
 | uf | categorical | Alto |
+| enriquecido | true |
+| data_enriquecimento | timestamp |
+| fonte_enriquecimento | APIs utilizadas |
 
 ### Features do Veículo
 
@@ -85,6 +88,9 @@ O score automático de conversão usa machine learning para prever quais leads t
 | valor_fipe | numerical | Alto |
 | idade_veiculo | numerical | Médio |
 | tipo_uso | categorical | Médio |
+| enriquecido | true |
+| data_enriquecimento | timestamp |
+| fonte_enriquecimento | APIs utilizadas |
 
 ### Features de Engajamento
 
@@ -163,7 +169,7 @@ O score automático de conversão usa machine learning para prever quais leads t
 
 | Faixa | Classificação | Cor | Ação Recomendada |
 |-------|---------------|-----|------------------|
-| 0-30% | Baixa probabilidade | 🔵 Azul | Nurturing automático |
+| 0-30% | Baixa probabilidade | 🔵 Azul | Aquecimento automático |
 | 31-60% | Média probabilidade | 🟡 Amarelo | Follow-up regular |
 | 61-80% | Alta probabilidade | 🟢 Verde | Prioridade no atendimento |
 | 81-100% | Muito alta | ⭐ Dourado | Contato imediato |
@@ -198,7 +204,7 @@ O score automático de conversão usa machine learning para prever quais leads t
 ### Cenário 5 — Alerta de lead de alta probabilidade
 - **Dado que** um lead recebe score > 80%
 - **Quando** o cálculo é concluído
-- **Então** o consultor atribuído recebe notificação push e WhatsApp
+- **Então** o consultor atribuído recebe notificação Push(App CRM/ App Consultor) e WhatsApp
 - **E** mensagem: "Lead de alta conversão detectado!"
 
 ### Cenário 6 — Score com dados incompletos
