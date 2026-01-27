@@ -136,20 +136,21 @@ A atribuição correta de leads é crucial para garantir que cada prospect seja 
 - **Dado que** visualizo um lead sem atribuição
 - **Quando** clico em "Atribuir" e seleciono um consultor
 - **Então** o lead é atribuído ao consultor
-- **E** o consultor recebe notificação
+- **E** o consultor recebe notificação push e WhatsApp
 - **E** evento `LeadAssigned` é disparado
 
 ### Cenário 2 — Atribuição em massa
 - **Dado que** seleciono 10 leads sem atribuição
 - **Quando** clico em "Atribuir" e seleciono um consultor
 - **Então** os 10 leads são atribuídos ao consultor
-- **E** o consultor recebe notificação resumida
+- **E** o consultor recebe notificação resumida (push e WhatsApp)
 
 ### Cenário 3 — Reatribuição de lead
 - **Dado que** um lead está atribuído ao consultor A
 - **Quando** o reatribuo ao consultor B
 - **Então** o consultor B passa a ser responsável
-- **E** o consultor A é notificado da remoção
+- **E** o consultor B recebe notificação push e WhatsApp
+- **E** o consultor A é notificado da remoção (push e WhatsApp)
 - **E** histórico de atribuição é mantido
 
 ### Cenário 4 — Ver carga de trabalho
@@ -197,7 +198,7 @@ A atribuição correta de leads é crucial para garantir que cada prospect seja 
 | RN-002 | Consultor só pode reatribuir com permissão especial |
 | RN-003 | Atribuição só para consultores ativos |
 | RN-004 | Histórico de atribuições é mantido |
-| RN-005 | Notificação push enviada ao consultor |
+| RN-005 | Notificação push e WhatsApp enviada ao consultor |
 | RN-006 | Atribuição em massa limitada a 100 leads |
 | RN-007 | Lead pode ter apenas um consultor ativo |
 | RN-008 | Remoção de atribuição volta lead para pool |
@@ -269,6 +270,7 @@ A atribuição correta de leads é crucial para garantir que cada prospect seja 
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Notificação consultor: push e WhatsApp |
 
 ---
 
@@ -276,4 +278,4 @@ A atribuição correta de leads é crucial para garantir que cada prospect seja 
 **Módulo**: CRM-Leads  
 **Fase**: 4 - Gestão de Leads  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1

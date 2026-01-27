@@ -198,7 +198,7 @@ O score automático de conversão usa machine learning para prever quais leads t
 ### Cenário 5 — Alerta de lead de alta probabilidade
 - **Dado que** um lead recebe score > 80%
 - **Quando** o cálculo é concluído
-- **Então** o consultor atribuído recebe notificação
+- **Então** o consultor atribuído recebe notificação push e WhatsApp
 - **E** mensagem: "Lead de alta conversão detectado!"
 
 ### Cenário 6 — Score com dados incompletos
@@ -229,7 +229,7 @@ O score automático de conversão usa machine learning para prever quais leads t
 | RN-002 | Score recalculado quando features mudam |
 | RN-003 | Score não substitui BANT, complementa |
 | RN-004 | Leads sem veículo recebem score parcial |
-| RN-005 | Score > 80% gera notificação ao consultor |
+| RN-005 | Score > 80% gera notificação ao consultor (push e WhatsApp) |
 | RN-006 | Modelo retreinado mensalmente com novos dados |
 | RN-007 | Score expresso em porcentagem (0-100%) |
 | RN-008 | Histórico de scores é mantido |
@@ -316,6 +316,7 @@ O score automático de conversão usa machine learning para prever quais leads t
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Notificação consultor: push e WhatsApp |
 
 ---
 
@@ -323,4 +324,4 @@ O score automático de conversão usa machine learning para prever quais leads t
 **Módulo**: CRM-Leads  
 **Fase**: 5 - Integrações e Inteligência  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1

@@ -94,7 +94,7 @@ O Google Ads Lead Form Extensions permite capturar leads diretamente nos resulta
 │          ▼                                                      │
 │  ┌───────────────┐                                              │
 │  │  LEAD CRIADO  │                                              │
-│  │  cod_origem=3 │ (ADS_GOOGLE)                                 │
+│  │  cod_origem   │ (dom_ind_origem) = 3 (ADS_GOOGLE)            │
 │  │  Status: NOVO │                                              │
 │  └───────────────┘                                              │
 │          │                                                      │
@@ -211,7 +211,7 @@ O Google Ads Lead Form Extensions permite capturar leads diretamente nos resulta
 - **Dado que** a integração está configurada e ativa
 - **Quando** um usuário preenche formulário no Google Ads
 - **Então** o webhook é recebido pelo TopCRM
-- **E** um novo lead é criado com cod_origem = 3
+- **E** um novo lead é criado com cod_origem(dom_ind_origem) = 3
 - **E** evento `LeadCreatedFromGoogle` é disparado
 
 ### Cenário 2 — Mapeamento de campos
@@ -246,7 +246,7 @@ O Google Ads Lead Form Extensions permite capturar leads diretamente nos resulta
 ### Cenário 7 — Notificação de novo lead
 - **Dado que** um lead foi criado via Google
 - **Quando** há consultor atribuído
-- **Então** consultor recebe notificação push
+- **Então** consultor recebe notificação push e WhatsApp
 - **E** mensagem: "Novo lead do Google: [nome]"
 
 ### Cenário 8 — Dashboard de integração
@@ -268,7 +268,7 @@ O Google Ads Lead Form Extensions permite capturar leads diretamente nos resulta
 
 | ID | Regra |
 |----|-------|
-| RN-001 | Lead criado via Google recebe cod_origem = 3 |
+| RN-001 | Lead criado via Google recebe cod_origem(dom_ind_origem) = 3 |
 | RN-002 | IDs de campanha/grupo/formulário são armazenados |
 | RN-003 | Palavra-chave e GCLID são registrados |
 | RN-004 | Telefone é formatado para padrão brasileiro |
@@ -355,6 +355,7 @@ Authentication: OAuth 2.0
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 1.1 | PO | Notificação consultor: push e WhatsApp |
 
 ---
 
@@ -362,4 +363,4 @@ Authentication: OAuth 2.0
 **Módulo**: CRM-Leads  
 **Fase**: 3 - Gestão Avançada e Integrações Ads  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 1.1

@@ -90,7 +90,7 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
 │   ✓ Valida origem (CORS + token)                                    │
-│   ✓ Registra cod_origem = 12 (FORMULARIO_EMBARCADO)                 │
+│   ✓ Registra cod_origem(dom_ind_origem) = 12 (FORMULARIO_EMBARCADO) │
 │   ✓ Registra cod_parceiro (identificador do parceiro)               │
 │   ✓ Cria Lead com status NOVO                                       │
 │   ✓ Retorna confirmação ao parceiro                                 │
@@ -170,11 +170,11 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 - **Dado que** um parceiro incorporou o iframe em seu site
 - **Quando** um visitante preenche nome, telefone e e-mail válidos
 - **E** clica em "Quero uma Cotação"
-- **Então** o lead é criado no CRM com `cod_origem = 12` (FORMULARIO_EMBARCADO)
+- **Então** o lead é criado no CRM com `cod_origem(dom_ind_origem) = 12` (FORMULARIO_EMBARCADO)
 - **E** o `cod_parceiro` é registrado para rastreabilidade
 - **E** o `cod_colaborador` é registrado para vínculo a um consultor (se informado)
 - **E** exibe mensagem de sucesso no iframe
-- **E** é acionada uma automação interna para notificar o consultor e o parceiro sobre a criação do lead
+- **E** é acionada automação para notificar o consultor (push e WhatsApp) e o parceiro (webhook)
 ### Cenário 2 — Embed via Widget JavaScript
 - **Dado que** um parceiro incorporou o widget JS em seu site
 - **Quando** o script carrega
@@ -185,14 +185,14 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 - **Dado que** o parceiro configurou `redirect_url`
 - **Quando** o lead é criado com sucesso
 - **Então** o visitante é redirecionado para a URL configurada
-- **E** é acionada uma automação interna para notificar o consultor e o parceiro sobre a criação do lead
+- **E** é acionada automação para notificar o consultor (push e WhatsApp) e o parceiro (webhook)
 
 ### Cenário 4 — Webhook de notificação
 - **Dado que** o parceiro configurou `callback_url`
 - **Quando** o lead é criado com sucesso
 - **Então** uma notificação POST é enviada para o webhook
 - **E** contém o ID do lead e timestamp
-- **E** é acionada uma automação interna para notificar o consultor e o parceiro sobre a criação do lead
+- **E** é acionada automação para notificar o consultor (push e WhatsApp)
 
 ---
 
@@ -202,7 +202,7 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 |----|-------|
 | RN-001 | Token de parceiro é obrigatório e validado em todas as requisições |
 | RN-002 | Cada parceiro tem um token único e intransferível |
-| RN-003 | Lead criado via embed recebe `cod_origem = 12` (FORMULARIO_EMBARCADO) |
+| RN-003 | Lead criado via embed recebe `cod_origem(dom_ind_origem) = 12` (FORMULARIO_EMBARCADO) |
 | RN-004 | O `cod_parceiro` é registrado para comissionamento futuro |
 | RN-005 | O `cod_colaborador` é registrado no lead para direcionamento caso exista |
 | RN-006 | DDD é extraído e armazenado automaticamente |
@@ -409,11 +409,12 @@ A captura via formulário embarcado permite expandir os canais de aquisição de
 
 **Criado por**: Gustavo Titoneli (Product Owner)  
 **Data**: 23/01/2026  
-**Versão**: 1.2
+**Versão**: 1.3
 
 **Histórico de Alterações:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 1.3 | 27/01/2026 | Notificação consultor: push e WhatsApp |
 | 1.2 | 25/01/2026 | Correção ortográfica: automação, situação, possíveis; espaçamento RN-005 |
 | 1.1 | 25/01/2026 | Revisão DDD: Bounded Context, Domain Events, Linguagem Ubíqua, correção typos |
 | 1.0 | 23/01/2026 | Versão inicial |

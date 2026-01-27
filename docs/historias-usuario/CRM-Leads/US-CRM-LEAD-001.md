@@ -49,13 +49,13 @@ A landing page deve capturar parâmetros da URL para rastreabilidade e direciona
 
 | Parâmetro | Descrição | Obrigatório | Exemplo |
 |-----------|-----------|-------------|----------|
-| `cod_origem` | Código da origem/campanha do lead | Não | `?cod_origem=2` |
+| `cod_origem` | Código da origem/campanha do lead (FK → dom_ind_origem) | Não | `?cod_origem=2` |
 | `cod_colaborador` | Código do consultor para direcionamento | Não | `?cod_colaborador=1234` |
 | `utm_source` | Fonte de tráfego (padrão UTM) | Não | `?utm_source=google` |
 | `utm_medium` | Meio de marketing | Não | `?utm_medium=cpc` |
 | `utm_campaign` | Nome da campanha | Não | `?utm_campaign=black_friday` |
 
-### Tabela de Códigos de Origem
+### Tabela de Códigos de Origem (dom_ind_origem)
 
 | Código | Origem | Descrição |
 |--------|--------|----------|
@@ -70,6 +70,7 @@ A landing page deve capturar parâmetros da URL para rastreabilidade e direciona
 | 9 | `APP_ASS_INDICACAO` | Indicação de um associado do consultor via app do associado |
 | 10 | `VENDA_PROPRIA` | Lead cadastrado pelo próprio consultor diretamente no CRM |
 | 11 | `AUTOMACAO` | Lead cadastrado via automação |
+| 12 | `FORMULARIO_EMBARCADO` | Formulário embarcado em site parceiro |
 | 99 | `OUTROS` | Outras origens não mapeadas |
 
 **Exemplo de URL completa:**
@@ -152,7 +153,7 @@ https://crm.toptechbr.com.br/cotacao?cod_origem=2&cod_colaborador=1234&utm_campa
 ### Cenário 6 — Captura de origem via URL
 - **Dado que** acesso a landing page com `?cod_origem=2`
 - **Quando** completo a Etapa 1
-- **Então** o lead é criado com `cod_origem = 2` (Influencer Instagram)
+- **Então** o lead é criado com `cod_origem(dom_ind_origem) = 2` (Influencer Instagram)
 
 ### Cenário 7 — Direcionamento para consultor específico
 - **Dado que** acesso a landing page com `?cod_colaborador=1234`

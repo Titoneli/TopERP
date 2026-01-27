@@ -58,6 +58,22 @@ Discagem Direta à Distância - código de área telefônica. Extraído do telef
 ### Depreciação
 Redução do valor de um ativo ao longo do tempo devido ao uso ou obsolescência.
 
+### dom_ind_origem
+Tabela de domínio que armazena os indicadores de origem dos leads. Contém os códigos padronizados para rastreabilidade de captação:
+- 1: LINK_DIRETO
+- 2: INFLUENCER_INSTAGRAM  
+- 3: ADS_GOOGLE
+- 4: ADS_META
+- 5: WHATSAPP
+- 6: INDICACAO
+- 7: CONSULTOR_PROPRIO
+- 8: APP_CONSULTOR
+- 9: APP_ASS_INDICACAO
+- 10: VENDA_PROPRIA
+- 11: AUTOMACAO
+- 12: FORMULARIO_EMBARCADO
+- 99: OUTROS
+
 ## E
 
 ### ERP

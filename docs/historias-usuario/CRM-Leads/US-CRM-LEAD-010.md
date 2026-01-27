@@ -94,7 +94,7 @@ O Facebook Lead Ads permite capturar leads diretamente no feed do Facebook/Insta
 │          ▼                                                      │
 │  ┌───────────────┐                                              │
 │  │  LEAD CRIADO  │                                              │
-│  │  cod_origem=4 │ (ADS_META)                                   │
+│  │  cod_origem   │ (dom_ind_origem) = 4 (ADS_META)              │
 │  │  Status: NOVO │                                              │
 │  └───────────────┘                                              │
 │          │                                                      │
@@ -216,7 +216,7 @@ O Facebook Lead Ads permite capturar leads diretamente no feed do Facebook/Insta
 - **Quando** um usuário preenche formulário no Facebook Lead Ads
 - **Então** o webhook é recebido pelo TopCRM
 - **E** os dados do lead são buscados via Graph API
-- **E** um novo lead é criado com cod_origem = 4
+- **E** um novo lead é criado com cod_origem(dom_ind_origem) = 4
 
 ### Cenário 2 — Mapeamento de campos
 - **Dado que** recebo dados do Meta
@@ -251,7 +251,7 @@ O Facebook Lead Ads permite capturar leads diretamente no feed do Facebook/Insta
 ### Cenário 7 — Notificação de novo lead
 - **Dado que** um lead foi criado via Meta
 - **Quando** há consultor atribuído
-- **Então** consultor recebe notificação push
+- **Então** consultor recebe notificação push e whatsapp 
 - **E** mensagem: "Novo lead do Facebook: [nome]"
 
 ### Cenário 8 — Dashboard de integração
@@ -273,7 +273,7 @@ O Facebook Lead Ads permite capturar leads diretamente no feed do Facebook/Insta
 
 | ID | Regra |
 |----|-------|
-| RN-001 | Lead criado via Meta recebe cod_origem = 4 |
+| RN-001 | Lead criado via Meta recebe cod_origem(dom_ind_origem) = 4 |
 | RN-002 | IDs de campanha/anúncio/formulário são armazenados |
 | RN-003 | Telefone é formatado para padrão brasileiro |
 | RN-004 | DDD é extraído automaticamente do telefone |
@@ -343,15 +343,15 @@ Verify Token: [token_configurado]
 │                                                                 │
 │  📋 ÚLTIMOS LEADS                                               │
 │                                                                 │
-│  │ Nome           │ Telefone      │ Campanha      │ Data       │
-│  │────────────────│───────────────│───────────────│────────────│
-│  │ João Silva     │ (11) 99999... │ Black Friday  │ 25/01 10:30│
-│  │ Maria Santos   │ (21) 98888... │ Verão 2026    │ 25/01 10:15│
-│  │ Pedro Oliveira │ (31) 97777... │ Black Friday  │ 25/01 09:45│
+│  │ Nome           │ Telefone      │ Campanha      │ Data        │
+│  │────────────────│───────────────│───────────────│──────────── │
+│  │ João Silva     │ (11) 99999... │ Black Friday  │ 25/01 10:30 │
+│  │ Maria Santos   │ (21) 98888... │ Verão 2026    │ 25/01 10:15 │
+│  │ Pedro Oliveira │ (31) 97777... │ Black Friday  │ 25/01 09:45 │
 │                                                                 │
 │  ─────────────────────────────────────────────────────────────  │
 │                                                                 │
-│  [🔄 Reconectar]  [⚙️ Configurar Campos]  [📊 Ver Relatório]    │
+│  [🔄 Reconectar]  [⚙️ Configurar Campos]  [📊 Ver Relatório]     │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```

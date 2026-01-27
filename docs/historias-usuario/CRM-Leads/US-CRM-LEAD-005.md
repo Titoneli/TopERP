@@ -240,8 +240,8 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 - **Quando** clico no botão WhatsApp
 - **Então** abre conversa com o **número pessoal do consultor**
 - **E** a conversa é DIRETA (sem chatbot)
-- **E** ao enviar primeira mensagem, um lead é criado com `cod_origem = 5` e `cod_colaborador` preenchido
-- **E** o consultor é notificado sobre o novo lead
+- **E** ao enviar primeira mensagem, um lead é criado com `cod_origem(dom_ind_origem) = 5` e `cod_colaborador` preenchido
+- **E** o consultor é notificado sobre o novo lead (push e WhatsApp)
 
 ### Cenário 1B — Captura via Link Direto TopCRM (Chatbot)
 - **Dado que** acesso a página principal do TopCRM
@@ -249,7 +249,7 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 - **Então** abre conversa com o **número oficial da TopBrasil**
 - **E** o chatbot inicia o fluxo de qualificação
 - **Quando** respondo nome, e-mail e estado solicitados pelo chatbot
-- **Então** um lead é criado com `cod_origem = 5` e `cod_colaborador = NULL`
+- **Então** um lead é criado com `cod_origem(dom_ind_origem) = 5` e `cod_colaborador = NULL`
 - **E** o lead entra na fila de distribuição
 
 ### Cenário 2 — Telefone capturado automaticamente
@@ -312,7 +312,7 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 |----|-------|
 | RN-001 | Telefone é capturado automaticamente do número do WhatsApp |
 | RN-002 | DDD é extraído do telefone para analytics regional |
-| RN-003 | Lead via WhatsApp recebe `cod_origem = 5` |
+| RN-003 | Lead via WhatsApp recebe `cod_origem(dom_ind_origem) = 5` |
 | RN-004 | Lead via Landing Page Exclusiva recebe `cod_colaborador` do consultor |
 | RN-005 | Validação contra blacklist de consultores é obrigatória |
 | RN-006 | Lead é criado mesmo em caso de abandono (dados parciais) |
@@ -513,7 +513,7 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 - [ ] Fluxo de chatbot implementado (nome → e-mail → placa/marca/modelo → cidade/estado)
 - [ ] Validação de telefone contra blacklist funcionando
 - [ ] Extração automática de DDD implementada
-- [ ] Lead criado no CRM com `cod_origem = 5`
+- [ ] Lead criado no CRM com `cod_origem(dom_ind_origem) = 5`
 - [ ] Tratamento de abandono após 24h
 - [ ] Transferência para atendente humano funcionando
 - [ ] Templates de mensagem aprovados pela Meta ou utilizar EvolutionAPI/Similar
@@ -548,11 +548,12 @@ O WhatsApp é o principal canal de comunicação no Brasil, com mais de 120 milh
 
 **Criado por**: Gustavo Titoneli (Product Owner)  
 **Data**: 23/01/2026  
-**Versão**: 1.2
+**Versão**: 1.3
 
 **Histórico de Alterações:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 1.3 | 27/01/2026 | Notificação consultor: push e WhatsApp |
 | 1.2 | 25/01/2026 | Clarificação dos 2 modos: MODO 1 (número consultor, conversa direta) vs MODO 2 (número TopBrasil, chatbot); cenários de aceitação separados por modo |
 | 1.1 | 25/01/2026 | Revisão DDD: Bounded Context, Domain Events, Linguagem Ubíqua; correção de typos e RN duplicada |
 | 1.0 | 23/01/2026 | Versão inicial |

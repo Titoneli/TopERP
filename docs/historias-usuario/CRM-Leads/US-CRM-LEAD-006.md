@@ -197,7 +197,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 - **Quando** a qualificação é salva
 - **Então** o lead recebe temperatura `QUENTE` (dom_ind_temperatura)
 - **E** aparece no topo da minha fila de atendimento
-- **E** recebo notificação: "Lead quente! Contate imediatamente"
+- **E** recebo notificação push e WhatsApp: "Lead quente! Contate imediatamente"
 
 ### Cenário 3 — Lead frio (score 0-4)
 - **Dado que** qualifiquei um lead com score 3
@@ -246,7 +246,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 | RN-006 | Lead pode ser requalificado a qualquer momento |
 | RN-007 | Qualificação parcial é permitida (mínimo 3 critérios) |
 | RN-008 | Data e consultor são registrados automaticamente |
-| RN-009 | Lead QUENTE notifica consultor imediatamente |
+| RN-009 | Lead QUENTE notifica consultor imediatamente (push e WhatsApp) |
 | RN-010 | Lead FRIO entra em fluxo de nurturing automático |
 
 ---
@@ -259,7 +259,7 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 | Requalificar | Consultor edita BANT | Nova qualificação, histórico mantido |
 | Filtrar por Temperatura (dom_ind_temperatura) | Seleção de filtro | Lista filtrada |
 | Ordenar por Score | Click no header | Lista ordenada |
-| Notificar | Lead QUENTE qualificado | Push para consultor |
+| Notificar | Lead QUENTE qualificado | Push e WhatsApp para consultor |
 | Iniciar Nurturing | Lead FRIO qualificado | Fluxo automático |
 
 ---
@@ -404,9 +404,10 @@ A qualificação BANT (Budget, Authority, Need, Timeline) é uma metodologia con
 
 **Criado por**: Gustavo Titoneli (Product Owner)  
 **Data**: 23/01/2026  
-**Versão**: 1.0
+**Versão**: 1.1
 
 **Histórico de Alterações:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 1.1 | 27/01/2026 | Notificação consultor: push e WhatsApp |
 | 1.0 | 23/01/2026 | Versão inicial |

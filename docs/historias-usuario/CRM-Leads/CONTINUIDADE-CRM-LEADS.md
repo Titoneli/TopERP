@@ -37,9 +37,9 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
-| **LEAD-004** | Captura via Formulário Embarcado | ✅ Pronto | v1.2 | 8 | ✅ | iframe/widget, token parceiro, CORS |
-| **LEAD-005** | Captura via WhatsApp Business | ✅ Pronto | v1.2 | 13 | ✅ | 2 modos: Landing Page + Link Direto |
-| **LEAD-006** | Qualificar Lead (BANT) | ✅ Pronto | v1.0 | 5 | ✅ | Score 0-12, temperatura FRIO/MORNO/QUENTE |
+| **LEAD-004** | Captura via Formulário Embarcado | ✅ Pronto | v1.3 | 8 | ✅ | iframe/widget, notif. push+WhatsApp |
+| **LEAD-005** | Captura via WhatsApp Business | ✅ Pronto | v1.3 | 13 | ✅ | 2 modos, notif. push+WhatsApp |
+| **LEAD-006** | Qualificar Lead (BANT) | ✅ Pronto | v1.1 | 5 | ✅ | Score 0-12, notif. push+WhatsApp |
 
 **Subtotal Fase 2**: 26 SP | Status: **✅ Especificação Completa**
 
@@ -53,7 +53,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 | **LEAD-008** | Marcar Lead como Arquivado | ✅ Pronto | v1.1 | 3 | ⏳ | 14 motivos, reativação |
 | **LEAD-009** | Exportar Leads | ✅ Pronto | v1.1 | 5 | ⏳ | CSV/XLSX, terminologia DDD |
 | **LEAD-010** | Integração Facebook Lead Ads | ✅ Pronto | v1.0 | 13 | ⏳ | Webhook Meta, mapeamento campos |
-| **LEAD-011** | Integração Google Ads | ✅ Pronto | v1.0 | 13 | ⏳ | Lead Form Extensions, OAuth |
+| **LEAD-011** | Integração Google Ads | ✅ Pronto | v1.1 | 13 | ⏳ | Lead Form Extensions, notif. push+WhatsApp |
 
 **Subtotal Fase 3**: 42 SP | Status: **✅ Especificação Completa**
 
@@ -66,7 +66,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 | **LEAD-012** | Cadastrar Lead Manualmente | ✅ Pronto | v1.0 | 8 | ⏳ | Venda própria, indicação |
 | **LEAD-013** | Visualizar Lista de Leads | ✅ Pronto | v1.0 | 5 | ⏳ | Colunas, paginação, temperatura |
 | **LEAD-014** | Buscar e Filtrar Leads | ✅ Pronto | v1.1 | 5 | ⏳ | Filtros avançados + motivo arquiv. |
-| **LEAD-015** | Atribuir Lead a Consultor | ✅ Pronto | v1.0 | 5 | ⏳ | Manual, carga trabalho |
+| **LEAD-015** | Atribuir Lead a Consultor | ✅ Pronto | v1.1 | 5 | ⏳ | Manual, notif. push+WhatsApp |
 | **LEAD-016** | Editar Dados do Lead | ✅ Pronto | v1.0 | 5 | ⏳ | Histórico alterações |
 | **LEAD-017** | Visualizar Detalhes do Lead | ✅ Pronto | v1.1 | 5 | ⏳ | Timeline, lead arquivado |
 
@@ -79,7 +79,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
 | **LEAD-018** | Enriquecimento de Dados (APIs externas) | ✅ Pronto | v1.0 | 8 | ⏳ | FIPE, IBGE, automático |
-| **LEAD-019** | Score Automático de Lead (ML) | ✅ Pronto | v1.0 | 8 | ⏳ | Gradient Boosting, 0-100% |
+| **LEAD-019** | Score Automático de Lead (ML) | ✅ Pronto | v1.1 | 8 | ⏳ | ML, notif. push+WhatsApp |
 | **LEAD-020** | Detecção de Lead Duplicado | ✅ Pronto | v1.0 | 5 | ⏳ | Match exato/fuzzy, mesclagem |
 
 **Subtotal Fase 5**: 21 SP | Status: **✅ Especificação Completa**
@@ -132,22 +132,22 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 - [x] US-CRM-LEAD-001 (v1.0) — Arquivo criado e validado
 - [x] US-CRM-LEAD-002 (v1.1) — Arquivo criado, terminologia atualizada, wireframe otimizado
 - [x] US-CRM-LEAD-003 (v1.1) — Arquivo renumerado, validado e pronto
-- [x] US-CRM-LEAD-004 (v1.2) — Formulário Embarcado (iframe/widget, token parceiro)
-- [x] US-CRM-LEAD-005 (v1.2) — WhatsApp Business (2 modos: Landing + Link Direto)
-- [x] US-CRM-LEAD-006 (v1.0) — Qualificar Lead BANT (score 0-12, temperaturas)
+- [x] US-CRM-LEAD-004 (v1.3) — Formulário Embarcado (notif. push+WhatsApp)
+- [x] US-CRM-LEAD-005 (v1.3) — WhatsApp Business (notif. push+WhatsApp)
+- [x] US-CRM-LEAD-006 (v1.1) — Qualificar Lead BANT (notif. push+WhatsApp)
 - [x] US-CRM-LEAD-007 (v1.0) — Importar Leads em Massa (CSV/Excel/API)
 - [x] US-CRM-LEAD-008 (v1.1) — Marcar Lead como Arquivado (14 motivos)
 - [x] US-CRM-LEAD-009 (v1.1) — Exportar Leads (terminologia DDD)
-- [x] US-CRM-LEAD-010 (v1.0) — Integração Facebook Lead Ads (Webhook)
-- [x] US-CRM-LEAD-011 (v1.0) — Integração Google Ads (OAuth)
+- [x] US-CRM-LEAD-010 (v1.0) — Integração Facebook Lead Ads (notif. push+WhatsApp)
+- [x] US-CRM-LEAD-011 (v1.1) — Integração Google Ads (notif. push+WhatsApp)
 - [x] US-CRM-LEAD-012 (v1.0) — Cadastrar Lead Manualmente
 - [x] US-CRM-LEAD-013 (v1.0) — Visualizar Lista de Leads
 - [x] US-CRM-LEAD-014 (v1.1) — Buscar e Filtrar Leads (filtro motivo arquivamento)
-- [x] US-CRM-LEAD-015 (v1.0) — Atribuir Lead a Consultor
+- [x] US-CRM-LEAD-015 (v1.1) — Atribuir Lead a Consultor (notif. push+WhatsApp)
 - [x] US-CRM-LEAD-016 (v1.0) — Editar Dados do Lead
 - [x] US-CRM-LEAD-017 (v1.1) — Visualizar Detalhes do Lead (wireframe arquivado)
 - [x] US-CRM-LEAD-018 (v1.0) — Enriquecimento de Dados (FIPE, IBGE)
-- [x] US-CRM-LEAD-019 (v1.0) — Score Automático de Lead (ML)
+- [x] US-CRM-LEAD-019 (v1.1) — Score Automático de Lead (notif. push+WhatsApp)
 - [x] US-CRM-LEAD-020 (v1.0) — Detecção de Lead Duplicado
 
 ### Artefatos de Suporte
