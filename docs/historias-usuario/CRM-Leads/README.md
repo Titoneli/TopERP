@@ -62,22 +62,22 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 **Subtotal Fase 3**: 42 SP | **Status**: ✅ Completa
 
-### Fase 4: ATRIBUIÇÃO E CADASTRO ⏳
+### Fase 4: ATRIBUIÇÃO E CADASTRO ✅
 | ID | História | Status | SP | Prioridade |
 |----|----------|--------|----|------------|
-| LEAD-012 | Cadastrar Lead Manualmente | ✅ Pronto | 8 | Essencial |
-| LEAD-015 | Atribuir Lead a Consultor | ✅ Pronto | 5 | Essencial |
+| [LEAD-012](US-CRM-LEAD-012.md) | Cadastrar Lead Manualmente | ✅ Pronto | 8 | Essencial |
+| [LEAD-013](US-CRM-LEAD-013.md) | Atribuir Lead a Consultor | ✅ Pronto | 5 | Essencial |
 
 **Subtotal Fase 4**: 13 SP | **Status**: ✅ Completa
 
 > **Nota DDD:** As histórias de Visualização, Busca/Filtro e Edição de Leads foram movidas para o módulo **CRM-Funil-Vendas** (FUN-020 a FUN-023), pois pertencem ao contexto de gestão do pipeline de vendas.
 
-### Fase 5: INTELIGÊNCIA E IA ⏳
+### Fase 5: INTELIGÊNCIA E IA ✅
 | ID | História | Status | SP | Prioridade |
-|----|----------|--------|----|-----------|
-| LEAD-018 | Enriquecimento de Dados (APIs externas) | ✅ Pronto | 8 | Desejável |
-| LEAD-019 | Score Automático de Lead | ✅ Pronto | 8 | Desejável |
-| LEAD-020 | Detecção de Lead Duplicado | ✅ Pronto | 5 | Desejável |
+|----|----------|--------|----|----------|
+| [LEAD-014](US-CRM-LEAD-014.md) | Enriquecimento de Dados (APIs externas) | ✅ Pronto | 8 | Desejável |
+| [LEAD-015](US-CRM-LEAD-015.md) | Score Automático de Lead (ML) | ✅ Pronto | 8 | Desejável |
+| [LEAD-016](US-CRM-LEAD-016.md) | Detecção de Lead Duplicado | ✅ Pronto | 5 | Desejável |
 
 **Subtotal Fase 5**: 21 SP | **Status**: ✅ Completa
 
@@ -90,11 +90,11 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 | 1 | Captação e Comparação | LEAD-001 a LEAD-003 | 39 | ✅ Completa |
 | 2 | Captura Avançada | LEAD-004 a LEAD-006 | 26 | ✅ Completa |
 | 3 | Gestão Avançada + Integrações | LEAD-007 a LEAD-011 | 42 | ✅ Completa |
-| 4 | Atribuição e Cadastro | LEAD-012, LEAD-015 | 13 | ✅ Completa |
-| 5 | Inteligência e IA | LEAD-018 a LEAD-020 | 21 | ✅ Completa |
+| 4 | Atribuição e Cadastro | LEAD-012, LEAD-013 | 13 | ✅ Completa |
+| 5 | Inteligência e IA | LEAD-014 a LEAD-016 | 21 | ✅ Completa |
 | **TOTAL** | | **16 histórias** | **141 SP** | **141 SP prontos** |
 
-> **Histórias movidas para CRM-Funil-Vendas:** LEAD-013, LEAD-014, LEAD-016, LEAD-017 → FUN-020, FUN-021, FUN-022, FUN-023 (20 SP)
+> **Histórias no CRM-Funil-Vendas:** FUN-020 a FUN-023 (20 SP) - Visualizar, Buscar, Filtrar e Editar Negociações
 
 ---
 
@@ -170,12 +170,13 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 ---
 
-**Versão**: 2.5  
+**Versão**: 2.6  
 **Atualizado em**: 27/01/2026
 
 **Histórico:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 2.6 | 27/01/2026 | Renumeração sequencial: LEAD-015→013, LEAD-018→014, LEAD-019→015, LEAD-020→016 |
 | 2.5 | 27/01/2026 | DDD: Mover LEAD-013, 014, 016, 017 para CRM-Funil-Vendas (FUN-020 a 023). Total: 16 histórias / 141 SP |
 | 2.4 | 25/01/2026 | Correção DDD: Fase 3 (LEAD-007 a 011), Fase 4 (LEAD-012 a 017) em ordem sequencial |
 | 2.3 | 25/01/2026 | Renumeração: Gestão de Leads (Fase 4: LEAD-012 a 017), Inteligência/IA (Fase 5: LEAD-018 a 020) |

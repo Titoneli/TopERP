@@ -1,4 +1,4 @@
-# US-CRM-LEAD-018 — Enriquecimento de Dados (APIs Externas)
+# US-CRM-LEAD-014 — Enriquecimento de Dados (APIs Externas)
 
 ## História de Usuário
 
@@ -275,11 +275,12 @@ O enriquecimento de dados permite complementar informações do lead automaticam
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 2.0 | PO | Renumeração: LEAD-018 → LEAD-014 (DDD) |
 
 ---
 
-**Identificador**: US-CRM-LEAD-018  
+**Identificador**: US-CRM-LEAD-014  
 **Módulo**: CRM-Leads  
-**Fase**: 5 - Integrações e Inteligência  
+**Fase**: 5 - Inteligência e IA  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 2.0

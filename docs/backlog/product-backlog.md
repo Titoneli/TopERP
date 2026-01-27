@@ -120,16 +120,16 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
 | US-CRM-LEAD-012 | Cadastrar Lead Manualmente | Essencial | ✅ Pronto | 8 |
-| US-CRM-LEAD-015 | Atribuir Lead a Consultor | Essencial | ✅ Pronto | 5 |
+| US-CRM-LEAD-013 | Atribuir Lead a Consultor | Essencial | ✅ Pronto | 5 |
 
-> **Nota DDD:** LEAD-013, LEAD-014, LEAD-016, LEAD-017 movidas para CRM-Funil-Vendas (FUN-020 a FUN-023)
+> **Nota DDD:** Visualização/edição de negociações estão em CRM-Funil-Vendas (FUN-020 a FUN-023)
 
 #### CRM-Leads: Fase 5 - Inteligência e IA
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-LEAD-018 | Enriquecimento de Dados (APIs externas) | Desejável | ✅ Pronto | 8 |
-| US-CRM-LEAD-019 | Score Automático de Lead | Desejável | ✅ Pronto | 8 |
-| US-CRM-LEAD-020 | Detecção de Lead Duplicado | Desejável | ✅ Pronto | 5 |
+| US-CRM-LEAD-014 | Enriquecimento de Dados (APIs externas) | Desejável | ✅ Pronto | 8 |
+| US-CRM-LEAD-015 | Score Automático de Lead (ML) | Desejável | ✅ Pronto | 8 |
+| US-CRM-LEAD-016 | Detecção de Lead Duplicado | Desejável | ✅ Pronto | 5 |
 
 #### CRM-Autenticação
 | ID | História | Prioridade | Status | SP |
@@ -185,6 +185,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
+| 27/01/2026 | 2.3 | Renumeração sequencial: LEAD-015→013, LEAD-018→014, LEAD-019→015, LEAD-020→016 | PO |
 | 27/01/2026 | 2.2 | DDD: Mover LEAD-013, 014, 016, 017 para CRM-FUN-020 a 023 | PO |
 | 25/01/2026 | 2.1 | Correção DDD: IDs sequenciais por fase (007-011 Fase 3, 012-017 Fase 4) | PO |
 | 23/01/2026 | 2.0 | Reorganização CRM-Leads por fases (Gestão de Leads movida para Fase 5) | PO |

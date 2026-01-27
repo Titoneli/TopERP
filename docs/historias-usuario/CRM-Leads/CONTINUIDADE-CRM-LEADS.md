@@ -2,7 +2,7 @@
 
 **Última Atualização**: 27 de janeiro de 2026  
 **Status**: ✅ Especificação Completa  
-**Versão**: 2.4
+**Versão**: 2.5
 
 ---
 
@@ -15,7 +15,7 @@ Sprint Atual: Todas as Fases Especificadas
 Histórias no Módulo: 16 (141 SP)
 Histórias Movidas: 4 (20 SP) → CRM-Funil-Vendas (FUN-020 a FUN-023)
 Status: ✅ Módulo Completo (27/01/2026)
-Última Alteração: DDD - Mover LEAD-013, 014, 016, 017 para CRM-Funil-Vendas
+Última Alteração: Renumeração sequencial DDD (LEAD-013 a LEAD-016)
 ```
 
 ---
@@ -65,23 +65,25 @@ Status: ✅ Módulo Completo (27/01/2026)
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
 | **LEAD-012** | Cadastrar Lead Manualmente | ✅ Pronto | v1.1 | 8 | ✅ | Venda própria, DDD padronizado |
-| **LEAD-015** | Atribuir Lead a Consultor | ✅ Pronto | v1.1 | 5 | ⏳ | Manual, notif. push+WhatsApp |
+| **LEAD-013** | Atribuir Lead a Consultor | ✅ Pronto | v2.0 | 5 | ⏳ | Manual, notif. push+WhatsApp |
 
 **Subtotal Fase 4**: 13 SP | Status: **✅ Especificação Completa**
 
-> **DDD:** Histórias LEAD-013, LEAD-014, LEAD-016, LEAD-017 movidas para **CRM-Funil-Vendas** (FUN-020 a FUN-023) em 27/01/2026.
+> **Nota DDD:** Numeração ajustada para sequência contínua (ex-LEAD-015 → LEAD-013).
 
 ---
 
-### Fase 5: INTEGRAÇÕES E INTELIGÊNCIA (✅ ESPECIFICADA)
+### Fase 5: INTELIGÊNCIA E IA (✅ ESPECIFICADA)
 
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
-| **LEAD-018** | Enriquecimento de Dados (APIs externas) | ✅ Pronto | v1.0 | 8 | ⏳ | FIPE, IBGE, automático |
-| **LEAD-019** | Score Automático de Lead (ML) | ✅ Pronto | v1.1 | 8 | ⏳ | ML, notif. push+WhatsApp |
-| **LEAD-020** | Detecção de Lead Duplicado | ✅ Pronto | v1.0 | 5 | ⏳ | Match exato/fuzzy, mesclagem |
+| **LEAD-014** | Enriquecimento de Dados (APIs externas) | ✅ Pronto | v2.0 | 8 | ⏳ | FIPE, IBGE, automático |
+| **LEAD-015** | Score Automático de Lead (ML) | ✅ Pronto | v2.0 | 8 | ⏳ | ML, notif. push+WhatsApp |
+| **LEAD-016** | Detecção de Lead Duplicado | ✅ Pronto | v2.0 | 5 | ⏳ | Match exato/fuzzy, mesclagem |
 
 **Subtotal Fase 5**: 21 SP | Status: **✅ Especificação Completa**
+
+> **Nota DDD:** Numeração ajustada (ex-LEAD-018→014, ex-LEAD-019→015, ex-LEAD-020→016).
 
 ---
 
@@ -93,8 +95,7 @@ Status: ✅ Módulo Completo (27/01/2026)
 ✅ LEAD-002 (v1.1) — Pronto para Dev
 ✅ LEAD-003 (v1.1) — Pronto para Dev
 ✅ LEAD-012 (v1.1) — Cadastro Manual - ESPECIFICADO
-✅ LEAD-015 (v1.1) — Atribuir Consultor - ESPECIFICADO
-→ LEAD-013, 014, 016, 017 movidos para CRM-Funil-Vendas (FUN-020 a 023)
+✅ LEAD-013 (v2.0) — Atribuir Consultor - ESPECIFICADO (ex-LEAD-015)
 🎯 Total: 5 histórias | 52 SP (100% especificados)
 ```
 
@@ -113,9 +114,9 @@ Status: ✅ Módulo Completo (27/01/2026)
 
 ### Desejável (Could-Have)
 ```
-✅ LEAD-018 (v1.0) — Enriquecimento - ESPECIFICADO
-✅ LEAD-019 (v1.0) — Score ML - ESPECIFICADO
-✅ LEAD-020 (v1.0) — Duplicados - ESPECIFICADO
+✅ LEAD-014 (v2.0) — Enriquecimento - ESPECIFICADO (ex-LEAD-018)
+✅ LEAD-015 (v2.0) — Score ML - ESPECIFICADO (ex-LEAD-019)
+✅ LEAD-016 (v2.0) — Duplicados - ESPECIFICADO (ex-LEAD-020)
 🎯 Total: 3 histórias | 21 SP (100% especificados)
 ```
 
@@ -137,14 +138,12 @@ Status: ✅ Módulo Completo (27/01/2026)
 - [x] US-CRM-LEAD-010 (v1.1) — Integração Facebook Lead Ads (DDD padronizado)
 - [x] US-CRM-LEAD-011 (v1.2) — Integração Google Ads (DDD padronizado)
 - [x] US-CRM-LEAD-012 (v1.1) — Cadastrar Lead Manualmente (DDD padronizado)
-- [x] ~~US-CRM-LEAD-013~~ → Movido para CRM-Funil-Vendas (FUN-020)
-- [x] ~~US-CRM-LEAD-014~~ → Movido para CRM-Funil-Vendas (FUN-021)
-- [x] US-CRM-LEAD-015 (v1.1) — Atribuir Lead a Consultor (notif. push+WhatsApp)
-- [x] ~~US-CRM-LEAD-016~~ → Movido para CRM-Funil-Vendas (FUN-022)
-- [x] ~~US-CRM-LEAD-017~~ → Movido para CRM-Funil-Vendas (FUN-023)
-- [x] US-CRM-LEAD-018 (v1.0) — Enriquecimento de Dados (FIPE, IBGE)
-- [x] US-CRM-LEAD-019 (v1.1) — Score Automático de Lead (notif. push+WhatsApp)
-- [x] US-CRM-LEAD-020 (v1.0) — Detecção de Lead Duplicado
+- [x] US-CRM-LEAD-013 (v2.0) — Atribuir Lead a Consultor (ex-LEAD-015)
+- [x] US-CRM-LEAD-014 (v2.0) — Enriquecimento de Dados (ex-LEAD-018)
+- [x] US-CRM-LEAD-015 (v2.0) — Score Automático de Lead (ex-LEAD-019)
+- [x] US-CRM-LEAD-016 (v2.0) — Detecção de Lead Duplicado (ex-LEAD-020)
+
+> **Nota:** FUN-020 a FUN-023 no módulo CRM-Funil-Vendas tratam de visualização/edição de negociações.
 
 ### Artefatos de Suporte
 
@@ -210,11 +209,19 @@ Status: ✅ Módulo Completo (27/01/2026)
                         │
                         ▼
 ┌─────────────────────────────────────────────────────────┐
-│  SPRINT 4 — Atribuição e Cadastro (LEAD-012, LEAD-015)   │
+│  SPRINT 4 — Atribuição e Cadastro (LEAD-012, LEAD-013)   │
 ├─────────────────────────────────────────────────────────┤
 │  • Cadastro Manual (LEAD-012)                           │
-│  • Atribuição (LEAD-015)                                │
-│  → LEAD-013, 014, 016, 017 → CRM-Funil-Vendas           │
+│  • Atribuição (LEAD-013)                                 │
+└─────────────────────────────────────────────────────────┘
+                        │
+                        ▼
+┌─────────────────────────────────────────────────────────┐
+│  SPRINT 5 — Inteligência e IA (LEAD-014 a LEAD-016)      │
+├─────────────────────────────────────────────────────────┤
+│  • Enriquecimento (LEAD-014)                            │
+│  • Score ML (LEAD-015)                                  │
+│  • Duplicados (LEAD-016)                                │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -247,8 +254,12 @@ LEAD-001 ├─→ LEAD-007 (Importar)
 
 Fase 4 (Atribuição e Cadastro):
 LEAD-001 ├─→ LEAD-012 (Cadastro Manual)
-        └─→ LEAD-015 (Atribuição)
-        → FUN-020, 021, 022, 023 (Movidos para CRM-FUN)
+        └─→ LEAD-013 (Atribuição)
+
+Fase 5 (Inteligência e IA):
+LEAD-001 ├─→ LEAD-014 (Enriquecimento)
+        ├─→ LEAD-015 (Score ML)
+        └─→ LEAD-016 (Duplicados)
 ```
 
 ### 3. **Métricas de Sucesso**
@@ -259,9 +270,9 @@ LEAD-001 ├─→ LEAD-012 (Cadastro Manual)
 - ✅ LEAD-005: WhatsApp Business (2 modos)
 - ✅ LEAD-006: BANT Score 0-12, temperaturas
 - ✅ LEAD-007 a LEAD-011: Gestão Avançada + Ads (42 SP)
-- ✅ LEAD-012, LEAD-015: Atribuição e Cadastro (13 SP)
-- ✅ LEAD-018 a LEAD-020: Inteligência ML (21 SP)
-- → FUN-020 a FUN-023: Movidos para CRM-Funil-Vendas (20 SP)
+- ✅ LEAD-012, LEAD-013: Atribuição e Cadastro (13 SP)
+- ✅ LEAD-014 a LEAD-016: Inteligência ML (21 SP)
+- → FUN-020 a FUN-023: No módulo CRM-Funil-Vendas (20 SP)
 
 ---
 
@@ -272,10 +283,10 @@ LEAD-001 ├─→ LEAD-012 (Cadastro Manual)
 | **Fase 1** | LEAD-001 a LEAD-003 | Captação de qualidade | Alimenta todo o funil |
 | **Fase 2** | LEAD-004 a LEAD-006 | Captura multicanal | Escala de aquisição |
 | **Fase 3** | LEAD-007 a LEAD-011 | Gestão avançada + Ads | Automação + Integrações |
-| **Fase 4** | LEAD-012, LEAD-015 | Atribuição e Cadastro | Operação diária |
-| **Fase 5** | LEAD-018 a LEAD-020 | Inteligência ML | Otimização contínua |
+| **Fase 4** | LEAD-012, LEAD-013 | Atribuição e Cadastro | Operação diária |
+| **Fase 5** | LEAD-014 a LEAD-016 | Inteligência ML | Otimização contínua |
 
-> **Nota**: LEAD-013, 014, 016, 017 foram movidos para CRM-Funil-Vendas como FUN-020 a FUN-023.
+> **Nota**: FUN-020 a FUN-023 tratam visualização/edição de negociações no módulo CRM-Funil-Vendas.
 
 ---
 

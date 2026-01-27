@@ -1,4 +1,4 @@
-# US-CRM-LEAD-020 — Detecção de Lead Duplicado
+# US-CRM-LEAD-016 — Detecção de Lead Duplicado
 
 ## História de Usuário
 
@@ -322,11 +322,12 @@ A detecção de duplicados evita que o mesmo prospect seja contatado por múltip
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
 | 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 27/01/2026 | 2.0 | PO | Renumeração: LEAD-020 → LEAD-016 (DDD) |
 
 ---
 
-**Identificador**: US-CRM-LEAD-020  
+**Identificador**: US-CRM-LEAD-016  
 **Módulo**: CRM-Leads  
-**Fase**: 5 - Integrações e Inteligência  
+**Fase**: 5 - Inteligência e IA  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 2.0
