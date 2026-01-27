@@ -225,6 +225,10 @@ O score automático de conversão usa machine learning para prever quais leads t
 - **Quando** filtro por Score ML >= 60%
 - **Então** a lista exibe apenas leads promissores
 
+### Cenário 9 — Aproveitar enriquecimento de leads
+- **Dado que** quero leads foram enriquecidos
+- **Quando** filtro por Score ML >= 60%
+- **Então** a lista exibe apenas leads promissores
 ---
 
 ## Regras de Negócio
