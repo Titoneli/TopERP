@@ -179,7 +179,7 @@ Nem todos os leads chegam por canais digitais. Consultores recebem indicações,
 ### Cenário 5 — Cadastro de indicação
 - **Dado que** seleciono origem "Indicação"
 - **Quando** o formulário é exibido
-- **Então** aparece campo adicional "Quem indicou" (opcional)
+- **Então** aparece campo adicional "Quem indicou" (opcional Indicador/Afiliado)
 - **E** posso vincular a um associado existente
 
 ### Cenário 6 — Extração de DDD

@@ -54,7 +54,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 | **LEAD-008** | Marcar Lead como Arquivado | ✅ Pronto | v1.1 | 3 | ✅ | 14 motivos, reativação |
 | **LEAD-009** | Exportar Leads | ✅ Pronto | v1.1 | 5 | ✅ | CSV/XLSX, terminologia DDD |
 | **LEAD-010** | Integração Facebook Lead Ads | ✅ Pronto | v1.1 | 13 | ✅ | Webhook Meta, DDD padronizado |
-| **LEAD-011** | Integração Google Ads | ✅ Pronto | v1.2 | 13 | ⏳ | Lead Form Extensions, DDD padronizado |
+| **LEAD-011** | Integração Google Ads | ✅ Pronto | v1.2 | 13 | ✅ | Lead Form Extensions, DDD padronizado |
 
 **Subtotal Fase 3**: 42 SP | Status: **✅ Especificação Completa**
 
@@ -64,7 +64,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
-| **LEAD-012** | Cadastrar Lead Manualmente | ✅ Pronto | v1.1 | 8 | ⏳ | Venda própria, indicação, DDD |
+| **LEAD-012** | Cadastrar Lead Manualmente | ✅ Pronto | v1.1 | 8 | ✅ | Venda própria, DDD padronizado |
 | **LEAD-013** | Visualizar Lista de Leads | ✅ Pronto | v1.0 | 5 | ⏳ | Colunas, paginação, temperatura |
 | **LEAD-014** | Buscar e Filtrar Leads | ✅ Pronto | v1.1 | 5 | ⏳ | Filtros avançados + motivo arquiv. |
 | **LEAD-015** | Atribuir Lead a Consultor | ✅ Pronto | v1.1 | 5 | ⏳ | Manual, notif. push+WhatsApp |
@@ -164,7 +164,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 - [x] Auditoria de Integridade (21/01/2026)
 - [x] Conformidade DDD (100%)
 - [x] Rastreabilidade (Dependências mapeadas)
-- [x] PDFs Gerados (10/20 prontos)
+- [x] PDFs Gerados (12/20 prontos)
 - [ ] QA Testing — Próximo: LEAD-001 + LEAD-002
 
 ---
