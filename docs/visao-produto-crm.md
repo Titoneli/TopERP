@@ -107,7 +107,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 **Para**  consultores de proteção veicular da TopBrasil  
 **Que** precisam gerenciar leads, cotações e vendas de forma eficiente  
 **Diferente de** CRMs genéricos  
-**Nossa aplicação** será especializado no setor de proteção veicular, com funcionalidades específicas como cotação automática, funis personalizados, integração com app de vistoria e tabelas personalizadas.
+**Nossa aplicação** será especializado no setor de proteção veicular, com funcionalidades específicas como cotação automática, funis personalizados, integração com App VistorIA e tabelas personalizadas.
 
 ### 3.2 Principais Capacidades
 
@@ -130,6 +130,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
    - Métricas em tempo real
 
 4. **Comunicação Integrada**
+   - Conexão com Whatsapp do próprio consultor
    - Envio de propostas por e-mail e WhatsApp
    - Templates personalizáveis
    - Rastreamento de abertura
@@ -240,7 +241,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 - Motor de cotação com integração FIPE e IBGE
 - Geração e envio de propostas por whatsapp, telegram e email
 - Integração com banco digital para recebimentos e pagamentos
-- Integração com aplicativo de vistorias próprio
+- Integração com App VistorIA
 - Dashboards e relatórios
 - Integração com sistemas legados
 
@@ -273,7 +274,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 
 1. Consultores têm acesso a smartphone ou computador
 2. Internet banda larga disponível
-3. Maior aderência possível, buscar manter o fluxo de trabalho que existe hoje no PowerCRM
+3. Menor aderência possível, buscar manter o fluxo de trabalho que existe hoje no PowerCRM, sem necessiodade do time precisar reaprender tudo
 4. Tabelas de preços serão aprimoradas do que existe no PowerCRM
 5. Integração com gateway de pagamento disponível
 
@@ -281,7 +282,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 
 1. **API FIPE** para consulta de veículos
 2. **Gateway de Pagamento** (Asaas/Iugu)
-3. **Sistema VistorAI ** para vistorias
+3. **Sistema VistorIA** para vistorias
 4. **SGA/SAV** para cadastros base
 5. **WhatsApp Business API** para comunicação
 6. **Servidor de Automação (N8N)** para integrações e automações
@@ -318,8 +319,8 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 
 ### Fase 2: Comercial Completo (Meses 1-2)
 - Pagamentos e recebimentos integrados com banco digital próprio
-- Vistorias via aplicativo VistorAI
-- Assinatura digital ou via Aplicativo de Vistoria
+- Vistorias via aplicativo VistorIA
+- Assinatura digital ou via Aplicativo VistorIA
 
 ### Fase 3: Gestão Avançada (Meses 2-3)
 - Dashboards e analytics
@@ -329,7 +330,7 @@ O CRM abrange todo o ciclo de vendas e relacionamento no setor de proteção vei
 - Inteligência artificial (scoring de leads, regiões, campanhas, consultores e equipes de vendas)
 
 ### Fase 4: Expansão (Meses 3-4)
-- App mobile nativo
+- App mobile nativo e integração com o APP do Consultor
 - Integração com ERP prório
 - Gamificação para consultores
 

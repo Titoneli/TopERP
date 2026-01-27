@@ -203,6 +203,14 @@ Padrão utilizado para quantificar produtos (un, kg, m, etc.).
 ### User Story
 História de usuário - descrição de uma funcionalidade do ponto de vista do usuário.
 
+## V
+
+### VistorIA
+Aplicativo de vistorias de última geração da TopBrasil. Utilizado para realizar inspeção prévia do veículo antes da contratação, integrando com gateways de validação de dados (Detran, Denatran, Renavam). O nome combina "Vistoria" + "IA" (Inteligência Artificial).
+
+### Vistoria
+Inspeção prévia do veículo antes da contratação da proteção veicular, realizada através do App VistorIA ou presencialmente.
+
 ---
 
 ## Termos DDD (Domain-Driven Design)

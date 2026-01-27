@@ -331,7 +331,7 @@ O CRM e o TopERP Core compartilham o mesmo banco de dados PostgreSQL com as segu
 | **SGA (Legacy)** | SGAAdapter | Sincronização de dados legados |
 | **WhatsApp API** | WhatsAppAdapter | Envio de mensagens e captação |
 | **Email Service** | EmailAdapter | Notificações e envio de propostas |
-| **VistorAI** | VistoriaAdapter | Integração com app de vistorias |
+| **VistorIA** | VistoriaAdapter | Integração com App VistorIA |
 | **N8N (Automação)** | AutomacaoAdapter | Workflows e integrações automatizadas |
 
 ### 7.2 Diagrama de Integração
