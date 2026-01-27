@@ -57,31 +57,29 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 | LEAD-007 | Importar Leads em Massa (CSV/Excel/API) | 📋 Planejado | 8 | Importante |
 | LEAD-008 | Marcar Lead como Arquivado | 📋 Planejado | 3 | Importante |
 | LEAD-009 | Exportar Leads | 📋 Planejado | 5 | Importante |
-| LEAD-010 | Integração com Facebook Lead Ads | 📋 Planejado | 13 | Importante |
-| LEAD-011 | Integração com Google Ads | 📋 Planejado | 13 | Importante |
+| LEAD-010 | Integração com Facebook Lead Ads | ✅ Pronto | 13 | Importante |
+| LEAD-011 | Integração com Google Ads | ✅ Pronto | 13 | Importante |
 
-**Subtotal Fase 3**: 42 SP | **Status**: Aguardando Especificação
+**Subtotal Fase 3**: 42 SP | **Status**: ✅ Completa
 
-### Fase 4: GESTÃO DE LEADS ⏳
+### Fase 4: ATRIBUIÇÃO E CADASTRO ⏳
 | ID | História | Status | SP | Prioridade |
 |----|----------|--------|----|------------|
-| LEAD-012 | Cadastrar Lead Manualmente | 📋 Planejado | 8 | Essencial |
-| LEAD-013 | Visualizar Lista de Leads | 📋 Planejado | 5 | Essencial |
-| LEAD-014 | Buscar e Filtrar Leads | 📋 Planejado | 5 | Essencial |
-| LEAD-015 | Atribuir Lead a Consultor | 📋 Planejado | 5 | Essencial |
-| LEAD-016 | Editar Dados do Lead | 📋 Planejado | 5 | Essencial |
-| LEAD-017 | Visualizar Detalhes do Lead | 📋 Planejado | 5 | Essencial |
+| LEAD-012 | Cadastrar Lead Manualmente | ✅ Pronto | 8 | Essencial |
+| LEAD-015 | Atribuir Lead a Consultor | ✅ Pronto | 5 | Essencial |
 
-**Subtotal Fase 4**: 33 SP | **Status**: Aguardando Especificação
+**Subtotal Fase 4**: 13 SP | **Status**: ✅ Completa
+
+> **Nota DDD:** As histórias de Visualização, Busca/Filtro e Edição de Leads foram movidas para o módulo **CRM-Funil-Vendas** (FUN-020 a FUN-023), pois pertencem ao contexto de gestão do pipeline de vendas.
 
 ### Fase 5: INTELIGÊNCIA E IA ⏳
 | ID | História | Status | SP | Prioridade |
 |----|----------|--------|----|-----------|
-| LEAD-018 | Enriquecimento de Dados (APIs externas) | 📋 Planejado | 8 | Desejável |
-| LEAD-019 | Score Automático de Lead | 📋 Planejado | 8 | Desejável |
-| LEAD-020 | Detecção de Lead Duplicado | 📋 Planejado | 5 | Desejável |
+| LEAD-018 | Enriquecimento de Dados (APIs externas) | ✅ Pronto | 8 | Desejável |
+| LEAD-019 | Score Automático de Lead | ✅ Pronto | 8 | Desejável |
+| LEAD-020 | Detecção de Lead Duplicado | ✅ Pronto | 5 | Desejável |
 
-**Subtotal Fase 5**: 21 SP | **Status**: Backlog Futuro
+**Subtotal Fase 5**: 21 SP | **Status**: ✅ Completa
 
 ---
 
@@ -91,10 +89,12 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 |------|------|-----------|----|---------|
 | 1 | Captação e Comparação | LEAD-001 a LEAD-003 | 39 | ✅ Completa |
 | 2 | Captura Avançada | LEAD-004 a LEAD-006 | 26 | ✅ Completa |
-| 3 | Gestão Avançada + Integrações | LEAD-007 a LEAD-011 | 42 | ⏳ Planejado |
-| 4 | Gestão de Leads | LEAD-012 a LEAD-017 | 33 | ⏳ Planejado |
-| 5 | Inteligência e IA | LEAD-018 a LEAD-020 | 21 | ⏳ Backlog |
-| **TOTAL** | | **20 histórias** | **161 SP** | **65 SP prontos** |
+| 3 | Gestão Avançada + Integrações | LEAD-007 a LEAD-011 | 42 | ✅ Completa |
+| 4 | Atribuição e Cadastro | LEAD-012, LEAD-015 | 13 | ✅ Completa |
+| 5 | Inteligência e IA | LEAD-018 a LEAD-020 | 21 | ✅ Completa |
+| **TOTAL** | | **16 histórias** | **141 SP** | **141 SP prontos** |
+
+> **Histórias movidas para CRM-Funil-Vendas:** LEAD-013, LEAD-014, LEAD-016, LEAD-017 → FUN-020, FUN-021, FUN-022, FUN-023 (20 SP)
 
 ---
 
@@ -170,12 +170,13 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 
 ---
 
-**Versão**: 2.4  
-**Atualizado em**: 25/01/2026
+**Versão**: 2.5  
+**Atualizado em**: 27/01/2026
 
 **Histórico:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 2.5 | 27/01/2026 | DDD: Mover LEAD-013, 014, 016, 017 para CRM-Funil-Vendas (FUN-020 a 023). Total: 16 histórias / 141 SP |
 | 2.4 | 25/01/2026 | Correção DDD: Fase 3 (LEAD-007 a 011), Fase 4 (LEAD-012 a 017) em ordem sequencial |
 | 2.3 | 25/01/2026 | Renumeração: Gestão de Leads (Fase 4: LEAD-012 a 017), Inteligência/IA (Fase 5: LEAD-018 a 020) |
 | 2.2 | 25/01/2026 | Padronização IDs: LED-XXX → LEAD-XXX (Ubiquitous Language DDD) |

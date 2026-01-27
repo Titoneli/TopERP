@@ -1,8 +1,8 @@
 # ACOMPANHAMENTO DE CONTINUIDADE — Módulo CRM-Leads
 
 **Última Atualização**: 27 de janeiro de 2026  
-**Status**: Em Desenvolvimento  
-**Versão**: 2.2
+**Status**: ✅ Especificação Completa  
+**Versão**: 2.4
 
 ---
 
@@ -11,11 +11,11 @@
 Sabemos **exatamente onde paramos**:
 
 ```
-Sprint Atual: Sprint 2 - Fase 2 Captura Avançada (COMPLETA)
-Histórias Prontas para Dev: LEAD-001 a LEAD-006 (65 SP)
-Próximas: LEAD-007 a LEAD-011 (Fase 3 - Gestão Avançada + Ads)
-Status: ✅ Fase 2 Especificada (25/01/2026)
-Última Alteração: Padronização DDD - cod_origem → dom_ind_origem (crm_negociacao)
+Sprint Atual: Todas as Fases Especificadas
+Histórias no Módulo: 16 (141 SP)
+Histórias Movidas: 4 (20 SP) → CRM-Funil-Vendas (FUN-020 a FUN-023)
+Status: ✅ Módulo Completo (27/01/2026)
+Última Alteração: DDD - Mover LEAD-013, 014, 016, 017 para CRM-Funil-Vendas
 ```
 
 ---
@@ -60,18 +60,16 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 ---
 
-### Fase 4: GESTÃO DE LEADS (✅ ESPECIFICADA)
+### Fase 4: ATRIBUIÇÃO E CADASTRO (✅ ESPECIFICADA)
 
 | ID | Histórias | Status | Versão | SP | PDF | Notas |
 |----|-----------|--------|--------|----|-----|-------|
 | **LEAD-012** | Cadastrar Lead Manualmente | ✅ Pronto | v1.1 | 8 | ✅ | Venda própria, DDD padronizado |
-| **LEAD-013** | Visualizar Lista de Leads | ✅ Pronto | v1.0 | 5 | ⏳ | Colunas, paginação, temperatura |
-| **LEAD-014** | Buscar e Filtrar Leads | ✅ Pronto | v1.1 | 5 | ⏳ | Filtros avançados + motivo arquiv. |
 | **LEAD-015** | Atribuir Lead a Consultor | ✅ Pronto | v1.1 | 5 | ⏳ | Manual, notif. push+WhatsApp |
-| **LEAD-016** | Editar Dados do Lead | ✅ Pronto | v1.0 | 5 | ⏳ | Histórico alterações |
-| **LEAD-017** | Visualizar Detalhes do Lead | ✅ Pronto | v1.1 | 5 | ⏳ | Timeline, lead arquivado |
 
-**Subtotal Fase 4**: 33 SP | Status: **✅ Especificação Completa**
+**Subtotal Fase 4**: 13 SP | Status: **✅ Especificação Completa**
+
+> **DDD:** Histórias LEAD-013, LEAD-014, LEAD-016, LEAD-017 movidas para **CRM-Funil-Vendas** (FUN-020 a FUN-023) em 27/01/2026.
 
 ---
 
@@ -91,28 +89,25 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 ### Essencial (Must-Have)
 ```
-✅ LEAD-001 (v1.0) — Pronto para Dev
+✅ LEAD-001 (v1.1) — Pronto para Dev
 ✅ LEAD-002 (v1.1) — Pronto para Dev
 ✅ LEAD-003 (v1.1) — Pronto para Dev
-✅ LEAD-012 (v1.0) — Cadastro Manual - ESPECIFICADO
-✅ LEAD-013 (v1.0) — Lista de Leads - ESPECIFICADO
-✅ LEAD-014 (v1.0) — Buscar e Filtrar - ESPECIFICADO
-✅ LEAD-015 (v1.0) — Atribuir Consultor - ESPECIFICADO
-✅ LEAD-016 (v1.0) — Editar Lead - ESPECIFICADO
-✅ LEAD-017 (v1.0) — Detalhes Lead - ESPECIFICADO
-🎯 Total: 9 histórias | 72 SP (100% especificados)
+✅ LEAD-012 (v1.1) — Cadastro Manual - ESPECIFICADO
+✅ LEAD-015 (v1.1) — Atribuir Consultor - ESPECIFICADO
+→ LEAD-013, 014, 016, 017 movidos para CRM-Funil-Vendas (FUN-020 a 023)
+🎯 Total: 5 histórias | 52 SP (100% especificados)
 ```
 
 ### Importante (Should-Have)
 ```
-✅ LEAD-004 (v1.2) — Formulário Embarcado - ESPECIFICADO
-✅ LEAD-005 (v1.2) — WhatsApp Business - ESPECIFICADO
-✅ LEAD-006 (v1.0) — Qualificar BANT - ESPECIFICADO
-✅ LEAD-007 (v1.0) — Importar Leads - ESPECIFICADO
-✅ LEAD-008 (v1.0) — Arquivar Lead - ESPECIFICADO
-✅ LEAD-009 (v1.0) — Exportar Leads - ESPECIFICADO
-✅ LEAD-010 (v1.0) — Facebook Lead Ads - ESPECIFICADO
-✅ LEAD-011 (v1.0) — Google Ads - ESPECIFICADO
+✅ LEAD-004 (v1.3) — Formulário Embarcado - ESPECIFICADO
+✅ LEAD-005 (v1.3) — WhatsApp Business - ESPECIFICADO
+✅ LEAD-006 (v1.1) — Qualificar BANT - ESPECIFICADO
+✅ LEAD-007 (v1.1) — Importar Leads - ESPECIFICADO
+✅ LEAD-008 (v1.1) — Arquivar Lead - ESPECIFICADO
+✅ LEAD-009 (v1.1) — Exportar Leads - ESPECIFICADO
+✅ LEAD-010 (v1.1) — Facebook Lead Ads - ESPECIFICADO
+✅ LEAD-011 (v1.2) — Google Ads - ESPECIFICADO
 🎯 Total: 8 histórias | 68 SP (100% especificados)
 ```
 
@@ -142,18 +137,18 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 - [x] US-CRM-LEAD-010 (v1.1) — Integração Facebook Lead Ads (DDD padronizado)
 - [x] US-CRM-LEAD-011 (v1.2) — Integração Google Ads (DDD padronizado)
 - [x] US-CRM-LEAD-012 (v1.1) — Cadastrar Lead Manualmente (DDD padronizado)
-- [x] US-CRM-LEAD-013 (v1.0) — Visualizar Lista de Leads
-- [x] US-CRM-LEAD-014 (v1.1) — Buscar e Filtrar Leads (filtro motivo arquivamento)
+- [x] ~~US-CRM-LEAD-013~~ → Movido para CRM-Funil-Vendas (FUN-020)
+- [x] ~~US-CRM-LEAD-014~~ → Movido para CRM-Funil-Vendas (FUN-021)
 - [x] US-CRM-LEAD-015 (v1.1) — Atribuir Lead a Consultor (notif. push+WhatsApp)
-- [x] US-CRM-LEAD-016 (v1.0) — Editar Dados do Lead
-- [x] US-CRM-LEAD-017 (v1.1) — Visualizar Detalhes do Lead (wireframe arquivado)
+- [x] ~~US-CRM-LEAD-016~~ → Movido para CRM-Funil-Vendas (FUN-022)
+- [x] ~~US-CRM-LEAD-017~~ → Movido para CRM-Funil-Vendas (FUN-023)
 - [x] US-CRM-LEAD-018 (v1.0) — Enriquecimento de Dados (FIPE, IBGE)
 - [x] US-CRM-LEAD-019 (v1.1) — Score Automático de Lead (notif. push+WhatsApp)
 - [x] US-CRM-LEAD-020 (v1.0) — Detecção de Lead Duplicado
 
 ### Artefatos de Suporte
 
-- [x] README.md (CRM-Leads) — Estrutura e mapeamento
+- [x] README.md (CRM-Leads) — Estrutura e mapeamento (v2.5)
 - [x] CONTINUIDADE-CRM-LEADS.md — Acompanhamento geral
 - [ ] Diagramas de Sequência — Desejável, não crítico
 - [ ] Glossário CRM — Desejável, não crítico
@@ -164,7 +159,7 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 - [x] Auditoria de Integridade (21/01/2026)
 - [x] Conformidade DDD (100%)
 - [x] Rastreabilidade (Dependências mapeadas)
-- [x] PDFs Gerados (12/20 prontos)
+- [x] PDFs Gerados (12/16 prontos no CRM-Leads)
 - [ ] QA Testing — Próximo: LEAD-001 + LEAD-002
 
 ---
@@ -215,14 +210,11 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
                         │
                         ▼
 ┌─────────────────────────────────────────────────────────┐
-│  SPRINT 4 — Gestão de Leads (LEAD-012 a LEAD-017)        │
+│  SPRINT 4 — Atribuição e Cadastro (LEAD-012, LEAD-015)   │
 ├─────────────────────────────────────────────────────────┤
 │  • Cadastro Manual (LEAD-012)                           │
-│  • Lista de Leads (LEAD-013)                            │
-│  • Busca/Filtro (LEAD-014)                              │
 │  • Atribuição (LEAD-015)                                │
-│  • Edição (LEAD-016)                                    │
-│  • Visualização Detalhes (LEAD-017)                     │
+│  → LEAD-013, 014, 016, 017 → CRM-Funil-Vendas           │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -230,9 +222,9 @@ Status: ✅ Fase 2 Especificada (25/01/2026)
 
 ## 📌 PONTOS CRÍTICOS PARA CONTINUIDADE
 
-### 1. **Todas as 20 Histórias Especificadas ✅**
+### 1. **Todas as 16 Histórias Especificadas ✅**
 - Fases 1-5 completamente documentadas
-- 161 Story Points totais mapeados
+- 141 Story Points totais mapeados (20 SP movidos para CRM-FUN)
 - **Próxima Ação**: Gerar PDFs pendentes (14 de 20)
 
 ### 2. **Dependências Críticas**
@@ -253,12 +245,10 @@ LEAD-001 ├─→ LEAD-007 (Importar)
         ├─→ LEAD-010 (Facebook Ads)
         └─→ LEAD-011 (Google Ads)
 
-Fase 4 (Gestão de Leads):
+Fase 4 (Atribuição e Cadastro):
 LEAD-001 ├─→ LEAD-012 (Cadastro Manual)
-        └─→ LEAD-013 (Lista) ├─→ LEAD-014 (Busca)
-                             ├─→ LEAD-015 (Atribuição)
-                             ├─→ LEAD-016 (Edição)
-                             └─→ LEAD-017 (Detalhes)
+        └─→ LEAD-015 (Atribuição)
+        → FUN-020, 021, 022, 023 (Movidos para CRM-FUN)
 ```
 
 ### 3. **Métricas de Sucesso**
@@ -269,20 +259,23 @@ LEAD-001 ├─→ LEAD-012 (Cadastro Manual)
 - ✅ LEAD-005: WhatsApp Business (2 modos)
 - ✅ LEAD-006: BANT Score 0-12, temperaturas
 - ✅ LEAD-007 a LEAD-011: Gestão Avançada + Ads (42 SP)
-- ✅ LEAD-012 a LEAD-017: Gestão de Leads (33 SP)
+- ✅ LEAD-012, LEAD-015: Atribuição e Cadastro (13 SP)
 - ✅ LEAD-018 a LEAD-020: Inteligência ML (21 SP)
+- → FUN-020 a FUN-023: Movidos para CRM-Funil-Vendas (20 SP)
 
 ---
 
-## 🎁 BENEFÍCIOS DAS 20 HISTÓRIAS ESPECIFICADAS
+## 🎁 BENEFÍCIOS DAS 16 HISTÓRIAS DO MÓDULO
 
 | Fase | Histórias | Valor | Impacto |
 |------|-----------|-------|---------|
 | **Fase 1** | LEAD-001 a LEAD-003 | Captação de qualidade | Alimenta todo o funil |
 | **Fase 2** | LEAD-004 a LEAD-006 | Captura multicanal | Escala de aquisição |
 | **Fase 3** | LEAD-007 a LEAD-011 | Gestão avançada + Ads | Automação + Integrações |
-| **Fase 4** | LEAD-012 a LEAD-017 | Gestão completa | Operação diária |
+| **Fase 4** | LEAD-012, LEAD-015 | Atribuição e Cadastro | Operação diária |
 | **Fase 5** | LEAD-018 a LEAD-020 | Inteligência ML | Otimização contínua |
+
+> **Nota**: LEAD-013, 014, 016, 017 foram movidos para CRM-Funil-Vendas como FUN-020 a FUN-023.
 
 ---
 
@@ -291,10 +284,11 @@ LEAD-001 ├─→ LEAD-012 (Cadastro Manual)
 | Período | Ação | Status |
 |---------|------|--------|
 | **21 Jan** | Especificação completa (20 histórias) | ✅ Concluído |
-| **22-24 Jan** | Gerar PDFs pendentes (14 histórias) | 📋 Próximo |
+| **22-24 Jan** | Reorganização DDD (4 histórias → CRM-FUN) | ✅ Concluído |
 | **24-25 Jan** | QA Testing (LEAD-001, LEAD-002, LEAD-003) | 📋 Planejado |
 | **26-27 Jan** | Sprint Planning Sprint 1 | 📋 Planejado |
 | **28 Jan+** | Dev Sprint 1 (Fase 1) | 📋 Futuro |
+
 
 ---
 

@@ -44,7 +44,7 @@ Desejável
 
 ## Contexto de Negócio
 
-O enriquecimento de dados permite complementar informações do lead automaticamente, melhorando a qualidade da base e fornecendo insights para a abordagem comercial.
+O enriquecimento de dados permite complementar informações do lead automaticamente, melhorando a qualidade da base e fornecendo insights para a abordagem comercial, a sugestão de consultas, seria o próprio ERP da Top ou bases de dados como uma consulta jurídica (PuxaCapivara ou similares), denatran, detran e etc.
 
 ### APIs de Enriquecimento
 
@@ -54,7 +54,7 @@ O enriquecimento de dados permite complementar informações do lead automaticam
 | IBGE | Cidade/Estado por CEP | Validação de localização |
 | Receita Federal (futura) | Dados de CNPJ | Leads PJ |
 | Clearbit/Similar (futura) | Dados de empresa | Enriquecimento B2B |
-
+| PuxaCapivara (futura) | Dados da Pessoa | Histório Jurídico |
 ---
 
 ## Fluxo de Enriquecimento

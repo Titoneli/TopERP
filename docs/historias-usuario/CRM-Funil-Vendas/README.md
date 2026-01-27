@@ -327,6 +327,19 @@ interface AtividadeRepository {
 | [US-CRM-FUN-018](US-CRM-FUN-018.md) | Análise de Tempo por Etapa | 5 |
 | [US-CRM-FUN-019](US-CRM-FUN-019.md) | Comparativo de Performance | 8 |
 
+### 4.4 Gestão de Leads/Negociações (Movidas de CRM-Leads)
+
+> **Nota DDD:** Histórias movidas de CRM-Leads em 27/01/2026 para melhor alinhamento com o contexto de Funil de Vendas.
+
+| ID | História | Story Points | Origem |
+|----|----------|--------------|--------|
+| [US-CRM-FUN-020](US-CRM-FUN-020.md) | Visualizar Lista de Leads/Negociações | 5 | ex-LEAD-013 |
+| [US-CRM-FUN-021](US-CRM-FUN-021.md) | Buscar e Filtrar Negociações | 5 | ex-LEAD-014 |
+| [US-CRM-FUN-022](US-CRM-FUN-022.md) | Editar Dados da Negociação/Lead | 5 | ex-LEAD-016 |
+| [US-CRM-FUN-023](US-CRM-FUN-023.md) | Visualizar Detalhes da Negociação/Lead | 5 | ex-LEAD-017 |
+
+**Subtotal Seção 4.4**: 20 SP | **Status**: ✅ Pronto
+
 ---
 
 ## 5. Regras de Negócio
@@ -364,10 +377,11 @@ interface AtividadeRepository {
 |------|--------|-------|-----------|
 | 21/01/2026 | 1.0 | Product Owner | Versão inicial |
 | 21/01/2026 | 2.0 | Product Owner | Reestruturação completa para padrão DDD |
+| 27/01/2026 | 2.1 | Product Owner | DDD: Incorporar FUN-020 a FUN-023 (ex-LEAD-013, 014, 016, 017). Total +20 SP |
 
 ---
 
-**Versão**: 2.0  
-**Data**: 21/01/2026  
+**Versão**: 2.1  
+**Data**: 27/01/2026  
 **Responsável**: Product Owner - CRM  
 **Tipo DDD**: Core Domain

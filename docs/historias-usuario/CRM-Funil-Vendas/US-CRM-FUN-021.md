@@ -1,10 +1,10 @@
-# US-CRM-LEAD-014 — Buscar e Filtrar Leads
+# US-CRM-FUN-021 — Buscar e Filtrar Negociações
 
 ## História de Usuário
 
 **Como** consultor de vendas,  
-**Quero** buscar e filtrar leads por diversos critérios,  
-**Para** encontrar rapidamente leads específicos ou segmentar minha base.
+**Quero** buscar e filtrar negociações por diversos critérios,  
+**Para** encontrar rapidamente negociações específicas ou segmentar minha base.
 
 ## Prioridade
 
@@ -19,11 +19,11 @@ Essencial
 ## Contexto DDD
 
 ### Bounded Context
-- **Contexto**: Gestão de Leads (Lead Management)
-- **Módulo**: CRM-Leads
+- **Contexto**: Funil de Vendas (Sales Pipeline)
+- **Módulo**: CRM-Funil-Vendas
 
 ### Aggregate Root
-- **Lead** (entidade principal)
+- **Negociação** (entidade principal)
 
 ### Domain Events
 | Evento | Trigger | Assinantes |
@@ -266,13 +266,14 @@ Com uma base de leads crescente, é essencial encontrar leads específicos rapid
 
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
-| 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 25/01/2026 | 1.0 | PO | Criação inicial com DDD (como LEAD-014) |
 | 27/01/2026 | 1.1 | PO | Adicionar filtro por motivo de arquivamento (14 motivos) |
+| 27/01/2026 | 2.0 | PO | Movido de CRM-Leads para CRM-Funil-Vendas |
 
 ---
 
-**Identificador**: US-CRM-LEAD-014  
-**Módulo**: CRM-Leads  
-**Fase**: 4 - Gestão de Leads  
+**Identificador**: US-CRM-FUN-021  
+**Módulo**: CRM-Funil-Vendas  
+**Fase**: Pipeline de Vendas  
 **Status**: ✅ Pronto  
-**Versão**: 1.1
+**Versão**: 2.0

@@ -1,9 +1,9 @@
-# US-CRM-LEAD-016 — Editar Dados do Lead
+# US-CRM-FUN-022 — Editar Dados da Negociação/Lead
 
 ## História de Usuário
 
 **Como** consultor de vendas,  
-**Quero** editar os dados de um lead,  
+**Quero** editar os dados de uma negociação/lead,  
 **Para** corrigir informações incorretas ou complementar dados faltantes.
 
 ## Prioridade
@@ -19,11 +19,11 @@ Essencial
 ## Contexto DDD
 
 ### Bounded Context
-- **Contexto**: Gestão de Leads (Lead Management)
-- **Módulo**: CRM-Leads
+- **Contexto**: Funil de Vendas (Sales Pipeline)
+- **Módulo**: CRM-Funil-Vendas
 
 ### Aggregate Root
-- **Lead** (entidade principal)
+- **Negociação** (entidade principal)
 
 ### Domain Events
 | Evento | Trigger | Assinantes |
@@ -250,12 +250,13 @@ Durante o processo de vendas, informações do lead podem precisar de correção
 
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
-| 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 25/01/2026 | 1.0 | PO | Criação inicial com DDD (como LEAD-016) |
+| 27/01/2026 | 2.0 | PO | Movido de CRM-Leads para CRM-Funil-Vendas |
 
 ---
 
-**Identificador**: US-CRM-LEAD-016  
-**Módulo**: CRM-Leads  
-**Fase**: 4 - Gestão de Leads  
+**Identificador**: US-CRM-FUN-022  
+**Módulo**: CRM-Funil-Vendas  
+**Fase**: Pipeline de Vendas  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 2.0

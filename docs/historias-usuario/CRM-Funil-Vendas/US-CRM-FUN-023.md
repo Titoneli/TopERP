@@ -1,10 +1,10 @@
-# US-CRM-LEAD-017 — Visualizar Detalhes do Lead
+# US-CRM-FUN-023 — Visualizar Detalhes da Negociação/Lead
 
 ## História de Usuário
 
 **Como** consultor de vendas,  
-**Quero** visualizar todos os detalhes de um lead,  
-**Para** ter contexto completo antes de fazer contato ou negociação.
+**Quero** visualizar todos os detalhes de uma negociação/lead,  
+**Para** ter contexto completo antes de fazer contato ou avançar na negociação.
 
 ## Prioridade
 
@@ -19,11 +19,11 @@ Essencial
 ## Contexto DDD
 
 ### Bounded Context
-- **Contexto**: Gestão de Leads (Lead Management)
-- **Módulo**: CRM-Leads
+- **Contexto**: Funil de Vendas (Sales Pipeline)
+- **Módulo**: CRM-Funil-Vendas
 
 ### Aggregate Root
-- **Lead** (entidade principal)
+- **Negociação** (entidade principal)
 
 ### Domain Events
 | Evento | Trigger | Assinantes |
@@ -300,13 +300,14 @@ Antes de contatar um lead, o consultor precisa ter visão completa do histórico
 
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
-| 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 25/01/2026 | 1.0 | PO | Criação inicial com DDD (como LEAD-017) |
 | 27/01/2026 | 1.1 | PO | Adicionar cenários e wireframe para lead arquivado com 14 motivos |
+| 27/01/2026 | 2.0 | PO | Movido de CRM-Leads para CRM-Funil-Vendas |
 
 ---
 
-**Identificador**: US-CRM-LEAD-017  
-**Módulo**: CRM-Leads  
-**Fase**: 4 - Gestão de Leads  
+**Identificador**: US-CRM-FUN-023  
+**Módulo**: CRM-Funil-Vendas  
+**Fase**: Pipeline de Vendas  
 **Status**: ✅ Pronto  
-**Versão**: 1.1
+**Versão**: 2.0

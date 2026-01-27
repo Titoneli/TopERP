@@ -116,22 +116,20 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | US-CRM-LEAD-010 | Integração com Facebook Lead Ads | Importante | Backlog | 13 |
 | US-CRM-LEAD-011 | Integração com Google Ads | Importante | Backlog | 13 |
 
-#### CRM-Leads: Fase 4 - Gestão de Leads
+#### CRM-Leads: Fase 4 - Atribuição e Cadastro
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-LEAD-012 | Cadastrar Lead Manualmente | Essencial | Backlog | 8 |
-| US-CRM-LEAD-013 | Visualizar Lista de Leads | Essencial | Backlog | 5 |
-| US-CRM-LEAD-014 | Buscar e Filtrar Leads | Essencial | Backlog | 5 |
-| US-CRM-LEAD-015 | Atribuir Lead a Consultor | Essencial | Backlog | 5 |
-| US-CRM-LEAD-016 | Editar Dados do Lead | Essencial | Backlog | 5 |
-| US-CRM-LEAD-017 | Visualizar Detalhes do Lead | Essencial | Backlog | 5 |
+| US-CRM-LEAD-012 | Cadastrar Lead Manualmente | Essencial | ✅ Pronto | 8 |
+| US-CRM-LEAD-015 | Atribuir Lead a Consultor | Essencial | ✅ Pronto | 5 |
+
+> **Nota DDD:** LEAD-013, LEAD-014, LEAD-016, LEAD-017 movidas para CRM-Funil-Vendas (FUN-020 a FUN-023)
 
 #### CRM-Leads: Fase 5 - Inteligência e IA
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-LEAD-018 | Enriquecimento de Dados (APIs externas) | Desejável | Backlog | 8 |
-| US-CRM-LEAD-019 | Score Automático de Lead | Desejável | Backlog | 8 |
-| US-CRM-LEAD-020 | Detecção de Lead Duplicado | Desejável | Backlog | 5 |
+| US-CRM-LEAD-018 | Enriquecimento de Dados (APIs externas) | Desejável | ✅ Pronto | 8 |
+| US-CRM-LEAD-019 | Score Automático de Lead | Desejável | ✅ Pronto | 8 |
+| US-CRM-LEAD-020 | Detecção de Lead Duplicado | Desejável | ✅ Pronto | 5 |
 
 #### CRM-Autenticação
 | ID | História | Prioridade | Status | SP |
@@ -148,6 +146,10 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
 | US-CRM-FUN-001 | Visualizar Funil de Vendas | Essencial | Backlog | 13 |
+| US-CRM-FUN-020 | Visualizar Lista de Leads/Negociações | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-021 | Buscar e Filtrar Negociações | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-022 | Editar Dados da Negociação/Lead | Essencial | ✅ Pronto | 5 |
+| US-CRM-FUN-023 | Visualizar Detalhes da Negociação/Lead | Essencial | ✅ Pronto | 5 |
 
 ---
 
@@ -155,16 +157,16 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Métrica | Valor |
 |---------|-------|
-| Total de Histórias CRM-Leads | 20 |
+| Total de Histórias CRM-Leads | 16 |
 | Fase 1 (Captação) | 3 histórias / 39 SP |
 | Fase 2 (Captura Avançada) | 3 histórias / 26 SP |
 | Fase 3 (Gestão + Ads) | 5 histórias / 42 SP |
-| Fase 4 (Gestão Leads) | 6 histórias / 33 SP |
+| Fase 4 (Atribuição/Cadastro) | 2 histórias / 13 SP |
 | Fase 5 (Inteligência/IA) | 3 histórias / 21 SP |
-| **Total CRM-Leads** | **20 histórias / 161 SP** |
+| **Total CRM-Leads** | **16 histórias / 141 SP** |
 | Total CRM-AUT | 2 histórias / 7 SP |
 | Total CRM-COT | 1 história / 8 SP |
-| Total CRM-FUN | 1 história / 13 SP |
+| Total CRM-FUN | 5 histórias / 33 SP |
 | **TOTAL CRM** | **24 histórias / 189 SP** |
 
 ---
@@ -183,6 +185,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
+| 27/01/2026 | 2.2 | DDD: Mover LEAD-013, 014, 016, 017 para CRM-FUN-020 a 023 | PO |
 | 25/01/2026 | 2.1 | Correção DDD: IDs sequenciais por fase (007-011 Fase 3, 012-017 Fase 4) | PO |
 | 23/01/2026 | 2.0 | Reorganização CRM-Leads por fases (Gestão de Leads movida para Fase 5) | PO |
 | 21/01/2026 | 1.1 | Renumeração CRM-Leads (LEAD-003 dashboard Essencial) e inclusão de sequências | PO |

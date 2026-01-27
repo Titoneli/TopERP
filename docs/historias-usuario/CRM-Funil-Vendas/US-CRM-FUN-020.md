@@ -1,9 +1,9 @@
-# US-CRM-LEAD-013 — Visualizar Lista de Leads
+# US-CRM-FUN-020 — Visualizar Lista de Leads/Negociações
 
 ## História de Usuário
 
 **Como** consultor de vendas,  
-**Quero** visualizar minha lista de leads em uma tabela,  
+**Quero** visualizar minha lista de leads/negociações em uma tabela,  
 **Para** ter visão geral do meu pipeline e organizar meu trabalho.
 
 ## Prioridade
@@ -19,11 +19,11 @@ Essencial
 ## Contexto DDD
 
 ### Bounded Context
-- **Contexto**: Gestão de Leads (Lead Management)
-- **Módulo**: CRM-Leads
+- **Contexto**: Funil de Vendas (Sales Pipeline)
+- **Módulo**: CRM-Funil-Vendas
 
 ### Aggregate Root
-- **Lead** (entidade principal)
+- **Negociação** (entidade principal)
 
 ### Domain Events
 | Evento | Trigger | Assinantes |
@@ -217,12 +217,13 @@ A lista de leads é a principal ferramenta de trabalho do consultor. Ela deve mo
 
 | Data | Versão | Autor | Descrição |
 |------|--------|-------|-----------|
-| 25/01/2026 | 1.0 | PO | Criação inicial com DDD |
+| 25/01/2026 | 1.0 | PO | Criação inicial com DDD (como LEAD-013) |
+| 27/01/2026 | 2.0 | PO | Movido de CRM-Leads para CRM-Funil-Vendas |
 
 ---
 
-**Identificador**: US-CRM-LEAD-013  
-**Módulo**: CRM-Leads  
-**Fase**: 4 - Gestão de Leads  
+**Identificador**: US-CRM-FUN-020  
+**Módulo**: CRM-Funil-Vendas  
+**Fase**: Pipeline de Vendas  
 **Status**: ✅ Pronto  
-**Versão**: 1.0
+**Versão**: 2.0
