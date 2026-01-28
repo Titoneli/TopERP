@@ -4,7 +4,7 @@
 |----------|-------|
 | **Módulo** | CRM-Funil-Vendas |
 | **Código** | CRM-FUN |
-| **Versão** | 3.0 |
+| **Versão** | 3.1 |
 | **Data** | 28/01/2026 |
 | **Responsável** | Product Owner - CRM |
 | **Tipo DDD** | Core Domain |
@@ -77,7 +77,7 @@ O sistema CRM possui **5 funis personalizados**, cada um com etapas específicas
 | Etapa | Descrição |
 |-------|-----------|
 | Pendente de Análise | Cotação aguardando análise |
-| Negociação em Análise | Cotação sendo analisada |
+| Negociação Em Análise | Cotação sendo analisada |
 | Negociação Pendente/Reprovada | Cotação com pendências ou reprovada |
 | Negociação Aprovada | Cotação aprovada |
 | Liberado para Cadastro | Pronto para cadastro no sistema |
@@ -102,6 +102,50 @@ O sistema CRM possui **5 funis personalizados**, cada um com etapas específicas
 - **Supervisor/Gerente**: Visualiza funil da equipe
 - **Administrador**: Configura funil e automações
 - **Lead/Cliente**: Destinatário das ações de vendas
+
+### 1.5 Interface do Usuário (Kanban)
+
+#### Estrutura da Tela
+- **Header**: Logo TopBrasil, ícones de navegação (Home, Menu, Notificações), Avatar do usuário
+- **Seletor de Funil**: Dropdown para alternar entre os 5 funis
+- **Barra de Busca**: Busca por nome, veículo, consultor
+- **Botão Filtrar**: Filtros avançados
+- **Botão "Nova Negociação"**: Criar nova negociação (laranja)
+- **Colunas**: Etapas do funil em formato kanban com contador de cards
+
+#### Estrutura do Card
+
+```
+┌─────────────────────────────────────────┐
+│ [Pendente]                              │  ← Badge de Status (vermelho)
+├─────────────────────────────────────────┤
+│ 👤 Nome do Lead          22 Jan • 20:51 │  ← Nome + Data/Hora
+│ 🚗 Veículo não informado                │  ← Dados do Veículo
+│ 💰 R$ 0,00                              │  ← Valor Estimado
+├─────────────────────────────────────────┤
+│ [N]  ●●  ✏️  💬  📅  ➡️                  │  ← Ações Rápidas
+└─────────────────────────────────────────┘
+```
+
+| Elemento | Descrição |
+|----------|-----------|
+| **Badge Status** | Indica status da negociação (Pendente = vermelho) |
+| **Nome** | Nome do lead/cliente |
+| **Data/Hora** | Data e hora de criação ou última atualização |
+| **Veículo** | Modelo do veículo ou "Veículo não informado" |
+| **Valor** | Valor estimado da negociação (R$) |
+| **[N]** | Indicador de prioridade (N = Normal) |
+| **●●** | Indicador de atividades/tarefas pendentes (laranja = pendente) |
+| **✏️** | Editar dados da negociação |
+| **💬** | Enviar mensagem WhatsApp |
+| **📅** | Agendar atividade/follow-up |
+| **➡️** | Mover para próxima etapa |
+
+#### Funcionalidades de Interação
+- **Drag & Drop**: Arrastar cards entre etapas ("Arraste cards aqui")
+- **Contador por Etapa**: Número de cards em cada coluna
+- **Scroll Horizontal**: Navegação entre etapas
+- **Clique no Card**: Abre detalhes completos da negociação
 
 ---
 
@@ -134,7 +178,7 @@ O contexto **Funil de Vendas (CRM-FUN)** é classificado como **Core Domain** po
 │                    <<Aggregate Root>>                           │
 │                      NEGOCIAÇÃO                                 │
 ├─────────────────────────────────────────────────────────────────┤
-│ - id: UUID                                                      │
+│ - id: id_negociacao                                             │
 │ - numero: NumeroNegociacao                                      │
 │ - leadId: UUID (FK CRM-LED)                                     │
 │ - consultorId: UUID                                             │
@@ -384,18 +428,22 @@ O contexto **Funil de Vendas (CRM-FUN)** é classificado como **Core Domain** po
 | **DadosContrato** | contratoId: UUID, numero: string, valor: Dinheiro | Referência válida |
 | **DadosVistoria** | vistoriaId: UUID, status: StatusVistoria, fotos: List<URL>, dataAgendada: DateTime | Ref VistorIA |
 | **DadosPagamento** | transacaoId: UUID, valor: Dinheiro, status: StatusPagamento, dataPagamento: DateTime? | Ref Banco Digital |
+| **DadosVeiculo** | modelo: string, placa: string?, ano: number?, cor: string? | Veículo da negociação |
+| **CardVisual** | leadNome, dataHora, veiculo, valor, statusBadge, prioridade, atividadesPendentes | Representação visual |
 | **StatusNegociacao** | valor: enum | ATIVA, GANHA, PERDIDA, SUSPENSA, FUTURA |
+| **StatusBadge** | valor: enum, cor: CorHex | PENDENTE (vermelho), EM_ANDAMENTO (amarelo), CONCLUIDO (verde) |
 | **StatusVistoria** | valor: enum | PENDENTE, AGENDADA, EFETUADA, CANCELADA, APROVADA |
 | **StatusPagamento** | valor: enum | AGUARDANDO, NAO_EFETUADO, EFETUADO, ESTORNADO |
-| **TipoAtividade** | valor: enum | LIGACAO, EMAIL, REUNIAO, TAREFA, FOLLOWUP, VISTORIA |
+| **TipoAtividade** | valor: enum | LIGACAO, EMAIL, REUNIAO, TAREFA, FOLLOWUP, VISTORIA, WHATSAPP |
 | **StatusAtividade** | valor: enum | PENDENTE, EM_ANDAMENTO, CONCLUIDA, CANCELADA |
-| **Prioridade** | valor: enum | BAIXA, NORMAL, ALTA, URGENTE |
+| **Prioridade** | valor: enum, indicador: string | BAIXA (B), NORMAL (N), ALTA (A), URGENTE (U) |
 | **TipoInteracao** | valor: enum | LIGACAO, EMAIL, WHATSAPP, REUNIAO, VISITA |
 | **CanalInteracao** | valor: enum | TELEFONE, EMAIL, WHATSAPP, PRESENCIAL, VIDEO |
 | **DirecaoInteracao** | valor: enum | ENTRADA, SAIDA |
 | **TipoEtapaFunil** | valor: enum | INICIAL, INTERMEDIARIA, FINAL_POSITIVO, FINAL_NEGATIVO, TRANSICAO |
 | **SistemaIntegracao** | valor: enum | VISTORIA_APP, BANCO_DIGITAL, ERP_SGA, ERP_SAV, CRM_LEADS |
 | **TipoIntegracao** | valor: enum | API, WEBHOOK, BANCO_DADOS, VISUAL |
+| **AcaoRapidaCard** | valor: enum | EDITAR, WHATSAPP, AGENDAR, MOVER_PROXIMO |
 | **CorHex** | valor: string | Formato #RRGGBB |
 | **Percentual** | valor: decimal | 0-100 |
 
@@ -669,10 +717,11 @@ interface IntegracaoRepository {
 | 27/01/2026 | 2.2 | Product Owner | DDD Completo: Criar FUN-002 a FUN-019 (18 novas histórias, +127 SP) |
 | 28/01/2026 | 2.3 | Product Owner | Reestruturação seção 1.3: 5 funis personalizados com etapas e integrações específicas |
 | 28/01/2026 | 3.0 | Product Owner | Revisão DDD completa: Agregados multi-funil, Value Objects expandidos, Eventos de domínio para integrações (VistorIA, Banco Digital, ERP Top), Regras por funil, 31 histórias totais |
+| 28/01/2026 | 3.1 | Product Owner | Adicionada seção 1.5 Interface do Usuário (Kanban): estrutura de tela, estrutura do card, ações rápidas, funcionalidades de interação. Novos Value Objects: DadosVeiculo, CardVisual, StatusBadge, AcaoRapidaCard. Correção nomenclatura "Negociação Em Análise" |
 
 ---
 
-**Versão**: 3.0  
+**Versão**: 3.1  
 **Data**: 28/01/2026  
 **Responsável**: Product Owner - CRM  
 **Tipo DDD**: Core Domain
