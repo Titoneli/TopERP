@@ -18,12 +18,12 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 
 ### 1.1 Responsabilidades
 
-- Geração de cobranças (PIX, Boleto)
-- Integração com banco digital
-- Confirmação automática de pagamentos
-- Gestão de status de pagamento
-- Notificações de vencimento
-- Registro de comprovantes
+- Geração de cobranças (PIX, Bolet, Cartão de Crédito)
+- Integração com banco digital próprio ou white-label (ContaTop)
+- Confirmação automática de pagamentos das vendas
+- Gestão de status de pagamento (Funil de Pagamentos)
+- Notificações de vencimento (Integração WhatsApp/SMTP)
+- Registro de comprovantes (Banco Digital)
 
 ### 1.2 Posição no Funil
 
@@ -43,7 +43,7 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 |----------|-----------|
 | **Nome** | Pagamentos |
 | **Tipo** | Core Domain |
-| **Linguagem Ubíqua** | Cobrança, PIX, Boleto, Confirmação, Comprovante |
+| **Linguagem Ubíqua** | Cobrança, PIX, Boleto, Cartão de Crédito, Confirmação, Comprovante |
 
 ### 2.2 Agregados
 
@@ -53,11 +53,10 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 ┌─────────────────────────────────────────────────────────┐
 │                    COBRANÇA (Root)                      │
 ├─────────────────────────────────────────────────────────┤
-│ - id: UUID                                              │
-│ - proposta_id: UUID (FK CRM-PRO)                        │
-│ - lead_id: UUID (FK CRM-LED)                            │
+│ - id_cotacao_pagamento: id                              │
+│ - id_cotacao: UUID (FK CRM-PRO)                         │
 │ - valor: Money                                          │
-│ - tipo: TipoCobranca (PIX, BOLETO)                      │
+│ - tipo: TipoCobranca (PIX, BOLETO, CARTAO)              │
 │ - status: StatusCobranca                                │
 │ - data_emissao: DateTime                                │
 │ - data_vencimento: DateTime                             │
@@ -78,8 +77,9 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 │                                                         │
 │ Value Objects:                                          │
 │ ├── Money (valor, moeda)                                │
-│ ├── DadosPIX (chave, qrcode, copia_cola)                │
 │ └── DadosBoleto (linha_digitavel, codigo_barras)        │
+│ ├── DadosPIX (chave, qrcode, copia_cola)                │
+│ └── DadosCartao (operadora)                             │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -98,13 +98,15 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 | **Money** | Valor monetário | valor, moeda |
 | **DadosPIX** | Informações do PIX | chave, qrcode, copia_cola, txid |
 | **DadosBoleto** | Informações do boleto | linha_digitavel, codigo_barras, nosso_numero |
+| **DadosCartao** | Informações da oparadora |
+
 | **StatusCobranca** | Estado da cobrança | PENDENTE, PAGO, VENCIDO, CANCELADO |
 
 ### 2.5 Eventos de Domínio
 
 | Evento | Trigger | Consumidores |
 |--------|---------|--------------|
-| `CobrancaGerada` | Nova cobrança criada | CRM-DAS, CRM-AUD, CRM-LED |
+| `CobrancaGerada` | Nova cobrança criada | CRM-DAS, CRM-AUD, CRM-LEAD |
 | `PagamentoConfirmado` | Pagamento identificado | CRM-VIS, CRM-COM, CRM-AUD |
 | `CobrancaVencida` | Data vencimento ultrapassada | CRM-TAR, CRM-LED, CRM-AUD |
 | `ComprovantAnexado` | Comprovante manual enviado | CRM-ANA, CRM-AUD |
@@ -114,8 +116,8 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 
 | Repositório | Métodos Principais |
 |-------------|-------------------|
-| `CobrancaRepository` | save, findById, findByPropostaId, findByStatus |
-| `ComprovanteRepository` | save, findByCobrancaId |
+| `CobrancaRepository` | save, findById, findByCotacaoId, findByStatus |
+| `ComprovanteRepository` | save, findByCotacaoId |
 
 ---
 
@@ -125,14 +127,14 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 
 | Contexto | Dados Recebidos | Padrão |
 |----------|-----------------|--------|
-| CRM-PRO | proposta_id, valor, cliente_id | Customer/Supplier |
-| CRM-LED | lead_id, dados_contato | Shared Kernel |
+| CRM-PRO | id_cotacao, valor, id_veiculo | Customer/Supplier |
+| CRM-LEAD | id_negociacao, id_cliente | Shared Kernel |
 
 ### 3.2 Downstream (Envia para)
 
 | Contexto | Dados Enviados | Padrão |
 |----------|----------------|--------|
-| CRM-VIS | pagamento_confirmado, proposta_id | Domain Event |
+| CRM-VIS | pagamento_confirmado, id_cotacao | Domain Event |
 | CRM-COM | valor_pago, data_pagamento | Domain Event |
 | CRM-DAS | métricas de pagamento | CQRS Read Model |
 | CRM-AUD | todos os eventos | Event Sourcing |
@@ -141,7 +143,7 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 
 | Sistema | Adapter | Operações |
 |---------|---------|-----------|
-| **Banco Digital** | BancoDigitalAdapter | gerarPIX, gerarBoleto, consultarPagamento |
+| **Banco Digital** | BancoDigitalAdapter | gerarPIX, gerarBoleto, gerarCartao, consultarPagamento |
 | **Webhook Banco** | WebhookHandler | receberConfirmacao |
 
 ```
@@ -149,16 +151,16 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 │              ANTI-CORRUPTION LAYER                      │
 ├─────────────────────────────────────────────────────────┤
 │                                                         │
-│  ┌─────────────┐       ┌─────────────┐                 │
-│  │  CRM-PAG    │──────►│   Adapter   │                 │
-│  │  (Domain)   │       │   Banco     │                 │
-│  └─────────────┘       └──────┬──────┘                 │
+│  ┌─────────────┐       ┌─────────────┐                  │
+│  │  CRM-PAG    │──────►│   Adapter   │                  │
+│  │  (Domain)   │       │   Banco     │                  │
+│  └─────────────┘       └──────┬──────┘                  │
 │                               │                         │
 │                               ▼                         │
-│                        ┌─────────────┐                 │
-│                        │Banco Digital│                 │
-│                        │  (External) │                 │
-│                        └─────────────┘                 │
+│                        ┌─────────────┐                  │
+│                        │Banco Digital│                  │
+│                        │  (External) │                  │
+│                        └─────────────┘                  │
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -169,7 +171,7 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 
 | Código | Regra | Descrição |
 |--------|-------|-----------|
-| RN-PAG-001 | Tipo de cobrança | PIX é padrão; Boleto mediante solicitação |
+| RN-PAG-001 | Tipo de cobrança | PIX é padrão; Boleto/Cartão mediante solicitação |
 | RN-PAG-002 | Vencimento PIX | PIX tem validade de 30 minutos |
 | RN-PAG-003 | Vencimento Boleto | Boleto tem validade de 3 dias úteis |
 | RN-PAG-004 | Confirmação automática | Webhook do banco confirma automaticamente |
@@ -185,7 +187,7 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 | ID | Título | Prioridade | Status |
 |----|--------|------------|--------|
 | US-CRM-PAG-001 | Gerar PIX para proposta | Must | 📋 Planejado |
-| US-CRM-PAG-002 | Gerar Boleto para proposta | Should | 📋 Planejado |
+| US-CRM-PAG-002 | Gerar Boleto/Cartao para proposta | Should | 📋 Planejado |
 | US-CRM-PAG-003 | Confirmar pagamento automático | Must | 📋 Planejado |
 | US-CRM-PAG-004 | Anexar comprovante manual | Should | 📋 Planejado |
 | US-CRM-PAG-005 | Enviar notificação de vencimento | Should | 📋 Planejado |
@@ -199,6 +201,7 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 - [ ] Integração com banco digital funcional
 - [ ] PIX gerado com QR Code válido
 - [ ] Boleto gerado com código de barras válido
+- [ ] Cartão aprovado com dados da operadora válidos
 - [ ] Webhook de confirmação implementado
 - [ ] Notificações automáticas configuradas
 - [ ] Dashboard atualizado em tempo real
@@ -213,7 +216,7 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 | Taxa de conversão | % de cobranças pagas vs geradas |
 | Tempo médio de pagamento | Média entre emissão e confirmação |
 | Cobranças vencidas | Quantidade de cobranças não pagas |
-| Preferência de pagamento | % PIX vs % Boleto |
+| Preferência de pagamento | % PIX vs % Boleto vs %Cartao |
 
 ---
 
