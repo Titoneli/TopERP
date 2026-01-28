@@ -13,15 +13,17 @@
 
 ## 1. Visão Geral
 
-O módulo de Funil de Vendas é o **Core Domain** central do CRM de proteção veicular, permitindo aos consultores gerenciar todo o ciclo de vendas desde a captação do lead até o fechamento do contrato. Este é o coração do processo comercial.
+O módulo de Funil de Vendas é o **Core Domain** central do CRM de proteção veicular, permitindo aos consultores gerenciar todo o ciclo de vendas desde a captação do lead até o fechamento do contrato. Este é o coração do processo comercial. O sistema CRM permitirá que existam vários funis personalizados, começando do funil de Leads Recebidos com as etapas (Pronto para Abordar, Tentando Contato, Coleta de Dados, Em Negociacao, Co, tacao Enviada, Fechado), Funil Pagamentos com as etapas (Contrato Fechado, Aguardando Pagamento, Pagamento Não efetuado, Pagamento Efetuado, Aguardando Vistoria), Funil Vistorias com as Etapas (Pendente de Vistoria, Vistoria Agendada, Vistoria Efetuada, Vistoria Cancelada/Revistoria, Vistoria Aprovada), Funil Analise de Cotações com as etapas (Pendente de Análise, Negociação em Análise, Negociação Pendente/Reprovada, Negociação Aprovada, Liberado para Cadastro), Funil Negociação Concretizada com as etapas (Triagem Pós Venda - Envio Contrato, Conferência do Cadastro, Checklist Integrações, Checklist Financeiro e Finalizados).
+Cada funil tem um fluxo específico que interage com outros aplicativos e funcionalidades especificas, por exemplo, o Funil 
 
 ### 1.1 Objetivos
 
 - Proporcionar visão clara e organizada de todas as oportunidades de vendas
-- Facilitar o acompanhamento do progresso de cada negociação
+- Facilitar o acompanhamento do progresso de cada negociação por etapa
 - Aumentar a taxa de conversão através de gestão eficiente do funil
 - Automatizar follow-ups e tarefas do processo de vendas
 - Fornecer métricas e indicadores de performance de vendas
+- Processos com fluxos separados que facilitam a gestão das negociações
 
 ### 1.2 Fluxo do Funil
 
