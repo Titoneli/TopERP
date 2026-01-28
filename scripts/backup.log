@@ -202,3 +202,7 @@
 [2026-01-28 14:45:06] INFO: Tentando push para origin...
 [2026-01-28 14:45:07] ✅ SUCESSO: Push para origin realizado
 [2026-01-28 14:45:07] ----------------------------------------
+[2026-01-28 16:10:09] ✅ SUCESSO: Backup realizado com 2 arquivo(s) alterado(s)
+[2026-01-28 16:10:09] INFO: Tentando push para origin...
+[2026-01-28 16:10:09] ⚠️ AVISO: Push falhou ou não configurado. Backup local OK.
+[2026-01-28 16:10:09] ----------------------------------------
