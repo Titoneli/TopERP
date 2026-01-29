@@ -150,13 +150,14 @@ Este documento define o **Context Map** do sistema TopERP CRM, identificando os 
 | CRM-CAD | Cadastros Básicos | Supporting | CRUD Planos, Serviços, Tabelas, FIPE | 📋 Planejado |
 | CRM-LED | Leads | Core | Captação e gestão de leads/prospects | ✅ Documentado |
 | CRM-COT | Cotações | Core | Simulação e cálculo de preços | ⚠️ Parcial |
-| CRM-FUN | Funil de Leads | Core | Gestão de pipeline e conversão | ⚠️ Parcial |
+| CRM-FUN | Funil de Leads | Core | Gestão de pipeline e conversão | ✅ Documentado |
 | CRM-PRO | Propostas | Core | Geração e envio de propostas | 📋 Planejado |
 | CRM-PAG | Pagamentos | Core | PIX, boleto, integração bancária | 📋 Planejado |
 | CRM-VIS | Vistorias | Core | Agendamento e execução de vistorias | 📋 Planejado |
 | CRM-ANA | Análise | Core | Análise documental e aprovação | 📋 Planejado |
+| CRM-FIN | Financeiro Consultor | Core | Saques, NF, comissões, motor regras | ✅ Documentado |
 | CRM-TAR | Tarefas & Agendas | Supporting | Gestão de atividades e calendário | 📋 Planejado |
-| CRM-COM | Comissionamento | Supporting | Cálculo de comissões e remuneração | 📋 Planejado |
+| CRM-COM | Comissionamento | Supporting | Cálculo de comissões e remuneração | 🔄 Absorvido por CRM-FIN |
 | CRM-APP | App Consultor | Supporting | Aplicativo mobile para consultores | 📋 Planejado |
 | CRM-CAP | Captação & Follow-Up | Supporting | Multicanal e acompanhamento | 📋 Planejado |
 | CRM-ASS | Assinatura Digital | Supporting | Assinatura eletrônica de contratos | 📋 Planejado |
@@ -186,6 +187,12 @@ Este documento define o **Context Map** do sistema TopERP CRM, identificando os 
 | CRM-PRO | CRM-PAG | State Machine | Proposta aceita → Pagamento |
 | CRM-PAG | CRM-VIS | State Machine | Pagamento confirmado → Vistoria |
 | CRM-VIS | CRM-ANA | State Machine | Vistoria realizada → Análise |
+| CRM-ANA | CRM-FIN | Event | Venda concretizada → Crédito comissão |
+| CRM-FIN | CRM-PAG | Event | Estorno → Devolução cliente |
+| CRM-FIN | SEFAZ | ACL | Emissão NF-e/NFS-e |
+| CRM-FIN | MFG/Sankhya | ACL | Ordens de pagamento |
+| CRM-FIN | Banco Digital | ACL | PIX, saques |
+| CRM-FIN | Sistema Contábil | ACL | Lançamentos contábeis |
 | CRM-CAD | CRM-COT | Upstream/Downstream | Dados de preços e planos |
 | CRM-* | CRM-DAS | CQRS | Read Model agregado |
 | CRM-* | CRM-REL | CQRS | Read Model para relatórios |

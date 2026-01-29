@@ -4,7 +4,7 @@
 
 Este documento contém o Product Backlog do TopERP, organizado por módulo e prioridade.
 
-**Última Atualização**: 23 de janeiro de 2026  
+**Última Atualização**: 29 de janeiro de 2026  
 **Product Owner**: Gustavo Titoneli  
 **Sprint Atual**: Sprint 0 - Planejamento
 
@@ -20,8 +20,10 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | EP-004 | Controle de Estoque | EST | Planejado |
 | EP-005 | Gestão de Produção | PRD | Planejado |
 | EP-006 | Recursos Humanos | RH | Futuro |
-| EP-007 | CRM | CRM | Futuro |
-| EP-008 | Contabilidade | CON | Futuro |
+| EP-007 | CRM - Leads e Captação | CRM-LED | ✅ Documentado |
+| EP-008 | CRM - Funil de Vendas | CRM-FUN | ✅ Documentado |
+| EP-009 | CRM - Financeiro Consultor | CRM-FIN | ✅ Documentado |
+| EP-010 | Contabilidade | CON | Futuro |
 
 ---
 
@@ -181,6 +183,72 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | US-CRM-FUN-022 | Editar Dados da Negociação/Lead | Essencial | ✅ Pronto | 5 |
 | US-CRM-FUN-023 | Visualizar Detalhes da Negociação/Lead | Essencial | ✅ Pronto | 5 |
 
+#### CRM-Financeiro: Essenciais - Conta e Saldo
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-001 | Visualizar Saldo Disponível para Saque | Essencial | Backlog | 8 |
+| US-CRM-FIN-002 | Visualizar Extrato de Movimentações | Essencial | Backlog | 8 |
+| US-CRM-FIN-003 | Solicitar Saque Total | Essencial | Backlog | 13 |
+| US-CRM-FIN-004 | Solicitar Saque Parcial | Essencial | Backlog | 8 |
+| US-CRM-FIN-005 | Solicitar Saque por Período | Essencial | Backlog | 8 |
+| US-CRM-FIN-006 | Creditar Comissões Automaticamente | Essencial | Backlog | 13 |
+
+#### CRM-Financeiro: Essenciais - Emissão de NF
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-007 | Emitir NF-e/NFS-e Automaticamente | Essencial | Backlog | 21 |
+| US-CRM-FIN-008 | Arquivar XML e PDF das Notas Fiscais | Essencial | Backlog | 5 |
+| US-CRM-FIN-009 | Visualizar Notas Fiscais Emitidas | Essencial | Backlog | 5 |
+| US-CRM-FIN-010 | Cancelar Nota Fiscal | Essencial | Backlog | 13 |
+
+#### CRM-Financeiro: Essenciais - Pagamento
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-011 | Criar Ordem de Pagamento no ERP | Essencial | Backlog | 13 |
+| US-CRM-FIN-012 | Processar Pagamento via PIX | Essencial | Backlog | 21 |
+| US-CRM-FIN-013 | Atualizar Status da Solicitação | Essencial | Backlog | 8 |
+| US-CRM-FIN-014 | Notificar Consultor sobre Pagamento | Essencial | Backlog | 5 |
+
+#### CRM-Financeiro: Importantes - Contabilidade
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-015 | Lançamento Contábil Automático | Importante | Backlog | 13 |
+| US-CRM-FIN-016 | Estornar Lançamento Contábil | Importante | Backlog | 8 |
+
+#### CRM-Financeiro: Importantes - Cancelamentos e Estornos
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-017 | Debitar Consultor em Cancelamento | Importante | Backlog | 13 |
+| US-CRM-FIN-018 | Devolver Valores ao Cliente (PIX) | Importante | Backlog | 13 |
+| US-CRM-FIN-019 | Cancelar NF e Estornar Ordem | Importante | Backlog | 13 |
+| US-CRM-FIN-020 | Aprovar/Rejeitar Estornos | Importante | Backlog | 8 |
+
+#### CRM-Financeiro: Importantes - Motor de Regras
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-021 | Cadastrar Regras de Comissão | Importante | Backlog | 21 |
+| US-CRM-FIN-022 | Cadastrar Regras de Residual | Importante | Backlog | 13 |
+| US-CRM-FIN-023 | Cadastrar Regras de Bonificação | Importante | Backlog | 13 |
+| US-CRM-FIN-024 | Criar Campanhas de Premiação | Importante | Backlog | 13 |
+| US-CRM-FIN-025 | Simular Cálculo de Comissão | Importante | Backlog | 8 |
+
+#### CRM-Financeiro: Importantes - Demonstrativos
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-026 | Visualizar Demonstrativo Analítico | Importante | Backlog | 13 |
+| US-CRM-FIN-027 | Visualizar Demonstrativo Sintético | Importante | Backlog | 8 |
+| US-CRM-FIN-028 | Envio Automático de Demonstrativos | Importante | Backlog | 8 |
+| US-CRM-FIN-029 | Aprovar/Contestar Valores a Receber | Importante | Backlog | 8 |
+
+#### CRM-Financeiro: Desejáveis - Avançado
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-030 | Acessar Demonstrativos pelo App | Desejável | Backlog | 13 |
+| US-CRM-FIN-031 | Push Notification de Créditos | Desejável | Backlog | 5 |
+| US-CRM-FIN-032 | Dashboard Financeiro Consolidado | Desejável | Backlog | 13 |
+| US-CRM-FIN-033 | Creditar Residuais Automaticamente | Desejável | Backlog | 13 |
+| US-CRM-FIN-034 | Exportar Relatórios Financeiros | Desejável | Backlog | 8 |
+
 ---
 
 ## Métricas do Backlog
@@ -198,9 +266,18 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | • Importantes (FUN-011 a FUN-015) | 5 histórias / 42 SP |
 | • Desejáveis (FUN-016 a FUN-019) | 4 histórias / 29 SP |
 | • Movidos de Leads (FUN-020 a FUN-023) | 4 histórias / 20 SP |
+| **CRM-Financeiro** | **34 histórias / 374 SP** |
+| • Essenciais - Conta e Saldo (FIN-001 a FIN-006) | 6 histórias / 58 SP |
+| • Essenciais - Emissão NF (FIN-007 a FIN-010) | 4 histórias / 44 SP |
+| • Essenciais - Pagamento (FIN-011 a FIN-014) | 4 histórias / 47 SP |
+| • Importantes - Contabilidade (FIN-015 a FIN-016) | 2 histórias / 21 SP |
+| • Importantes - Estornos (FIN-017 a FIN-020) | 4 histórias / 47 SP |
+| • Importantes - Motor Regras (FIN-021 a FIN-025) | 5 histórias / 68 SP |
+| • Importantes - Demonstrativos (FIN-026 a FIN-029) | 4 histórias / 37 SP |
+| • Desejáveis - Avançado (FIN-030 a FIN-034) | 5 histórias / 52 SP |
 | **CRM-Autenticação** | **2 histórias / 7 SP** |
 | **CRM-Cotações** | **1 história / 8 SP** |
-| **TOTAL CRM** | **42 histórias / 303 SP** |
+| **TOTAL CRM** | **76 histórias / 677 SP** |
 
 ---
 
@@ -211,6 +288,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 3. [ ] Detalhar histórias do MVP
 4. [ ] Estimar story points
 5. [ ] Planejar Sprint 1
+6. [ ] Documentar integrações externas CRM-FIN (SEFAZ, Banco Digital, MFG/Sankhya)
 
 ---
 
@@ -218,6 +296,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
+| 29/01/2026 | 2.5 | Adição de CRM-Financeiro (CRM-FIN): 34 histórias, 374 SP. Motor de Regras, Saques, NF, PIX | PO |
 | 27/01/2026 | 2.4 | Adição de FUN-002 a FUN-019: Funil completo com DDD (18 novas histórias) | PO |
 | 27/01/2026 | 2.3 | Renumeração sequencial: LEAD-015→013, LEAD-018→014, LEAD-019→015, LEAD-020→016 | PO |
 | 27/01/2026 | 2.2 | DDD: Mover LEAD-013, 014, 016, 017 para CRM-FUN-020 a 023 | PO |

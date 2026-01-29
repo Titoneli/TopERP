@@ -24,10 +24,6 @@ O módulo **CRM-Pagamentos** é responsável pelo processamento e gestão de pag
 - Gestão de status de pagamento (Funil de Pagamentos)
 - Notificações de vencimento (Integração WhatsApp/SMTP)
 - Registro de comprovantes (Banco Digital)
-- Integração com banco digital ou setor financeiro, para abertura de ticket de solicitação de saque, dos valores acumulados à receber das vendas realizadas, totais ou por período
-- Integração com sistema contábil para registros contábeis dos lançamentos realizados de entradas e saídas de valores
-- Integração com a SEFAZ do estado do consultor ou com a SRF, para emissão automática das Notas fiscas e arquivamento dos arquivos XML e PDF das notas emitidas.
-- Automatização do fluxo de solicitação de saque, emissão de NF, lançamento contábil, ordem de pagamento no MFG/Sankhia com os anexos dos aquivos das  
 
 ### 1.2 Posição no Funil
 
