@@ -249,6 +249,43 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | US-CRM-FIN-033 | Creditar Residuais Automaticamente | Desejável | Backlog | 13 |
 | US-CRM-FIN-034 | Exportar Relatórios Financeiros | Desejável | Backlog | 8 |
 
+#### CRM-Financeiro: Motor de Regras Avançado (SplitC-inspired)
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-035 | Cadastrar Regras SPIFF (Incentivo Pontual) | Importante | Backlog | 8 |
+| US-CRM-FIN-036 | Cadastrar Regras de PLR | Importante | Backlog | 13 |
+| US-CRM-FIN-037 | Cadastrar Aceleradores Progressivos | Importante | Backlog | 13 |
+| US-CRM-FIN-038 | Cadastrar Comissão Escalonada por Volume | Importante | Backlog | 8 |
+| US-CRM-FIN-039 | Cadastrar Override (Comissão sobre Equipe) | Importante | Backlog | 13 |
+| US-CRM-FIN-040 | Cadastrar Split de Comissão | Importante | Backlog | 8 |
+| US-CRM-FIN-041 | Usar Templates Pré-configurados | Desejável | Backlog | 5 |
+| US-CRM-FIN-042 | Motor Visual Low-Code para Regras | Desejável | Backlog | 21 |
+
+#### CRM-Financeiro: Gestão de Metas Avançada
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-043 | Cadastrar Metas Individuais (Floor/Target/Stretch) | Importante | Backlog | 8 |
+| US-CRM-FIN-044 | Cadastrar Metas de Equipe | Importante | Backlog | 8 |
+| US-CRM-FIN-045 | Cadastrar Metas Compostas | Desejável | Backlog | 13 |
+| US-CRM-FIN-046 | Visualizar Atingimento em Tempo Real | Importante | Backlog | 8 |
+| US-CRM-FIN-047 | Projeção de Atingimento | Desejável | Backlog | 5 |
+| US-CRM-FIN-048 | Alertas de Desvio de Meta | Desejável | Backlog | 5 |
+
+#### CRM-Financeiro: Portal de Transparência
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-049 | Detalhamento de Cálculo de Comissão | Importante | Backlog | 8 |
+| US-CRM-FIN-050 | Simulador "Quanto Ganho Se Vender X" | Desejável | Backlog | 8 |
+| US-CRM-FIN-051 | Posição no Ranking da Equipe | Desejável | Backlog | 5 |
+
+#### CRM-Financeiro: Aceite Digital de Políticas
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-052 | Publicar Políticas de Comissionamento | Importante | Backlog | 8 |
+| US-CRM-FIN-053 | Aceite Digital com Validade Jurídica | Importante | Backlog | 13 |
+| US-CRM-FIN-054 | Visualizar Aceites Pendentes | Importante | Backlog | 5 |
+| US-CRM-FIN-055 | Registrar Aceite com Auditoria | Importante | Backlog | 8 |
+
 ---
 
 ## Métricas do Backlog
@@ -266,7 +303,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | • Importantes (FUN-011 a FUN-015) | 5 histórias / 42 SP |
 | • Desejáveis (FUN-016 a FUN-019) | 4 histórias / 29 SP |
 | • Movidos de Leads (FUN-020 a FUN-023) | 4 histórias / 20 SP |
-| **CRM-Financeiro** | **34 histórias / 374 SP** |
+| **CRM-Financeiro** | **55 histórias / 565 SP** |
 | • Essenciais - Conta e Saldo (FIN-001 a FIN-006) | 6 histórias / 58 SP |
 | • Essenciais - Emissão NF (FIN-007 a FIN-010) | 4 histórias / 44 SP |
 | • Essenciais - Pagamento (FIN-011 a FIN-014) | 4 histórias / 47 SP |
@@ -275,9 +312,13 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | • Importantes - Motor Regras (FIN-021 a FIN-025) | 5 histórias / 68 SP |
 | • Importantes - Demonstrativos (FIN-026 a FIN-029) | 4 histórias / 37 SP |
 | • Desejáveis - Avançado (FIN-030 a FIN-034) | 5 histórias / 52 SP |
+| • **Motor Regras Avançado - SplitC (FIN-035 a FIN-042)** | **8 histórias / 89 SP** |
+| • **Gestão de Metas Avançada (FIN-043 a FIN-048)** | **6 histórias / 47 SP** |
+| • **Portal de Transparência (FIN-049 a FIN-051)** | **3 histórias / 21 SP** |
+| • **Aceite Digital Políticas (FIN-052 a FIN-055)** | **4 histórias / 34 SP** |
 | **CRM-Autenticação** | **2 histórias / 7 SP** |
 | **CRM-Cotações** | **1 história / 8 SP** |
-| **TOTAL CRM** | **76 histórias / 677 SP** |
+| **TOTAL CRM** | **97 histórias / 868 SP** |
 
 ---
 
@@ -296,6 +337,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
+| 29/01/2026 | 2.6 | Motor de Regras Avançado SplitC: +21 histórias (+191 SP). Metas, Transparência, Aceite Digital | PO |
 | 29/01/2026 | 2.5 | Adição de CRM-Financeiro (CRM-FIN): 34 histórias, 374 SP. Motor de Regras, Saques, NF, PIX | PO |
 | 27/01/2026 | 2.4 | Adição de FUN-002 a FUN-019: Funil completo com DDD (18 novas histórias) | PO |
 | 27/01/2026 | 2.3 | Renumeração sequencial: LEAD-015→013, LEAD-018→014, LEAD-019→015, LEAD-020→016 | PO |

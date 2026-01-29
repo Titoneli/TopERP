@@ -4,7 +4,7 @@
 |----------|-------|
 | **Módulo** | CRM-Financeiro |
 | **Código** | CRM-FIN |
-| **Versão** | 1.0 |
+| **Versão** | 2.0 |
 | **Data** | 29/01/2026 |
 | **Responsável** | Product Owner - CRM |
 | **Status** | Planejado |
@@ -47,7 +47,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 │   ┌──────────────┐     ┌──────────────┐     ┌──────────────┐                        │
 │   │    Ordem     │────►│  Pagamento   │────►│   Extrato    │                        │
 │   │  Pagamento   │     │   via PIX    │     │  Consultor   │                        │
-│   │  MFG/Sankhya │     │              │     │              │                        │
+│   │  MGF/Sankhya │     │              │     │              │                        │
 │   └──────────────┘     └──────────────┘     └──────────────┘                        │
 │                                                                                     │
 └─────────────────────────────────────────────────────────────────────────────────────┘
@@ -103,38 +103,200 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### 1.3.3 Motor de Regras - Comissões e Remuneração
+#### 1.3.3 Motor de Regras - Comissões e Remuneração Variável
+
+> **Inspirado em:** SplitC - Plataforma de automação de remuneração variável
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                              MOTOR DE REGRAS                                        │
+│                         MOTOR DE REGRAS AVANÇADO                                    │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
 │   TIPOS DE REMUNERAÇÃO:                                                             │
 │   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  BÁSICOS:                                                                  │    │
 │   │  • Comissão Direta: % sobre valor da venda                                 │    │
 │   │  • Residual: % sobre mensalidades recorrentes                              │    │
 │   │  • Bonificação: valor fixo por meta atingida                               │    │
 │   │  • Premiação: campanhas especiais (período específico)                     │    │
+│   │                                                                            │    │
+│   │  AVANÇADOS (inspirado SplitC):                                             │    │
+│   │  • SPIFF: incentivo pontual por produto/período (Sales Performance)        │    │
+│   │  • PLR: participação nos lucros com fórmulas complexas                     │    │
+│   │  • Acelerador: multiplicador progressivo por faixa de resultado            │    │
+│   │  • Comissão Escalonada: % variável conforme volume                         │    │
+│   │  • Override: comissão sobre vendas da equipe (gestores)                    │    │
+│   │  • Split: divisão de comissão entre múltiplos consultores                  │    │
 │   └────────────────────────────────────────────────────────────────────────────┘    │
 │                                                                                     │
 │   VARIÁVEIS DO MOTOR:                                                               │
 │   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  VENDA:                                                                    │    │
 │   │  • Tipo de plano vendido (Básico, Premium)                                 │    │
 │   │  • Valor da venda (adesão, mensalidade)                                    │    │
+│   │  • Margem de contribuição                                                  │    │
+│   │  • Tipo de cliente (novo, renovação, upgrade)                              │    │
+│   │                                                                            │    │
+│   │  CONSULTOR:                                                                │    │
 │   │  • Quantidade de vendas no período                                         │    │
 │   │  • Tempo como consultor (senioridade)                                      │    │
 │   │  • Região de atuação                                                       │    │
+│   │  • Nível/cargo hierárquico                                                 │    │
 │   │  • Indicadores de desempenho (taxa de conversão, NPS)                      │    │
+│   │                                                                            │    │
+│   │  CONTEXTO:                                                                 │    │
 │   │  • Campanhas ativas                                                        │    │
+│   │  • Sazonalidade                                                            │    │
+│   │  • Metas individuais e de equipe                                           │    │
+│   │  • Atingimento acumulado                                                   │    │
 │   └────────────────────────────────────────────────────────────────────────────┘    │
 │                                                                                     │
-│   FÓRMULAS CONFIGURÁVEIS:                                                           │
+│   FÓRMULAS CONFIGURÁVEIS (MOTOR VISUAL LOW-CODE):                                   │
 │   ┌────────────────────────────────────────────────────────────────────────────┐    │
 │   │  comissao = (valor_venda × perc_comissao) + bonus_plano + bonus_meta       │    │
 │   │  residual = mensalidade × perc_residual × fator_senioridade                │    │
 │   │  bonificacao = IF(vendas >= meta) THEN valor_bonus ELSE 0                  │    │
 │   │  premiacao = regras_campanha_ativa(periodo, valores)                       │    │
+│   │                                                                            │    │
+│   │  AVANÇADAS:                                                                │    │
+│   │  acelerador = base × CASE                                                  │    │
+│   │                  WHEN ating >= 120% THEN 1.5                               │    │
+│   │                  WHEN ating >= 100% THEN 1.2                               │    │
+│   │                  WHEN ating >= 80%  THEN 1.0                               │    │
+│   │                  ELSE 0.8 END                                              │    │
+│   │  override = SUM(vendas_equipe) × perc_override × nivel_gestor              │    │
+│   │  split = valor_total × participacao_percentual                             │    │
+│   │  plr = (lucro_periodo × perc_plr) × peso_individual × fator_tempo          │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   TEMPLATES PRÉ-CONFIGURADOS:                                                       │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  • Comissão Simples (% fixo)                                               │    │
+│   │  • Comissão por Faixa (escalonada)                                         │    │
+│   │  • Bônus por Meta                                                          │    │
+│   │  • SPIFF Produto Específico                                                │    │
+│   │  • Override Gestor 2 níveis                                                │    │
+│   │  • PLR Trimestral                                                          │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   RASTREABILIDADE 100%:                                                             │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  • Log completo de cada cálculo realizado                                  │    │
+│   │  • Variáveis utilizadas e valores                                          │    │
+│   │  • Regra aplicada e versão                                                 │    │
+│   │  • Comparativo antes/depois em alterações                                  │    │
+│   │  • Trilha de auditoria para compliance                                     │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 1.3.4 Gestão de Metas Avançada
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                         GESTÃO DE METAS EM TEMPO REAL                               │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│   TIPOS DE META:                                                                    │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  • Meta Individual: por consultor                                          │    │
+│   │  • Meta de Equipe: agregada por gerente/regional                           │    │
+│   │  • Meta Composta: combinação de indicadores (vendas + NPS + retenção)      │    │
+│   │  • Meta Progressiva: faixas crescentes (floor, target, stretch)            │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   ACOMPANHAMENTO:                                                                   │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  • Dashboard em tempo real                                                 │    │
+│   │  • Projeção de atingimento                                                 │    │
+│   │  • Alertas de desvio                                                       │    │
+│   │  • Ranking/gamificação                                                     │    │
+│   │  • Histórico de performance                                                │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   PERÍODOS:                                                                         │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  • Mensal | Trimestral | Semestral | Anual                                 │    │
+│   │  • Campanhas especiais (período customizado)                               │    │
+│   │  • Acumulado (YTD - Year to Date)                                          │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 1.3.5 Portal de Transparência
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                         PORTAL DE TRANSPARÊNCIA                                     │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│   VISÃO DO CONSULTOR:                                                               │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  • Dashboard com resumo de ganhos (realizado vs projetado)                 │    │
+│   │  • Detalhamento de cada cálculo (drill-down)                               │    │
+│   │  • Simulador de comissão ("quanto ganho se vender X?")                     │    │
+│   │  • Extrato analítico por tipo de remuneração                               │    │
+│   │  • Comparativo com períodos anteriores                                     │    │
+│   │  • Posição no ranking da equipe/região                                     │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   DETALHAMENTO DO CÁLCULO:                                                          │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  Venda #12345 - Plano Premium                                              │    │
+│   │  ├─ Valor da venda: R$ 500,00                                              │    │
+│   │  ├─ Comissão base (8%): R$ 40,00                                           │    │
+│   │  ├─ Bônus plano Premium: R$ 10,00                                          │    │
+│   │  ├─ Acelerador (ating. 110%): × 1.2                                        │    │
+│   │  └─ TOTAL: R$ 60,00                                                        │    │
+│   │  Regra aplicada: REG-COM-001 v3.2 (vigente desde 01/01/2026)               │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   SIMULADOR:                                                                        │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  "Se eu vender mais 3 planos Premium este mês..."                          │    │
+│   │  ├─ Comissão adicional: R$ 180,00                                          │    │
+│   │  ├─ Bônus meta atingida: R$ 200,00                                         │    │
+│   │  ├─ Acelerador sobe para 1.3x                                              │    │
+│   │  └─ Impacto total: +R$ 520,00                                              │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 1.3.6 Aceite Digital de Políticas
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                         ACEITE DIGITAL DE POLÍTICAS                                 │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│   FLUXO DE ACEITE:                                                                  │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  1. Gestor publica nova política de comissionamento                        │    │
+│   │  2. Consultor recebe notificação para aceitar                              │    │
+│   │  3. Consultor visualiza documento completo                                 │    │
+│   │  4. Consultor realiza aceite digital com autenticação                      │    │
+│   │  5. Sistema registra: data/hora, IP, hash do documento, assinatura         │    │
+│   │  6. Política entra em vigor para o consultor                               │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   VALIDADE JURÍDICA:                                                                │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  • Assinatura digital com certificado                                      │    │
+│   │  • Registro de timestamp (carimbo de tempo)                                │    │
+│   │  • Hash SHA-256 do documento                                               │    │
+│   │  • Log de auditoria imutável                                               │    │
+│   │  • Conformidade com MP 2.200-2 (ICP-Brasil)                                │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   GESTÃO DE VERSÕES:                                                                │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  • Histórico de todas as versões                                           │    │
+│   │  • Comparativo entre versões (diff)                                        │    │
+│   │  • Registro de quem aceitou cada versão                                    │    │
+│   │  • Alertas para aceites pendentes                                          │    │
 │   └────────────────────────────────────────────────────────────────────────────┘    │
 │                                                                                     │
 └─────────────────────────────────────────────────────────────────────────────────────┘
@@ -336,7 +498,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 │ - dat_pagamento: timestamp                                      │
 │ - dom_sit_ordem: text (CRIADA, APROVADA, EM_PAGAMENTO,          │
 │                        PAGA, CANCELADA, ESTORNADA)              │
-│ - id_externo_erp: text (ID no MFG/Sankhya)                      │
+│ - id_externo_erp: text (ID no MGF/Sankhya)                      │
 │ - json_anexos: jsonb (URLs dos anexos - NF XML, PDF)            │
 │ - json_retorno_erp: jsonb                                       │
 │ - pagamento_pix: PagamentoPIX? (1:1)                            │
@@ -381,7 +543,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 
 #### Agregado: MotorRegras (Aggregate Root)
 
-> **Tabela BD:** `crm_regra_comissao`, `crm_regra_parametro`, `crm_campanha`
+> **Tabela BD:** `crm_regra_comissao`, `crm_regra_parametro`, `crm_campanha`, `crm_meta`, `crm_politica_comissao`
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -395,8 +557,12 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 │ - nome_regra: text                                              │
 │ - dsc_regra: text                                               │
 │ - dom_tpo_regra: text (COMISSAO, RESIDUAL, BONIFICACAO,         │
-│                        PREMIACAO)                               │
+│                        PREMIACAO, SPIFF, PLR, ACELERADOR,       │
+│                        ESCALONADA, OVERRIDE, SPLIT)             │
+│ - dom_tpo_template: text (SIMPLES, FAIXA, BONUS_META,           │
+│                           SPIFF_PRODUTO, OVERRIDE_GESTOR, PLR)  │
 │ - formula: text (expressão de cálculo)                          │
+│ - json_formula_visual: jsonb (representação low-code)           │
 │ - parametros: List<RegraParametro> (1:N)                        │
 │ - condicoes: List<RegraCondicao> (1:N)                          │
 │ - dom_sit_regra: text (ATIVA, INATIVA, RASCUNHO)                │
@@ -469,6 +635,84 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 │ + encerrar(): void                                              │
 │ + calcularRanking(): List<RankingConsultor>                     │
 └─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                    <<Entity>>                                   │
+│                        META                                     │
+│                     (crm_meta)                                  │
+├─────────────────────────────────────────────────────────────────┤
+│ - id_meta: bigint (PK)                                          │
+│ - id_empresa: bigint (FK)                                       │
+│ - id_colaborador: bigint (FK, opcional - meta individual)       │
+│ - id_equipe: bigint (FK, opcional - meta de equipe)             │
+│ - cod_meta: text                                                │
+│ - nome_meta: text                                               │
+│ - dom_tpo_meta: text (INDIVIDUAL, EQUIPE, COMPOSTA, PROGRESSIVA)│
+│ - dom_tpo_indicador: text (VENDAS_QTD, VENDAS_VALOR, NPS,       │
+│                            RETENCAO, CONVERSAO, CUSTOMIZADO)    │
+│ - val_floor: numeric(14,2) (mínimo)                             │
+│ - val_target: numeric(14,2) (alvo)                              │
+│ - val_stretch: numeric(14,2) (superação)                        │
+│ - val_realizado: numeric(14,2)                                  │
+│ - perc_atingimento: numeric(5,2)                                │
+│ - dat_inicio: date                                              │
+│ - dat_fim: date                                                 │
+│ - dom_periodo: text (MENSAL, TRIMESTRAL, SEMESTRAL, ANUAL)      │
+│ - dom_sit_meta: text (ATIVA, ENCERRADA, CANCELADA)              │
+│ - json_indicadores_compostos: jsonb (para metas compostas)      │
+├─────────────────────────────────────────────────────────────────┤
+│ + atualizarRealizado(valor): void                               │
+│ + calcularAtingimento(): Percentual                             │
+│ + projetarAtingimento(): Percentual                             │
+│ + verificarAlertaDesvio(): Alerta?                              │
+│ + obterPosicaoRanking(): RankingPosition                        │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│                    <<Entity>>                                   │
+│              POLITICA_COMISSIONAMENTO                           │
+│             (crm_politica_comissao)                             │
+├─────────────────────────────────────────────────────────────────┤
+│ - id_politica: bigint (PK)                                      │
+│ - id_empresa: bigint (FK)                                       │
+│ - cod_politica: text                                            │
+│ - nome_politica: text                                           │
+│ - dsc_politica: text                                            │
+│ - versao: smallint                                              │
+│ - documento_url: text (PDF da política)                         │
+│ - hash_documento: text (SHA-256)                                │
+│ - dat_vigencia_ini: date                                        │
+│ - dat_vigencia_fim: date                                        │
+│ - dom_sit_politica: text (RASCUNHO, PUBLICADA, VIGENTE, EXPIRADA)│
+│ - regras: List<RegraComissao> (1:N)                             │
+│ - aceites: List<AceitePolitica> (1:N)                           │
+├─────────────────────────────────────────────────────────────────┤
+│ + publicar(): void                                              │
+│ + expirar(): void                                               │
+│ + compararVersao(outra: PoliticaComissionamento): Diff          │
+│ + verificarAceitesPendentes(): List<Colaborador>                │
+└─────────────────────────────────────────────────────────────────┘
+         │
+         │ registra (1:N)
+         ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    <<Entity>>                                   │
+│                   ACEITE_POLITICA                               │
+│                (crm_aceite_politica)                            │
+├─────────────────────────────────────────────────────────────────┤
+│ - id_aceite: bigint (PK)                                        │
+│ - id_politica: bigint (FK)                                      │
+│ - id_colaborador: bigint (FK)                                   │
+│ - dat_aceite: timestamp                                         │
+│ - ip_aceite: text                                               │
+│ - user_agent: text                                              │
+│ - hash_documento: text (hash no momento do aceite)              │
+│ - assinatura_digital: text                                      │
+│ - dom_tpo_aceite: text (DIGITAL, PRESENCIAL)                    │
+├─────────────────────────────────────────────────────────────────┤
+│ + validarAssinatura(): boolean                                  │
+│ + gerarComprovante(): File                                      │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 #### Agregado: Estorno
@@ -518,12 +762,15 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **SolicitacaoSaque** | `crm_solicitacao_saque` | Pedido de saque do consultor | id_solicitacao_saque + cod_solicitacao |
 | **NotaFiscal** | `crm_nota_fiscal` | NF-e ou NFS-e emitida | id_nota_fiscal + chave_acesso |
 | **LancamentoContabil** | `crm_lancamento_contabil` | Registro no sistema contábil | id_lancamento_contabil |
-| **OrdemPagamento** | `crm_ordem_pagamento` | Ordem no MFG/Sankhya | id_ordem_pagamento + cod_ordem |
+| **OrdemPagamento** | `crm_ordem_pagamento` | Ordem no MGF/Sankhya | id_ordem_pagamento + cod_ordem |
 | **PagamentoPIX** | `crm_pagamento_pix` | Transferência PIX executada | id_pagamento_pix + end_to_end_id |
 | **RegraComissao** | `crm_regra_comissao` | Regra do motor de cálculo | id_regra_comissao + cod_regra |
 | **RegraParametro** | `crm_regra_parametro` | Parâmetro da regra | id_regra_parametro |
 | **RegraCondicao** | `crm_regra_condicao` | Condição de aplicação | id_regra_condicao |
 | **Campanha** | `crm_campanha` | Campanha de premiação | id_campanha |
+| **Meta** | `crm_meta` | Meta individual/equipe/composta | id_meta + cod_meta |
+| **PoliticaComissionamento** | `crm_politica_comissao` | Política de comissão versionada | id_politica + cod_politica |
+| **AceitePolitica** | `crm_aceite_politica` | Aceite digital da política | id_aceite |
 | **Estorno** | `crm_estorno` | Cancelamento/devolução | id_estorno + cod_estorno |
 
 ### 2.4 Value Objects
@@ -532,7 +779,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 
 | Value Object | Domínio BD | Valores | Descrição |
 |--------------|------------|---------|-----------|
-| **DomTpoLancamento** | `dom_tpo_lancamento` | COMISSAO, RESIDUAL, BONIFICACAO, PREMIACAO, ESTORNO, AJUSTE | Tipo de lançamento |
+| **DomTpoLancamento** | `dom_tpo_lancamento` | COMISSAO, RESIDUAL, BONIFICACAO, PREMIACAO, SPIFF, PLR, ACELERADOR, OVERRIDE, SPLIT, ESTORNO, AJUSTE | Tipo de lançamento |
 | **DomNatLancamento** | `dom_nat_lancamento` | CREDITO, DEBITO | Natureza (C/D) |
 | **DomSitLancamento** | `dom_sit_lancamento` | PENDENTE, CONFIRMADO, CANCELADO | Status do lançamento |
 | **DomTpoSaque** | `dom_tpo_saque` | TOTAL, PARCIAL, PERIODO | Tipo de saque |
@@ -542,9 +789,16 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **DomSitOrdem** | `dom_sit_ordem` | CRIADA, APROVADA, EM_PAGAMENTO, PAGA, CANCELADA, ESTORNADA | Status da ordem |
 | **DomTpoChavePIX** | `dom_tpo_chave` | CPF, CNPJ, EMAIL, TELEFONE, ALEATORIA | Tipo de chave PIX |
 | **DomSitPagamentoPIX** | `dom_sit_pagamento` | AGENDADO, PROCESSANDO, EFETIVADO, REJEITADO, DEVOLVIDO | Status do PIX |
-| **DomTpoRegra** | `dom_tpo_regra` | COMISSAO, RESIDUAL, BONIFICACAO, PREMIACAO | Tipo de regra |
+| **DomTpoRegra** | `dom_tpo_regra` | COMISSAO, RESIDUAL, BONIFICACAO, PREMIACAO, SPIFF, PLR, ACELERADOR, ESCALONADA, OVERRIDE, SPLIT | Tipo de regra |
+| **DomTpoTemplate** | `dom_tpo_template` | SIMPLES, FAIXA, BONUS_META, SPIFF_PRODUTO, OVERRIDE_GESTOR, PLR | Template de regra |
 | **DomSitRegra** | `dom_sit_regra` | ATIVA, INATIVA, RASCUNHO | Status da regra |
 | **DomTpoParametro** | `dom_tpo_parametro` | PERCENTUAL, VALOR, QUANTIDADE, BOOLEAN, TEXTO | Tipo de parâmetro |
+| **DomTpoMeta** | `dom_tpo_meta` | INDIVIDUAL, EQUIPE, COMPOSTA, PROGRESSIVA | Tipo de meta |
+| **DomTpoIndicador** | `dom_tpo_indicador` | VENDAS_QTD, VENDAS_VALOR, NPS, RETENCAO, CONVERSAO, CUSTOMIZADO | Indicador da meta |
+| **DomPeriodo** | `dom_periodo` | MENSAL, TRIMESTRAL, SEMESTRAL, ANUAL | Período da meta |
+| **DomSitMeta** | `dom_sit_meta` | ATIVA, ENCERRADA, CANCELADA | Status da meta |
+| **DomSitPolitica** | `dom_sit_politica` | RASCUNHO, PUBLICADA, VIGENTE, EXPIRADA | Status da política |
+| **DomTpoAceite** | `dom_tpo_aceite` | DIGITAL, PRESENCIAL | Tipo de aceite |
 | **DomTpoEstorno** | `dom_tpo_estorno` | CANCELAMENTO, DEVOLUCAO, AJUSTE | Tipo de estorno |
 | **DomSitEstorno** | `dom_sit_estorno` | PENDENTE, APROVADO, PROCESSANDO, CONCLUIDO, CANCELADO | Status do estorno |
 | **DomSitConta** | `dom_sit_conta` | ATIVA, BLOQUEADA, INATIVA | Status da conta |
@@ -557,10 +811,12 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **DadosBancarios** | banco, agencia, conta, digito, tipo_conta, chave_pix | Dados bancários do consultor |
 | **DadosFiscais** | cpf_cnpj, inscricao_municipal, regime_tributario | Dados para emissão de NF |
 | **ChaveAcessoNF** | valor: text (44 dígitos) | Formato válido SEFAZ |
-| **ContextoCalculo** | negociacao, consultor, plano, valores, periodo | Dados para cálculo |
-| **ResultadoCalculo** | valor, regra_aplicada, detalhamento | Resultado do motor |
+| **ContextoCalculo** | negociacao, consultor, plano, valores, periodo, metas | Dados para cálculo |
+| **ResultadoCalculo** | valor, regra_aplicada, detalhamento, log_auditoria | Resultado do motor com rastreabilidade |
 | **DemonstrativoFinanceiro** | periodo, lancamentos, totais, saldos | Demonstrativo analítico/sintético |
 | **ExtratoConsultor** | periodo, movimentacoes, saldo_anterior, saldo_final | Extrato de movimentações |
+| **SimulacaoComissao** | cenario, vendas_adicionais, impacto_financeiro | Simulação "what-if" |
+| **RankingPosition** | posicao, total_participantes, percentil | Posição no ranking |
 
 #### Tabelas de Referência (FK)
 
@@ -571,6 +827,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **Usuario** | `amb_usuario` | crm_solicitacao_saque.id_usuario |
 | **Negociacao** | `crm_negociacao` | crm_lancamento_financeiro.id_negociacao |
 | **Cliente** | `cor_cliente` | crm_estorno.id_cliente |
+| **Equipe** | `cor_equipe` | crm_meta.id_equipe |
 
 ### 2.5 Eventos de Domínio
 
@@ -588,6 +845,12 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **RegraComissaoAtivada** | Nova regra ativada | regraId, vigencia | Auditoria |
 | **CampanhaIniciada** | Campanha ativa | campanhaId, periodo | Notificação |
 | **DemonstrativoGerado** | Demonstrativo disponível | contaId, periodo, url | Notificação, App |
+| **MetaAtualizada** | Realizado atualizado | metaId, valorAnterior, valorNovo, atingimento | Dashboard, Ranking |
+| **MetaAtingida** | Meta floor/target/stretch alcançada | metaId, tipoMeta, colaboradorId | Notificação, Bonificação |
+| **AlertaDesvioMeta** | Desvio significativo detectado | metaId, percDesvio | Gestor, Notificação |
+| **PoliticaPublicada** | Nova política publicada | politicaId, versao | Notificação, Aceite |
+| **AceiteRegistrado** | Consultor aceitou política | aceiteId, colaboradorId, politicaId | Auditoria, Compliance |
+| **AceitePendente** | Lembrete de aceite pendente | colaboradorId, politicaId, diasPendente | Notificação |
 
 ### 2.6 Integrações Externas
 
@@ -597,7 +860,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **SEFAZ** | Externo | Web Service SOAP | Emissão, consulta e cancelamento de NF-e |
 | **Prefeitura (NFS-e)** | Externo | API REST/SOAP | Emissão de NFS-e (varia por município) |
 | **Sistema Contábil** | Externo | API REST | Lançamentos contábeis automáticos |
-| **MFG/Sankhya** | Externo | API REST | Ordens de pagamento, contas a pagar |
+| **MGF/Sankhya** | Externo | API REST | Ordens de pagamento, contas a pagar |
 | **App Consultor** | Interno | API REST + Push | Demonstrativos, notificações, aprovações |
 | **CRM Principal** | Interno | Eventos | Vendas concretizadas, cancelamentos |
 
@@ -629,7 +892,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 
 | ID | História | Prioridade | SP |
 |----|----------|------------|-----|
-| US-CRM-FIN-011 | Como sistema, quero criar ordem de pagamento no MFG/Sankhya com anexos da NF | Essencial | 13 |
+| US-CRM-FIN-011 | Como sistema, quero criar ordem de pagamento no MGF/Sankhya com anexos da NF | Essencial | 13 |
 | US-CRM-FIN-012 | Como sistema, quero processar pagamento via PIX na conta do consultor | Essencial | 21 |
 | US-CRM-FIN-013 | Como sistema, quero atualizar status da solicitação em cada etapa do fluxo | Essencial | 8 |
 | US-CRM-FIN-014 | Como consultor, quero receber notificação quando meu pagamento for efetuado | Essencial | 5 |
@@ -679,6 +942,49 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | US-CRM-FIN-033 | Como sistema, quero creditar residuais automaticamente | Desejável | 13 |
 | US-CRM-FIN-034 | Como gestor, quero exportar relatórios financeiros | Desejável | 8 |
 
+### 3.9 Motor de Regras Avançado (SplitC)
+
+> **Novas funcionalidades inspiradas na plataforma SplitC**
+
+| ID | História | Prioridade | SP |
+|----|----------|------------|-----|
+| US-CRM-FIN-035 | Como gestor, quero cadastrar regras SPIFF (incentivo pontual por produto), para premiar vendas específicas | Importante | 8 |
+| US-CRM-FIN-036 | Como gestor, quero cadastrar regras de PLR com fórmulas complexas, para distribuir lucros | Importante | 13 |
+| US-CRM-FIN-037 | Como gestor, quero cadastrar aceleradores progressivos por faixa, para incentivar superação de metas | Importante | 13 |
+| US-CRM-FIN-038 | Como gestor, quero cadastrar comissão escalonada por volume, para premiar alto desempenho | Importante | 8 |
+| US-CRM-FIN-039 | Como gestor, quero cadastrar override (comissão sobre equipe), para remunerar gestores | Importante | 13 |
+| US-CRM-FIN-040 | Como gestor, quero cadastrar split de comissão entre consultores, para vendas compartilhadas | Importante | 8 |
+| US-CRM-FIN-041 | Como gestor, quero usar templates pré-configurados de regras, para agilizar cadastro | Desejável | 5 |
+| US-CRM-FIN-042 | Como gestor, quero montar regras visualmente (low-code), para facilitar configuração | Desejável | 21 |
+
+### 3.10 Gestão de Metas Avançada
+
+| ID | História | Prioridade | SP |
+|----|----------|------------|-----|
+| US-CRM-FIN-043 | Como gestor, quero cadastrar metas individuais com floor/target/stretch | Importante | 8 |
+| US-CRM-FIN-044 | Como gestor, quero cadastrar metas de equipe agregadas | Importante | 8 |
+| US-CRM-FIN-045 | Como gestor, quero cadastrar metas compostas (múltiplos indicadores) | Desejável | 13 |
+| US-CRM-FIN-046 | Como consultor, quero visualizar meu atingimento em tempo real | Importante | 8 |
+| US-CRM-FIN-047 | Como consultor, quero ver projeção de atingimento até fim do período | Desejável | 5 |
+| US-CRM-FIN-048 | Como gestor, quero receber alertas de desvio de meta da equipe | Desejável | 5 |
+
+### 3.11 Portal de Transparência
+
+| ID | História | Prioridade | SP |
+|----|----------|------------|-----|
+| US-CRM-FIN-049 | Como consultor, quero ver detalhamento de cada cálculo de comissão | Importante | 8 |
+| US-CRM-FIN-050 | Como consultor, quero simular "quanto ganho se vender X" | Desejável | 8 |
+| US-CRM-FIN-051 | Como consultor, quero ver minha posição no ranking da equipe | Desejável | 5 |
+
+### 3.12 Aceite Digital de Políticas
+
+| ID | História | Prioridade | SP |
+|----|----------|------------|-----|
+| US-CRM-FIN-052 | Como gestor, quero publicar políticas de comissionamento versionadas | Importante | 8 |
+| US-CRM-FIN-053 | Como consultor, quero aceitar digitalmente políticas com validade jurídica | Importante | 13 |
+| US-CRM-FIN-054 | Como gestor, quero visualizar aceites pendentes e enviar lembretes | Importante | 5 |
+| US-CRM-FIN-055 | Como sistema, quero registrar aceite com hash, timestamp e IP para auditoria | Importante | 8 |
+
 ---
 
 ## 4. Regras de Negócio
@@ -720,6 +1026,24 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | RN-FIN-016 | Fórmula válida | Expressão deve ser válida antes de ativar |
 | RN-FIN-017 | Campanha exclusiva | Premiação de campanha não acumula com bonificação |
 
+### 4.5 Regras de Metas
+
+| Código | Regra | Validação |
+|--------|-------|-----------|
+| RN-FIN-018 | Hierarquia de metas | floor < target < stretch |
+| RN-FIN-019 | Alerta de desvio | Notificar se atingimento < 70% com 50%+ do período |
+| RN-FIN-020 | Bonificação por faixa | floor = sem bônus, target = 100%, stretch = multiplicador |
+| RN-FIN-021 | Meta de equipe | Atingimento = soma realizados / soma targets |
+
+### 4.6 Regras de Políticas
+
+| Código | Regra | Validação |
+|--------|-------|-----------|
+| RN-FIN-022 | Aceite obrigatório | Consultor deve aceitar política vigente para receber |
+| RN-FIN-023 | Validade jurídica | Aceite deve registrar hash, timestamp, IP |
+| RN-FIN-024 | Versão única | Apenas uma política pode estar VIGENTE por vez |
+| RN-FIN-025 | Prazo de aceite | Máximo 7 dias para aceitar após publicação |
+
 ---
 
 ## 5. Métricas (KPIs)
@@ -733,6 +1057,10 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | Taxa de estornos | Estornos / vendas | < 5% |
 | Ticket médio de saque | Valor médio por saque | Monitorar |
 | Comissão média por venda | Valor médio de comissão | Monitorar |
+| Taxa de atingimento de metas | Consultores que atingiram target | > 70% |
+| Tempo médio aceite política | Dias entre publicação e aceite | < 3 dias |
+| Taxa de aceites pendentes | Aceites pendentes / total | < 5% |
+| Uso do simulador | Simulações realizadas / consultores | Monitorar |
 
 ---
 
@@ -741,10 +1069,11 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | Data | Versão | Autor | Alteração |
 |------|--------|-------|-----------|
 | 29/01/2026 | 1.0 | Product Owner | Versão inicial - Estrutura completa do módulo CRM-Financeiro |
+| 29/01/2026 | 2.0 | Product Owner | Motor de Regras Avançado inspirado SplitC: +21 histórias (+181 SP) |
 
 ---
 
-**Versão**: 1.0  
+**Versão**: 2.0  
 **Data**: 29/01/2026  
 **Responsável**: Product Owner - CRM  
 **Tipo DDD**: Core Domain
@@ -761,7 +1090,33 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | Importantes - Motor de Regras (FIN-021 a FIN-025) | 5 | 68 SP |
 | Importantes - Demonstrativos (FIN-026 a FIN-029) | 4 | 37 SP |
 | Desejáveis - Avançado (FIN-030 a FIN-034) | 5 | 52 SP |
-| **TOTAL CRM-Financeiro** | **34** | **374 SP** |
+| **Motor Regras Avançado - SplitC (FIN-035 a FIN-042)** | **8** | **89 SP** |
+| **Gestão de Metas Avançada (FIN-043 a FIN-048)** | **6** | **47 SP** |
+| **Portal de Transparência (FIN-049 a FIN-051)** | **3** | **21 SP** |
+| **Aceite Digital de Políticas (FIN-052 a FIN-055)** | **4** | **34 SP** |
+| **TOTAL CRM-Financeiro** | **55** | **565 SP** |
+
+### 7.1 Comparativo de Evolução
+
+| Métrica | v1.0 | v2.0 | Δ Variação |
+|---------|------|------|------------|
+| Histórias de Usuário | 34 | 55 | +21 (+62%) |
+| Story Points | 374 SP | 565 SP | +191 SP (+51%) |
+| Entidades DDD | 12 | 16 | +4 (+33%) |
+| Eventos de Domínio | 12 | 18 | +6 (+50%) |
+| Regras de Negócio | 17 | 25 | +8 (+47%) |
+
+### 7.2 Novas Funcionalidades (SplitC-inspired)
+
+| Funcionalidade | Descrição | SP |
+|----------------|-----------|-----|
+| **Motor de Cálculo Avançado** | SPIFF, PLR, Acelerador, Escalonada, Override, Split | 63 SP |
+| **Motor Visual Low-Code** | Interface drag-and-drop para regras | 21 SP |
+| **Templates Pré-configurados** | Modelos prontos de regras comuns | 5 SP |
+| **Gestão de Metas** | Individual, Equipe, Composta, Progressiva | 47 SP |
+| **Portal de Transparência** | Detalhamento, Simulador, Ranking | 21 SP |
+| **Aceite Digital** | Políticas versionadas com validade jurídica | 34 SP |
+| **Rastreabilidade 100%** | Log completo de cálculos para auditoria | Incluído |
 
 ---
 
@@ -793,7 +1148,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | SEFAZ (NF-e) | 60 SP | Alta |
 | Prefeituras (NFS-e) | 80 SP | Alta |
 | Sistema Contábil | 30 SP | Média |
-| MFG/Sankhya | 40 SP | Alta |
+| MFMGF/Sankhya | 40 SP | Alta |
 | App Consultor | 20 SP | Média |
 
 **Total Integrações: ~270 SP adicionais**

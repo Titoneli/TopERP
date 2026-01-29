@@ -234,21 +234,21 @@ O módulo CRM-Financeiro requer integrações com **6 sistemas externos** para a
 │   ┌─────────────────────────────────────────────────────────┐   │
 │   │              INfseService (Interface)                   │   │
 │   │                                                         │   │
-│   │  + emitir(nfse: NfseDTO): ResultadoEmissao             │   │
-│   │  + consultar(chave: string): NfseDTO                   │   │
-│   │  + cancelar(chave: string, motivo: string): boolean    │   │
+│   │  + emitir(nfse: NfseDTO): ResultadoEmissao              │   │
+│   │  + consultar(chave: string): NfseDTO                    │   │
+│   │  + cancelar(chave: string, motivo: string): boolean     │   │
 │   └─────────────────────────────────────────────────────────┘   │
 │                           △                                     │
 │                           │                                     │
 │       ┌───────────────────┼───────────────────┐                 │
 │       │                   │                   │                 │
 │       ▼                   ▼                   ▼                 │
-│   ┌─────────┐       ┌─────────┐       ┌─────────┐              │
-│   │ ABRASF  │       │ Ginfes  │       │ WebISS  │              │
-│   │ Adapter │       │ Adapter │       │ Adapter │              │
-│   └─────────┘       └─────────┘       └─────────┘              │
+│   ┌─────────┐       ┌─────────┐       ┌─────────┐               │
+│   │ ABRASF  │       │ Ginfes  │       │ WebISS  │               │
+│   │ Adapter │       │ Adapter │       │ Adapter │               │
+│   └─────────┘       └─────────┘       └─────────┘               │
 │                                                                 │
-│   Factory: NfseServiceFactory.create(codigoMunicipio)          │
+│   Factory: NfseServiceFactory.create(codigoMunicipio)           │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
