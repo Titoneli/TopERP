@@ -193,28 +193,6 @@ Todo consultor tem **duas áreas separadas** na sua conta virtual:
 - Só libera após confirmar demonstrativo
 - Extrato próprio de residuais
 
-**Na tela principal, o consultor vê:**
-```
-┌─────────────────────────────────────────┐
-│         MINHA CONTA FINANCEIRA          │
-├─────────────────────────────────────────┤
-│                                         │
-│   COMISSÕES DISPONÍVEIS                 │
-│   R$ 1.250,00                           │
-│   [Sacar Agora]                         │
-│                                         │
-├─────────────────────────────────────────┤
-│                                         │
-│   RESIDUAIS                             │
-│   R$ 450,00 (pendente confirmação)      │
-│   [Ver Demonstrativo]                   │
-│                                         │
-│   R$ 225,00 (confirmado, aguardando)    │
-│   Status: Processando pagamento         │
-│                                         │
-└─────────────────────────────────────────┘
-```
-
 ---
 
 ## As Funcionalidades em Detalhes
@@ -374,6 +352,8 @@ O demonstrativo é fundamental, especialmente para os **residuais**:
 
 **Modelos prontos** — Modelos de regras pré-configurados. O gestor escolhe um template e ajusta os valores.
 
+**Descontos** — O sistema identifica de acordo com a região de venda e de acordo com a regra nas cotas de cada tabela, se um veículo necessita da instalacao do rastreador e desconta do valor residualm o valor correspondente.
+
 **Editor visual** — Interface amigável para criar regras arrastando blocos, sem precisar saber programar.
 
 ---
@@ -399,7 +379,7 @@ Para acompanhar o desempenho dos consultores:
 
 ---
 
-### Parte 11: Portal de Transparência
+### Parte 11: Portal de Transparência (Chat com IA ou Base de conhecimento com IA) 
 
 O consultor precisa entender exatamente como sua comissão foi calculada:
 
@@ -541,5 +521,5 @@ Este módulo é essencial para manter os consultores motivados e pagos corretame
 - Permite regras flexíveis de comissionamento
 - Distribui valores corretamente em estruturas hierárquicas
 
-**Total: 63 funcionalidades que transformam um processo semi-manual (planilhas, calculos excel, confirmacoes por whatsapp) e propenso a erros em algo totalmente automatizado, transparente e confiável.**
+**Resumo Final: Funcionalidades que transformam um processo semi-manual (planilhas, calculos excel, confirmacoes por whatsapp) e propenso a erros em algo totalmente automatizado, transparente e confiável.**
 
