@@ -4,7 +4,7 @@
 
 | Informação | Valor |
 |------------|-------|
-| Versão | 2.2 |
+| Versão | 2.3 |
 | Data | 29/01/2026 |
 | Funcionalidades | 63 |
 
@@ -41,13 +41,13 @@ O consultor pode sacar **a qualquer momento** que quiser ou precisar. É só sol
 
 ---
 
-### RESIDUAL (sobre Mensalidades Recebidas)
+### RESIDUAL (sobre Placas/Veículos Ativos)
 
 **O que é?**  
-É o valor variável que o consultor ganha todo mês, calculado com base nas **mensalidades pagas pelos clientes** da sua carteira. O valor é definido pelo Motor de Regras da empresa.
+É o valor variável que o consultor ganha todo mês, calculado com base na **quantidade de placas/veículos ativos** da sua carteira (ou seja, clientes que pagaram a mensalidade). O valor por placa é definido pelo Motor de Regras da empresa.
 
 **Quando fica disponível?**  
-Os valores são calculados mensalmente com base em todas as mensalidades recebidas dos clientes que o consultor trouxe.
+Os valores são calculados mensalmente com base na quantidade de placas/veículos cujos clientes pagaram a mensalidade.
 
 **Como sacar?**  
 O fluxo do residual é **diferente e mais controlado**:
@@ -63,9 +63,9 @@ O fluxo do residual é **diferente e mais controlado**:
 **Importante:** O consultor **não pode sacar o residual a qualquer momento**. Ele precisa primeiro conferir e confirmar o demonstrativo.
 
 **Exemplo:**  
-- João tem 50 clientes na carteira
-- Em janeiro, 45 clientes pagaram a mensalidade (total R$ 22.500)
-- O sistema calcula: João ganha 1% = R$ 225,00 de residual
+- João tem 50 placas/veículos na carteira
+- Em janeiro, 45 clientes pagaram a mensalidade
+- O sistema calcula: João ganha R$ 5,00 por placa ativa = 45 × R$ 5,00 = R$ 225,00 de residual
 - João acessa o demonstrativo e confere cada valor
 - João clica em "Confirmar que os valores estão corretos"
 - Sistema emite a NF automaticamente
@@ -78,7 +78,7 @@ O fluxo do residual é **diferente e mais controlado**:
 
 | Característica | COMISSÃO | RESIDUAL |
 |----------------|----------|----------|
-| **Base de cálculo** | Valor da Adesão | Mensalidades recebidas |
+| **Base de cálculo** | Valor da Adesão | Quantidade de placas/veículos ativos |
 | **Frequência** | Por venda | Mensal |
 | **Disponibilidade** | Imediata (após baixa) | Após conferência do demonstrativo |
 | **Pode sacar quando quiser?** | Sim | Não, precisa confirmar primeiro |
@@ -128,14 +128,13 @@ Imagine que um consultor chamado João acabou de fechar uma venda de um plano de
 ### FLUXO DO RESIDUAL (Mensalidades)
 
 **1. Mês se Passa, Clientes Pagam Mensalidades**
-- João tem 50 clientes na carteira
-- Durante janeiro, 45 clientes pagaram suas mensalidades
-- Total de mensalidades: R$ 22.500,00
+- João tem 50 placas/veículos na carteira
+- Durante janeiro, 45 clientes pagaram suas mensalidades (45 placas ativas)
 
 **2. Sistema Calcula os Residuais**
 - No fechamento do período (ex: dia 5 de fevereiro)
 - Sistema aplica as regras do Motor de Regras
-- Calcula: João ganha 1% sobre mensalidades = R$ 225,00
+- Calcula: João ganha R$ 5,00 por placa ativa = 45 × R$ 5,00 = R$ 225,00
 
 **3. Demonstrativo é Gerado**
 - Sistema gera o demonstrativo financeiro do João
@@ -229,8 +228,8 @@ Todo consultor tem uma "conta virtual" no sistema, dividida em **duas áreas**:
 - Consultor pode sacar a qualquer momento
 - Não precisa de aprovação prévia
 
-#### Área de Residuais (Mensalidades)
-- Recebe os valores calculados sobre mensalidades
+#### Área de Residuais (Placas Ativas)
+- Recebe os valores calculados por quantidade de placas/veículos ativos
 - Consultor precisa conferir e confirmar o demonstrativo
 - Só libera para pagamento após confirmação
 
@@ -238,7 +237,7 @@ Todo consultor tem uma "conta virtual" no sistema, dividida em **duas áreas**:
 
 **Ver saldos separados** — O consultor vê claramente quanto tem de comissões (pode sacar agora) e quanto tem de residuais (precisa confirmar).
 
-**Consultar extratos por tipo** — Uma lista separada para cada tipo de recebimento, com data, valor e descriçáos.
+**Consultar extratos por tipo** — Uma lista separada para cada tipo de recebimento, com data, valor e descrição.
 
 **Solicitar saque de comissões** — A qualquer momento, o consultor pode sacar suas comissões. Total, parcial ou por período.
 
@@ -306,7 +305,7 @@ Aqui é onde a mágica acontece. O sistema calcula automaticamente quanto cada c
 
 **Regras de comissão** — "Vendas do Plano Outro pagam 6%, Plano PLatinum paga 8%". O gestor configura, o sistema aplica. Cada consultor pode ter uma configuração ou regra especifica.
 
-**Regras de residual** — "Para cada mensalidade que o cliente pagar, o consultor ganha 15%". Renda recorrente para o consultor.
+**Regras de residual** — "Para cada placa/veículo ativo (cliente que pagou a mensalidade), o consultor ganha R$ 5,00". Renda recorrente para o consultor.
 
 **Bonificação por metas** — "Se vender 10 planos no mês, ganha R$ 200 de bônus". Incentivo para bater metas. Cada consultos pode ter uma regra especifica.
 
@@ -431,7 +430,7 @@ Para garantir que todos conhecem as regras:
 Quando um novo associado é captado, o valor da adesão é dividido entre vários níveis da organização:
 
 **Os 5 níveis fixos** — A estrutura é sempre a mesma, de baixo para cima:
-1. **Vendedor** — o consultor que fez a venda
+1. **Vendedor** — o consultor que fez a proposta
 2. **Gerente** — o gestor da equipe do vendedor
 3. **Cooperativa** — a unidade/filial
 4. **Regional** — a coordenação regional
@@ -447,11 +446,15 @@ Quando um novo associado é captado, o valor da adesão é dividido entre vário
 
 **Configuração flexível** — O gestor define o percentual de cada nível. O sistema garante que a soma não passe de 100%.
 
-**Comissão vs Repasse** — Para cada usuário, define-se se ele recebe como "Comissão" (vai para a conta dele) ou "Repasse" (passa para outro nível).
+**Comissão vs Repasse** — Para cada nível hierárquico, define-se o tipo de operação:
+- **Comissão**: O valor é creditado na conta virtual do usuário (ele recebe)
+- **Repasse**: O usuário deve pagar esse valor para a empresa (é um débito, não um crédito)
+
+Exemplo: O Gerente pode ter configurado que recebe 1,5% como "Repasse". Isso significa que ele precisa repassar esse valor para a empresa, não que ele vai receber.
 
 **Imutabilidade** — Depois que o pagamento é feito, os valores são travados. Ninguém pode alterar. Isso evita confusões.
 
-**Relatórios por nível** — "Quanto a Regional Sul recebeu de repasses este mês?" O sistema mostra tudo consolidado.
+**Relatórios por nível** — "Quanto a Regional OneClick recebeu de repasses este mês?" O sistema mostra tudo consolidado.
 
 ---
 
@@ -462,11 +465,11 @@ Para funcionar completamente, o módulo se conecta com:
 | Sistema | Para que serve |
 |---------|----------------|
 | **Banco Digital** | Executar os pagamentos PIX |
-| **SEFAZ** | Emitir notas fiscais eletrônicas (NF-e) |
-| **Prefeituras** | Emitir notas de serviço (NFS-e) |
+| **SEFAZ-SRF** | Emitir notas fiscais eletrônicas (NF-e) |
+| **Prefeituras-SRF** | Emitir notas de serviço (NFS-e) |
 | **MGF/Sankhya** | Criar ordens de pagamento no financeiro |
 | **Sistema Contábil** | Registrar os lançamentos contábeis |
-| **App do Consultor** | Mostrar saldos e notificações no celular |
+| **App do Consultor/App CRM** | Mostrar saldos e notificações no celular |
 
 ---
 
@@ -477,7 +480,7 @@ Algumas regras que o sistema sempre respeita:
 **Para COMISSÕES (Adesões):**
 - Valor disponível assim que cliente paga e sistema confirma a baixa
 - Consultor pode sacar a qualquer momento
-- Saldo mínimo de R$ 50,00 para saque
+- Saldo mínimo de R$ 50,00 para saque (configuravel)
 - Dados bancários e PIX cadastrados
 - NF emitida no momento do saque
 
@@ -492,36 +495,25 @@ Algumas regras que o sistema sempre respeita:
 **Para notas fiscais:**
 - MEI e autônomo emitem NFS-e
 - Empresas emitem NF-e
-- Cancelamento até 24h (NF-e) ou conforme regra municipal (NFS-e)
+- Cancelamento até 24h (NF-e) ou conforme regra municipal/Receita Federal (NFS-e)
 
 **Para estornos:**
 - Cancelou a venda = estorno automático na conta de comissões
-- Estornos acima de R$ 500 precisam de aprovação
+- Estornos precisam de aprovação do gestor/consultor (configuravel)
 - Cliente recebe devolução via PIX
 
+**Para rastreadores:**
+- Precisa de instalacao = desconto automático na conta de residuais
+- Consultor recebe o valor da instalacao junto do valor da adesãao
+
 **Para metas:**
-- Sempre três níveis: floor < target < stretch
-- Se o consultor está muito abaixo na metade do mês, gestor é avisado
+- Sempre três níveis MOE: M=minimo < O=objetivo < E-extra
+- Se o consultor está muito abaixo na metade do mês, gestor é avisado (configuravel)
 
 **Para distribuição hierárquica:**
 - Soma dos percentuais nunca pode passar de 100%
 - Depois do pagamento, valores não mudam mais
-- Não pode transferir saldo entre pessoas
-
----
-
-## Métricas de Sucesso
-
-Como sabemos se o módulo está funcionando bem:
-
-| O que medimos | Meta |
-|---------------|------|
-| Tempo do saque até o PIX cair | Menos de 24 horas |
-| Notas fiscais emitidas sem erro | Mais de 98% |
-| PIX efetivados com sucesso | Mais de 99% |
-| Taxa de estornos | Menos de 5% |
-| Consultores que batem a meta | Mais de 70% |
-| Políticas aceitas no prazo | Mais de 95% |
+- Não pode transferir saldo entre pessoas (ver escopo)
 
 ---
 
@@ -535,12 +527,13 @@ Este módulo é essencial para manter os consultores motivados e pagos corretame
 - NF emitida no momento do saque
 - PIX em menos de 24h
 
-**Para RESIDUAIS (Mensalidades):**
+**Para RESIDUAIS (Placas Ativas):**
 - Calcula automaticamente no fechamento do período
-- Gera demonstrativo detalhado para conferência
+- Gera demonstrativo analítico (detalhado) ou sintético para conferência
 - Consultor confere e confirma pelo App/Sistema
 - NF emitida automaticamente após confirmação
 - Pagamento processado sem intervenção manual
+- Registro contábil sem intervenção manual
 
 **Para ambos:**
 - Mantém histórico completo para auditoria
@@ -548,7 +541,7 @@ Este módulo é essencial para manter os consultores motivados e pagos corretame
 - Permite regras flexíveis de comissionamento
 - Distribui valores corretamente em estruturas hierárquicas
 
-**Total: 63 funcionalidades que transformam um processo manual e propenso a erros em algo totalmente automatizado, transparente e confiável.**
+**Total: 63 funcionalidades que transformam um processo semi-manual (planilhas, calculos excel, confirmacoes por whatsapp) e propenso a erros em algo totalmente automatizado, transparente e confiável.**
 
 ---
 
@@ -560,8 +553,10 @@ Este módulo é essencial para manter os consultores motivados e pagos corretame
 | 2.0 | 29/01/2026 | Adicionado motor avançado, metas, transparência e políticas |
 | 2.1 | 29/01/2026 | Adicionada distribuição hierárquica (filiação) |
 | 2.2 | 29/01/2026 | Separação clara entre Comissões (adesão) e Residuais (mensalidade) |
+| 2.3 | 29/01/2026 | **Residuais calculados por quantidade de placas/veículos** (não por valor R$). Nova definição Comissão vs Repasse. Descontos de rastreamento. Metas em placas. |
 
 ---
 
 *Documento elaborado pelo Product Owner — CRM*  
 *Última atualização: 29/01/2026*
+
