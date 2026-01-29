@@ -1388,3 +1388,33 @@ After doing this, you may fix the identity used for this commit with:
 [2026-01-29 13:55:50] ✅ SUCESSO: Push para origin realizado
 [0;32m✅ Push para origin realizado![0m
 [2026-01-29 13:55:50] ----------------------------------------
+[main b3e1ca6] backup: Auto-backup 2026-01-29 14:55:50
+ Committer: User <user@MacBook-Air-de-User-2.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 10 files changed, 3184 insertions(+), 40 deletions(-)
+ rename {docs/historias-usuario => .github}/EXPLICACAO-STORY-POINTS.md (100%)
+ create mode 100644 docs/historias-usuario/CRM-Motor-Regras/README.md
+ create mode 100644 docs/historias-usuario/CRM-Motor-Regras/US-CRM-MTR-001.md
+ create mode 100644 docs/historias-usuario/CRM-Motor-Regras/US-CRM-MTR-002.md
+ create mode 100644 docs/historias-usuario/CRM-Motor-Regras/US-CRM-MTR-003.md
+ create mode 100644 docs/historias-usuario/CRM-Motor-Regras/US-CRM-MTR-004.md
+ create mode 100644 docs/historias-usuario/CRM-Motor-Regras/US-CRM-MTR-005.md
+ create mode 100644 docs/historias-usuario/CRM-Motor-Regras/US-CRM-MTR-006.md
+ create mode 100644 docs/historias-usuario/CRM-Motor-Regras/visao-produto-crm-mtr.md
+[2026-01-29 14:55:50] ✅ SUCESSO: Backup realizado com 10 arquivo(s) alterado(s)
+[0;32m✅ Backup realizado com sucesso![0m
+[2026-01-29 14:55:50] INFO: Tentando push para origin...
+[2026-01-29 14:55:51] ✅ SUCESSO: Push para origin realizado
+[0;32m✅ Push para origin realizado![0m
+[2026-01-29 14:55:51] ----------------------------------------

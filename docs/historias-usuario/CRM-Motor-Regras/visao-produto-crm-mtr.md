@@ -1,12 +1,5 @@
 # Motor de Regras - O que é e para que serve?
 
-> **Documento para todos** - Escrito para que qualquer pessoa entenda.  
-> Versão 2.0 | 29/01/2026
-
----
-
-## Em uma frase
-
 O Motor de Regras é uma **ferramenta que calcula comissões, bônus e premiações automaticamente**, sem precisar de programador.
 
 ---
@@ -16,12 +9,12 @@ O Motor de Regras é uma **ferramenta que calcula comissões, bônus e premiaç�
 **Antes do Motor de Regras:**
 - Cada cálculo de comissão estava "travado" no código
 - Para mudar de 5% para 8%, precisava chamar o desenvolvedor
-- Demorava dias ou semanas para alterar uma regra simples
+- Demorava horas ou dias para alterar uma regra simples
 - Ninguém sabia exatamente como o cálculo era feito
 
 **Com o Motor de Regras:**
 - Você mesmo configura as regras pela tela
-- Mudanças em minutos, não em semanas
+- Mudanças em minutos, não em dias
 - Todo cálculo fica registrado e pode ser auditado
 - Transparência total para a equipe comercial
 
@@ -38,7 +31,7 @@ O Motor de Regras é uma **ferramenta que calcula comissões, bônus e premiaç�
 | **Comissão de gerente** | "2% sobre vendas da equipe" |
 | **Campanha** | "+R$ 50 por venda do Plano X em Janeiro" |
 | **Desconto** | "15% de desconto se pagar à vista" |
-| **Score de lead** | "Pontuação automática para priorizar atendimento" |
+| **Qualificação de lead** | "Pontuação automática para priorizar atendimento" |
 
 ---
 
@@ -49,7 +42,7 @@ O Motor de Regras é uma **ferramenta que calcula comissões, bônus e premiaç�
 **Situação:** João vendeu um plano de R$ 500. Quanto ele ganha?
 
 **Regra configurada:**
-- SE o plano for Premium → comissão de 8%
+- SE o plano for Ouro → comissão de 8%
 
 **Cálculo automático:**
 - R$ 500 × 8% = **R$ 40,00 de comissão**
@@ -58,13 +51,13 @@ O Motor de Regras é uma **ferramenta que calcula comissões, bônus e premiaç�
 
 ### Exemplo 2: Bônus por meta
 
-**Situação:** Maria tem meta de 10 vendas. Ela fez 12.
+**Situação:** Maria tem meta de 10 placas. Ela fez 12.
 
 **Regra configurada:**
-- SE vendas >= meta → ganha R$ 500 de bônus
+- SE placas >= meta → ganha R$ 500 de bônus
 
 **Resultado:**
-- 12 vendas ≥ 10 (meta) → **R$ 500,00 de bônus**
+- 12 placas ≥ 10 (meta) → **R$ 500,00 de bônus**
 
 ---
 
@@ -119,7 +112,7 @@ O Motor de Regras é uma **ferramenta que calcula comissões, bônus e premiaç�
 
 Existem 3 formas, da mais fácil à mais avançada:
 
-### 1. Usar um modelo pronto ⭐ Mais fácil
+### 1. Usar um modelo pronto - Mais fácil
 
 Escolha um template e preencha os valores:
 
@@ -196,7 +189,7 @@ FIM
 
 | Antes | Depois |
 |-------|--------|
-| Semanas para mudar | Minutos |
+| Dias para mudar | Minutos |
 | Depende de TI | Negócio configura |
 | Cálculo no escuro | Transparência total |
 | Sem registro | Auditoria completa |
@@ -228,28 +221,16 @@ Teste antes no simulador. Se algo passar, desativa e volta a versão anterior.
 
 ## Exemplos de regras suportadas
 
-✅ Comissão de 8% sobre vendas  
-✅ Bônus de R$ 500 ao bater meta  
-✅ R$ 2,00 por placa ativa (residual)  
-✅ Comissão escalonada (5%, 7%, 9%, 12% por faixa)  
-✅ Bônus de campanha por período  
-✅ Override de 2% para gerentes  
-✅ Divisão de comissão entre 2 consultores  
-✅ R$ 800 para cada 10% acima da meta  
-✅ 15% de residual se carteira > R$ 100k  
-✅ Pontuação automática de leads  
-✅ Regras combinadas (meta + região + tipo)  
-✅ Qualquer combinação das anteriores  
-
----
-
-## Quer saber mais?
-
-Para detalhes técnicos, consulte:
-- [EXEMPLOS-REGRAS-COMPLEXAS.md](EXEMPLOS-REGRAS-COMPLEXAS.md) - Exemplos práticos
-- [ESPECIFICACAO-DSL.md](ESPECIFICACAO-DSL.md) - Linguagem de regras
-- [README.md](README.md) - Documentação técnica
-
----
-
-> **Sugestões?** Este documento é vivo. Ajude a melhorá-lo!
+- Comissão de 8% sobre vendas  
+- Bônus de R$ 500 ao bater meta  
+- R$ 2,00 por placa ativa (residual)  
+- Comissão escalonada (5%, 7%, 9%, 12% por faixa)  
+- Bônus de campanha por período  
+- Comissão sobre equipe de 2% para gerentes  
+- Divisão de comissão entre 2 ou mais consultores  
+- R$ 800 para cada 10% acima da meta  
+- 15% de residual se carteira > R$ 100k  
+- Pontuação automática de leads  
+- Regras combinadas (meta + região + tipo)  
+- Descontos combinados (rastreador, estornos, cancelamentos)  
+- Qualquer combinação das anteriores  
