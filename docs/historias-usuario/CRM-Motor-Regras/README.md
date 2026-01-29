@@ -2,7 +2,7 @@
 
 > **Modulo**: Motor de Regras Configuravel  
 > **Tipo DDD**: Generic Subdomain / Shared Kernel  
-> **Versao**: 1.0  
+> **Versao**: 2.0  
 > **Data**: 29/01/2026  
 > **Autor**: Product Owner
 
@@ -14,7 +14,18 @@
 
 O Motor de Regras e um componente **generico e reutilizavel** que permite configurar formulas, condicoes e calculos de forma dinamica, sem necessidade de alteracao de codigo. Serve como **Shared Kernel** para multiplos modulos do CRM.
 
-### 1.2 Principio Arquitetural
+### 1.2 Novidades da Versao 2.0
+
+| Recurso | Descricao |
+|---------|-----------|
+| **Data Providers** | Conexoes automaticas com fontes de dados (PLACA, BOLETO, META, etc.) |
+| **DSL Textual** | Linguagem em portugues para definir regras |
+| **Editor Visual** | Interface drag-and-drop para criar regras |
+| **Agregacoes** | Funcoes COUNT, SUM, AVG, MIN, MAX sobre Data Providers |
+| **Filtros Dinamicos** | Filtros com variaveis de contexto (@consultor_atual, etc.) |
+| **JSON Schema v2.0** | Estrutura padronizada para definicao de regras |
+
+### 1.3 Principio Arquitetural
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
@@ -52,6 +63,55 @@ O Motor de Regras e um componente **generico e reutilizavel** que permite config
 | **Rastreabilidade** | Auditoria completa de cada calculo |
 | **Escalabilidade** | Novos modulos consomem facilmente |
 | **Governanca** | Versionamento e aprovacao de regras |
+
+### 1.4 Arquitetura v2.0 - Data Providers
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                         ARQUITETURA MOTOR v2.0                                      │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│   ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│   │                          DATA PROVIDERS                                     │   │
+│   │  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐         │   │
+│   │  │ PLACA  │ │ BOLETO │ │  META  │ │CONSULTR│ │  LEAD  │ │INTERAC │         │   │
+│   │  └───┬────┘ └───┬────┘ └───┬────┘ └───┬────┘ └───┬────┘ └───┬────┘         │   │
+│   │      │          │          │          │          │          │               │   │
+│   │      └──────────┴──────────┴──────────┼──────────┴──────────┘               │   │
+│   │                                       │                                     │   │
+│   │                                       ▼                                     │   │
+│   │                          ┌────────────────────┐                             │   │
+│   │                          │   AGGREGATION      │                             │   │
+│   │                          │     ENGINE         │                             │   │
+│   │                          │  (COUNT, SUM, etc) │                             │   │
+│   │                          └─────────┬──────────┘                             │   │
+│   │                                    │                                        │   │
+│   │                                    ▼                                        │   │
+│   │   ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │   │
+│   │   │  VARIAVEIS  │  │  FORMULAS   │  │  CONDICOES  │  │    ACOES    │        │   │
+│   │   │   INPUT     │  │  CALCULOS   │  │   IF/THEN   │  │   OUTPUTS   │        │   │
+│   │   │  AGREGACAO  │  │ EXPRESSOES  │  │  COMPOSTAS  │  │  CREDITAR   │        │   │
+│   │   │   LOOKUP    │  │  FUNCOES    │  │  GRUPOS     │  │  NOTIFICAR  │        │   │
+│   │   └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘        │   │
+│   │                                                                             │   │
+│   │                          ┌────────────────────┐                             │   │
+│   │                          │   DSL / EDITOR     │                             │   │
+│   │                          │     VISUAL         │                             │   │
+│   │                          └────────────────────┘                             │   │
+│   └─────────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                     │
+│   MODULOS CONSUMIDORES:                                                             │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  CRM-FIN    │ Comissoes, Residuais, Bonificacoes, PLR, SPIFF              │    │
+│   │  CRM-COT    │ Regras de precificacao, descontos em cotacoes               │    │
+│   │  CRM-POS    │ Bonificacoes pos-venda, rewards por NPS                     │    │
+│   │  CRM-LEAD   │ Score de leads, priorizacao automatica                      │    │
+│   │  CRM-FUN    │ Regras de avanco automatico no funil                        │    │
+│   │  CRM-VIS    │ Regras de aprovacao de vistorias                            │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -486,22 +546,36 @@ POST /api/v1/motor/executar
 
 ## 5. User Stories
 
-### 5.1 Resumo
+### 5.1 Resumo v2.0
 
 | ID | Historia | Prioridade | SP |
 |----|----------|------------|-----|
-| US-CRM-MTR-001 | Cadastro de Regras Basicas | Essencial | 34 |
-| US-CRM-MTR-002 | Regras Avancadas (SplitC) | Essencial | 55 |
-| US-CRM-MTR-003 | Templates Pre-configurados | Importante | 13 |
-| US-CRM-MTR-004 | Editor Visual Low-Code | Desejavel | 34 |
-| US-CRM-MTR-005 | Simulacao e Teste | Importante | 21 |
-| US-CRM-MTR-006 | Versionamento e Auditoria | Essencial | 21 |
-| **TOTAL** | | | **178 SP** |
+| US-CRM-MTR-001 | Arquitetura de Data Providers e Definicao de Regras | Essencial | 55 |
+| US-CRM-MTR-002 | Execucao do Motor e Acoes Configuraveis | Essencial | 55 |
+| US-CRM-MTR-003 | DSL Textual e Templates Pre-configurados | Importante | 34 |
+| US-CRM-MTR-004 | Editor Visual Low-Code | Desejavel | 55 |
+| US-CRM-MTR-005 | Simulacao, Teste e Debug de Regras | Importante | 34 |
+| US-CRM-MTR-006 | Versionamento, Auditoria e Performance | Essencial | 34 |
+| **TOTAL** | | | **267 SP** |
 
 ### 5.2 Detalhamento por Historia
 
 Ver arquivos individuais:
-- [US-CRM-MTR-001.md](US-CRM-MTR-001.md)
+- [US-CRM-MTR-001.md](US-CRM-MTR-001.md) - Data Providers, JSON Schema v2.0
+- [US-CRM-MTR-002.md](US-CRM-MTR-002.md) - Motor de execucao, acoes
+- [US-CRM-MTR-003.md](US-CRM-MTR-003.md) - DSL em portugues, templates
+- [US-CRM-MTR-004.md](US-CRM-MTR-004.md) - Editor visual drag-and-drop
+- [US-CRM-MTR-005.md](US-CRM-MTR-005.md) - Simulador, debug passo-a-passo
+- [US-CRM-MTR-006.md](US-CRM-MTR-006.md) - Versionamento, auditoria, cache
+
+### 5.3 Documentacao Adicional
+
+| Documento | Descricao |
+|-----------|-----------|
+| [ESPECIFICACAO-DSL.md](ESPECIFICACAO-DSL.md) | Sintaxe completa da DSL em portugues |
+| [EXEMPLOS-REGRAS-COMPLEXAS.md](EXEMPLOS-REGRAS-COMPLEXAS.md) | 8 exemplos praticos detalhados |
+| [DDL-MOTOR-REGRAS-V2.sql](DDL-MOTOR-REGRAS-V2.sql) | Estrutura completa do banco de dados |
+| [visao-produto-crm-mtr.md](visao-produto-crm-mtr.md) | Documento acessivel para usuarios de negocio |
 - [US-CRM-MTR-002.md](US-CRM-MTR-002.md)
 - [US-CRM-MTR-003.md](US-CRM-MTR-003.md)
 - [US-CRM-MTR-004.md](US-CRM-MTR-004.md)

@@ -1,191 +1,335 @@
-# US-CRM-MTR-005: Simulacao e Teste de Regras
+# US-CRM-MTR-005: Simulacao, Teste e Debug de Regras
 
 > **Modulo**: CRM-Motor-Regras  
-> **Versao**: 1.0  
+> **Versao**: 2.0  
 > **Data**: 29/01/2026  
 > **Status**: Pronto para Desenvolvimento  
-> **Story Points**: 21
+> **Story Points**: 34
 
 ---
 
 ## Historia de Usuario
 
-**Como** gestor do sistema,  
-**Quero** simular e testar regras antes de ativa-las,  
-**Para** garantir que os calculos estao corretos e evitar erros em producao.
+**Como** usuario de negocio,  
+**Quero** simular a execucao de regras com dados reais ou ficticios, depurar passo a passo e testar cenarios,  
+**Para** validar que a regra funciona corretamente antes de ativa-la em producao.
 
 ---
 
 ## Descricao
 
-Esta historia implementa funcionalidades de simulacao e teste de regras. Permite que o usuario execute calculos com dados fictícios ou reais, compare resultados e valide a logica antes de colocar a regra em producao.
+Esta historia implementa:
+
+1. **Simulador de Regras**: Execucao em modo sandbox
+2. **Depurador Visual**: Execucao passo a passo
+3. **Cenarios de Teste**: Casos pre-definidos
+4. **Comparador de Versoes**: Diferenca entre versoes
+5. **Modo What-If**: Alteracao de variaveis em tempo real
+
+### Conceito de Simulacao
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│  SIMULACAO DE REGRA                                                             │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  Regra: REG-BONUS-SP-AUTO-001                                                   │
+│  Versao: 1 (Rascunho)                                                           │
+│                                                                                 │
+│  ENTRADA                          │  EXECUCAO                │  RESULTADO       │
+│  ─────────────                    │  ─────────────           │  ──────────      │
+│  Consultor: Joao Silva            │  ▶ INICIO                │                  │
+│  Periodo: Janeiro/2026            │  ✓ placas_sp = 15        │  Aplicada: SIM   │
+│                                   │  ✓ meta = 10             │  Bonus: R$4.000  │
+│  [Dados Reais]                    │  ✓ pct_acima = 50%       │                  │
+│  [Dados Ficticios]                │  ✓ faixas = 5            │  Tempo: 45ms     │
+│                                   │  ✓ valor = 4000          │                  │
+│  [Simular]                        │  ✓ CONDICAO: TRUE        │                  │
+│                                   │  ✓ ACAO: CREDITAR        │                  │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
 ## Criterios de Aceitacao
 
-### CA-001: Simulacao Basica
+### CA-001: Simulador com Dados Reais
 
-- [ ] Sistema permite simular regra em status RASCUNHO ou ATIVA
-- [ ] Sistema solicita valores para todas as variaveis de entrada
-- [ ] Sistema executa formula e exibe resultado
-- [ ] Sistema nao registra simulacao como execucao real
+- [ ] Selecionar consultor real do sistema
+- [ ] Selecionar periodo de referencia
+- [ ] Sistema busca dados reais dos Providers
+- [ ] Executa regra em modo simulacao (sem persistir acoes)
+- [ ] Exibe resultado detalhado
+- [ ] Marca claramente como "SIMULACAO"
 
-### CA-002: Detalhamento do Calculo
+### CA-002: Simulador com Dados Ficticios
 
-- [ ] Sistema exibe passo a passo do calculo
-- [ ] Sistema mostra valor de cada variavel utilizada
-- [ ] Sistema mostra resultado de cada operacao intermediaria
-- [ ] Sistema mostra qual condicao foi atendida (quando aplicavel)
+- [ ] Formulario para entrada de dados manuais
+- [ ] Pre-preenche com valores de exemplo
+- [ ] Permite alterar qualquer valor de entrada
+- [ ] Executa com dados informados
+- [ ] Nao acessa Providers reais
+- [ ] Util para testar cenarios edge-case
 
-### CA-003: Cenarios de Teste
+**Exemplo de Entrada Ficticia:**
 
-- [ ] Sistema permite salvar cenarios de teste
-- [ ] Cenario tem nome, descricao e conjunto de valores de entrada
-- [ ] Sistema permite executar todos os cenarios de uma vez
-- [ ] Sistema exibe resultado de cada cenario (passou/falhou)
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│  DADOS FICTICIOS PARA SIMULACAO                                                 │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  VARIAVEIS DE AGREGACAO (valores manuais)                                       │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │ placas_sp_auto_50k     │  [15]                                          │   │
+│  │ meta_mes               │  [10]                                          │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  CONTEXTO                                                                       │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │ consultor_id           │  [550e8400-e29b-41d4-a716-446655440000]        │   │
+│  │ periodo_inicio         │  [2026-01-01]                                  │   │
+│  │ periodo_fim            │  [2026-01-31]                                  │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  [Simular com Estes Dados]                                                     │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
 
-### CA-004: Resultado Esperado
+### CA-003: Depurador Visual (Step-by-Step)
 
-- [ ] Sistema permite definir resultado esperado para cada cenario
-- [ ] Sistema compara resultado calculado com esperado
-- [ ] Sistema indica se teste passou ou falhou
-- [ ] Sistema calcula percentual de testes que passaram
+- [ ] Botao "Depurar" inicia modo debug
+- [ ] Executa uma variavel por vez
+- [ ] Destaca variavel atual no editor visual/DSL
+- [ ] Mostra valor calculado apos cada passo
+- [ ] Botoes: Proximo, Anterior, Executar Tudo, Parar
+- [ ] Breakpoints em variaveis especificas
 
-### CA-005: Comparacao de Versoes
+**Interface de Debug:**
 
-- [ ] Sistema permite simular mesmos dados em duas versoes da regra
-- [ ] Sistema exibe comparativo lado a lado
-- [ ] Sistema destaca diferencas nos resultados
-- [ ] Sistema ajuda a validar alteracoes antes de ativar nova versao
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│  DEPURADOR DE REGRAS                              [◀ Anterior] [▶ Proximo] [■]  │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  PASSO 3 de 7 | Variavel: pct_acima_meta                                       │
+│                                                                                 │
+│  VARIAVEIS                                                                      │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │ ✓ placas_sp_auto_50k  = 15          (AGREGACAO - 12ms)                  │   │
+│  │ ✓ meta_mes            = 10          (AGREGACAO - 5ms)                   │   │
+│  │ ▶ pct_acima_meta      = ?           (FORMULA)        ← Atual            │   │
+│  │   faixas_10_pct       = pendente    (FORMULA)                           │   │
+│  │   valor_bonus         = pendente    (FORMULA)                           │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  DETALHES DO PASSO ATUAL                                                       │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │ Tipo: FORMULA                                                           │   │
+│  │ Expressao: GREATEST((placas_sp_auto_50k - meta_mes) / meta_mes * 100,0) │   │
+│  │                                                                         │   │
+│  │ Substituicao:                                                           │   │
+│  │   GREATEST((15 - 10) / 10 * 100, 0)                                     │   │
+│  │   = GREATEST(5 / 10 * 100, 0)                                           │   │
+│  │   = GREATEST(0.5 * 100, 0)                                              │   │
+│  │   = GREATEST(50, 0)                                                     │   │
+│  │   = 50                                                                  │   │
+│  │                                                                         │   │
+│  │ Resultado: 50                                                           │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  [Adicionar Breakpoint] [Ver Query SQL] [Continuar ate Fim]                    │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
 
-### CA-006: Dados Reais para Teste
+### CA-004: Cenarios de Teste Pre-definidos
 
-- [ ] Sistema permite importar dados reais anonimizados
-- [ ] Sistema permite selecionar vendas reais para simular
-- [ ] Sistema compara resultado simulado com resultado real (se existir)
-- [ ] Sistema nao altera dados reais durante simulacao
+- [ ] Criar cenarios de teste salvos
+- [ ] Cenario inclui dados de entrada e resultado esperado
+- [ ] Executar todos os cenarios (suite de testes)
+- [ ] Relatorio de passed/failed
+- [ ] Historico de execucao de testes
 
-### CA-007: Validacao Pre-Ativacao
+**Gerenciamento de Cenarios:**
 
-- [ ] Sistema exige pelo menos 1 teste antes de ativar regra
-- [ ] Sistema exige que todos os cenarios passem antes de ativar
-- [ ] Sistema registra resultados dos testes no historico
-- [ ] Sistema permite ativar mesmo com falhas (com justificativa)
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│  CENARIOS DE TESTE                                          [+ Novo Cenario]    │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  Regra: REG-BONUS-SP-AUTO-001                                                   │
+│                                                                                 │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │ # │ Cenario                        │ Esperado      │ Ultimo  │ Status  │   │
+│  ├─────────────────────────────────────────────────────────────────────────┤   │
+│  │ 1 │ Consultor acima da meta (50%)  │ Bonus: 4000   │ 4000    │ ✓ PASS  │   │
+│  │ 2 │ Consultor exatamente na meta   │ Sem bonus     │ Sem     │ ✓ PASS  │   │
+│  │ 3 │ Consultor abaixo da meta       │ Sem bonus     │ Sem     │ ✓ PASS  │   │
+│  │ 4 │ Consultor 5% acima (edge case) │ Sem bonus     │ Sem     │ ✓ PASS  │   │
+│  │ 5 │ Consultor 10% acima            │ Bonus: 800    │ 800     │ ✓ PASS  │   │
+│  │ 6 │ Meta zero (divisao)            │ Erro tratado  │ Erro    │ ✓ PASS  │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  [Executar Todos] [Exportar Relatorio]                                         │
+│  Ultima execucao: 29/01/2026 14:35 | 6/6 passaram                              │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### CA-005: Modo What-If (Analise de Sensibilidade)
+
+- [ ] Alterar valor de variavel em tempo real
+- [ ] Ver impacto imediato no resultado
+- [ ] Slider para valores numericos
+- [ ] Grafico de sensibilidade
+- [ ] Identificar pontos de virada
+
+**Interface What-If:**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│  ANALISE WHAT-IF                                                               │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  Variavel de Analise: placas_sp_auto_50k                                       │
+│                                                                                 │
+│  Meta: 10 placas                                                               │
+│                                                                                 │
+│  VALOR       │ % ACIMA │ FAIXAS │ BONUS    │                                   │
+│  ──────────────────────────────────────────                                     │
+│   8          │ 0%      │ 0      │ R$ 0     │ ←                                  │
+│   9          │ 0%      │ 0      │ R$ 0     │ ←                                  │
+│  10          │ 0%      │ 0      │ R$ 0     │ ← Ponto de virada                  │
+│  11          │ 10%     │ 1      │ R$ 800   │ ←                                  │
+│  12          │ 20%     │ 2      │ R$ 1.600 │                                    │
+│  15 ●        │ 50%     │ 5      │ R$ 4.000 │ ← Valor atual                      │
+│  20          │ 100%    │ 10     │ R$ 8.000 │                                    │
+│                                                                                 │
+│  ────────────────●────────────────────────────                                  │
+│  8            15                           30                                   │
+│                                                                                 │
+│  [Exportar Analise]                                                            │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### CA-006: Comparador de Versoes
+
+- [ ] Selecionar duas versoes para comparar
+- [ ] Exibir diff lado a lado
+- [ ] Destacar diferencas (adicionado, removido, alterado)
+- [ ] Simular mesmos dados em ambas versoes
+- [ ] Comparar resultados
+
+### CA-007: Log de Simulacoes
+
+- [ ] Registrar todas as simulacoes executadas
+- [ ] Filtrar por regra, usuario, data
+- [ ] Re-executar simulacao anterior
+- [ ] Exportar log
 
 ---
 
 ## Mockups
 
-### Tela: Simulador de Regra
+### Tela: Simulador Completo
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  SIMULADOR DE REGRA - REG-COM-001                                          [X]     │
+│  SIMULADOR DE REGRAS                                                               │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
-│  VARIAVEIS DE ENTRADA                                                               │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ VALOR_VENDA*:    [R$ 500,00        ]                                       │   │
-│  │ TIPO_PLANO*:     [PREMIUM ▼        ]                                       │   │
-│  │ QTD_VENDAS_MES:  [15               ]  (meta: 10)                           │   │
-│  │ SENIORIDADE:     [24               ]  meses                                │   │
+│  Regra: [REG-BONUS-SP-AUTO-001 ▼]  Versao: [1 - Rascunho ▼]                        │
+│                                                                                     │
+│  ┌─── MODO DE SIMULACAO ───────────────────────────────────────────────────────┐   │
+│  │ ○ Dados Reais     ● Dados Ficticios     ○ Cenario de Teste                  │   │
 │  └─────────────────────────────────────────────────────────────────────────────┘   │
 │                                                                                     │
-│                                    [SIMULAR]                                        │
+│  ENTRADA                                                                           │
+│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│  │ placas_sp_auto_50k    │ [15]                                                │   │
+│  │ meta_mes              │ [10]                                                │   │
+│  └─────────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                     │
+│  [▶ Simular] [🔍 Depurar Passo-a-Passo] [📊 Analise What-If]                        │
 │                                                                                     │
 │  ═══════════════════════════════════════════════════════════════════════════════   │
 │                                                                                     │
-│  RESULTADO DA SIMULACAO                                                             │
+│  RESULTADO DA SIMULACAO                                               [Modo: Normal]│
 │  ┌─────────────────────────────────────────────────────────────────────────────┐   │
 │  │                                                                             │   │
-│  │  COMISSAO CALCULADA: R$ 72,00                                              │   │
+│  │  Status: ✓ REGRA APLICADA                                                   │   │
+│  │                                                                             │   │
+│  │  VARIAVEIS CALCULADAS                                                       │   │
+│  │  ─────────────────────                                                      │   │
+│  │  placas_sp_auto_50k  = 15                                                   │   │
+│  │  meta_mes            = 10                                                   │   │
+│  │  pct_acima_meta      = 50                                                   │   │
+│  │  faixas_10_pct       = 5                                                    │   │
+│  │  valor_bonus         = 4000                                                 │   │
+│  │                                                                             │   │
+│  │  CONDICAO                                                                   │   │
+│  │  ──────────                                                                 │   │
+│  │  placas_sp_auto_50k (15) > meta_mes (10) = TRUE                             │   │
+│  │  faixas_10_pct (5) >= 1 = TRUE                                              │   │
+│  │  Resultado: TRUE (AND)                                                      │   │
+│  │                                                                             │   │
+│  │  ACOES SIMULADAS (nao persistidas)                                          │   │
+│  │  ──────────────────────────────────                                         │   │
+│  │  [1] ADICIONAR_VALOR: R$ 4.000,00 em BONUS                                  │   │
+│  │                                                                             │   │
+│  │  Tempo de execucao: 45ms                                                    │   │
 │  │                                                                             │   │
 │  └─────────────────────────────────────────────────────────────────────────────┘   │
 │                                                                                     │
-│  DETALHAMENTO DO CALCULO                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Passo │ Operacao                              │ Resultado                   │   │
-│  ├─────────────────────────────────────────────────────────────────────────────┤   │
-│  │ 1     │ Condicao: TIPO_PLANO = "PREMIUM"      │ VERDADEIRO                 │   │
-│  │ 2     │ Comissao base: 500,00 × 8%            │ R$ 40,00                   │   │
-│  │ 3     │ Bonus plano PREMIUM                    │ R$ 10,00                   │   │
-│  │ 4     │ Subtotal                               │ R$ 50,00                   │   │
-│  │ 5     │ Atingimento: 15/10 = 150%             │ Acelerador 1.2x            │   │
-│  │ 6     │ Acelerador: 50,00 × 1.2               │ R$ 60,00                   │   │
-│  │ 7     │ Bonus senioridade (24 meses)          │ R$ 12,00                   │   │
-│  │ 8     │ TOTAL FINAL                           │ R$ 72,00                   │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  [Salvar como Cenario]  [Comparar com Versao Anterior]  [Exportar]                 │
+│  [Salvar como Cenario] [Exportar] [Executar Novamente]                             │
 │                                                                                     │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Tela: Gerenciar Cenarios de Teste
+---
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  CENARIOS DE TESTE - REG-COM-001                                   [+ Novo Cenario]│
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                     │
-│  [Executar Todos]                                          Status: 3/4 passaram    │
-│                                                                                     │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ # │ Nome                    │ Esperado  │ Calculado │ Status  │ Acoes       │   │
-│  ├─────────────────────────────────────────────────────────────────────────────┤   │
-│  │ 1 │ Venda Premium normal    │ R$ 40,00  │ R$ 40,00  │ ✓ OK    │ [▶] [✎] [🗑]│   │
-│  │ 2 │ Venda Basico            │ R$ 25,00  │ R$ 25,00  │ ✓ OK    │ [▶] [✎] [🗑]│   │
-│  │ 3 │ Venda com acelerador    │ R$ 72,00  │ R$ 72,00  │ ✓ OK    │ [▶] [✎] [🗑]│   │
-│  │ 4 │ Meta nao atingida       │ R$ 32,00  │ R$ 40,00  │ ✗ FALHA │ [▶] [✎] [🗑]│   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  CENARIO COM FALHA - Detalhes:                                                      │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Cenario: Meta nao atingida                                                  │   │
-│  │ Entradas: VALOR_VENDA=500, TIPO_PLANO=PREMIUM, QTD_VENDAS=8, META=10       │   │
-│  │                                                                             │   │
-│  │ Esperado: R$ 32,00 (com penalidade de 0.8x)                                │   │
-│  │ Calculado: R$ 40,00                                                         │   │
-│  │                                                                             │   │
-│  │ Possivel causa: Acelerador nao esta aplicando penalidade abaixo de 80%     │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  [Aprovar para Ativacao]  (Requer: todos os cenarios passando)                     │
-│                                                                                     │
-└─────────────────────────────────────────────────────────────────────────────────────┘
-```
+## Cenarios de Teste
 
-### Modal: Comparar Versoes
+### CT-001: Simulacao com Dados Reais
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  COMPARAR VERSOES - REG-COM-001                                            [X]     │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                     │
-│  Versao Atual: v3 (ATIVA)          Versao Nova: v4 (RASCUNHO)                      │
-│                                                                                     │
-│  ENTRADA DE TESTE                                                                   │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ VALOR_VENDA: R$ 500,00 | TIPO_PLANO: PREMIUM | QTD_VENDAS: 15              │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  COMPARATIVO                                                                        │
-│  ┌────────────────────────────────┬────────────────────────────────┐               │
-│  │         VERSAO 3 (ATIVA)       │       VERSAO 4 (RASCUNHO)      │               │
-│  ├────────────────────────────────┼────────────────────────────────┤               │
-│  │ Comissao base: R$ 40,00        │ Comissao base: R$ 40,00        │               │
-│  │ Bonus plano: R$ 10,00          │ Bonus plano: R$ 15,00  (+5)    │ ← Diferente   │
-│  │ Acelerador: 1.2x               │ Acelerador: 1.3x       (+0.1)  │ ← Diferente   │
-│  │ TOTAL: R$ 60,00                │ TOTAL: R$ 71,50        (+11,50)│               │
-│  └────────────────────────────────┴────────────────────────────────┘               │
-│                                                                                     │
-│  RESUMO: A nova versao paga R$ 11,50 a mais neste cenario (+19.2%)                 │
-│                                                                                     │
-│  [Testar outro cenario]  [Aprovar v4]  [Cancelar]                                  │
-│                                                                                     │
-└─────────────────────────────────────────────────────────────────────────────────────┘
-```
+**Dado** regra REG-BONUS-SP-AUTO-001  
+**E** consultor "Joao Silva" selecionado  
+**E** periodo Janeiro/2026  
+**Quando** clico em "Simular"  
+**Entao** sistema busca dados reais do consultor  
+**E** executa regra em modo simulacao  
+**E** exibe resultado detalhado  
+**E** nao persiste nenhuma acao
+
+### CT-002: Depuracao Passo-a-Passo
+
+**Dado** simulacao iniciada em modo debug  
+**Quando** clico em "Proximo"  
+**Entao** proxima variavel e calculada  
+**E** valor exibido ao lado  
+**E** destaque no editor visual/DSL  
+**E** posso ver detalhes do calculo
+
+### CT-003: Suite de Cenarios
+
+**Dado** 6 cenarios de teste criados para regra  
+**Quando** clico em "Executar Todos"  
+**Entao** sistema executa os 6 cenarios  
+**E** exibe resultado de cada um (pass/fail)  
+**E** destaca cenarios que falharam  
+**E** exibe diferenca entre esperado e obtido
+
+### CT-004: Analise What-If
+
+**Dado** resultado de simulacao exibido  
+**Quando** abro analise what-if  
+**E** altero valor de placas para 20  
+**Entao** resultado atualizado em tempo real  
+**E** bonus recalculado para R$ 8.000  
+**E** grafico de sensibilidade exibido
 
 ---
 
@@ -193,112 +337,26 @@ Esta historia implementa funcionalidades de simulacao e teste de regras. Permite
 
 | Codigo | Regra | Validacao |
 |--------|-------|-----------|
-| RN-MTR-040 | Simulacao nao registra | Simulacao nao cria registro em mtr_execucao |
-| RN-MTR-041 | Teste obrigatorio | Regra precisa de pelo menos 1 cenario antes de ativar |
-| RN-MTR-042 | Cenarios devem passar | Todos os cenarios devem passar para ativar |
-| RN-MTR-043 | Bypass com justificativa | Permite ativar com falhas se houver justificativa |
-| RN-MTR-044 | Historico de testes | Resultados dos testes sao arquivados |
+| RN-001 | Simulacao nao persiste | Acoes apenas exibidas, nunca executadas |
+| RN-002 | Log obrigatorio | Toda simulacao registrada |
+| RN-003 | Cenarios reutilizaveis | Cenarios podem ser compartilhados |
+| RN-004 | Dados ficticios isolados | Nao acessam banco de dados |
+| RN-005 | Debug por permissao | Apenas usuarios autorizados |
 
 ---
 
-## Modelo de Dados
+## Estimativa Detalhada
 
-```sql
--- Cenarios de Teste
-CREATE TABLE mtr_cenario_teste (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    regra_id UUID NOT NULL REFERENCES mtr_regra(id) ON DELETE CASCADE,
-    nome VARCHAR(100) NOT NULL,
-    descricao TEXT,
-    entradas_json JSONB NOT NULL,
-    resultado_esperado DECIMAL(15,2),
-    ativo BOOLEAN DEFAULT TRUE,
-    criado_em TIMESTAMP NOT NULL DEFAULT NOW(),
-    criado_por UUID NOT NULL
-);
-
--- Execucoes de Teste
-CREATE TABLE mtr_execucao_teste (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    cenario_id UUID NOT NULL REFERENCES mtr_cenario_teste(id),
-    regra_versao INTEGER NOT NULL,
-    resultado_calculado DECIMAL(15,2),
-    detalhamento_json JSONB,
-    passou BOOLEAN,
-    executado_em TIMESTAMP NOT NULL DEFAULT NOW(),
-    executado_por UUID NOT NULL
-);
-
--- Aprovacao para Ativacao
-CREATE TABLE mtr_aprovacao_ativacao (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    regra_id UUID NOT NULL REFERENCES mtr_regra(id),
-    versao INTEGER NOT NULL,
-    total_cenarios INTEGER,
-    cenarios_passaram INTEGER,
-    aprovado BOOLEAN,
-    justificativa TEXT, -- Se aprovado com falhas
-    aprovado_em TIMESTAMP NOT NULL DEFAULT NOW(),
-    aprovado_por UUID NOT NULL
-);
-```
-
----
-
-## Cenarios de Teste
-
-### CT-001: Simular Regra
-
-```gherkin
-Dado que tenho regra REG-COM-001 em rascunho
-Quando acesso o simulador
-E preencho VALOR_VENDA = 500, TIPO_PLANO = "PREMIUM"
-E clico em Simular
-Entao sistema exibe resultado calculado
-E sistema exibe detalhamento passo a passo
-E nenhum registro e criado em mtr_execucao
-```
-
-### CT-002: Criar Cenario de Teste
-
-```gherkin
-Dado que executei simulacao com sucesso
-Quando clico em "Salvar como Cenario"
-E preencho nome "Venda Premium normal"
-E defino resultado esperado "R$ 40,00"
-E clico em Salvar
-Entao cenario e criado e associado a regra
-```
-
-### CT-003: Executar Todos os Cenarios
-
-```gherkin
-Dado que regra tem 4 cenarios de teste
-Quando clico em "Executar Todos"
-Entao sistema executa cada cenario
-E sistema compara resultado com esperado
-E sistema exibe status (passou/falhou) para cada um
-```
-
----
-
-## Dependencias
-
-- **Depende de**: US-CRM-MTR-001 (estrutura de regras)
-- **Dependentes**: Processo de ativacao de regras
-
----
-
-## Estimativa
-
-| Componente | Story Points |
-|------------|-------------|
-| Backend: Motor de simulacao | 5 |
-| Backend: Cenarios de teste | 5 |
-| Backend: Comparador versoes | 3 |
-| Frontend: Simulador | 5 |
-| Frontend: Tela cenarios | 3 |
-| **TOTAL** | **21** |
+| Item | Horas | SP |
+|------|-------|-----|
+| Simulador com Dados Reais | 24h | 8 |
+| Simulador com Dados Ficticios | 16h | 5 |
+| Depurador Visual | 32h | 8 |
+| Cenarios de Teste | 24h | 5 |
+| Modo What-If | 24h | 5 |
+| Comparador de Versoes | 8h | 2 |
+| Testes | 4h | 1 |
+| **TOTAL** | **132h** | **34** |
 
 ---
 
@@ -306,4 +364,5 @@ E sistema exibe status (passou/falhou) para cada um
 
 | Versao | Data | Autor | Alteracao |
 |--------|------|-------|-----------|
-| 1.0 | 29/01/2026 | PO | Criacao inicial |
+| 1.0 | 29/01/2026 | PO | Versao inicial |
+| 2.0 | 29/01/2026 | PO | Reescrita para arquitetura de alta abstracao |

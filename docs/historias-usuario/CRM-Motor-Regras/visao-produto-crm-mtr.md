@@ -1,18 +1,32 @@
-# Motor de Regras - Visao do Produto
+# Motor de Regras - Visao do Produto v2.0
 
 > **Documento de Visao Acessivel**  
 > Este documento explica o Motor de Regras de forma simples e acessivel,  
 > para que qualquer pessoa possa entender como funciona.
+>
+> **Versao**: 2.0 | **Data**: 29/01/2026
 
 ---
 
 ## O que e o Motor de Regras?
 
-Imagine uma **calculadora inteligente** que sabe fazer contas diferentes dependendo da situacao. Em vez de programar cada calculo no sistema, voce **configura regras** que dizem:
+Imagine uma **calculadora super inteligente** que:
+- **Busca dados** de qualquer lugar do sistema automaticamente
+- **Faz contas** com esses dados (somar, contar, comparar)
+- **Decide** se deve aplicar a regra
+- **Executa acoes** como creditar bonus, enviar notificacao, etc.
 
-- **SE** acontecer isso...
-- **ENTAO** faca aquele calculo...
-- **E** execute tal acao.
+Em vez de programar cada calculo no codigo, voce **configura regras** usando linguagem simples ou editor visual.
+
+### Principais Inovacoes da Versao 2.0
+
+| Recurso | O que faz |
+|---------|-----------|
+| **Data Providers** | Busca dados de placas, boletos, metas, leads automaticamente |
+| **DSL Textual** | Linguagem em portugues para escrever regras |
+| **Editor Visual** | Arrastar e soltar blocos para criar regras |
+| **Agregacoes** | CONTAR, SOMAR, MEDIA de qualquer dado |
+| **Filtros Dinamicos** | Filtra dados por periodo, tipo, valor, etc. |
 
 ---
 
@@ -45,6 +59,91 @@ O Motor de Regras e como um **cerebro compartilhado** que varios modulos do sist
 
 ---
 
+## NOVO! Parte 1A: Data Providers (Fontes de Dados)
+
+### O que sao Data Providers?
+
+Sao **conexoes automaticas** com dados do sistema. Em vez de voce informar os numeros, o Motor **busca sozinho**:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    DATA PROVIDERS                               │
+│              (Fontes de Dados Automaticas)                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  PLACA                                                          │
+│  └─ Dados de veiculos: tipo, UF, valor, status, data            │
+│                                                                 │
+│  BOLETO                                                         │
+│  └─ Pagamentos: valor, vencimento, status, associado            │
+│                                                                 │
+│  META                                                           │
+│  └─ Metas do consultor: valor, tipo, periodo                    │
+│                                                                 │
+│  CONSULTOR                                                      │
+│  └─ Dados do vendedor: cargo, equipe, regiao                    │
+│                                                                 │
+│  LEAD                                                           │
+│  └─ Oportunidades: origem, score, status, valor                 │
+│                                                                 │
+│  INTERACAO                                                      │
+│  └─ Atividades: ligacoes, reunioes, propostas                   │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Funcoes de Agregacao
+
+O Motor pode fazer calculos automaticos nos dados:
+
+| Funcao | O que faz | Exemplo |
+|--------|-----------|---------|
+| **CONTAR** | Conta quantos registros | Contar placas do consultor |
+| **SOMAR** | Soma valores | Somar valor dos boletos pagos |
+| **MEDIA** | Calcula media | Media de valor das vendas |
+| **MINIMO** | Menor valor | Menor venda do mes |
+| **MAXIMO** | Maior valor | Maior venda do mes |
+| **PRIMEIRO** | Primeiro registro | Primeira meta encontrada |
+
+### Exemplo Pratico: Bonus por Regiao
+
+"Quero dar R$ 800 para cada 10% que o consultor vender **acima da meta** em **automoveis SP ate R$ 50k**"
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  REGRA COM DATA PROVIDERS                                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. BUSCAR AUTOMATICAMENTE:                                     │
+│     ├─ CONTAR placas do consultor                               │
+│     │   ONDE tipo = AUTOMOVEL                                   │
+│     │   E uf = SP                                               │
+│     │   E valor < 50000                                         │
+│     │   E mes = janeiro                                         │
+│     │                                                           │
+│     └─ BUSCAR meta do consultor para janeiro                    │
+│                                                                 │
+│  2. CALCULAR:                                                   │
+│     └─ percentual_acima = (placas - meta) / meta × 100          │
+│     └─ faixas_10_pct = ARREDONDAR_BAIXO(percentual / 10)        │
+│     └─ bonus = faixas × 800                                     │
+│                                                                 │
+│  3. SE: placas > meta E faixas >= 1                             │
+│                                                                 │
+│  4. ENTAO: Creditar bonus na conta do consultor                 │
+│                                                                 │
+│  EXEMPLO NUMERICO:                                              │
+│  - Placas SP Auto <50k: 15                                      │
+│  - Meta: 10                                                     │
+│  - Acima da meta: 50% (5 placas a mais)                         │
+│  - Faixas de 10%: 5                                             │
+│  - Bonus: 5 × R$ 800 = R$ 4.000,00                              │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## Parte 1: Criando uma Regra Simples
 
 ### O Conceito
@@ -52,7 +151,7 @@ O Motor de Regras e como um **cerebro compartilhado** que varios modulos do sist
 Uma regra tem 4 partes:
 
 1. **VARIAVEIS** - Os dados que voce precisa (valor da venda, tipo do plano, etc.)
-2. **CONDICOES** - Quando a regra deve ser aplicada (SE plano = Premium...)
+2. **CONDICOES** - Quando a regra deve ser aplicada (SE plano = Ouro...)
 3. **FORMULA** - O calculo a ser feito (valor x 8%)
 4. **ACOES** - O que fazer com o resultado (creditar na conta)
 
@@ -176,11 +275,148 @@ Quanto mais vende, mais ganha! O percentual aumenta:
 
 ---
 
+## NOVO! Parte 4A: DSL - Linguagem Simples para Regras
+
+### O que e DSL?
+
+DSL (Domain Specific Language) e uma **linguagem em portugues** para escrever regras de forma simples. Voce nao precisa ser programador!
+
+### Estrutura Basica
+
+```
+REGRA "Nome da Regra"
+CODIGO "REG-XXX-001"
+CATEGORIA BONUS
+
+VARIAVEIS
+  nome_variavel = CONTAR(PROVIDER) ONDE {filtros}
+  outra_variavel = expressao matematica
+
+QUANDO
+  condicao1 E
+  condicao2
+
+ENTAO
+  CREDITAR valor EM BONUS
+
+FIM_REGRA
+```
+
+### Exemplo Completo em DSL
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  DSL - BONUS POR REGIAO                                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  REGRA "Bonus SP Automovel ate 50k"                             │
+│  CODIGO "REG-BONUS-SP-AUTO-001"                                 │
+│  CATEGORIA BONUS                                                │
+│  PRIORIDADE 1                                                   │
+│                                                                 │
+│  VARIAVEIS                                                      │
+│    // Contar placas com filtros especificos                     │
+│    placas_sp_auto = CONTAR(PLACA) ONDE {                        │
+│      consultor_id = @consultor_atual,                           │
+│      tipo_veiculo = "AUTOMOVEL",                                │
+│      uf_veiculo = "SP",                                         │
+│      valor_veiculo < 50000,                                     │
+│      data_fechamento ENTRE @periodo_inicio E @periodo_fim       │
+│    }                                                            │
+│                                                                 │
+│    // Buscar meta do consultor                                  │
+│    meta = PRIMEIRO(META) ONDE {                                 │
+│      consultor_id = @consultor_atual,                           │
+│      mes = @mes_atual                                           │
+│    } CAMPO valor_meta                                           │
+│                                                                 │
+│    // Calcular percentual e bonus                               │
+│    pct_acima = MAIOR_ENTRE((placas_sp_auto - meta) / meta * 100,│
+│    faixas = ARREDONDAR_BAIXO(pct_acima / 10)                    │
+│    bonus = faixas * 800                                         │
+│                                                                 │
+│  QUANDO                                                         │
+│    placas_sp_auto > meta E                                      │
+│    faixas >= 1                                                  │
+│                                                                 │
+│  ENTAO                                                          │
+│    CREDITAR bonus EM BONUS DESCRICAO "Bonus SP Auto 50k"        │
+│                                                                 │
+│  FIM_REGRA                                                      │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Palavras-Chave em Portugues
+
+| DSL Portugues | Significado |
+|---------------|-------------|
+| REGRA | Inicio da definicao |
+| VARIAVEIS | Bloco de dados |
+| CONTAR | Conta registros |
+| SOMAR | Soma valores |
+| MEDIA | Calcula media |
+| ONDE | Aplica filtros |
+| ENTRE | Entre dois valores |
+| MAIOR_ENTRE | O maior entre valores |
+| ARREDONDAR_BAIXO | Arredonda para baixo |
+| QUANDO | Condicao de aplicacao |
+| E / OU | Operadores logicos |
+| ENTAO | Acoes a executar |
+| CREDITAR | Adiciona valor |
+| FIM_REGRA | Fim da definicao |
+
+### Variaveis de Contexto
+
+O simbolo `@` indica dados automaticos do sistema:
+
+| Variavel | Valor |
+|----------|-------|
+| `@consultor_atual` | ID do consultor sendo processado |
+| `@periodo_inicio` | Data inicio do periodo |
+| `@periodo_fim` | Data fim do periodo |
+| `@mes_atual` | Mes de referencia |
+| `@ano_atual` | Ano de referencia |
+| `@hoje` | Data de hoje |
+
+---
+
 ## Parte 4: Residuais (Mensalidades)
 
 ### O que sao Residuais?
 
 Alem da comissao na venda, o consultor pode ganhar **todo mes** enquanto o associado continuar pagando. Isso se chama **Residual**.
+
+### Residual Inteligente com Data Providers
+
+O novo Motor calcula residuais automaticamente buscando boletos:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  REGRA DE RESIDUAL AUTOMATIZADO                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  VARIAVEIS                                                      │
+│    // Somar boletos pagos da carteira do consultor              │
+│    total_boletos = SOMAR(BOLETO) ONDE {                         │
+│      consultor_carteira = @consultor_atual,                     │
+│      status = "PAGO",                                           │
+│      data_pagamento ENTRE @periodo_inicio E @periodo_fim        │
+│    } CAMPO valor_pago                                           │
+│                                                                 │
+│    // Calcular residual (15% quando > R$ 100k)                  │
+│    residual = SE(total_boletos > 100000,                        │
+│                  total_boletos * 0.15,                          │
+│                  0)                                             │
+│                                                                 │
+│  QUANDO                                                         │
+│    total_boletos > 100000                                       │
+│                                                                 │
+│  ENTAO                                                          │
+│    CREDITAR residual EM RESIDUAL                                │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ### Calculo por Placas Ativas
 
@@ -341,7 +577,7 @@ Para quem nao e tecnico, o Motor oferece um **editor visual** onde voce monta a 
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌─────────────┐                                                │
-│  │  VARIAVEL   │  ←── Arraste para adicionar                   │
+│  │  VARIAVEL   │  ←── Arraste para adicionar                    │
 │  │ Valor Venda │                                                │
 │  └─────────────┘                                                │
 │         │                                                       │
@@ -447,8 +683,8 @@ Cada calculo feito pelo Motor fica registrado:
 │  └─ comissao: 48.00                                             │
 │                                                                 │
 │  Contexto:                                                      │
-│  ├─ venda_id: id-123                                          │
-│  └─ consultor_id: id-456                                      │
+│  ├─ venda_id: id-123                                            │
+│  └─ consultor_id: id-456                                        │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -504,4 +740,32 @@ Sim! O simulador permite testar com dados reais ou fictícios antes de colocar a
 | **Equipe** | Comissao do gestor sobre vendas da equipe |
 | **Divisão** | Divisao de comissao entre consultores |
 | **Acelerador** | Multiplicador progressivo por meta |
+| **Data Provider** | Fonte de dados automatica (PLACA, BOLETO, META, etc.) |
+| **DSL** | Linguagem em portugues para escrever regras |
+| **Agregacao** | Funcao que calcula sobre dados (CONTAR, SOMAR, MEDIA) |
+| **Contexto** | Variaveis automaticas do sistema (@consultor_atual, etc.) |
+| **Filtro** | Criterio para selecionar dados (uf = "SP", valor < 50000) |
+
+---
+
+## Resumo das Novidades v2.0
+
+| Antes (v1.0) | Agora (v2.0) |
+|--------------|--------------|
+| Valores informados manualmente | Data Providers buscam automaticamente |
+| Condicoes simples | Filtros complexos com agregacoes |
+| Interface so tecnica | DSL em portugues + Editor Visual |
+| Regras basicas | Regras combinadas e escalonadas |
+| Testes manuais | Simulador com depurador passo-a-passo |
+| Pouca rastreabilidade | Auditoria completa de cada execucao |
+
+---
+
+## Documentacao Tecnica Relacionada
+
+Para mais detalhes tecnicos, consulte:
+
+- [ESPECIFICACAO-DSL.md](ESPECIFICACAO-DSL.md) - Sintaxe completa da DSL
+- [EXEMPLOS-REGRAS-COMPLEXAS.md](EXEMPLOS-REGRAS-COMPLEXAS.md) - 8 exemplos detalhados
+- [DDL-MOTOR-REGRAS-V2.sql](DDL-MOTOR-REGRAS-V2.sql) - Estrutura do banco de dados
 

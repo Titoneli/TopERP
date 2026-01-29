@@ -1,179 +1,268 @@
-# US-CRM-MTR-001: Cadastro de Regras Basicas
+# US-CRM-MTR-001: Arquitetura de Data Providers e Definicao de Regras
 
 > **Modulo**: CRM-Motor-Regras  
-> **Versao**: 1.0  
+> **Versao**: 2.0  
 > **Data**: 29/01/2026  
 > **Status**: Pronto para Desenvolvimento  
-> **Story Points**: 34
+> **Story Points**: 55
 
 ---
 
 ## Historia de Usuario
 
 **Como** gestor do sistema,  
-**Quero** cadastrar regras de calculo com variaveis, condicoes e formulas configuraveis,  
-**Para** automatizar calculos sem necessidade de alteracao de codigo.
+**Quero** cadastrar regras de calculo com alto nivel de abstracao usando Data Providers configuraveis, variaveis dinamicas, condicoes compostas e formulas flexiveis,  
+**Para** criar qualquer tipo de regra de negocio sem necessidade de alteracao de codigo, atendendo cenarios complexos como bonus condicionais com multiplos filtros.
 
 ---
 
 ## Descricao
 
-Esta historia cobre a funcionalidade basica do Motor de Regras: criar, editar, ativar e desativar regras de calculo. Inclui a definicao de variaveis de entrada, condicoes de aplicacao e formulas matematicas.
+Esta historia implementa a **arquitetura fundamental do Motor de Regras v2.0**, incluindo:
+
+1. **Data Providers**: Fontes de dados configuraveis (tabelas, views, APIs)
+2. **Variaveis Dinamicas**: Agregacoes, formulas, lookups e constantes
+3. **Condicoes Compostas**: AND/OR com agrupamento e referencias
+4. **Schema JSON v2.0**: Definicao completa da regra em formato estruturado
+5. **DSL Textual**: Linguagem legivel para usuarios avancados
+
+### Exemplo de Caso de Uso Complexo
+
+> Adicionar R$ 800,00 para cada 10% a mais de placas fechadas acima da meta do mes,
+> desde que as placas sejam de veiculos do tipo **automovel** do estado de **SP**
+> e cujo valor do veiculo seja inferior a **R$ 50.000**.
 
 ---
 
 ## Criterios de Aceitacao
 
-### CA-001: Criar Nova Regra
+### CA-001: Gerenciar Data Providers
 
-- [ ] Sistema permite criar regra com codigo unico (formato REG-XXX-NNN)
-- [ ] Sistema exige campos obrigatorios: codigo, nome, tipo, modulo consumidor
-- [ ] Sistema permite definir descricao detalhada
-- [ ] Sistema salva regra com status RASCUNHO por padrao
-- [ ] Sistema registra data/hora e usuario de criacao
+- [ ] Sistema permite cadastrar novos Data Providers
+- [ ] Cada Provider tem: codigo, nome, tipo (TABLE/VIEW/API), fonte
+- [ ] Sistema permite definir campos disponiveis por Provider
+- [ ] Cada campo tem: codigo, nome, tipo_dado, descricao
+- [ ] Sistema valida conexao/existencia do Provider ao cadastrar
+- [ ] Providers pre-cadastrados: PLACA, BOLETO, META, CONSULTOR, HIERARQUIA, LEAD, INTERACAO
 
-### CA-002: Definir Variaveis
+### CA-002: Criar Regra com Schema v2.0
 
-- [ ] Sistema permite adicionar variaveis de entrada na regra
-- [ ] Cada variavel tem: codigo, nome, tipo de dado, origem
-- [ ] Tipos de dado suportados: DECIMAL, INTEGER, BOOLEAN, STRING, DATE
-- [ ] Origem pode ser: INPUT (informada), CALCULADA, SISTEMA
-- [ ] Sistema permite definir valor padrao para variavel
-- [ ] Sistema permite definir validacoes (min, max, obrigatorio)
+- [ ] Sistema permite criar regra com JSON estruturado (schema v2.0)
+- [ ] Estrutura inclui: metadata, data_providers, variaveis, condicoes, acoes
+- [ ] Sistema valida schema antes de salvar
+- [ ] Sistema gera codigo automatico no formato REG-{CATEGORIA}-{SEQ}
+- [ ] Sistema permite upload de arquivo JSON ou edicao inline
 
-### CA-003: Definir Condicoes
+### CA-003: Definir Variaveis de Agregacao
 
-- [ ] Sistema permite adicionar condicoes de aplicacao
-- [ ] Condicao referencia uma variavel e um operador
-- [ ] Operadores suportados: IGUAL, DIFERENTE, MAIOR, MENOR, ENTRE, CONTEM
-- [ ] Sistema permite agrupar condicoes com AND/OR
-- [ ] Sistema permite condicoes aninhadas (grupos)
+- [ ] Sistema permite criar variavel do tipo AGREGACAO
+- [ ] Agregacao referencia um Data Provider
+- [ ] Funcoes disponiveis: COUNT, SUM, AVG, MIN, MAX, FIRST, LAST, MODE
+- [ ] Sistema permite definir filtros na agregacao
+- [ ] Filtros suportam: operadores de comparacao, BETWEEN, IN, NOT IN
+- [ ] Filtros podem referenciar variaveis de contexto (@consultor_atual, @periodo_inicio, etc)
+- [ ] Sistema gera query otimizada para o Provider
 
-### CA-004: Definir Formula
+**Exemplo de Variavel de Agregacao:**
+```json
+{
+  "nome": "placas_sp_auto_50k",
+  "tipo": "AGREGACAO",
+  "config": {
+    "provider": "PLACA",
+    "funcao": "COUNT",
+    "campo": "id",
+    "filtros": [
+      {"campo": "consultor_id", "operador": "=", "valor": "@contexto.consultor_id"},
+      {"campo": "tipo_veiculo", "operador": "=", "valor": "AUTOMOVEL"},
+      {"campo": "uf_veiculo", "operador": "=", "valor": "SP"},
+      {"campo": "valor_veiculo", "operador": "<", "valor": 50000}
+    ]
+  }
+}
+```
 
-- [ ] Sistema permite escrever formula matematica como texto
-- [ ] Formula pode referenciar variaveis declaradas pelo codigo
-- [ ] Operadores matematicos suportados: +, -, *, /, %, ^
-- [ ] Funcoes suportadas: IF, CASE, MIN, MAX, SUM, ROUND
-- [ ] Sistema valida sintaxe da formula antes de salvar
-- [ ] Sistema alerta se formula usa variavel nao declarada
+### CA-004: Definir Variaveis de Formula
 
-### CA-005: Ativar/Desativar Regra
+- [ ] Sistema permite criar variavel do tipo FORMULA
+- [ ] Formula pode referenciar outras variaveis pelo nome
+- [ ] Operadores matematicos: +, -, *, /, %, ^
+- [ ] Funcoes matematicas: FLOOR, CEIL, ROUND, ABS, GREATEST, LEAST, POWER, SQRT
+- [ ] Funcao condicional: CASE WHEN ... THEN ... ELSE ... END
+- [ ] Sistema valida sintaxe e referencias antes de salvar
+- [ ] Sistema alerta se formula referencia variavel inexistente
 
-- [ ] Sistema permite ativar regra (status RASCUNHO → ATIVA)
-- [ ] Ativacao exige data de vigencia inicio
-- [ ] Sistema permite desativar regra (status ATIVA → INATIVA)
-- [ ] Sistema permite arquivar regra (INATIVA → ARQUIVADA)
-- [ ] Regra ARQUIVADA nao pode ser reativada
+**Exemplo de Formula com CASE:**
+```json
+{
+  "nome": "multiplicador",
+  "tipo": "FORMULA",
+  "config": {
+    "expressao": "CASE WHEN pct_atingimento >= 120 THEN 1.5 WHEN pct_atingimento >= 100 THEN 1.2 ELSE 1.0 END"
+  }
+}
+```
 
-### CA-006: Listar e Filtrar Regras
+### CA-005: Definir Variaveis de Lookup
 
-- [ ] Sistema lista todas as regras cadastradas
-- [ ] Sistema permite filtrar por: tipo, modulo, status
-- [ ] Sistema permite buscar por codigo ou nome
-- [ ] Sistema exibe total de regras por status
+- [ ] Sistema permite criar variavel do tipo LOOKUP
+- [ ] Lookup referencia uma Tabela Auxiliar
+- [ ] Tabelas auxiliares armazenam faixas, multiplicadores, etc
+- [ ] Sistema permite definir condicao de busca
+- [ ] Sistema permite definir campo de retorno
+- [ ] Sistema suporta tabelas com ranges (min/max)
 
-### CA-007: Validacoes de Negocio
+### CA-006: Definir Condicoes Compostas
 
-- [ ] Sistema nao permite dois codigos de regra iguais
-- [ ] Sistema nao permite ativar regra sem formula
-- [ ] Sistema nao permite ativar regra sem pelo menos 1 variavel
-- [ ] Sistema valida que formula retorna tipo numerico ou booleano
+- [ ] Sistema permite criar bloco de condicoes com tipo AND ou OR
+- [ ] Cada expressao compara variavel com valor ou outra variavel
+- [ ] Sistema suporta referencia a variavel: {"ref": "nome_variavel"}
+- [ ] Sistema permite grupos aninhados de condicoes
+- [ ] Sistema avalia condicoes na ordem definida
+
+### CA-007: Variaveis de Contexto do Sistema
+
+- [ ] Sistema disponibiliza variaveis de contexto com prefixo @
+- [ ] Contexto padrao: @consultor_atual, @periodo_inicio, @periodo_fim
+- [ ] Contexto de data: @hoje, @agora, @mes_atual, @ano_atual
+- [ ] Contexto customizavel na chamada da API
+- [ ] Sistema substitui referencias de contexto durante execucao
+
+### CA-008: Validacao Completa da Regra
+
+- [ ] Sistema valida schema JSON no formato v2.0
+- [ ] Sistema valida que todos os Providers referenciados existem
+- [ ] Sistema valida que todas as variaveis referenciadas estao declaradas
+- [ ] Sistema valida sintaxe de formulas
+- [ ] Sistema valida operadores das condicoes
+- [ ] Sistema retorna lista de erros e warnings
+- [ ] Sistema nao permite salvar regra com erros
+
+### CA-009: Escopo e Vigencia
+
+- [ ] Sistema permite definir escopo: GLOBAL, CONSULTOR, EQUIPE, FILIAL
+- [ ] Escopo especifico aceita lista de UUIDs
+- [ ] Sistema exige vigencia_inicio para regras ativas
+- [ ] Sistema permite vigencia_fim opcional (indefinido)
+- [ ] Sistema filtra regras por escopo e vigencia na execucao
+
+### CA-010: DSL Textual (Opcional)
+
+- [ ] Sistema permite escrever regra em DSL textual
+- [ ] Sistema converte DSL para JSON automaticamente
+- [ ] Sistema exibe DSL para regras criadas via JSON
+- [ ] Sintaxe DSL inclui: REGRA, VARIAVEIS, QUANDO, ENTAO, FIM_REGRA
+- [ ] Sistema valida sintaxe DSL antes de converter
 
 ---
 
 ## Mockups
 
-### Tela: Listagem de Regras
+### Tela: Editor de Regras v2.0
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  MOTOR DE REGRAS - LISTAGEM                                      [+ Nova Regra]    │
+│  MOTOR DE REGRAS v2.0 - NOVA REGRA                                                 │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
-│  Filtros: [Tipo: Todos ▼] [Modulo: Todos ▼] [Status: Ativa ▼] [Buscar: ______]     │
+│  [Metadados] [Variaveis] [Condicoes] [Acoes] [JSON] [DSL] [Preview]                │
+│  ─────────────────────────────────────────────────────────────────                  │
 │                                                                                     │
+│  METADADOS                                                                          │
 │  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Codigo          │ Nome                      │ Tipo      │ Status │ Vigencia │   │
-│  ├─────────────────────────────────────────────────────────────────────────────┤   │
-│  │ REG-COM-001     │ Comissao Plano Basico     │ COMISSAO  │ ATIVA  │ 01/01/26 │   │
-│  │ REG-COM-002     │ Comissao Plano Premium    │ COMISSAO  │ ATIVA  │ 01/01/26 │   │
-│  │ REG-RES-001     │ Residual por Placa        │ RESIDUAL  │ ATIVA  │ 01/01/26 │   │
-│  │ REG-BON-001     │ Bonus Meta Mensal         │ BONIFICACAO│ RASCUNHO│ -       │   │
+│  │ Codigo: [REG-BONUS-SP-001____]  Categoria: [BONIFICACAO ▼]                  │   │
+│  │ Nome: [Bonus SP Automovel ate 50k_______________________________________]   │   │
+│  │ Descricao: [R$ 800 para cada 10% acima da meta em automoveis SP ate 50k]    │   │
+│  │                                                                             │   │
+│  │ Escopo: [CONSULTOR ▼]  IDs: [+ Adicionar]                                   │   │
+│  │   ├─ 550e8400-e29b-41d4-a716-446655440000 [x]                               │   │
+│  │                                                                             │   │
+│  │ Vigencia: [01/01/2026] ate [31/12/2026]  □ Indefinido                       │   │
 │  └─────────────────────────────────────────────────────────────────────────────┘   │
 │                                                                                     │
-│  Mostrando 4 de 4 regras                              [< 1 2 3 >]                  │
+│  DATA PROVIDERS UTILIZADOS                                                          │
+│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│  │ [✓] PLACA - Placas/Contratos                                                │   │
+│  │ [✓] META - Metas dos consultores                                            │   │
+│  │ [ ] BOLETO - Boletos                                                        │   │
+│  └─────────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                     │
+│                                    [Cancelar] [Salvar Rascunho] [Proximo →]        │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Tela: Definicao de Variaveis
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│  MOTOR DE REGRAS v2.0 - VARIAVEIS                                                  │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│  VARIAVEIS DA REGRA                                           [+ Adicionar]        │
+│                                                                                     │
+│  ┌───────────────────────────────────────────────────────────────────────────────┐ │
+│  │ # │ Nome                │ Tipo       │ Resumo                         │ Acoes │ │
+│  ├───────────────────────────────────────────────────────────────────────────────┤ │
+│  │ 1 │ placas_sp_auto_50k  │ AGREGACAO  │ COUNT(PLACA) WHERE tipo=AUTO...│ [✎][🗑]│ │
+│  │ 2 │ meta_mes            │ AGREGACAO  │ FIRST(META.meta_placas)        │ [✎][🗑]│ │
+│  │ 3 │ pct_acima_meta      │ FORMULA    │ (placas-meta)/meta*100         │ [✎][🗑]│ │
+│  │ 4 │ faixas_10_pct       │ FORMULA    │ FLOOR(pct_acima_meta/10)       │ [✎][🗑]│ │
+│  │ 5 │ valor_bonus         │ FORMULA    │ faixas_10_pct * 800            │ [✎][🗑]│ │
+│  └───────────────────────────────────────────────────────────────────────────────┘ │
+│                                                                                     │
+│  EDITOR DE VARIAVEL                                                                │
+│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│  │ Nome: [placas_sp_auto_50k___]  Tipo: [AGREGACAO ▼]                          │   │
+│  │                                                                             │   │
+│  │ ╔═══════════════════════════════════════════════════════════════════════╗   │   │
+│  │ ║ CONFIGURACAO DE AGREGACAO                                             ║   │   │
+│  │ ╠═══════════════════════════════════════════════════════════════════════╣   │   │
+│  │ ║ Provider: [PLACA ▼]      Funcao: [COUNT ▼]      Campo: [id ▼]         ║   │   │
+│  │ ║                                                                       ║   │   │
+│  │ ║ FILTROS:                                                [+ Filtro]   ║   │   │
+│  │ ║ ┌────────────────────────────────────────────────────────────────┐   ║   │   │
+│  │ ║ │ consultor_id    │ =       │ @contexto.consultor_id      │ [x] │   ║   │   │
+│  │ ║ │ data_fechamento │ BETWEEN │ @periodo_inicio, @periodo_fim│ [x] │   ║   │   │
+│  │ ║ │ tipo_veiculo    │ =       │ AUTOMOVEL                   │ [x] │   ║   │   │
+│  │ ║ │ uf_veiculo      │ =       │ SP                          │ [x] │   ║   │   │
+│  │ ║ │ valor_veiculo   │ <       │ 50000                       │ [x] │   ║   │   │
+│  │ ║ │ status          │ =       │ FECHADA                     │ [x] │   ║   │   │
+│  │ ║ └────────────────────────────────────────────────────────────────┘   ║   │   │
+│  │ ╚═══════════════════════════════════════════════════════════════════════╝   │   │
+│  └─────────────────────────────────────────────────────────────────────────────┘   │
 │                                                                                     │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Tela: Cadastro/Edicao de Regra
+---
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  CADASTRO DE REGRA                                               [Salvar] [Cancelar]│
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                     │
-│  DADOS BASICOS                                                                      │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Codigo*: [REG-COM-003    ]   Nome*: [Comissao Plano Platinum            ]  │   │
-│  │ Tipo*: [COMISSAO ▼]          Modulo*: [CRM-FIN ▼]                          │   │
-│  │ Descricao: [Regra de comissao para vendas do plano Platinum              ] │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  VARIAVEIS                                                        [+ Adicionar]    │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Codigo         │ Nome             │ Tipo    │ Origem  │ Padrao │ Acoes     │   │
-│  ├─────────────────────────────────────────────────────────────────────────────┤   │
-│  │ VALOR_VENDA    │ Valor da Venda   │ DECIMAL │ INPUT   │ -      │ [Editar]  │   │
-│  │ TIPO_PLANO     │ Tipo do Plano    │ STRING  │ INPUT   │ -      │ [Editar]  │   │
-│  │ PERC_COMISSAO  │ % Comissao       │ DECIMAL │ SISTEMA │ 0.10   │ [Editar]  │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  CONDICOES                                                        [+ Adicionar]    │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ # │ Variavel      │ Operador │ Valor        │ Logico │ Acoes              │   │
-│  ├─────────────────────────────────────────────────────────────────────────────┤   │
-│  │ 1 │ TIPO_PLANO    │ IGUAL    │ "PLATINUM"   │ -      │ [Editar] [Excluir] │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  FORMULA                                                                            │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ VALOR_VENDA * PERC_COMISSAO                                                 │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│  [Validar Formula]  Status: Valida                                                 │
-│                                                                                     │
-│  VIGENCIA                                                                           │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Inicio: [29/01/2026]        Fim: [__/__/____] (opcional)                   │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-└─────────────────────────────────────────────────────────────────────────────────────┘
-```
+## Cenarios de Teste
 
-### Modal: Adicionar Variavel
+### CT-001: Criar Regra Complexa com Multiplos Filtros
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  ADICIONAR VARIAVEL                                [X]          │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  Codigo*: [VALOR_VENDA        ]                                │
-│  Nome*:   [Valor da Venda     ]                                │
-│  Tipo*:   [DECIMAL ▼]                                          │
-│  Origem*: [INPUT ▼]                                            │
-│                                                                 │
-│  Valor Padrao: [________]                                      │
-│                                                                 │
-│  Validacoes:                                                   │
-│  [ ] Obrigatorio                                               │
-│  [ ] Valor minimo: [____]                                      │
-│  [ ] Valor maximo: [____]                                      │
-│                                                                 │
-│                            [Cancelar] [Adicionar]              │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
+**Dado** que estou no editor de regras  
+**Quando** crio uma variavel de agregacao com 6 filtros  
+**E** os filtros incluem tipo_veiculo, uf_veiculo, valor_veiculo, status  
+**E** os filtros usam variaveis de contexto (@consultor_atual, @periodo_inicio)  
+**Entao** o sistema valida todos os filtros  
+**E** gera a query SQL corretamente  
+**E** salva a variavel na regra
+
+### CT-002: Validar Referencias entre Variaveis
+
+**Dado** que tenho variaveis: meta_mes, placas, pct_acima  
+**Quando** crio formula: pct_acima = (placas - meta_mes) / meta_mes * 100  
+**Entao** sistema identifica referencias a meta_mes e placas  
+**E** valida que ambas estao declaradas  
+**E** aceita a formula
+
+### CT-003: Rejeitar Formula com Variavel Inexistente
+
+**Dado** que tenho apenas variavel valor_venda  
+**Quando** tento criar formula: comissao = valor_venda * taxa  
+**Entao** sistema identifica que taxa nao existe  
+**E** exibe erro: "Variavel 'taxa' nao declarada"  
+**E** nao permite salvar
 
 ---
 
@@ -181,112 +270,26 @@ Esta historia cobre a funcionalidade basica do Motor de Regras: criar, editar, a
 
 | Codigo | Regra | Validacao |
 |--------|-------|-----------|
-| RN-MTR-001 | Codigo unico | Nao pode existir duas regras com mesmo codigo |
-| RN-MTR-002 | Formula obrigatoria para ativar | Regra sem formula nao pode ser ativada |
-| RN-MTR-003 | Variavel obrigatoria | Regra deve ter pelo menos 1 variavel |
-| RN-MTR-004 | Vigencia obrigatoria | Regra ativa deve ter data inicio |
-| RN-MTR-005 | Sintaxe valida | Formula deve ser sintaticamente correta |
+| RN-001 | Codigo unico | Nao permite codigos duplicados |
+| RN-002 | Provider valido | Provider referenciado deve existir |
+| RN-003 | Variavel declarada | Formulas so podem usar variaveis declaradas |
+| RN-004 | Tipo compativel | Operacoes devem ter tipos compativeis |
+| RN-005 | Schema obrigatorio | versao_schema deve ser "2.0" |
 
 ---
 
-## Modelo de Dados
+## Estimativa Detalhada
 
-### Entidades Envolvidas
-
-- `mtr_regra` - Dados principais da regra
-- `mtr_variavel` - Variaveis de entrada
-- `mtr_condicao` - Condicoes de aplicacao
-
-### Campos Principais
-
-```sql
-mtr_regra:
-  - id, codigo, nome, descricao
-  - tipo, modulo_consumidor, status
-  - versao, vigencia_inicio, vigencia_fim
-  - formula_expressao
-  - criado_em, criado_por, atualizado_em, atualizado_por
-
-mtr_variavel:
-  - id, regra_id, codigo, nome
-  - tipo_dado, origem, valor_padrao
-  - validacoes_json
-
-mtr_condicao:
-  - id, regra_id, variavel_id
-  - ordem, operador, valor_comparacao
-  - operador_logico, grupo
-```
-
----
-
-## Cenarios de Teste
-
-### CT-001: Criar Regra Simples
-
-```gherkin
-Dado que estou na tela de cadastro de regra
-Quando preencho codigo "REG-COM-003"
-E preencho nome "Comissao Platinum"
-E seleciono tipo "COMISSAO"
-E seleciono modulo "CRM-FIN"
-E clico em Salvar
-Entao regra e criada com status RASCUNHO
-E sistema exibe mensagem "Regra criada com sucesso"
-```
-
-### CT-002: Adicionar Variavel
-
-```gherkin
-Dado que tenho uma regra em RASCUNHO
-Quando clico em Adicionar Variavel
-E preencho codigo "VALOR_VENDA"
-E preencho nome "Valor da Venda"
-E seleciono tipo "DECIMAL"
-E seleciono origem "INPUT"
-E clico em Adicionar
-Entao variavel e adicionada a regra
-```
-
-### CT-003: Validar Formula
-
-```gherkin
-Dado que tenho uma regra com variaveis VALOR_VENDA e PERC_COMISSAO
-Quando escrevo formula "VALOR_VENDA * PERC_COMISSAO"
-E clico em Validar Formula
-Entao sistema exibe "Formula valida"
-```
-
-### CT-004: Ativar Regra
-
-```gherkin
-Dado que tenho uma regra completa em RASCUNHO
-E regra tem variaveis e formula valida
-Quando defino vigencia inicio "29/01/2026"
-E clico em Ativar
-Entao regra muda para status ATIVA
-E regra pode ser executada pelo Motor
-```
-
----
-
-## Dependencias
-
-- **Depende de**: Sistema de autenticacao (usuario logado)
-- **Dependentes**: US-CRM-MTR-002, US-CRM-MTR-003, US-CRM-MTR-005
-
----
-
-## Estimativa
-
-| Componente | Story Points |
-|------------|-------------|
-| Backend: CRUD Regras | 8 |
-| Backend: CRUD Variaveis | 5 |
-| Backend: CRUD Condicoes | 5 |
-| Backend: Validador de Formula | 8 |
-| Frontend: Telas | 8 |
-| **TOTAL** | **34** |
+| Item | Horas | SP |
+|------|-------|-----|
+| API CRUD Data Providers | 16h | 8 |
+| API CRUD Regras | 24h | 13 |
+| Parser de Variaveis | 32h | 13 |
+| Parser de Formulas | 24h | 8 |
+| Validador de Schema | 16h | 5 |
+| Parser DSL (opcional) | 16h | 5 |
+| Testes unitarios | 16h | 3 |
+| **TOTAL** | **144h** | **55** |
 
 ---
 
@@ -294,4 +297,5 @@ E regra pode ser executada pelo Motor
 
 | Versao | Data | Autor | Alteracao |
 |--------|------|-------|-----------|
-| 1.0 | 29/01/2026 | PO | Criacao inicial |
+| 1.0 | 29/01/2026 | PO | Versao inicial |
+| 2.0 | 29/01/2026 | PO | Reescrita completa para arquitetura de alta abstracao |

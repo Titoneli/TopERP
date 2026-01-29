@@ -1,83 +1,296 @@
-# US-CRM-MTR-006: Versionamento e Auditoria
+# US-CRM-MTR-006: Versionamento, Auditoria e Performance
 
 > **Modulo**: CRM-Motor-Regras  
-> **Versao**: 1.0  
+> **Versao**: 2.0  
 > **Data**: 29/01/2026  
 > **Status**: Pronto para Desenvolvimento  
-> **Story Points**: 21
+> **Story Points**: 34
 
 ---
 
 ## Historia de Usuario
 
-**Como** gestor do sistema,  
-**Quero** ter controle completo sobre versoes das regras e auditoria de todas as execucoes,  
-**Para** garantir rastreabilidade, compliance e capacidade de rollback.
+**Como** gestor de regras de negocio,  
+**Quero** controlar versoes das regras, auditar todas as execucoes e monitorar performance,  
+**Para** garantir governanca, rastreabilidade e otimizacao do motor de regras.
 
 ---
 
 ## Descricao
 
-Esta historia implementa o sistema de versionamento de regras e auditoria completa de execucoes. Cada alteracao em regra gera nova versao, mantendo historico completo. Toda execucao e registrada com detalhes para rastreabilidade.
+Esta historia implementa:
+
+1. **Versionamento de Regras**: Controle de versoes com aprovacao
+2. **Workflow de Aprovacao**: Fluxo de rascunho -> aprovacao -> publicacao
+3. **Auditoria Completa**: Registro de todas as execucoes
+4. **Dashboard de Performance**: Metricas e alertas
+5. **Cache Inteligente**: Otimizacao de execucao
 
 ---
 
 ## Criterios de Aceitacao
 
-### CA-001: Versionamento Automatico
+### CA-001: Ciclo de Vida de Versoes
 
-- [ ] Sistema cria nova versao ao alterar regra ATIVA
-- [ ] Sistema mantem historico de todas as versoes
-- [ ] Numero da versao e incremental (1, 2, 3...)
-- [ ] Sistema registra data, usuario e alteracoes de cada versao
+- [ ] Status: RASCUNHO -> EM_APROVACAO -> ATIVA -> INATIVA
+- [ ] Criar nova versao a partir da ativa
+- [ ] Multiplas versoes podem existir (apenas uma ativa)
+- [ ] Rollback para versao anterior
+- [ ] Historico completo de versoes
 
-### CA-002: Comparar Versoes
+**Diagrama de Estados:**
 
-- [ ] Sistema permite visualizar duas versoes lado a lado
-- [ ] Sistema destaca diferencas (campos alterados)
-- [ ] Sistema permite comparar qualquer versao com qualquer outra
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                      CICLO DE VIDA DE VERSAO                                    │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│                          ┌─────────────┐                                        │
+│                 Criar    │  RASCUNHO   │                                        │
+│               ─────────► │             │                                        │
+│                          └──────┬──────┘                                        │
+│                                 │ Enviar para aprovacao                         │
+│                                 ▼                                               │
+│                          ┌─────────────┐                                        │
+│                          │ EM_APROVACAO│                                        │
+│                          │             │                                        │
+│                          └──────┬──────┘                                        │
+│                    Rejeitar │   │ Aprovar                                       │
+│                    ┌────────┘   └────────┐                                      │
+│                    ▼                     ▼                                      │
+│             ┌─────────────┐       ┌─────────────┐                               │
+│             │  RASCUNHO   │       │    ATIVA    │                               │
+│             │ (revisao)   │       │             │                               │
+│             └─────────────┘       └──────┬──────┘                               │
+│                                          │ Nova versao ou                       │
+│                                          │ Desativar                            │
+│                                          ▼                                      │
+│                                   ┌─────────────┐                               │
+│                                   │   INATIVA   │                               │
+│                                   │             │                               │
+│                                   └─────────────┘                               │
+│                                          │                                      │
+│                                          ▼                                      │
+│                                   Reativar (se permitido)                       │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
 
-### CA-003: Rollback
+### CA-002: Workflow de Aprovacao
 
-- [ ] Sistema permite reativar versao anterior
-- [ ] Rollback desativa versao atual e ativa a selecionada
-- [ ] Sistema exige justificativa para rollback
-- [ ] Sistema registra rollback no historico
+- [ ] Regra em RASCUNHO pode ser editada livremente
+- [ ] Enviar para aprovacao cria snapshot imutavel
+- [ ] Aprovador recebe notificacao
+- [ ] Aprovador pode: Aprovar, Rejeitar com comentario, Solicitar alteracao
+- [ ] Aprovacao ativa a versao automaticamente
+- [ ] Versao anterior passa para INATIVA
 
-### CA-004: Imutabilidade
+**Interface de Aprovacao:**
 
-- [ ] Regra com execucoes nao pode ser editada diretamente
-- [ ] Edicao cria nova versao automaticamente
-- [ ] Versoes antigas sao somente leitura
-- [ ] Snapshot completo de cada versao e preservado
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│  APROVACAO DE REGRA                                                             │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  Regra: REG-BONUS-SP-AUTO-001                                                   │
+│  Versao: 2 (pendente aprovacao)                                                │
+│  Solicitante: Maria Santos                                                      │
+│  Data Solicitacao: 29/01/2026 14:30                                             │
+│                                                                                 │
+│  ALTERACOES EM RELACAO A VERSAO ANTERIOR                                       │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │ + Adicionado filtro: valor_veiculo < 50000                              │   │
+│  │ ~ Alterado: bonus de R$ 500 para R$ 800 por faixa                       │   │
+│  │ - Removido: filtro por regiao                                           │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  SIMULACOES REALIZADAS                                                         │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │ 6 cenarios testados | 6 passaram | 0 falharam                           │   │
+│  │ [Ver Detalhes dos Testes]                                               │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  COMENTARIO DO APROVADOR                                                        │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │                                                                         │   │
+│  │                                                                         │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  [✓ Aprovar e Ativar] [✗ Rejeitar] [↺ Solicitar Alteracao]                     │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
 
-### CA-005: Auditoria de Execucoes
+### CA-003: Auditoria de Execucoes
 
-- [ ] Toda execucao do motor e registrada
-- [ ] Registro inclui: regra, versao, inputs, outputs, resultado
-- [ ] Registro inclui: timestamp, usuario, tempo de execucao
-- [ ] Registro inclui: contexto (venda_id, consultor_id, etc.)
+- [ ] Registrar toda execucao em tabela particionada
+- [ ] Dados registrados:
+  - Regra e versao
+  - Contexto de entrada
+  - Valores de todas as variaveis
+  - Resultado das condicoes
+  - Acoes executadas
+  - Tempo de execucao
+  - Usuario/Sistema que disparou
+- [ ] Nao registrar dados sensiveis (mascara)
+- [ ] Retencao configuravel (padrao: 12 meses)
 
-### CA-006: Consulta de Auditoria
+**Estrutura de Auditoria:**
 
-- [ ] Sistema permite buscar execucoes por regra
-- [ ] Sistema permite buscar execucoes por periodo
-- [ ] Sistema permite buscar execucoes por usuario/consultor
-- [ ] Sistema permite exportar log de auditoria
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         REGISTRO DE AUDITORIA                                   │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  execucao_id:     exec-550e8400-e29b-41d4-a716-446655440000                     │
+│  regra_codigo:    REG-BONUS-SP-AUTO-001                                         │
+│  regra_versao:    1                                                             │
+│  data_execucao:   2026-01-29 15:30:45.123                                       │
+│  tempo_ms:        45                                                            │
+│  status:          APLICADA                                                      │
+│                                                                                 │
+│  CONTEXTO                                                                       │
+│  {                                                                              │
+│    "consultor_id": "550e8400-...",                                              │
+│    "periodo_inicio": "2026-01-01",                                              │
+│    "periodo_fim": "2026-01-31"                                                  │
+│  }                                                                              │
+│                                                                                 │
+│  VARIAVEIS                                                                      │
+│  {                                                                              │
+│    "placas_sp_auto_50k": { "valor": 15, "tempo_ms": 12 },                       │
+│    "meta_mes": { "valor": 10, "tempo_ms": 5 },                                  │
+│    "pct_acima_meta": { "valor": 50, "tempo_ms": 1 },                            │
+│    "faixas_10_pct": { "valor": 5, "tempo_ms": 1 },                              │
+│    "valor_bonus": { "valor": 4000, "tempo_ms": 1 }                              │
+│  }                                                                              │
+│                                                                                 │
+│  CONDICOES                                                                      │
+│  {                                                                              │
+│    "resultado": true,                                                           │
+│    "expressoes": [                                                              │
+│      { "expr": "placas_sp_auto_50k > meta_mes", "resultado": true },            │
+│      { "expr": "faixas_10_pct >= 1", "resultado": true }                        │
+│    ]                                                                            │
+│  }                                                                              │
+│                                                                                 │
+│  ACOES                                                                          │
+│  [                                                                              │
+│    {                                                                            │
+│      "tipo": "ADICIONAR_VALOR",                                                 │
+│      "destino": "BONUS",                                                        │
+│      "valor": 4000,                                                             │
+│      "status": "EXECUTADA"                                                      │
+│    }                                                                            │
+│  ]                                                                              │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
 
-### CA-007: Trilha de Auditoria de Alteracoes
+### CA-004: Dashboard de Performance
 
-- [ ] Sistema registra quem criou/editou/ativou/desativou regra
-- [ ] Sistema registra justificativas quando obrigatorias
-- [ ] Sistema permite visualizar timeline de alteracoes
-- [ ] Sistema atende requisitos de compliance (SOX, LGPD)
+- [ ] Metricas em tempo real:
+  - Execucoes por minuto/hora/dia
+  - Tempo medio de execucao
+  - Taxa de aplicacao (% regras aplicadas)
+  - Taxa de erro
+- [ ] Graficos de tendencia
+- [ ] Alertas configuraveis
+- [ ] Ranking de regras mais executadas
+- [ ] Identificacao de gargalos
 
-### CA-008: Retencao de Dados
+**Dashboard:**
 
-- [ ] Sistema define periodo de retencao de execucoes
-- [ ] Sistema permite arquivar execucoes antigas
-- [ ] Sistema permite purgar dados apos periodo legal
-- [ ] Sistema mantem minimo necessario para auditoria
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│  DASHBOARD - MOTOR DE REGRAS                                    [Periodo: 24h ▼]   │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐│
+│  │   EXECUCOES     │  │  TEMPO MEDIO    │  │ TAXA APLICACAO  │  │   TAXA ERRO     ││
+│  │     12.456      │  │     47ms        │  │      78%        │  │      0.3%       ││
+│  │  ↑ 15% vs ontem │  │  ↓ 5ms vs ontem │  │  ↑ 2% vs ontem  │  │  = igual ontem  ││
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘  └─────────────────┘│
+│                                                                                     │
+│  EXECUCOES POR HORA                                                                │
+│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│  │    ▄                                                                        │   │
+│  │    █ ▄                                            ▄                         │   │
+│  │  ▄ █ █ ▄                                        ▄ █ ▄                       │   │
+│  │  █ █ █ █ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ ▄ █ █ █                       │   │
+│  │  ─────────────────────────────────────────────────────────────              │   │
+│  │  00 02 04 06 08 10 12 14 16 18 20 22                                        │   │
+│  └─────────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                     │
+│  TOP 5 REGRAS MAIS EXECUTADAS              │  ALERTAS                              │
+│  ┌──────────────────────────────────────┐  │  ┌────────────────────────────────┐  │
+│  │ 1. REG-BONUS-SP-AUTO-001    3.245    │  │  │ ⚠ REG-COMISSAO-002 lenta       │  │
+│  │ 2. REG-RESIDUAL-001         2.890    │  │  │   Tempo medio: 250ms (>200ms)  │  │
+│  │ 3. REG-LEAD-SCORE-001       2.456    │  │  │   [Ver Detalhes]               │  │
+│  │ 4. REG-COMISSAO-001         1.987    │  │  │                                │  │
+│  │ 5. REG-DESCONTO-001         1.234    │  │  │ ✓ Nenhum erro critico          │  │
+│  └──────────────────────────────────────┘  │  └────────────────────────────────┘  │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### CA-005: Cache Inteligente
+
+- [ ] Cache de resultados de agregacao (TTL configuravel)
+- [ ] Cache de regras compiladas em memoria
+- [ ] Invalidacao automatica quando regra alterada
+- [ ] Metricas de hit/miss do cache
+- [ ] Configuracao por regra (habilitar/desabilitar)
+
+**Configuracao de Cache:**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│  CONFIGURACAO DE CACHE                                                          │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  CACHE DE REGRAS COMPILADAS                                                     │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │ Status: ✓ Ativo                                                         │   │
+│  │ TTL: 3600 segundos (1 hora)                                             │   │
+│  │ Tamanho maximo: 100 regras                                              │   │
+│  │ Hit rate atual: 94%                                                     │   │
+│  │ [Limpar Cache]                                                          │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  CACHE DE AGREGACOES                                                            │
+│  ┌─────────────────────────────────────────────────────────────────────────┐   │
+│  │ Status: ✓ Ativo                                                         │   │
+│  │ TTL padrao: 300 segundos (5 minutos)                                    │   │
+│  │ Hit rate atual: 67%                                                     │   │
+│  │                                                                         │   │
+│  │ CONFIGURACAO POR PROVIDER                                               │   │
+│  │ ────────────────────────                                                │   │
+│  │ PLACA       │ TTL: 300s  │ ✓ Ativo │                                    │   │
+│  │ BOLETO      │ TTL: 60s   │ ✓ Ativo │                                    │   │
+│  │ META        │ TTL: 3600s │ ✓ Ativo │                                    │   │
+│  │ CONSULTOR   │ TTL: 3600s │ ✓ Ativo │                                    │   │
+│  │ LEAD        │ TTL: 60s   │ ✓ Ativo │                                    │   │
+│  └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### CA-006: Relatorios de Auditoria
+
+- [ ] Relatorio de execucoes por periodo
+- [ ] Relatorio de alteracoes de regras
+- [ ] Relatorio de aprovacoes
+- [ ] Exportacao CSV/PDF
+- [ ] Agendamento de relatorios
+
+### CA-007: Permissoes e Papeis
+
+- [ ] Papel: VISUALIZADOR - apenas visualiza
+- [ ] Papel: EDITOR - cria e edita regras
+- [ ] Papel: APROVADOR - aprova regras
+- [ ] Papel: ADMINISTRADOR - configura sistema
+- [ ] Escopo por categoria de regra
 
 ---
 
@@ -87,125 +300,72 @@ Esta historia implementa o sistema de versionamento de regras e auditoria comple
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  HISTORICO DE VERSOES - REG-COM-001                                                │
+│  HISTORICO DE VERSOES - REG-BONUS-SP-AUTO-001                                      │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
-│  Regra: Comissao Plano Premium                                                      │
-│  Status atual: ATIVA (v3)                                                           │
+│  ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│  │ Versao │ Status  │ Criado Por      │ Data        │ Aprovado Por   │ Acoes    │  │
+│  ├──────────────────────────────────────────────────────────────────────────────┤  │
+│  │ v3     │ RASCUNHO│ Maria Santos    │ 29/01/2026  │ -              │ [Editar] │  │
+│  │ v2     │ ATIVA   │ Maria Santos    │ 28/01/2026  │ Joao Gestor    │ [Ver]    │  │
+│  │ v1     │ INATIVA │ Carlos Silva    │ 15/01/2026  │ Joao Gestor    │ [Ver]    │  │
+│  └──────────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                     │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Versao │ Status     │ Data       │ Usuario      │ Alteracoes  │ Acoes      │   │
-│  ├─────────────────────────────────────────────────────────────────────────────┤   │
-│  │ v3     │ ATIVA      │ 15/01/2026 │ Maria Santos │ +Acelerador │ [Ver]      │   │
-│  │ v2     │ INATIVA    │ 01/12/2025 │ Joao Silva   │ +Bonus plano│ [Ver][↩ ]  │   │
-│  │ v1     │ ARQUIVADA  │ 01/01/2025 │ Admin        │ Criacao     │ [Ver]      │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
+│  [Comparar v2 com v1] [Rollback para v1]                                           │
 │                                                                                     │
-│  [Comparar Versoes]                                                                │
+│  ALTERACOES v1 -> v2                                                               │
+│  ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│  │ + Adicionado filtro valor_veiculo < 50000                                    │  │
+│  │ ~ Alterado valor bonus de R$ 500 para R$ 800 por faixa                       │  │
+│  │ ~ Alterado nome de "Bonus SP Auto" para "Bonus SP Automovel ate 50k"         │  │
+│  └──────────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                     │
-│  DETALHES DA VERSAO 3 (ATIVA)                                                       │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Criada em: 15/01/2026 14:30                                                 │   │
-│  │ Criada por: Maria Santos                                                    │   │
-│  │ Aprovada por: Gerente Financeiro                                            │   │
-│  │                                                                             │   │
-│  │ Alteracoes em relacao a v2:                                                 │   │
-│  │ + Adicionado acelerador progressivo (4 faixas)                              │   │
-│  │ ~ Alterado percentual de 7% para 8%                                         │   │
-│  │                                                                             │   │
-│  │ Justificativa: "Nova politica de comissionamento Q1 2026"                   │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  ESTATISTICAS                                                                       │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Total de execucoes: 1.234                                                   │   │
-│  │ Ultima execucao: 29/01/2026 14:25                                           │   │
-│  │ Valor total calculado: R$ 45.678,00                                         │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
+│  JUSTIFICATIVA DA ALTERACAO                                                        │
+│  ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│  │ "Ajuste para focar em veiculos de menor valor e aumentar incentivo           │  │
+│  │  para superar meta." - Maria Santos                                          │  │
+│  └──────────────────────────────────────────────────────────────────────────────┘  │
 │                                                                                     │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Tela: Log de Auditoria de Execucoes
+---
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  LOG DE EXECUCOES - MOTOR DE REGRAS                           [Exportar CSV/Excel] │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                     │
-│  Filtros:                                                                           │
-│  [Regra: Todas ▼] [Periodo: Ultimos 7 dias ▼] [Consultor: Todos ▼] [Buscar]       │
-│                                                                                     │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ ID Exec. │ Regra       │ Versao │ Data/Hora        │ Resultado │ Tempo    │   │
-│  ├─────────────────────────────────────────────────────────────────────────────┤   │
-│  │ #12345   │ REG-COM-001 │ v3     │ 29/01/26 14:25:33│ R$ 72,00  │ 12ms     │   │
-│  │ #12344   │ REG-COM-001 │ v3     │ 29/01/26 14:20:15│ R$ 40,00  │ 8ms      │   │
-│  │ #12343   │ REG-RES-001 │ v2     │ 29/01/26 14:15:00│ R$ 100,00 │ 15ms     │   │
-│  │ #12342   │ REG-BON-001 │ v1     │ 29/01/26 14:00:00│ R$ 500,00 │ 5ms      │   │
-│  │ #12341   │ REG-COM-002 │ v5     │ 29/01/26 13:45:22│ R$ 55,00  │ 10ms     │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  Mostrando 5 de 1.234 execucoes                               [< 1 2 3 ... 247 >]  │
-│                                                                                     │
-│  DETALHES DA EXECUCAO #12345                                                        │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Regra: REG-COM-001 - Comissao Plano Premium (versao 3)                      │   │
-│  │ Executada em: 29/01/2026 14:25:33.456                                       │   │
-│  │ Tempo de execucao: 12ms                                                     │   │
-│  │                                                                             │   │
-│  │ INPUTS:                                                                     │   │
-│  │ ├─ VALOR_VENDA: 500.00                                                     │   │
-│  │ ├─ TIPO_PLANO: "PREMIUM"                                                   │   │
-│  │ ├─ QTD_VENDAS_MES: 15                                                      │   │
-│  │ └─ SENIORIDADE: 24                                                         │   │
-│  │                                                                             │   │
-│  │ OUTPUTS:                                                                    │   │
-│  │ └─ comissao: 72.00                                                         │   │
-│  │                                                                             │   │
-│  │ CONTEXTO:                                                                   │   │
-│  │ ├─ venda_id: "abc-123-def"                                                 │   │
-│  │ ├─ consultor_id: "usr-456-ghi"                                             │   │
-│  │ └─ modulo_origem: "CRM-FIN"                                                │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-└─────────────────────────────────────────────────────────────────────────────────────┘
-```
+## Cenarios de Teste
 
-### Modal: Rollback de Versao
+### CT-001: Fluxo de Aprovacao
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  ROLLBACK DE VERSAO                                                        [X]     │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                     │
-│  ATENCAO: Esta acao ira reativar uma versao anterior da regra.                     │
-│                                                                                     │
-│  Regra: REG-COM-001 - Comissao Plano Premium                                       │
-│                                                                                     │
-│  ┌────────────────────────────────┬────────────────────────────────┐               │
-│  │      VERSAO ATUAL (v3)         │      VERSAO DESTINO (v2)       │               │
-│  ├────────────────────────────────┼────────────────────────────────┤               │
-│  │ Status: ATIVA                  │ Status: INATIVA                │               │
-│  │ Desde: 15/01/2026              │ Desde: 01/12/2025              │               │
-│  │ Execucoes: 1.234               │ Execucoes: 3.456               │               │
-│  │ Inclui acelerador              │ Sem acelerador                 │               │
-│  │ Percentual: 8%                 │ Percentual: 7%                 │               │
-│  └────────────────────────────────┴────────────────────────────────┘               │
-│                                                                                     │
-│  JUSTIFICATIVA (obrigatoria)*:                                                     │
-│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
-│  │ Erro identificado no calculo do acelerador. Revertendo para versao         │   │
-│  │ anterior enquanto corrigimos a formula.                                     │   │
-│  └─────────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                     │
-│  [ ] Notificar equipe financeira sobre rollback                                    │
-│  [ ] Recalcular execucoes afetadas (ultimos 7 dias)                               │
-│                                                                                     │
-│                                           [Cancelar] [Confirmar Rollback]          │
-│                                                                                     │
-└─────────────────────────────────────────────────────────────────────────────────────┘
-```
+**Dado** regra em status RASCUNHO  
+**E** usuario com papel EDITOR  
+**Quando** envia para aprovacao  
+**Entao** status muda para EM_APROVACAO  
+**E** aprovador recebe notificacao  
+**E** regra fica imutavel
+
+### CT-002: Aprovacao e Ativacao
+
+**Dado** regra em EM_APROVACAO  
+**E** usuario com papel APROVADOR  
+**Quando** aprova a regra  
+**Entao** nova versao fica ATIVA  
+**E** versao anterior fica INATIVA  
+**E** cache invalidado
+
+### CT-003: Auditoria de Execucao
+
+**Dado** regra ATIVA executada  
+**Quando** execucao completa  
+**Entao** registro criado em mtr.execucao  
+**E** todos os campos preenchidos  
+**E** particao correta selecionada
+
+### CT-004: Alerta de Performance
+
+**Dado** regra com tempo medio configurado em 100ms  
+**E** execucao levando 250ms consistentemente  
+**Quando** monitoramento verifica  
+**Entao** alerta gerado  
+**E** notificacao enviada ao administrador
 
 ---
 
@@ -213,145 +373,26 @@ Esta historia implementa o sistema de versionamento de regras e auditoria comple
 
 | Codigo | Regra | Validacao |
 |--------|-------|-----------|
-| RN-MTR-050 | Versionamento automatico | Alteracao em regra ATIVA cria nova versao |
-| RN-MTR-051 | Imutabilidade | Versao com execucoes nao pode ser editada |
-| RN-MTR-052 | Rollback com justificativa | Rollback exige justificativa textual |
-| RN-MTR-053 | Auditoria completa | Toda execucao deve ser registrada |
-| RN-MTR-054 | Retencao 5 anos | Logs de auditoria retidos por 5 anos |
-| RN-MTR-055 | Uma versao ativa | Apenas uma versao pode estar ATIVA por vez |
+| RN-001 | Versao unica ativa | Apenas uma versao ATIVA por regra |
+| RN-002 | Aprovacao obrigatoria | Regra so ativa apos aprovacao |
+| RN-003 | Auto-aprovacao bloqueada | Editor nao pode aprovar propria regra |
+| RN-004 | Auditoria imutavel | Registros de auditoria nao podem ser alterados |
+| RN-005 | Retencao minima | Auditoria mantida por no minimo 12 meses |
 
 ---
 
-## Modelo de Dados
+## Estimativa Detalhada
 
-```sql
--- Versoes de Regras
-CREATE TABLE mtr_regra_versao (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    regra_id UUID NOT NULL REFERENCES mtr_regra(id) ON DELETE CASCADE,
-    versao INTEGER NOT NULL,
-    snapshot_json JSONB NOT NULL, -- Estado completo da regra
-    alteracoes_json JSONB, -- Diff em relacao a versao anterior
-    justificativa TEXT,
-    criado_em TIMESTAMP NOT NULL DEFAULT NOW(),
-    criado_por UUID NOT NULL,
-    aprovado_em TIMESTAMP,
-    aprovado_por UUID,
-    UNIQUE(regra_id, versao)
-);
-
--- Execucoes do Motor (Auditoria)
-CREATE TABLE mtr_execucao (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    regra_id UUID NOT NULL REFERENCES mtr_regra(id),
-    regra_codigo VARCHAR(20) NOT NULL, -- Denormalizado para consultas rapidas
-    regra_versao INTEGER NOT NULL,
-    timestamp TIMESTAMP NOT NULL DEFAULT NOW(),
-    inputs_json JSONB NOT NULL,
-    outputs_json JSONB,
-    resultado DECIMAL(15,2),
-    tempo_execucao_ms INTEGER,
-    usuario_id UUID,
-    contexto_json JSONB -- venda_id, consultor_id, modulo, etc.
-) PARTITION BY RANGE (timestamp);
-
--- Particoes por mes
-CREATE TABLE mtr_execucao_202601 PARTITION OF mtr_execucao
-    FOR VALUES FROM ('2026-01-01') TO ('2026-02-01');
-
--- Trilha de Auditoria de Alteracoes
-CREATE TABLE mtr_auditoria_alteracao (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    regra_id UUID NOT NULL REFERENCES mtr_regra(id),
-    acao VARCHAR(30) NOT NULL, -- CRIOU, EDITOU, ATIVOU, DESATIVOU, ROLLBACK
-    versao_anterior INTEGER,
-    versao_nova INTEGER,
-    detalhes_json JSONB,
-    justificativa TEXT,
-    ip_origem VARCHAR(45),
-    user_agent TEXT,
-    executado_em TIMESTAMP NOT NULL DEFAULT NOW(),
-    executado_por UUID NOT NULL
-);
-
--- Indices para consultas
-CREATE INDEX idx_mtr_execucao_regra ON mtr_execucao(regra_id);
-CREATE INDEX idx_mtr_execucao_timestamp ON mtr_execucao(timestamp);
-CREATE INDEX idx_mtr_execucao_usuario ON mtr_execucao(usuario_id);
-CREATE INDEX idx_mtr_auditoria_regra ON mtr_auditoria_alteracao(regra_id);
-CREATE INDEX idx_mtr_auditoria_data ON mtr_auditoria_alteracao(executado_em);
-```
-
----
-
-## Cenarios de Teste
-
-### CT-001: Versionamento Automatico
-
-```gherkin
-Dado que tenho regra REG-COM-001 versao 3 ATIVA
-E regra ja tem 100 execucoes
-Quando altero o percentual de 8% para 9%
-E salvo a alteracao
-Entao sistema cria versao 4
-E versao 3 permanece inalterada
-E versao 4 fica com status RASCUNHO
-```
-
-### CT-002: Executar Rollback
-
-```gherkin
-Dado que regra REG-COM-001 versao 3 esta ATIVA
-E versao 2 esta INATIVA
-Quando clico em Rollback para versao 2
-E preencho justificativa "Erro no calculo"
-E confirmo
-Entao versao 3 muda para INATIVA
-E versao 2 muda para ATIVA
-E sistema registra acao na trilha de auditoria
-```
-
-### CT-003: Registrar Execucao
-
-```gherkin
-Dado que regra REG-COM-001 esta ATIVA
-Quando sistema executa calculo para uma venda
-Entao registro e criado em mtr_execucao
-E registro contem: inputs, outputs, resultado, tempo
-E registro contem: contexto (venda_id, consultor_id)
-```
-
----
-
-## Dependencias
-
-- **Depende de**: US-CRM-MTR-001 (estrutura de regras)
-- **Dependentes**: Todos os modulos que usam MTR (para auditoria)
-
----
-
-## Estimativa
-
-| Componente | Story Points |
-|------------|-------------|
-| Backend: Versionamento | 5 |
-| Backend: Auditoria execucoes | 5 |
-| Backend: Trilha alteracoes | 3 |
-| Backend: Rollback | 3 |
-| Frontend: Telas | 5 |
-| **TOTAL** | **21** |
-
----
-
-## Compliance
-
-### Requisitos Atendidos
-
-| Regulamento | Requisito | Como Atende |
-|-------------|-----------|-------------|
-| SOX | Trilha de auditoria | Registro completo de alteracoes e aprovacoes |
-| LGPD | Retencao de dados | Politica de retencao configuravel |
-| Auditoria Interna | Rastreabilidade | Log de todas as execucoes com contexto |
+| Item | Horas | SP |
+|------|-------|-----|
+| Versionamento de Regras | 24h | 8 |
+| Workflow de Aprovacao | 24h | 5 |
+| Auditoria de Execucoes | 24h | 8 |
+| Dashboard de Performance | 24h | 5 |
+| Cache Inteligente | 24h | 5 |
+| Permissoes e Papeis | 8h | 2 |
+| Testes | 4h | 1 |
+| **TOTAL** | **132h** | **34** |
 
 ---
 
@@ -359,4 +400,5 @@ E registro contem: contexto (venda_id, consultor_id)
 
 | Versao | Data | Autor | Alteracao |
 |--------|------|-------|-----------|
-| 1.0 | 29/01/2026 | PO | Criacao inicial |
+| 1.0 | 29/01/2026 | PO | Versao inicial |
+| 2.0 | 29/01/2026 | PO | Reescrita para arquitetura de alta abstracao |
