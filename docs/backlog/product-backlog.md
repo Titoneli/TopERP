@@ -286,6 +286,18 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | US-CRM-FIN-054 | Visualizar Aceites Pendentes | Importante | Backlog | 5 |
 | US-CRM-FIN-055 | Registrar Aceite com Auditoria | Importante | Backlog | 8 |
 
+#### CRM-Financeiro: Distribuição Hierárquica - Filiação
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-056 | Configurar % Comissão por Nível Hierárquico | Essencial | Backlog | 13 |
+| US-CRM-FIN-057 | Escolher Tipo de Remuneração (Comissão/Repasse) | Essencial | Backlog | 5 |
+| US-CRM-FIN-058 | Definir Destinatário do Restante | Essencial | Backlog | 5 |
+| US-CRM-FIN-059 | Validar Soma Percentuais ≤ 100% | Essencial | Backlog | 3 |
+| US-CRM-FIN-060 | Calcular Distribuição Automaticamente | Essencial | Backlog | 8 |
+| US-CRM-FIN-061 | Imutabilidade Após Pagamento Efetivado | Essencial | Backlog | 5 |
+| US-CRM-FIN-062 | Visualizar Detalhamento da Distribuição | Importante | Backlog | 5 |
+| US-CRM-FIN-063 | Relatório de Distribuições por Nível | Importante | Backlog | 8 |
+
 ---
 
 ## Métricas do Backlog
@@ -303,7 +315,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | • Importantes (FUN-011 a FUN-015) | 5 histórias / 42 SP |
 | • Desejáveis (FUN-016 a FUN-019) | 4 histórias / 29 SP |
 | • Movidos de Leads (FUN-020 a FUN-023) | 4 histórias / 20 SP |
-| **CRM-Financeiro** | **55 histórias / 565 SP** |
+| **CRM-Financeiro** | **63 histórias / 617 SP** |
 | • Essenciais - Conta e Saldo (FIN-001 a FIN-006) | 6 histórias / 58 SP |
 | • Essenciais - Emissão NF (FIN-007 a FIN-010) | 4 histórias / 44 SP |
 | • Essenciais - Pagamento (FIN-011 a FIN-014) | 4 histórias / 47 SP |
@@ -316,9 +328,10 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | • **Gestão de Metas Avançada (FIN-043 a FIN-048)** | **6 histórias / 47 SP** |
 | • **Portal de Transparência (FIN-049 a FIN-051)** | **3 histórias / 21 SP** |
 | • **Aceite Digital Políticas (FIN-052 a FIN-055)** | **4 histórias / 34 SP** |
+| • **Distribuição Hierárquica - Filiação (FIN-056 a FIN-063)** | **8 histórias / 52 SP** |
 | **CRM-Autenticação** | **2 histórias / 7 SP** |
 | **CRM-Cotações** | **1 história / 8 SP** |
-| **TOTAL CRM** | **97 histórias / 868 SP** |
+| **TOTAL CRM** | **105 histórias / 920 SP** |
 
 ---
 
@@ -337,6 +350,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
+| 29/01/2026 | 2.7 | Distribuição Hierárquica Filiação: +8 histórias (+52 SP). Níveis fixos, imutabilidade | PO |
 | 29/01/2026 | 2.6 | Motor de Regras Avançado SplitC: +21 histórias (+191 SP). Metas, Transparência, Aceite Digital | PO |
 | 29/01/2026 | 2.5 | Adição de CRM-Financeiro (CRM-FIN): 34 histórias, 374 SP. Motor de Regras, Saques, NF, PIX | PO |
 | 27/01/2026 | 2.4 | Adição de FUN-002 a FUN-019: Funil completo com DDD (18 novas histórias) | PO |

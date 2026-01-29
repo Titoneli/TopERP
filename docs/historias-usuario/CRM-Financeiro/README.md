@@ -4,7 +4,7 @@
 |----------|-------|
 | **Módulo** | CRM-Financeiro |
 | **Código** | CRM-FIN |
-| **Versão** | 2.0 |
+| **Versão** | 2.1 |
 | **Data** | 29/01/2026 |
 | **Responsável** | Product Owner - CRM |
 | **Status** | Planejado |
@@ -297,6 +297,103 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 │   │  • Comparativo entre versões (diff)                                        │    │
 │   │  • Registro de quem aceitou cada versão                                    │    │
 │   │  • Alertas para aceites pendentes                                          │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 1.3.7 Distribuição Hierárquica de Comissões (Filiação)
+
+> **Contexto:** Configuração de comissões e repasses sobre o **Valor da Adesão** recebido do lead/cliente.  
+> **Níveis:** Fixos (não configuráveis por empresa)  
+> **Base de Cálculo:** Valor Bruto da Adesão  
+> **Regra:** Soma de todos os percentuais NÃO pode ultrapassar 100%  
+> **Imutabilidade:** Após efetivação do pagamento, valores não podem ser alterados
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│               DISTRIBUIÇÃO HIERÁRQUICA DE COMISSÕES - FILIAÇÃO                      │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│   NÍVEIS HIERÁRQUICOS (FIXOS):                                                      │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │                                                                            │    │
+│   │   ┌─────────────────┐                                                      │    │
+│   │   │   ASSOCIAÇÃO    │  ← Nível mais alto (entidade/matriz)                 │    │
+│   │   └────────┬────────┘                                                      │    │
+│   │            │                                                               │    │
+│   │   ┌────────▼────────┐                                                      │    │
+│   │   │    REGIONAL     │  ← Unidade regional                                  │    │
+│   │   └────────┬────────┘                                                      │    │
+│   │            │                                                               │    │
+│   │   ┌────────▼────────┐                                                      │    │
+│   │   │  COOPERATIVA    │  ← Cooperativa/Filial                                │    │
+│   │   └────────┬────────┘                                                      │    │
+│   │            │                                                               │    │
+│   │   ┌────────▼────────┐                                                      │    │
+│   │   │    GERENTE      │  ← Gestor da equipe                                  │    │
+│   │   └────────┬────────┘                                                      │    │
+│   │            │                                                               │    │
+│   │   ┌────────▼────────┐                                                      │    │
+│   │   │   VENDEDOR      │  ← Consultor que realizou a venda                    │    │
+│   │   └─────────────────┘                                                      │    │
+│   │                                                                            │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   TIPOS DE REMUNERAÇÃO POR FILIAÇÃO:                                                │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  • COMISSÃO: % sobre valor bruto → vai para conta do beneficiário          │    │
+│   │  • REPASSE: % sobre valor bruto → repassado a outro nível hierárquico      │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   EXEMPLO DE DISTRIBUIÇÃO:                                                          │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │                                                                            │    │
+│   │  VALOR DA ADESÃO: R$ 500,00 (100%)                                         │    │
+│   │  ─────────────────────────────────────────────────────────────────────     │    │
+│   │  │ Nível         │ Tipo      │ %     │ Valor    │                          │    │
+│   │  ├───────────────┼───────────┼───────┼──────────┤                          │    │
+│   │  │ Vendedor      │ Comissão  │ 8,0%  │ R$ 40,00 │                          │    │
+│   │  │ Gerente       │ Repasse   │ 1,5%  │ R$  7,50 │                          │    │
+│   │  │ Cooperativa   │ Repasse   │ 0,5%  │ R$  2,50 │                          │    │
+│   │  │ Regional      │ Repasse   │ 1,0%  │ R$  5,00 │                          │    │
+│   │  │ Associação    │ Repasse   │ 2,0%  │ R$ 10,00 │                          │    │
+│   │  ├───────────────┼───────────┼───────┼──────────┤                          │    │
+│   │  │ SUBTOTAL      │           │ 13,0% │ R$ 65,00 │                          │    │
+│   │  │ RESTANTE      │ → Destino │ 87,0% │ R$435,00 │ ← Para quem sobrar       │    │
+│   │  └───────────────┴───────────┴───────┴──────────┘                          │    │
+│   │                                                                            │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   DESTINATÁRIO DO RESTANTE:                                                         │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  Opções (configurável por regra):                                          │    │
+│   │  • Associação                                                              │    │
+│   │  • Regional                                                                │    │
+│   │  • Cooperativa                                                             │    │
+│   │  • Gerente                                                                 │    │
+│   │  • Vendedor                                                                │    │
+│   │                                                                            │    │
+│   │  ⚠️ IMPORTANTE: O valor restante SEMPRE vai para um dos níveis acima      │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   REGRAS DE VALIDAÇÃO:                                                              │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  ✓ Soma dos % (Vendedor + Gerente + Cooperativa + Regional + Associação)   │    │
+│   │    NÃO pode ultrapassar 100%                                               │    │
+│   │  ✓ Após efetivação do pagamento, valores são IMUTÁVEIS                     │    │
+│   │  ✓ Não é possível transferir saldo entre usuários                          │    │
+│   │  ✓ Cálculo sempre sobre VALOR BRUTO da adesão                              │    │
+│   └────────────────────────────────────────────────────────────────────────────┘    │
+│                                                                                     │
+│   FLUXO DE CONFIGURAÇÃO:                                                            │
+│   ┌────────────────────────────────────────────────────────────────────────────┐    │
+│   │  1. Gestor define % para cada nível hierárquico                            │    │
+│   │  2. Sistema valida: soma <= 100%                                           │    │
+│   │  3. Gestor define destinatário do restante                                 │    │
+│   │  4. Configuração é salva e versionada                                      │    │
+│   │  5. Na filiação, sistema aplica automaticamente                            │    │
+│   │  6. Após pagamento, valores são imutáveis                                  │    │
 │   └────────────────────────────────────────────────────────────────────────────┘    │
 │                                                                                     │
 └─────────────────────────────────────────────────────────────────────────────────────┘
@@ -753,6 +850,88 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+#### Agregado: DistribuicaoHierarquica (Filiação)
+
+> **Tabela BD:** `crm_distribuicao_filiacao`, `crm_distribuicao_nivel`
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    <<Aggregate Root>>                           │
+│                DISTRIBUICAO_FILIACAO                            │
+│             (crm_distribuicao_filiacao)                         │
+├─────────────────────────────────────────────────────────────────┤
+│ - id_distribuicao: bigint (PK)                                  │
+│ - id_empresa: bigint (FK cor_empresa)                           │
+│ - id_negociacao: bigint (FK crm_negociacao)                     │
+│ - cod_distribuicao: text (código único)                         │
+│ - val_adesao_bruto: numeric(14,2) (valor total da adesão)       │
+│ - dat_efetivacao: timestamp                                     │
+│ - dom_sit_distribuicao: text (PENDENTE, EFETIVADA, CANCELADA)   │
+│ - flg_imutavel: boolean (true após efetivação)                  │
+│ - niveis: List<DistribuicaoNivel> (1:N)                         │
+│ - dom_nivel_restante: text (nível que recebe o restante)        │
+│ - val_restante: numeric(14,2)                                   │
+├─────────────────────────────────────────────────────────────────┤
+│ + calcularDistribuicao(): void                                  │
+│ + validarSomaPercentuais(): boolean                             │
+│ + efetivar(): void                                              │
+│ + obterDetalhesPorNivel(): List<DetalheNivel>                   │
+└─────────────────────────────────────────────────────────────────┘
+         │
+         │ distribui (1:N)
+         ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    <<Entity>>                                   │
+│                  DISTRIBUICAO_NIVEL                             │
+│              (crm_distribuicao_nivel)                           │
+├─────────────────────────────────────────────────────────────────┤
+│ - id_distribuicao_nivel: bigint (PK)                            │
+│ - id_distribuicao: bigint (FK)                                  │
+│ - dom_nivel: text (VENDEDOR, GERENTE, COOPERATIVA,              │
+│                    REGIONAL, ASSOCIACAO)                        │
+│ - id_beneficiario: bigint (FK - colaborador ou entidade)        │
+│ - dom_tpo_remuneracao: text (COMISSAO, REPASSE)                 │
+│ - perc_configurado: numeric(5,2) (% configurado)                │
+│ - val_calculado: numeric(14,2) (valor em R$)                    │
+│ - flg_destinatario_restante: boolean                            │
+│ - ordem_nivel: smallint (1=Vendedor, 5=Associação)              │
+├─────────────────────────────────────────────────────────────────┤
+│ + calcularValor(valorBruto: Dinheiro): Dinheiro                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+#### Agregado: ConfiguracaoDistribuicao
+
+> **Tabela BD:** `crm_config_distribuicao`
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    <<Aggregate Root>>                           │
+│               CONFIGURACAO_DISTRIBUICAO                         │
+│              (crm_config_distribuicao)                          │
+├─────────────────────────────────────────────────────────────────┤
+│ - id_config: bigint (PK)                                        │
+│ - id_empresa: bigint (FK cor_empresa)                           │
+│ - id_colaborador: bigint (FK - quem está sendo configurado)     │
+│ - cod_config: text                                              │
+│ - dom_tpo_remuneracao: text (COMISSAO, REPASSE)                 │
+│ - perc_vendedor: numeric(5,2)                                   │
+│ - perc_gerente: numeric(5,2)                                    │
+│ - perc_cooperativa: numeric(5,2)                                │
+│ - perc_regional: numeric(5,2)                                   │
+│ - perc_associacao: numeric(5,2)                                 │
+│ - dom_nivel_restante: text (quem fica com o restante)           │
+│ - dat_vigencia_ini: date                                        │
+│ - dat_vigencia_fim: date                                        │
+│ - dom_sit_config: text (ATIVA, INATIVA)                         │
+├─────────────────────────────────────────────────────────────────┤
+│ + validarSoma(): boolean (soma <= 100%)                         │
+│ + ativar(): void                                                │
+│ + desativar(): void                                             │
+│ + aplicarDistribuicao(valorAdesao): DistribuicaoFiliacao        │
+└─────────────────────────────────────────────────────────────────┘
+```
+
 ### 2.3 Entidades
 
 | Entidade | Tabela BD | Descrição | Identificador |
@@ -772,6 +951,9 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **PoliticaComissionamento** | `crm_politica_comissao` | Política de comissão versionada | id_politica + cod_politica |
 | **AceitePolitica** | `crm_aceite_politica` | Aceite digital da política | id_aceite |
 | **Estorno** | `crm_estorno` | Cancelamento/devolução | id_estorno + cod_estorno |
+| **DistribuicaoFiliacao** | `crm_distribuicao_filiacao` | Distribuição hierárquica de comissão | id_distribuicao + cod_distribuicao |
+| **DistribuicaoNivel** | `crm_distribuicao_nivel` | Valor por nível hierárquico | id_distribuicao_nivel |
+| **ConfiguracaoDistribuicao** | `crm_config_distribuicao` | Config de % por nível | id_config + cod_config |
 
 ### 2.4 Value Objects
 
@@ -779,7 +961,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 
 | Value Object | Domínio BD | Valores | Descrição |
 |--------------|------------|---------|-----------|
-| **DomTpoLancamento** | `dom_tpo_lancamento` | COMISSAO, RESIDUAL, BONIFICACAO, PREMIACAO, SPIFF, PLR, ACELERADOR, OVERRIDE, SPLIT, ESTORNO, AJUSTE | Tipo de lançamento |
+| **DomTpoLancamento** | `dom_tpo_lancamento` | COMISSAO, RESIDUAL, BONIFICACAO, PREMIACAO, SPIFF, PLR, ACELERADOR, OVERRIDE, SPLIT, REPASSE, ESTORNO, AJUSTE | Tipo de lançamento |
 | **DomNatLancamento** | `dom_nat_lancamento` | CREDITO, DEBITO | Natureza (C/D) |
 | **DomSitLancamento** | `dom_sit_lancamento` | PENDENTE, CONFIRMADO, CANCELADO | Status do lançamento |
 | **DomTpoSaque** | `dom_tpo_saque` | TOTAL, PARCIAL, PERIODO | Tipo de saque |
@@ -789,8 +971,8 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **DomSitOrdem** | `dom_sit_ordem` | CRIADA, APROVADA, EM_PAGAMENTO, PAGA, CANCELADA, ESTORNADA | Status da ordem |
 | **DomTpoChavePIX** | `dom_tpo_chave` | CPF, CNPJ, EMAIL, TELEFONE, ALEATORIA | Tipo de chave PIX |
 | **DomSitPagamentoPIX** | `dom_sit_pagamento` | AGENDADO, PROCESSANDO, EFETIVADO, REJEITADO, DEVOLVIDO | Status do PIX |
-| **DomTpoRegra** | `dom_tpo_regra` | COMISSAO, RESIDUAL, BONIFICACAO, PREMIACAO, SPIFF, PLR, ACELERADOR, ESCALONADA, OVERRIDE, SPLIT | Tipo de regra |
-| **DomTpoTemplate** | `dom_tpo_template` | SIMPLES, FAIXA, BONUS_META, SPIFF_PRODUTO, OVERRIDE_GESTOR, PLR | Template de regra |
+| **DomTpoRegra** | `dom_tpo_regra` | COMISSAO, RESIDUAL, BONIFICACAO, PREMIACAO, SPIFF, PLR, ACELERADOR, ESCALONADA, OVERRIDE, SPLIT, DISTRIBUICAO_HIERARQUICA | Tipo de regra |
+| **DomTpoTemplate** | `dom_tpo_template` | SIMPLES, FAIXA, BONUS_META, SPIFF_PRODUTO, OVERRIDE_GESTOR, PLR, DISTRIBUICAO_FILIACAO | Template de regra |
 | **DomSitRegra** | `dom_sit_regra` | ATIVA, INATIVA, RASCUNHO | Status da regra |
 | **DomTpoParametro** | `dom_tpo_parametro` | PERCENTUAL, VALOR, QUANTIDADE, BOOLEAN, TEXTO | Tipo de parâmetro |
 | **DomTpoMeta** | `dom_tpo_meta` | INDIVIDUAL, EQUIPE, COMPOSTA, PROGRESSIVA | Tipo de meta |
@@ -799,6 +981,9 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **DomSitMeta** | `dom_sit_meta` | ATIVA, ENCERRADA, CANCELADA | Status da meta |
 | **DomSitPolitica** | `dom_sit_politica` | RASCUNHO, PUBLICADA, VIGENTE, EXPIRADA | Status da política |
 | **DomTpoAceite** | `dom_tpo_aceite` | DIGITAL, PRESENCIAL | Tipo de aceite |
+| **DomNivelHierarquico** | `dom_nivel_hierarquico` | VENDEDOR, GERENTE, COOPERATIVA, REGIONAL, ASSOCIACAO | Nível hierárquico (fixo) |
+| **DomTpoRemuneracaoFiliacao** | `dom_tpo_remuneracao_filiacao` | COMISSAO, REPASSE | Tipo: comissão ou repasse |
+| **DomSitDistribuicao** | `dom_sit_distribuicao` | PENDENTE, EFETIVADA, CANCELADA | Status da distribuição |
 | **DomTpoEstorno** | `dom_tpo_estorno` | CANCELAMENTO, DEVOLUCAO, AJUSTE | Tipo de estorno |
 | **DomSitEstorno** | `dom_sit_estorno` | PENDENTE, APROVADO, PROCESSANDO, CONCLUIDO, CANCELADO | Status do estorno |
 | **DomSitConta** | `dom_sit_conta` | ATIVA, BLOQUEADA, INATIVA | Status da conta |
@@ -985,6 +1170,21 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | US-CRM-FIN-054 | Como gestor, quero visualizar aceites pendentes e enviar lembretes | Importante | 5 |
 | US-CRM-FIN-055 | Como sistema, quero registrar aceite com hash, timestamp e IP para auditoria | Importante | 8 |
 
+### 3.13 Distribuição Hierárquica de Comissões (Filiação)
+
+> **Nova funcionalidade:** Configuração de comissões e repasses sobre Valor da Adesão com níveis hierárquicos fixos
+
+| ID | História | Prioridade | SP |
+|----|----------|------------|-----|
+| US-CRM-FIN-056 | Como gestor, quero configurar % de comissão/repasse para cada nível hierárquico (Vendedor, Gerente, Cooperativa, Regional, Associação) | Essencial | 13 |
+| US-CRM-FIN-057 | Como gestor, quero escolher entre Comissão ou Repasse para cada usuário | Essencial | 5 |
+| US-CRM-FIN-058 | Como gestor, quero definir qual nível fica com o valor restante (se sobrar) | Essencial | 5 |
+| US-CRM-FIN-059 | Como sistema, quero validar que a soma dos percentuais não ultrapasse 100% | Essencial | 3 |
+| US-CRM-FIN-060 | Como sistema, quero calcular automaticamente a distribuição no momento da filiação | Essencial | 8 |
+| US-CRM-FIN-061 | Como sistema, quero tornar os valores imutáveis após efetivação do pagamento | Essencial | 5 |
+| US-CRM-FIN-062 | Como consultor, quero visualizar o detalhamento da distribuição de uma filiação | Importante | 5 |
+| US-CRM-FIN-063 | Como gestor, quero visualizar relatório de distribuições por nível hierárquico | Importante | 8 |
+
 ---
 
 ## 4. Regras de Negócio
@@ -1044,6 +1244,19 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | RN-FIN-024 | Versão única | Apenas uma política pode estar VIGENTE por vez |
 | RN-FIN-025 | Prazo de aceite | Máximo 7 dias para aceitar após publicação |
 
+### 4.7 Regras de Distribuição Hierárquica (Filiação)
+
+| Código | Regra | Validação |
+|--------|-------|-----------|
+| RN-FIN-026 | Soma máxima 100% | Soma dos % (Vendedor + Gerente + Cooperativa + Regional + Associação) ≤ 100% |
+| RN-FIN-027 | Base valor bruto | Cálculo sempre sobre VALOR BRUTO da adesão (não líquido) |
+| RN-FIN-028 | Níveis fixos | Os 5 níveis hierárquicos são fixos: Vendedor, Gerente, Cooperativa, Regional, Associação |
+| RN-FIN-029 | Imutabilidade | Após efetivação do pagamento, valores são IMUTÁVEIS |
+| RN-FIN-030 | Sem transferência | Não é permitido transferir saldo entre usuários |
+| RN-FIN-031 | Destinatário restante | O valor restante (100% - soma) deve ir para um dos 5 níveis |
+| RN-FIN-032 | Tipo obrigatório | Todo usuário deve ter tipo definido: COMISSÃO ou REPASSE |
+| RN-FIN-033 | Validação prévia | Sistema deve validar configuração antes de aplicar em filiação |
+
 ---
 
 ## 5. Métricas (KPIs)
@@ -1061,6 +1274,8 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | Tempo médio aceite política | Dias entre publicação e aceite | < 3 dias |
 | Taxa de aceites pendentes | Aceites pendentes / total | < 5% |
 | Uso do simulador | Simulações realizadas / consultores | Monitorar |
+| Distribuições por nível | Volume distribuído por nível hierárquico | Monitorar |
+| Valor médio restante | Média do % restante nas distribuições | Monitorar |
 
 ---
 
@@ -1070,10 +1285,11 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 |------|--------|-------|-----------|
 | 29/01/2026 | 1.0 | Product Owner | Versão inicial - Estrutura completa do módulo CRM-Financeiro |
 | 29/01/2026 | 2.0 | Product Owner | Motor de Regras Avançado inspirado SplitC: +21 histórias (+181 SP) |
+| 29/01/2026 | 2.1 | Product Owner | Distribuição Hierárquica de Comissões (Filiação): +8 histórias (+52 SP) |
 
 ---
 
-**Versão**: 2.0  
+**Versão**: 2.1  
 **Data**: 29/01/2026  
 **Responsável**: Product Owner - CRM  
 **Tipo DDD**: Core Domain
@@ -1094,17 +1310,18 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **Gestão de Metas Avançada (FIN-043 a FIN-048)** | **6** | **47 SP** |
 | **Portal de Transparência (FIN-049 a FIN-051)** | **3** | **21 SP** |
 | **Aceite Digital de Políticas (FIN-052 a FIN-055)** | **4** | **34 SP** |
-| **TOTAL CRM-Financeiro** | **55** | **565 SP** |
+| **Distribuição Hierárquica - Filiação (FIN-056 a FIN-063)** | **8** | **52 SP** |
+| **TOTAL CRM-Financeiro** | **63** | **617 SP** |
 
 ### 7.1 Comparativo de Evolução
 
-| Métrica | v1.0 | v2.0 | Δ Variação |
-|---------|------|------|------------|
-| Histórias de Usuário | 34 | 55 | +21 (+62%) |
-| Story Points | 374 SP | 565 SP | +191 SP (+51%) |
-| Entidades DDD | 12 | 16 | +4 (+33%) |
-| Eventos de Domínio | 12 | 18 | +6 (+50%) |
-| Regras de Negócio | 17 | 25 | +8 (+47%) |
+| Métrica | v1.0 | v2.0 | v2.1 | Δ Total |
+|---------|------|------|------|---------|
+| Histórias de Usuário | 34 | 55 | 63 | +29 (+85%) |
+| Story Points | 374 SP | 565 SP | 617 SP | +243 SP (+65%) |
+| Entidades DDD | 12 | 16 | 19 | +7 (+58%) |
+| Eventos de Domínio | 12 | 18 | 18 | +6 (+50%) |
+| Regras de Negócio | 17 | 25 | 33 | +16 (+94%) |
 
 ### 7.2 Novas Funcionalidades (SplitC-inspired)
 
@@ -1117,6 +1334,18 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **Portal de Transparência** | Detalhamento, Simulador, Ranking | 21 SP |
 | **Aceite Digital** | Políticas versionadas com validade jurídica | 34 SP |
 | **Rastreabilidade 100%** | Log completo de cálculos para auditoria | Incluído |
+
+### 7.3 Novas Funcionalidades (Distribuição Hierárquica)
+
+| Funcionalidade | Descrição | SP |
+|----------------|-----------|-----|
+| **Configuração de Níveis** | % para Vendedor, Gerente, Cooperativa, Regional, Associação | 13 SP |
+| **Tipo Comissão/Repasse** | Escolha entre comissão direta ou repasse | 5 SP |
+| **Destinatário do Restante** | Configurar quem fica com o valor que sobrar | 5 SP |
+| **Validação 100%** | Garantir soma dos % ≤ 100% | 3 SP |
+| **Cálculo Automático** | Distribuição automática na filiação | 8 SP |
+| **Imutabilidade** | Valores fixos após pagamento | 5 SP |
+| **Relatórios** | Detalhamento e consolidação por nível | 13 SP |
 
 ---
 
