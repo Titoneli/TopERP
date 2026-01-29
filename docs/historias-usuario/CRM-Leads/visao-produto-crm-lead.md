@@ -2,12 +2,6 @@
 
 **Guia Completo de Funcionamento**
 
-| Informação | Valor |
-|------------|-------|
-| Versão | 1.0 |
-| Data | 29/01/2026 |
-| Funcionalidades | 16 |
-
 ---
 
 ## O que é este módulo?
