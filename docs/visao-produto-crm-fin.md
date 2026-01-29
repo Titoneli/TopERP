@@ -53,8 +53,8 @@ Os valores são calculados mensalmente com base em todas as mensalidades recebid
 O fluxo do residual é **diferente e mais controlado**:
 
 1. **Sistema gera o demonstrativo** — Todo mês, o sistema calcula os residuais e gera um demonstrativo financeiro
-2. **Consultor confere** — O consultor acessa o demonstrativo no App ou no sistema web
-3. **Consultor confirma** — Após conferir, o consultor clica em "Confirmar valores"
+2. **Consultor confere** — O consultor acessa o demonstrativo financeiro analítico/sintético no App ou no sistema web
+3. **Consultor confirma** — Após conferir o demonstrativo financeiro, o consultor clica em "Confirmar valores"
 4. **NF é emitida automaticamente** — Só após a confirmação, o sistema emite a nota fiscal
 5. **Solicitação de pagamento** — O sistema abre automaticamente uma solicitação no financeiro
 6. **Ordem de pagamento** — O financeiro processa a ordem de pagamento
@@ -70,7 +70,7 @@ O fluxo do residual é **diferente e mais controlado**:
 - João clica em "Confirmar que os valores estão corretos"
 - Sistema emite a NF automaticamente
 - Sistema abre solicitação de pagamento
-- João recebe o PIX alguns dias depois
+- João recebe o PIX alguns dias depois ou na mesma hora, dependendo do banco
 
 ---
 
@@ -147,6 +147,7 @@ Imagine que um consultor chamado João acabou de fechar uma venda de um plano de
 - Vê a lista completa: qual cliente pagou, quanto, qual o residual
 - Confere se está tudo certo
 - Se tiver dúvida, pode contestar antes de confirmar
+- João tem até o dia 20 de fevereiro para acessar e confirmar o demonstrativo
 
 **5. João Confirma os Valores**
 - Após conferir tudo, João clica em "Confirmar valores"
@@ -164,13 +165,19 @@ Imagine que um consultor chamado João acabou de fechar uma venda de um plano de
 
 **8. Ordem de Pagamento é Processada**
 - Financeiro recebe a solicitação
-- Processa a ordem de pagamento no MGF/Sankhya
+- Processa a ordem de pagamento no MGF/Sankhya e banco digital "ContaTop"
 
 **9. PIX é Realizado**
 - Valor é transferido para a conta do João
 - João recebe notificação: "Seu residual de R$ 225,00 foi pago!"
-- Comprovante fica disponível no sistema
+- Comprovante fica disponíveis no sistema
 
+
+**10. Registro Contábil**
+- Sistema gera os lançamentos automaticamente na contabilidade virtual
+- Registros são analisados e processados pela contabilidade
+- Obrigações fiscais são geradas e enviadas para o consulto
+- Consultor autoriza o pagamento diretamente na conta virtual no banco digital "ContaTop"ou efetua os pagamettos como preferir
 ---
 
 ## A Conta Virtual do Consultor
@@ -231,7 +238,7 @@ Todo consultor tem uma "conta virtual" no sistema, dividida em **duas áreas**:
 
 **Ver saldos separados** — O consultor vê claramente quanto tem de comissões (pode sacar agora) e quanto tem de residuais (precisa confirmar).
 
-**Consultar extratos por tipo** — Uma lista separada para cada tipo de recebimento, com data, valor e descrição.
+**Consultar extratos por tipo** — Uma lista separada para cada tipo de recebimento, com data, valor e descriçáos.
 
 **Solicitar saque de comissões** — A qualquer momento, o consultor pode sacar suas comissões. Total, parcial ou por período.
 
@@ -289,7 +296,7 @@ Quando uma venda é cancelada, o sistema cuida de desfazer tudo:
 
 **Cancelamento completo** — Nota fiscal cancelada, ordem de pagamento estornada, lançamento contábil revertido.
 
-**Aprovação de estornos maiores** — Para valores acima de R$ 500, um gestor precisa aprovar antes de processar. Isso evita erros.
+**Aprovação de estornos** — Para todos os valores, um gestor precisa aprovar antes de processar. Isso evita erros.
 
 ---
 
@@ -297,15 +304,20 @@ Quando uma venda é cancelada, o sistema cuida de desfazer tudo:
 
 Aqui é onde a mágica acontece. O sistema calcula automaticamente quanto cada consultor deve ganhar, baseado em regras configuráveis:
 
-**Regras de comissão** — "Vendas do Plano Básico pagam 6%, Plano Premium paga 8%". O gestor configura, o sistema aplica.
+**Regras de comissão** — "Vendas do Plano Outro pagam 6%, Plano PLatinum paga 8%". O gestor configura, o sistema aplica. Cada consultor pode ter uma configuração ou regra especifica.
 
-**Regras de residual** — "Para cada mensalidade que o cliente pagar, o consultor ganha 1%". Renda recorrente para o consultor.
+**Regras de residual** — "Para cada mensalidade que o cliente pagar, o consultor ganha 15%". Renda recorrente para o consultor.
 
-**Bonificação por metas** — "Se vender 10 planos no mês, ganha R$ 200 de bônus". Incentivo para bater metas.
+**Bonificação por metas** — "Se vender 10 planos no mês, ganha R$ 200 de bônus". Incentivo para bater metas. Cada consultos pode ter uma regra especifica.
 
-**Campanhas de premiação** — "Campanha de Verão: quem vender mais em fevereiro ganha uma viagem". Período específico com regras especiais.
+**Campanhas de premiação** — "Campanha de Verão: quem vender mais em fevereiro ganha uma viagem". Período específico com regras especiais. Cada consultor pode ter uma configuração ou regra especifica.
+
+**Descontos de Ratreametno** — O sistema identifica de acordo com a região de venda e de acordo com a regra nas cotas de cada tabela, se um veículo necessita da instalacao do rastreador. Cada regional/região tem uma regra especifica, com valores a descontar por tipo de veiculo. Por exemplo: moto no ceara desconta 50,00, moto em SP desconta 100,00, carro em MG desconta R$ 150,00 por cada venda efetuada. O consultor recebe junto com a adesão, mas o sistema desconta dos residuais a receber.
 
 **Simulação antes de ativar** — O gestor pode testar uma regra antes de colocar em produção. "Se eu mudar a comissão para 10%, quanto isso impactaria?"
+
+
+**Clonagem ou replicação de regras** — O gestor pode Clonar uma regra de um consultor para outro ou replicar uma regra especifica para varios consultores
 
 ---
 
@@ -313,7 +325,9 @@ Aqui é onde a mágica acontece. O sistema calcula automaticamente quanto cada c
 
 O demonstrativo é fundamental, especialmente para os **residuais**:
 
-**Demonstrativo de Residuais (mensal)** — Lista todos os clientes da carteira, quais pagaram, quanto pagou cada um, e quanto o consultor ganha de residual. **O consultor DEVE conferir e confirmar este demonstrativo para receber.**
+**Demonstrativo de Residuais Analíticos (mensal)** — Lista todos os clientes da carteira, quais pagaram, quanto pagou cada um, e quanto o consultor ganha de residual. **O consultor DEVE conferir e confirmar este demonstrativo para receber.**
+
+**Demonstrativo de Residuais Sintéticos (mensal)** — Lista todos os valores a receber de forma agrupada. **O consultor DEVE conferir e confirmar este demonstrativo para receber.**
 
 **Demonstrativo de Comissões** — Histórico de todas as comissões recebidas sobre adesões. Para consulta e controle.
 
@@ -323,7 +337,7 @@ O demonstrativo é fundamental, especialmente para os **residuais**:
 
 **Prazo para conferência** — O consultor tem um prazo (configurável) para conferir. Se não conferir, o gestor é avisado.
 
-**Envio automático** — O demonstrativo é enviado por e-mail e push notification assim que fica disponível.
+**Envio automático** — O demonstrativo é enviado por whatsapp e push notification assim que fica disponível.
 
 **Histórico completo** — Todos os demonstrativos ficam guardados. O consultor pode consultar meses anteriores a qualquer momento.
 
@@ -331,15 +345,13 @@ O demonstrativo é fundamental, especialmente para os **residuais**:
 
 ### Parte 8: Funcionalidades Avançadas
 
-Para quem quer ir além do básico:
-
 **Acesso pelo App** — O consultor pode ver seus saldos (comissões e residuais separados), conferir demonstrativos e confirmar valores pelo celular.
 
-**Notificações push** — "Você recebeu R$ 300,00 de comissão!" ou "Seu demonstrativo de residuais está pronto para conferência!" direto no celular.
+**Notificações push e whatsapp** — "Você recebeu R$ 300,00 de comissão!" ou "Seu demonstrativo de residuais está pronto para conferência!" direto no celular.
 
 **Dashboard do gestor** — Visão consolidada: quanto a equipe ganhou de comissões, quanto de residuais, quem já confirmou demonstrativo, quem está pendente.
 
-**Cálculo automático de residuais** — No fechamento do período, o sistema calcula automaticamente os residuais de todos os consultores com base nas mensalidades recebidas.
+**Cálculo automático de residuais** — No fechamento do período, o sistema calcula automaticamente os residuais de todos os consultores com base nas mensalidades recebidas utilizando um motor de regras configuravel.
 
 **Alertas de pendência** — Se um consultor não conferiu o demonstrativo em X dias, o gestor recebe um alerta.
 
@@ -349,21 +361,19 @@ Para quem quer ir além do básico:
 
 ### Parte 9: Motor de Regras Avançado
 
-Para empresas que precisam de comissionamento mais sofisticado:
+**Incentivo Pontual** — "Essa semana, quem vender o Plano Ouro ganha R$ 50 extra por venda". Incentivos de curto prazo.
 
-**SPIFF (Incentivo Pontual)** — "Essa semana, quem vender o Plano Gold ganha R$ 50 extra por venda". Incentivos de curto prazo.
-
-**PLR (Participação nos Lucros)** — Fórmulas complexas que consideram o lucro da empresa e distribuem entre os consultores.
+**Participação nos Resultados da Carteira** — Fórmulas complexas que consideram o resultado da carteira de clientes com base em cálculos atuariais e distribuem entre os consultores.
 
 **Aceleradores** — "Quem bater 100% da meta ganha 1.2x na comissão, quem bater 120% ganha 1.5x". Quanto mais vende, mais ganha por venda.
 
 **Comissão Escalonada** — "Até 5 vendas: 5%, de 6 a 10 vendas: 7%, acima de 10: 10%". Premia o alto volume.
 
-**Override (Comissão sobre Equipe)** — "O gerente ganha 2% sobre tudo que sua equipe vender". Incentivo para formar e treinar o time.
+**Comissão sobre Equipe** — "O gerente ganha 2% sobre tudo que sua equipe vender". Incentivo para formar e treinar o time.
 
-**Split de Comissão** — "Essa venda foi feita por dois consultores, dividir a comissão 60/40". Para vendas em parceria.
+**Divisão da Comissão** — "Essa venda foi feita por dois consultores, dividir a comissão 60/40". Para vendas em parceria.
 
-**Templates prontos** — Modelos de regras pré-configurados. O gestor escolhe um template e ajusta os valores.
+**Modelos prontos** — Modelos de regras pré-configurados. O gestor escolhe um template e ajusta os valores.
 
 **Editor visual** — Interface amigável para criar regras arrastando blocos, sem precisar saber programar.
 
@@ -374,15 +384,15 @@ Para empresas que precisam de comissionamento mais sofisticado:
 Para acompanhar o desempenho dos consultores:
 
 **Metas individuais** — Cada consultor tem sua meta. Com três níveis:
-- *Floor*: o mínimo aceitável
-- *Target*: o esperado
-- *Stretch*: a superação (bônus extra!)
+- *Minimo*: o mínimo aceitável
+- *Objetivo*: o esperado
+- *Extra*: a superação (bônus extra!)
 
-**Metas de equipe** — A equipe do gerente João tem meta de R$ 100.000 no mês. O sistema soma as vendas de todos.
+**Metas de equipe** — A equipe do gerente João tem meta de 40 placas no mês. O sistema soma as propostas fechadas de todos.
 
-**Metas compostas** — "Vender R$ 50.000 E ter NPS acima de 8 E reter 90% dos clientes". Múltiplos indicadores.
+**Metas compostas** — "Fechar 50 placas E ter NPS acima de 8 E reter 90% dos clientes". Múltiplos indicadores.
 
-**Atingimento em tempo real** — O consultor vê na tela: "Você está em 75% da meta, faltam R$ 5.000".
+**Atingimento em tempo real** — O consultor vê na tela: "Você está em 75% da meta, faltam 10 placas".
 
 **Projeção** — "No ritmo atual, você vai bater 110% da meta até o fim do mês". Ajuda no planejamento.
 
@@ -394,9 +404,9 @@ Para acompanhar o desempenho dos consultores:
 
 O consultor precisa entender exatamente como sua comissão foi calculada:
 
-**Detalhamento do cálculo** — "Venda #12345: R$ 500,00. Comissão base (8%): R$ 40,00. Bônus plano Premium: R$ 10,00. Acelerador 1.2x. Total: R$ 60,00".
+**Detalhamento do cálculo** — "Placas 50: R$ 500,00. Comissão base (8%): R$ 40,00. Bônus plano Ouro: R$ 10,00. Acelerador 1.2x. Total: R$ 60,00".
 
-**Simulador "E se..."** — O consultor digita: "Se eu vender mais 3 planos Premium este mês..." e o sistema mostra quanto ele ganharia.
+**Simulador "E se..."** — O consultor digita: "Se eu fechar mais 3 placas no plano Ouro este mês..." e o sistema mostra quanto ele ganharia.
 
 **Ranking da equipe** — "Você está em 3º lugar no ranking da sua regional". Gamificação saudável.
 
@@ -410,7 +420,7 @@ Para garantir que todos conhecem as regras:
 
 **Aceite com validade jurídica** — O consultor lê o documento e clica em "Li e aceito". O sistema registra tudo: data, hora, IP, para valer legalmente.
 
-**Lembretes automáticos** — Se alguém não aceitou a política em 3 dias, recebe um lembrete.
+**Lembretes automáticos** — Se alguém não aceitou a política em 3 dias, recebe um lembrete via whatsapp e/ou pusj.
 
 **Histórico completo** — "Fulano aceitou a Política v3 em 15/01/2026 às 14:32, do IP 192.168.1.1". Auditoria completa.
 
