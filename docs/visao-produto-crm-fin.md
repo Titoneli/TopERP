@@ -25,10 +25,12 @@ Pense nele como um "banco interno" da empresa para os consultores: ele guarda os
 Imagine que um consultor chamado João acabou de fechar uma venda de um plano de proteção veicular. Veja o que acontece com o dinheiro dele:
 
 **1. A Venda é Concretizada**
-- João fecha a venda de um plano Premium no valor de R$ 500,00
-- O sistema automaticamente calcula quanto João vai ganhar de comissão (digamos, 8% = R$ 40,00)
-- Esse valor é creditado na "conta virtual" do João dentro do sistema
-- João recebe uma notificação: "Você ganhou R$ 40,00 de comissão!"
+- João fecha a proposta de um plano Ouro no valor de mensalidade de R$ 500,00 e o valor de adesão de R$ 300,00
+- O valor da adesão, caso tenha sido recebido dentro do CRM, será creditado na "conta virtual" do João dentro do sistema quando o associado efetuar o pagamento.
+- João receberá uma notificação: "Você ganhou R$ 300,00 de comissão!"
+- Sobre o valor da mensalidade, o sistema automaticamente calcula quanto João vai ganhar de comissão (digamos, 8% = R$ 40,00)
+- Esse valor será creditado na "conta virtual" do João dentro do sistema quando o associado efetuar o pagamento da primeira mensalidade.
+- João receberá uma notificação: "Você ganhou R$ 40,00 de residual!"
 
 **2. O Dinheiro Fica Disponível**
 - João pode acessar o sistema a qualquer momento e ver seu saldo
@@ -44,6 +46,7 @@ Imagine que um consultor chamado João acabou de fechar uma venda de um plano de
 - Automaticamente, o sistema emite a nota fiscal de serviço
 - Se João é MEI, sai uma NFS-e; se é empresa, sai uma NF-e
 - O XML e PDF ficam guardados para João consultar quando quiser
+- 
 
 **5. O Pagamento é Processado**
 - O sistema cria uma ordem de pagamento no financeiro da empresa
