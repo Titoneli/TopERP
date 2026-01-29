@@ -2,8 +2,8 @@
 
 | Metadado | Valor |
 |----------|-------|
-| **Versão** | 2.0 |
-| **Data** | 22/01/2026 |
+| **Versão** | 2.1 |
+| **Data** | 29/01/2026 |
 | **Autor** | Product Owner |
 | **Status** | Aprovado |
 | **Metodologia** | Domain-Driven Design |
@@ -156,6 +156,7 @@ Este documento define o **Context Map** do sistema TopERP CRM, identificando os 
 | CRM-VIS | Vistorias | Core | Agendamento e execução de vistorias | 📋 Planejado |
 | CRM-ANA | Análise | Core | Análise documental e aprovação | 📋 Planejado |
 | CRM-FIN | Financeiro Consultor | Core | Saques, NF, comissões, motor regras | ✅ Documentado |
+| CRM-MTR | Motor de Regras | Shared Kernel | Cálculo de comissões, descontos, scores | ✅ Documentado |
 | CRM-TAR | Tarefas & Agendas | Supporting | Gestão de atividades e calendário | 📋 Planejado |
 | CRM-COM | Comissionamento | Supporting | Cálculo de comissões e remuneração | 🔄 Absorvido por CRM-FIN |
 | CRM-APP | App Consultor | Supporting | Aplicativo mobile para consultores | 📋 Planejado |
@@ -188,6 +189,10 @@ Este documento define o **Context Map** do sistema TopERP CRM, identificando os 
 | CRM-PAG | CRM-VIS | State Machine | Pagamento confirmado → Vistoria |
 | CRM-VIS | CRM-ANA | State Machine | Vistoria realizada → Análise |
 | CRM-ANA | CRM-FIN | Event | Venda concretizada → Crédito comissão |
+| CRM-MTR | CRM-FIN | Shared Kernel | Motor de Regras para cálculos de comissão |
+| CRM-MTR | CRM-COT | Shared Kernel | Motor de Regras para descontos e preços |
+| CRM-MTR | CRM-LED | Shared Kernel | Motor de Regras para score de leads |
+| CRM-MTR | CRM-POS | Shared Kernel | Motor de Regras para bonificações |
 | CRM-FIN | CRM-PAG | Event | Estorno → Devolução cliente |
 | CRM-FIN | SEFAZ | ACL | Emissão NF-e/NFS-e |
 | CRM-FIN | MFG/Sankhya | ACL | Ordens de pagamento |
@@ -459,8 +464,9 @@ O contexto **CRM-AUD** utiliza Event Sourcing para manter histórico completo de
 
 | Data | Versão | Autor | Alteração |
 |------|--------|-------|-----------|
-| 25/01/2026 | 2.1 | Product Owner | Adicionados ACLs VistorAI e N8N (origem: visao-produto-crm.md) |
-| 22/01/2026 | 2.0 | Product Owner | Versão inicial aprovada com 18 Bounded Contexts |
+| 29/01/2026 | 2.1 | Product Owner | **CRM-MTR (Motor de Regras)**: Novo Bounded Context tipo Shared Kernel. Componente genérico reutilizável por FIN, COT, LED, POS. 6 User Stories, 178 SP |
+| 25/01/2026 | 2.0 | Product Owner | Adicionados ACLs VistorAI e N8N (origem: visao-produto-crm.md) |
+| 22/01/2026 | 1.0 | Product Owner | Versão inicial aprovada com 18 Bounded Contexts |
 
 ---
 

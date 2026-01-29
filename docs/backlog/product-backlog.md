@@ -24,6 +24,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | EP-008 | CRM - Funil de Vendas | CRM-FUN | ✅ Documentado |
 | EP-009 | CRM - Financeiro Consultor | CRM-FIN | ✅ Documentado |
 | EP-010 | Contabilidade | CON | Futuro |
+| EP-011 | CRM - Motor de Regras | CRM-MTR | ✅ Documentado |
 
 ---
 
@@ -224,13 +225,17 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | US-CRM-FIN-020 | Aprovar/Rejeitar Estornos | Importante | Backlog | 8 |
 
 #### CRM-Financeiro: Importantes - Motor de Regras
+
+> **MIGRADO:** Estas histórias foram migradas para o módulo independente **CRM-Motor-Regras (MTR)**.
+> Ver seção CRM-Motor-Regras abaixo.
+
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-FIN-021 | Cadastrar Regras de Comissão | Importante | Backlog | 21 |
-| US-CRM-FIN-022 | Cadastrar Regras de Residual | Importante | Backlog | 13 |
-| US-CRM-FIN-023 | Cadastrar Regras de Bonificação | Importante | Backlog | 13 |
-| US-CRM-FIN-024 | Criar Campanhas de Premiação | Importante | Backlog | 13 |
-| US-CRM-FIN-025 | Simular Cálculo de Comissão | Importante | Backlog | 8 |
+| ~~US-CRM-FIN-021~~ | ~~Cadastrar Regras de Comissão~~ | - | → MTR-001 | - |
+| ~~US-CRM-FIN-022~~ | ~~Cadastrar Regras de Residual~~ | - | → MTR-001 | - |
+| ~~US-CRM-FIN-023~~ | ~~Cadastrar Regras de Bonificação~~ | - | → MTR-002 | - |
+| ~~US-CRM-FIN-024~~ | ~~Criar Campanhas de Premiação~~ | - | → MTR-002 | - |
+| ~~US-CRM-FIN-025~~ | ~~Simular Cálculo de Comissão~~ | - | → MTR-005 | - |
 
 #### CRM-Financeiro: Importantes - Demonstrativos
 | ID | História | Prioridade | Status | SP |
@@ -250,16 +255,20 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | US-CRM-FIN-034 | Exportar Relatórios Financeiros | Desejável | Backlog | 8 |
 
 #### CRM-Financeiro: Motor de Regras Avançado (SplitC-inspired)
+
+> **MIGRADO:** Estas histórias foram migradas para o módulo independente **CRM-Motor-Regras (MTR)**.
+> Ver seção CRM-Motor-Regras abaixo.
+
 | ID | História | Prioridade | Status | SP |
 |----|----------|------------|--------|----|
-| US-CRM-FIN-035 | Cadastrar Regras SPIFF (Incentivo Pontual) | Importante | Backlog | 8 |
-| US-CRM-FIN-036 | Cadastrar Regras de PLR | Importante | Backlog | 13 |
-| US-CRM-FIN-037 | Cadastrar Aceleradores Progressivos | Importante | Backlog | 13 |
-| US-CRM-FIN-038 | Cadastrar Comissão Escalonada por Volume | Importante | Backlog | 8 |
-| US-CRM-FIN-039 | Cadastrar Override (Comissão sobre Equipe) | Importante | Backlog | 13 |
-| US-CRM-FIN-040 | Cadastrar Split de Comissão | Importante | Backlog | 8 |
-| US-CRM-FIN-041 | Usar Templates Pré-configurados | Desejável | Backlog | 5 |
-| US-CRM-FIN-042 | Motor Visual Low-Code para Regras | Desejável | Backlog | 21 |
+| ~~US-CRM-FIN-035~~ | ~~Cadastrar Regras SPIFF (Incentivo Pontual)~~ | - | → MTR-002 | - |
+| ~~US-CRM-FIN-036~~ | ~~Cadastrar Regras de PLR~~ | - | → MTR-002 | - |
+| ~~US-CRM-FIN-037~~ | ~~Cadastrar Aceleradores Progressivos~~ | - | → MTR-002 | - |
+| ~~US-CRM-FIN-038~~ | ~~Cadastrar Comissão Escalonada por Volume~~ | - | → MTR-002 | - |
+| ~~US-CRM-FIN-039~~ | ~~Cadastrar Override (Comissão sobre Equipe)~~ | - | → MTR-002 | - |
+| ~~US-CRM-FIN-040~~ | ~~Cadastrar Split de Comissão~~ | - | → MTR-002 | - |
+| ~~US-CRM-FIN-041~~ | ~~Usar Templates Pré-configurados~~ | - | → MTR-003 | - |
+| ~~US-CRM-FIN-042~~ | ~~Motor Visual Low-Code para Regras~~ | - | → MTR-004 | - |
 
 #### CRM-Financeiro: Gestão de Metas Avançada
 | ID | História | Prioridade | Status | SP |
@@ -314,6 +323,21 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | US-CRM-FIN-074 | Configurar Prazo Máximo para Conferência | Desejável | Backlog | 3 |
 | US-CRM-FIN-075 | Alertar Gestor Quando Exceder Prazo | Desejável | Backlog | 3 |
 
+#### CRM-Motor-Regras (MTR) - Módulo Independente ✅
+
+> **Novo Módulo v2.9:** Motor de Regras como Shared Kernel / Generic Subdomain.
+> Componente genérico reutilizável por múltiplos módulos (FIN, COT, LEAD, POS, etc.)
+> Ver: [CRM-Motor-Regras/README.md](../historias-usuario/CRM-Motor-Regras/README.md)
+
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-MTR-001 | Cadastro de Regras Básicas (variáveis, condições, fórmulas) | Essencial | ✅ Pronto | 34 |
+| US-CRM-MTR-002 | Regras Avançadas (SPIFF, Acelerador, Override, Split, PLR, Escalonada) | Essencial | ✅ Pronto | 55 |
+| US-CRM-MTR-003 | Templates Pré-configurados e Clonagem de Regras | Importante | ✅ Pronto | 13 |
+| US-CRM-MTR-004 | Editor Visual Low-Code (drag-and-drop) | Desejável | ✅ Pronto | 34 |
+| US-CRM-MTR-005 | Simulação, Teste e Validação de Regras | Importante | ✅ Pronto | 21 |
+| US-CRM-MTR-006 | Versionamento, Histórico e Auditoria | Essencial | ✅ Pronto | 21 |
+
 ## Métricas do Backlog
 
 | Métrica | Valor |
@@ -329,24 +353,31 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | • Importantes (FUN-011 a FUN-015) | 5 histórias / 42 SP |
 | • Desejáveis (FUN-016 a FUN-019) | 4 histórias / 29 SP |
 | • Movidos de Leads (FUN-020 a FUN-023) | 4 histórias / 20 SP |
-| **CRM-Financeiro** | **75 histórias / 701 SP** |
+| **CRM-Financeiro (após migração MTR)** | **62 histórias / 544 SP** |
 | • Essenciais - Conta e Saldo (FIN-001 a FIN-006) | 6 histórias / 58 SP |
 | • Essenciais - Emissão NF (FIN-007 a FIN-010) | 4 histórias / 44 SP |
 | • Essenciais - Pagamento (FIN-011 a FIN-014) | 4 histórias / 47 SP |
 | • Importantes - Contabilidade (FIN-015 a FIN-016) | 2 histórias / 21 SP |
 | • Importantes - Estornos (FIN-017 a FIN-020) | 4 histórias / 47 SP |
-| • Importantes - Motor Regras (FIN-021 a FIN-025) | 5 histórias / 68 SP |
+| • ~~Importantes - Motor Regras (FIN-021 a FIN-025)~~ | → Migrado para MTR |
 | • Importantes - Demonstrativos (FIN-026 a FIN-029) | 4 histórias / 37 SP |
 | • Desejáveis - Avançado (FIN-030 a FIN-034) | 5 histórias / 52 SP |
-| • **Motor Regras Avançado - SplitC (FIN-035 a FIN-042)** | **8 histórias / 89 SP** |
-| • **Gestão de Metas Avançada (FIN-043 a FIN-048)** | **6 histórias / 47 SP** |
-| • **Portal de Transparência (FIN-049 a FIN-051)** | **3 histórias / 21 SP** |
-| • **Aceite Digital Políticas (FIN-052 a FIN-055)** | **4 histórias / 34 SP** |
-| • **Distribuição Hierárquica - Filiação (FIN-056 a FIN-063)** | **8 histórias / 52 SP** |
-| • **Separação Comissões vs Residuais (FIN-064 a FIN-075)** | **12 histórias / 84 SP** |
+| • ~~Motor Regras Avançado - SplitC (FIN-035 a FIN-042)~~ | → Migrado para MTR |
+| • Gestão de Metas Avançada (FIN-043 a FIN-048) | 6 histórias / 47 SP |
+| • Portal de Transparência (FIN-049 a FIN-051) | 3 histórias / 21 SP |
+| • Aceite Digital Políticas (FIN-052 a FIN-055) | 4 histórias / 34 SP |
+| • Distribuição Hierárquica - Filiação (FIN-056 a FIN-063) | 8 histórias / 52 SP |
+| • Separação Comissões vs Residuais (FIN-064 a FIN-075) | 12 histórias / 84 SP |
+| **CRM-Motor-Regras (MTR) - NOVO** | **6 histórias / 178 SP** |
+| • MTR-001: Regras Básicas | 1 história / 34 SP |
+| • MTR-002: Regras Avançadas (SPIFF, Override, Split, etc.) | 1 história / 55 SP |
+| • MTR-003: Templates e Clonagem | 1 história / 13 SP |
+| • MTR-004: Editor Visual Low-Code | 1 história / 34 SP |
+| • MTR-005: Simulação e Teste | 1 história / 21 SP |
+| • MTR-006: Versionamento e Auditoria | 1 história / 21 SP |
 | **CRM-Autenticação** | **2 histórias / 7 SP** |
 | **CRM-Cotações** | **1 história / 8 SP** |
-| **TOTAL CRM** | **117 histórias / 1004 SP** |
+| **TOTAL CRM** | **110 histórias / 1025 SP** |
 
 ---
 
@@ -365,6 +396,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
+| 29/01/2026 | 2.9 | **CRM-Motor-Regras (MTR)**: Novo módulo independente com 6 histórias / 178 SP. Migração de FIN-021 a FIN-025 e FIN-035 a FIN-042 para MTR. Motor de Regras como Shared Kernel reutilizável | PO |
 | 29/01/2026 | 2.8 | Separação Comissões vs Residuais: +12 histórias (+84 SP). Fluxos distintos, conferência obrigatória para residuais | PO |
 | 29/01/2026 | 2.7 | Distribuição Hierárquica Filiação: +8 histórias (+52 SP). Níveis fixos, imutabilidade | PO |
 | 29/01/2026 | 2.6 | Motor de Regras Avançado SplitC: +21 histórias (+191 SP). Metas, Transparência, Aceite Digital | PO |

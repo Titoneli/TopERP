@@ -29,16 +29,16 @@ O Motor de Regras e como um **cerebro compartilhado** que varios modulos do sist
 │   Quem usa o Motor?                                             │
 │                                                                 │
 │   FINANCEIRO (CRM-FIN)                                          │
-│   └─ Calcular comissoes, residuais, bonificacoes               │
+│   └─ Calcular comissoes, residuais, bonificacoes                │
 │                                                                 │
 │   COTACOES (CRM-COT)                                            │
-│   └─ Calcular descontos, precos especiais                      │
+│   └─ Calcular descontos, precos especiais                       │
 │                                                                 │
 │   LEADS (CRM-LEAD)                                              │
-│   └─ Dar nota para leads, priorizar atendimento                │
+│   └─ Dar nota para leads, priorizar atendimento                 │
 │                                                                 │
 │   POS-VENDA (CRM-POS)                                           │
-│   └─ Calcular bonus de satisfacao do associado                 │
+│   └─ Calcular bonus de satisfacao do associado                  │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -69,18 +69,18 @@ Joao vendeu um plano Premium por R$ 500,00. Quanto ele ganha de comissao?
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  VARIAVEIS:                                                     │
-│  ├─ VALOR_VENDA: quanto o associado pagou                      │
-│  ├─ TIPO_PLANO: qual plano foi vendido                         │
-│  └─ PERC_COMISSAO: 8% (para Premium)                           │
+│  ├─ VALOR_VENDA: quanto o associado pagou                       │
+│  ├─ TIPO_PLANO: qual plano foi vendido                          │
+│  └─ PERC_COMISSAO: 8% (para Premium)                            │
 │                                                                 │
 │  CONDICAO:                                                      │
-│  └─ SE tipo_plano = "PREMIUM"                                  │
+│  └─ SE tipo_plano = "PREMIUM"                                   │
 │                                                                 │
 │  FORMULA:                                                       │
-│  └─ comissao = valor_venda × perc_comissao                     │
+│  └─ comissao = valor_venda × perc_comissao                      │
 │                                                                 │
 │  ACAO:                                                          │
-│  └─ Creditar resultado na conta do consultor                   │
+│  └─ Creditar resultado na conta do consultor                    │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -105,10 +105,10 @@ Cada plano pode ter percentual diferente:
 │  TABELA DE COMISSOES POR PLANO                                  │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  Plano Basico      →  5% de comissao                           │
-│  Plano Ouro        →  6% de comissao                           │
-│  Plano Premium     →  8% de comissao                           │
-│  Plano Platinum    → 10% de comissao                           │
+│  Plano Bronze      →  5% de comissao                            │
+│  Plano Prata       →  6% de comissao                            │
+│  Plano Ouro        →  8% de comissao                            │
+│  Plano Platinum    → 10% de comissao                            │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -119,7 +119,7 @@ O Motor escolhe automaticamente o percentual certo baseado no plano vendido.
 
 ```
 SE:
-  - Plano = Premium
+  - Plano = Ouro
   - E Regiao = Sul
   - E Mes = Dezembro (campanha de fim de ano)
   
@@ -236,10 +236,10 @@ O gerente ganha um percentual sobre as vendas da equipe:
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  Paulo e gerente de 5 consultores                               │
-│  Sua equipe vendeu R$ 50.000 no mes                             │
+│  Sua equipe vendeu 60 placas                                    │
 │  Override do gerente: 2%                                        │
 │                                                                 │
-│  Ganho de Paulo = R$ 50.000 × 2% = R$ 1.000,00                  │
+│  Ganho de Paulo = 60 × 30,00 = R$ 1.200,00.                     │
 │                                                                 │
 │  (Paulo ganha ALEM do que ele mesmo vendeu)                     │
 │                                                                 │
@@ -500,21 +500,8 @@ Sim! O simulador permite testar com dados reais ou fictícios antes de colocar a
 | **Template** | Modelo pre-configurado de regra |
 | **Versao** | Numero que identifica alteracoes na regra |
 | **Simulacao** | Teste do calculo sem efeito real |
-| **SPIFF** | Bonus pontual por produto/periodo |
-| **Override** | Comissao do gestor sobre vendas da equipe |
-| **Split** | Divisao de comissao entre consultores |
+| **Periodo** | Bonus pontual por produto/periodo |
+| **Equipe** | Comissao do gestor sobre vendas da equipe |
+| **Divisão** | Divisao de comissao entre consultores |
 | **Acelerador** | Multiplicador progressivo por meta |
 
----
-
-## Referencias
-
-- [README.md](README.md) - Especificacao tecnica completa
-- [US-CRM-MTR-001.md](US-CRM-MTR-001.md) - Historia: Regras Basicas
-- [US-CRM-MTR-002.md](US-CRM-MTR-002.md) - Historia: Regras Avancadas
-
----
-
-**Versao**: 1.0  
-**Data**: 29/01/2026  
-**Autor**: Product Owner
