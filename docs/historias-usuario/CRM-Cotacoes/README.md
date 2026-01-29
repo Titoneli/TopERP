@@ -13,13 +13,13 @@
 
 ## 1. Visão Geral
 
-O módulo de Cotações é o **Core Domain** responsável por calcular e apresentar valores de proteção veicular. É um dos contextos mais críticos do CRM, pois é onde o valor de negócio é calculado e apresentado ao cliente.
+O módulo de Cotações é o **Core Domain** responsável por calcular e apresentar valores de proteção veicular. É um dos contextos mais críticos do CRM, pois é onde o valor de negócio é calculado e apresentado ao potencial associado.
 
 ### 1.1 Objetivos
 
 - Facilitar e agilizar o processo de cotação para consultores e prospects
 - Garantir cálculos precisos baseados em tabelas personalizadas
-- Permitir apresentação clara e profissional de propostas e comparativos de planos
+- Permitir apresentação clara e profissional de propostas e comparativos de planos (com plano em destaque)
 - Flexibilizar opções de pagamento e planos
 - Registrar histórico completo de cotações por lead
 

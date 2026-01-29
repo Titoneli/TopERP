@@ -14,11 +14,11 @@
 
 ## 1. Visão Geral
 
-O módulo **CRM-Pós-Venda** é responsável pelo acompanhamento do cliente após a concretização da venda. Este é um **Bounded Context de Suporte** que garante a satisfação e fidelização do cliente.
+O módulo **CRM-Pós-Venda** é responsável pelo acompanhamento do associado após a concretização da venda. Este é um **Bounded Context de Suporte** que garante a satisfação e fidelização do associado.
 
 ### 1.1 Responsabilidades
 
-- Onboarding do novo cliente
+- Onboarding do novo associado
 - Ativação dos serviços contratados
 - Pesquisa de satisfação
 - Acompanhamento dos primeiros dias
@@ -28,7 +28,7 @@ O módulo **CRM-Pós-Venda** é responsável pelo acompanhamento do cliente apó
 ### 1.2 Posição no Funil
 
 ```
-[Negociação Concretizada] ──► [PÓS-VENDA] ──► [Cliente Ativo]
+[Negociação Concretizada] ──► [PÓS-VENDA] ──► [Associado Ativo]
                                   │
                               CRM-POS
 ```

@@ -27,7 +27,7 @@ O módulo **CRM-Leads** representa o contexto de **Captação e Qualificação d
 
 ## Visão Geral
 
-O módulo gerencia a captação, armazenamento e qualificação de leads (potenciais clientes) interessados em proteção veicular, garantindo rastreabilidade completa desde a origem até a conversão.
+O módulo gerencia a captação, armazenamento e qualificação de leads (potenciais associados) interessados em proteção veicular, garantindo rastreabilidade completa desde a origem até a conversão.
 
 ---
 
@@ -150,8 +150,10 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 |---------|------|-----------|
 | API FIPE | REST | Dados de veículos |
 | IBGE | REST | Lista de UFs e cidades |
-| WhatsApp Business | Webhook | Captura de mensagens |
+| PUXACAPIVARA | REST | Busca restrições judiciais |
+| WhatsApp Business | Webhook | Captura de mensagens e follow-ups |
 | Meta Lead Ads | Webhook | Leads do Facebook/Instagram |
+| Google Ads | Webhook | Leads do Google |
 | Google Analytics | SDK | Rastreamento de conversão |
 
 ---
@@ -163,19 +165,20 @@ O módulo gerencia a captação, armazenamento e qualificação de leads (potenc
 | Volume de Leads/Dia | Leads captados por dia | Monitorar |
 | Taxa de Qualificação | % leads qualificados | > 30% |
 | Tempo até 1º Contato | Tempo entre captura e contato | < 5 min |
-| Taxa de Conversão | % leads que viram clientes | > 15% |
+| Taxa de Conversão | % leads que viram associados | > 15% |
 | **Leads por DDD** | Distribuição regional por DDD | Monitorar |
 | **Leads por Origem** | Distribuição por `cod_origem` | Monitorar |
 | **Taxa de Bloqueio** | % telefones de consultores bloqueados | < 1% |
 
 ---
 
-**Versão**: 2.6  
-**Atualizado em**: 27/01/2026
+**Versão**: 2.7  
+**Atualizado em**: 29/01/2026
 
 **Histórico:**
 | Versão | Data | Alteração |
 |--------|------|----------|
+| 2.7 | 29/01/2026 | Consistência: 'clientes'→'associados'. Integrações: +PUXACAPIVARA, +Google Ads |
 | 2.6 | 27/01/2026 | Renumeração sequencial: LEAD-015→013, LEAD-018→014, LEAD-019→015, LEAD-020→016 |
 | 2.5 | 27/01/2026 | DDD: Mover LEAD-013, 014, 016, 017 para CRM-Funil-Vendas (FUN-020 a 023). Total: 16 histórias / 141 SP |
 | 2.4 | 25/01/2026 | Correção DDD: Fase 3 (LEAD-007 a 011), Fase 4 (LEAD-012 a 017) em ordem sequencial |
