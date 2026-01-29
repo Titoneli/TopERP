@@ -4,7 +4,7 @@
 |----------|-------|
 | **Módulo** | CRM-Financeiro |
 | **Código** | CRM-FIN |
-| **Versão** | 2.2 |
+| **Versão** | 2.3 |
 | **Data** | 29/01/2026 |
 | **Responsável** | Product Owner - CRM |
 | **Status** | Planejado |
@@ -1172,13 +1172,17 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 
 ### 3.6 Importantes - Motor de Regras
 
-| ID | História | Prioridade | SP |
-|----|----------|------------|-----|
-| US-CRM-FIN-021 | Como gestor, quero cadastrar regras de comissão com fórmulas configuráveis | Importante | 21 |
-| US-CRM-FIN-022 | Como gestor, quero cadastrar regras de residual sobre mensalidades | Importante | 13 |
-| US-CRM-FIN-023 | Como gestor, quero cadastrar regras de bonificação por metas | Importante | 13 |
-| US-CRM-FIN-024 | Como gestor, quero criar campanhas de premiação com período específico | Importante | 13 |
-| US-CRM-FIN-025 | Como gestor, quero simular cálculo de comissão antes de ativar regra | Importante | 8 |
+> **MIGRADO:** As histórias de Motor de Regras foram migradas para o módulo independente **CRM-Motor-Regras (MTR)**.
+> O Motor de Regras é um componente genérico (Shared Kernel) reutilizado por múltiplos módulos.
+> Ver: [CRM-Motor-Regras/README.md](../CRM-Motor-Regras/README.md)
+
+| ID | História | Prioridade | SP | Status |
+|----|----------|------------|-----|--------|
+| US-CRM-FIN-021 | ~~Como gestor, quero cadastrar regras de comissão com fórmulas configuráveis~~ | Importante | - | → US-CRM-MTR-001 |
+| US-CRM-FIN-022 | ~~Como gestor, quero cadastrar regras de residual sobre mensalidades~~ | Importante | - | → US-CRM-MTR-001 |
+| US-CRM-FIN-023 | ~~Como gestor, quero cadastrar regras de bonificação por metas~~ | Importante | - | → US-CRM-MTR-002 |
+| US-CRM-FIN-024 | ~~Como gestor, quero criar campanhas de premiação com período específico~~ | Importante | - | → US-CRM-MTR-002 |
+| US-CRM-FIN-025 | ~~Como gestor, quero simular cálculo de comissão antes de ativar regra~~ | Importante | - | → US-CRM-MTR-005 |
 
 ### 3.7 Importantes - Demonstrativos
 
@@ -1201,18 +1205,19 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 
 ### 3.9 Motor de Regras Avançado (SplitC)
 
-> **Novas funcionalidades inspiradas na plataforma SplitC**
+> **MIGRADO:** Estas histórias foram migradas para o módulo independente **CRM-Motor-Regras (MTR)**.
+> Ver: [CRM-Motor-Regras/README.md](../CRM-Motor-Regras/README.md)
 
-| ID | História | Prioridade | SP |
-|----|----------|------------|-----|
-| US-CRM-FIN-035 | Como gestor, quero cadastrar regras SPIFF (incentivo pontual por produto), para premiar vendas específicas | Importante | 8 |
-| US-CRM-FIN-036 | Como gestor, quero cadastrar regras de PLR com fórmulas complexas, para distribuir lucros | Importante | 13 |
-| US-CRM-FIN-037 | Como gestor, quero cadastrar aceleradores progressivos por faixa, para incentivar superação de metas | Importante | 13 |
-| US-CRM-FIN-038 | Como gestor, quero cadastrar comissão escalonada por volume, para premiar alto desempenho | Importante | 8 |
-| US-CRM-FIN-039 | Como gestor, quero cadastrar override (comissão sobre equipe), para remunerar gestores | Importante | 13 |
-| US-CRM-FIN-040 | Como gestor, quero cadastrar split de comissão entre consultores, para vendas compartilhadas | Importante | 8 |
-| US-CRM-FIN-041 | Como gestor, quero usar templates pré-configurados de regras, para agilizar cadastro | Desejável | 5 |
-| US-CRM-FIN-042 | Como gestor, quero montar regras visualmente (low-code), para facilitar configuração | Desejável | 21 |
+| ID | História | Prioridade | SP | Status |
+|----|----------|------------|-----|--------|
+| US-CRM-FIN-035 | ~~Como gestor, quero cadastrar regras SPIFF (incentivo pontual por produto)~~ | Importante | - | → US-CRM-MTR-002 |
+| US-CRM-FIN-036 | ~~Como gestor, quero cadastrar regras de PLR com fórmulas complexas~~ | Importante | - | → US-CRM-MTR-002 |
+| US-CRM-FIN-037 | ~~Como gestor, quero cadastrar aceleradores progressivos por faixa~~ | Importante | - | → US-CRM-MTR-002 |
+| US-CRM-FIN-038 | ~~Como gestor, quero cadastrar comissão escalonada por volume~~ | Importante | - | → US-CRM-MTR-002 |
+| US-CRM-FIN-039 | ~~Como gestor, quero cadastrar override (comissão sobre equipe)~~ | Importante | - | → US-CRM-MTR-002 |
+| US-CRM-FIN-040 | ~~Como gestor, quero cadastrar split de comissão entre consultores~~ | Importante | - | → US-CRM-MTR-002 |
+| US-CRM-FIN-041 | ~~Como gestor, quero usar templates pré-configurados de regras~~ | Desejável | - | → US-CRM-MTR-003 |
+| US-CRM-FIN-042 | ~~Como gestor, quero montar regras visualmente (low-code)~~ | Desejável | - | → US-CRM-MTR-004 |
 
 ### 3.10 Gestão de Metas Avançada
 
@@ -1416,6 +1421,8 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 
 ## 7. Resumo de Story Points
 
+> **NOTA v2.3:** As histórias do Motor de Regras (FIN-021 a FIN-025 e FIN-035 a FIN-042) foram migradas para o módulo independente **CRM-Motor-Regras (MTR)** com 178 SP. O total de SP do CRM-FIN foi ajustado.
+
 | Categoria | Histórias | Story Points |
 |-----------|-----------|--------------|
 | Essenciais - Conta e Saldo (FIN-001 a FIN-006) | 6 | 58 SP |
@@ -1423,40 +1430,54 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | Essenciais - Pagamento (FIN-011 a FIN-014) | 4 | 47 SP |
 | Importantes - Contabilidade (FIN-015 a FIN-016) | 2 | 21 SP |
 | Importantes - Cancelamentos/Estornos (FIN-017 a FIN-020) | 4 | 47 SP |
-| Importantes - Motor de Regras (FIN-021 a FIN-025) | 5 | 68 SP |
+| ~~Importantes - Motor de Regras (FIN-021 a FIN-025)~~ | ~~5~~ | ~~68 SP~~ → MTR |
 | Importantes - Demonstrativos (FIN-026 a FIN-029) | 4 | 37 SP |
 | Desejáveis - Avançado (FIN-030 a FIN-034) | 5 | 52 SP |
-| **Motor Regras Avançado - SplitC (FIN-035 a FIN-042)** | **8** | **89 SP** |
+| ~~Motor Regras Avançado - SplitC (FIN-035 a FIN-042)~~ | ~~8~~ | ~~89 SP~~ → MTR |
 | **Gestão de Metas Avançada (FIN-043 a FIN-048)** | **6** | **47 SP** |
 | **Portal de Transparência (FIN-049 a FIN-051)** | **3** | **21 SP** |
 | **Aceite Digital de Políticas (FIN-052 a FIN-055)** | **4** | **34 SP** |
 | **Distribuição Hierárquica - Filiação (FIN-056 a FIN-063)** | **8** | **52 SP** |
 | **Separação Comissões vs Residuais (FIN-064 a FIN-075)** | **12** | **84 SP** |
-| **TOTAL CRM-Financeiro** | **75** | **701 SP** |
+| **TOTAL CRM-Financeiro (após migração MTR)** | **62** | **544 SP** |
+| **Motor de Regras (CRM-MTR) - Módulo Independente** | **6** | **178 SP** |
 
 ### 7.1 Comparativo de Evolução
 
-| Métrica | v1.0 | v2.0 | v2.1 | v2.2 | Δ Total |
-|---------|------|------|------|------|---------|
-| Histórias de Usuário | 34 | 55 | 63 | 75 | +41 (+121%) |
-| Story Points | 374 SP | 565 SP | 617 SP | 701 SP | +327 SP (+87%) |
-| Entidades DDD | 12 | 16 | 19 | 19 | +7 (+58%) |
-| Eventos de Domínio | 12 | 18 | 18 | 20 | +8 (+67%) |
-| Regras de Negócio | 17 | 25 | 33 | 47 | +30 (+176%) |
+| Métrica | v1.0 | v2.0 | v2.1 | v2.2 | v2.3 | Δ Total |
+|---------|------|------|------|------|------|---------|
+| Histórias de Usuário | 34 | 55 | 63 | 75 | 62 | +28 (+82%) |
+| Story Points | 374 SP | 565 SP | 617 SP | 701 SP | 544 SP | +170 SP (+45%) |
+| Entidades DDD | 12 | 16 | 19 | 19 | 19 | +7 (+58%) |
+| Eventos de Domínio | 12 | 18 | 18 | 20 | 20 | +8 (+67%) |
+| Regras de Negócio | 17 | 25 | 33 | 47 | 47 | +30 (+176%) |
 
-### 7.2 Novas Funcionalidades (SplitC-inspired)
+> **Nota v2.3:** A redução de histórias e SP se deve à migração do Motor de Regras para módulo independente (CRM-MTR).
+
+### 7.2 Funcionalidades Migradas para CRM-Motor-Regras (MTR)
+
+> As seguintes funcionalidades foram migradas para o módulo independente **CRM-Motor-Regras**.
+> Ver detalhes em: [CRM-Motor-Regras/README.md](../CRM-Motor-Regras/README.md)
+
+| ID MTR | Funcionalidade | SP |
+|--------|----------------|-----|
+| US-CRM-MTR-001 | Cadastro de Regras Básicas (variáveis, condições, fórmulas) | 34 SP |
+| US-CRM-MTR-002 | Regras Avançadas (SPIFF, Acelerador, Override, Split, PLR) | 55 SP |
+| US-CRM-MTR-003 | Templates Pré-configurados e Clonagem | 13 SP |
+| US-CRM-MTR-004 | Editor Visual Low-Code (drag-and-drop) | 34 SP |
+| US-CRM-MTR-005 | Simulação, Teste e Validação de Regras | 21 SP |
+| US-CRM-MTR-006 | Versionamento, Histórico e Auditoria | 21 SP |
+| **TOTAL MTR** | | **178 SP** |
+
+### 7.3 Funcionalidades (Gestão de Metas e Transparência)
 
 | Funcionalidade | Descrição | SP |
 |----------------|-----------|-----|
-| **Motor de Cálculo Avançado** | SPIFF, PLR, Acelerador, Escalonada, Override, Split | 63 SP |
-| **Motor Visual Low-Code** | Interface drag-and-drop para regras | 21 SP |
-| **Templates Pré-configurados** | Modelos prontos de regras comuns | 5 SP |
 | **Gestão de Metas** | Individual, Equipe, Composta, Progressiva | 47 SP |
 | **Portal de Transparência** | Detalhamento, Simulador, Ranking | 21 SP |
 | **Aceite Digital** | Políticas versionadas com validade jurídica | 34 SP |
-| **Rastreabilidade 100%** | Log completo de cálculos para auditoria | Incluído |
 
-### 7.3 Novas Funcionalidades (Distribuição Hierárquica)
+### 7.4 Funcionalidades (Distribuição Hierárquica)
 
 | Funcionalidade | Descrição | SP |
 |----------------|-----------|-----|
@@ -1468,11 +1489,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **Imutabilidade** | Valores fixos após pagamento | 5 SP |
 | **Relatórios** | Detalhamento e consolidação por nível | 13 SP |
 
-### 7.4 Novas Funcionalidades (Separação Comissões vs Residuais)
-
-| Funcionalidade | Descrição | SP |
-|----------------|-----------|-----|
-| **Saldos Separados** | Conta de comissões separada de conta de residuais | 8 SP |
+### 7.5 Funcionalidades (Separação Comissões vs Residuais)
 | **Saque Livre de Comissões** | Consultor saca comissões a qualquer momento | 5 SP |
 | **Crédito Automático Adesão** | Comissão creditada quando cliente paga adesão | 8 SP |
 | **Cálculo Mensal Residuais** | Motor de regras calcula residuais sobre mensalidades | 13 SP |
