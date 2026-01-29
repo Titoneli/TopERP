@@ -298,7 +298,21 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | US-CRM-FIN-062 | Visualizar Detalhamento da Distribuição | Importante | Backlog | 5 |
 | US-CRM-FIN-063 | Relatório de Distribuições por Nível | Importante | Backlog | 8 |
 
----
+#### CRM-Financeiro: Separação Comissões vs Residuais (v2.2)
+| ID | História | Prioridade | Status | SP |
+|----|----------|------------|--------|----|
+| US-CRM-FIN-064 | Ver Saldo COMISSÕES Separado de RESIDUAIS | Essencial | Backlog | 8 |
+| US-CRM-FIN-065 | Sacar COMISSÕES a Qualquer Momento | Essencial | Backlog | 5 |
+| US-CRM-FIN-066 | Creditar COMISSÃO Quando Cliente Pagar ADESÃO | Essencial | Backlog | 8 |
+| US-CRM-FIN-067 | Calcular RESIDUAIS Mensalmente | Essencial | Backlog | 13 |
+| US-CRM-FIN-068 | Gerar DEMONSTRATIVO de Residuais | Essencial | Backlog | 13 |
+| US-CRM-FIN-069 | Conferir e CONFIRMAR Demonstrativo no App/Sistema | Essencial | Backlog | 8 |
+| US-CRM-FIN-070 | Emitir NF de Residuais SOMENTE Após Confirmação | Essencial | Backlog | 5 |
+| US-CRM-FIN-071 | Abrir Solicitação de Pagamento Após Confirmação | Essencial | Backlog | 5 |
+| US-CRM-FIN-072 | CONTESTAR Valores Antes de Confirmar | Importante | Backlog | 8 |
+| US-CRM-FIN-073 | Visualizar Consultores com Demonstrativo Pendente | Importante | Backlog | 5 |
+| US-CRM-FIN-074 | Configurar Prazo Máximo para Conferência | Desejável | Backlog | 3 |
+| US-CRM-FIN-075 | Alertar Gestor Quando Exceder Prazo | Desejável | Backlog | 3 |
 
 ## Métricas do Backlog
 
@@ -315,7 +329,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | • Importantes (FUN-011 a FUN-015) | 5 histórias / 42 SP |
 | • Desejáveis (FUN-016 a FUN-019) | 4 histórias / 29 SP |
 | • Movidos de Leads (FUN-020 a FUN-023) | 4 histórias / 20 SP |
-| **CRM-Financeiro** | **63 histórias / 617 SP** |
+| **CRM-Financeiro** | **75 histórias / 701 SP** |
 | • Essenciais - Conta e Saldo (FIN-001 a FIN-006) | 6 histórias / 58 SP |
 | • Essenciais - Emissão NF (FIN-007 a FIN-010) | 4 histórias / 44 SP |
 | • Essenciais - Pagamento (FIN-011 a FIN-014) | 4 histórias / 47 SP |
@@ -329,9 +343,10 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 | • **Portal de Transparência (FIN-049 a FIN-051)** | **3 histórias / 21 SP** |
 | • **Aceite Digital Políticas (FIN-052 a FIN-055)** | **4 histórias / 34 SP** |
 | • **Distribuição Hierárquica - Filiação (FIN-056 a FIN-063)** | **8 histórias / 52 SP** |
+| • **Separação Comissões vs Residuais (FIN-064 a FIN-075)** | **12 histórias / 84 SP** |
 | **CRM-Autenticação** | **2 histórias / 7 SP** |
 | **CRM-Cotações** | **1 história / 8 SP** |
-| **TOTAL CRM** | **105 histórias / 920 SP** |
+| **TOTAL CRM** | **117 histórias / 1004 SP** |
 
 ---
 
@@ -350,6 +365,7 @@ Este documento contém o Product Backlog do TopERP, organizado por módulo e pri
 
 | Data | Versão | Descrição | Autor |
 |------|--------|-----------|-------|
+| 29/01/2026 | 2.8 | Separação Comissões vs Residuais: +12 histórias (+84 SP). Fluxos distintos, conferência obrigatória para residuais | PO |
 | 29/01/2026 | 2.7 | Distribuição Hierárquica Filiação: +8 histórias (+52 SP). Níveis fixos, imutabilidade | PO |
 | 29/01/2026 | 2.6 | Motor de Regras Avançado SplitC: +21 histórias (+191 SP). Metas, Transparência, Aceite Digital | PO |
 | 29/01/2026 | 2.5 | Adição de CRM-Financeiro (CRM-FIN): 34 histórias, 374 SP. Motor de Regras, Saques, NF, PIX | PO |

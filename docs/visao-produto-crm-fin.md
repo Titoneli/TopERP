@@ -4,7 +4,7 @@
 
 | Informação | Valor |
 |------------|-------|
-| Versão | 2.1 |
+| Versão | 2.2 |
 | Data | 29/01/2026 |
 | Funcionalidades | 63 |
 
@@ -18,45 +18,196 @@ Pense nele como um "banco interno" da empresa para os consultores: ele guarda os
 
 ---
 
+## Os Dois Tipos de Ganhos do Consultor
+
+O consultor recebe dinheiro de **duas formas diferentes**, e cada uma tem seu próprio fluxo:
+
+### 💰 COMISSÃO (sobre Valor da Adesão)
+
+**O que é?**  
+É o valor que o consultor ganha quando fecha uma venda. É calculado sobre o **Valor da Adesão** que o cliente paga para entrar no plano.
+
+**Quando fica disponível?**  
+Assim que o cliente paga a adesão e o sistema confirma a baixa do pagamento.
+
+**Como sacar?**  
+O consultor pode sacar **a qualquer momento** que quiser ou precisar. É só solicitar pelo sistema ou app.
+
+**Exemplo:**  
+- João fecha uma venda com adesão de R$ 300,00
+- O cliente paga
+- O sistema credita R$ 300,00 na conta do João
+- João pode sacar esse valor quando quiser
+
+---
+
+### 📊 RESIDUAL (sobre Mensalidades Recebidas)
+
+**O que é?**  
+É o valor variável que o consultor ganha todo mês, calculado com base nas **mensalidades pagas pelos clientes** da sua carteira. O valor é definido pelo Motor de Regras da empresa.
+
+**Quando fica disponível?**  
+Os valores são calculados mensalmente com base em todas as mensalidades recebidas dos clientes que o consultor trouxe.
+
+**Como sacar?**  
+O fluxo do residual é **diferente e mais controlado**:
+
+1. **Sistema gera o demonstrativo** — Todo mês, o sistema calcula os residuais e gera um demonstrativo financeiro
+2. **Consultor confere** — O consultor acessa o demonstrativo no App ou no sistema web
+3. **Consultor confirma** — Após conferir, o consultor clica em "Confirmar valores"
+4. **NF é emitida automaticamente** — Só após a confirmação, o sistema emite a nota fiscal
+5. **Solicitação de pagamento** — O sistema abre automaticamente uma solicitação no financeiro
+6. **Ordem de pagamento** — O financeiro processa a ordem de pagamento
+7. **PIX é realizado** — O valor cai na conta do consultor
+
+**⚠️ Importante:** O consultor **não pode sacar o residual a qualquer momento**. Ele precisa primeiro conferir e confirmar o demonstrativo.
+
+**Exemplo:**  
+- João tem 50 clientes na carteira
+- Em janeiro, 45 clientes pagaram a mensalidade (total R$ 22.500)
+- O sistema calcula: João ganha 1% = R$ 225,00 de residual
+- João acessa o demonstrativo e confere cada valor
+- João clica em "Confirmar que os valores estão corretos"
+- Sistema emite a NF automaticamente
+- Sistema abre solicitação de pagamento
+- João recebe o PIX alguns dias depois
+
+---
+
+## Comparativo: Comissão vs Residual
+
+| Característica | COMISSÃO | RESIDUAL |
+|----------------|----------|----------|
+| **Base de cálculo** | Valor da Adesão | Mensalidades recebidas |
+| **Frequência** | Por venda | Mensal |
+| **Disponibilidade** | Imediata (após baixa) | Após conferência do demonstrativo |
+| **Pode sacar quando quiser?** | ✅ Sim | ❌ Não, precisa confirmar primeiro |
+| **Precisa confirmar valores?** | ❌ Não | ✅ Sim, obrigatório |
+| **NF emitida quando?** | No momento do saque | Após confirmação |
+| **Contestação** | Pode contestar depois | Contesta antes de confirmar |
+
+---
+
 ## Como funciona na prática?
 
 ### A Jornada do Dinheiro (do início ao fim)
 
-Imagine que um consultor chamado João acabou de fechar uma venda de um plano de proteção veicular. Veja o que acontece com o dinheiro dele:
+Imagine que um consultor chamado João acabou de fechar uma venda de um plano de proteção veicular. Veja o que acontece com os dois tipos de ganho:
 
-**1. A Venda é Concretizada**
-- João fecha a proposta de um plano Ouro no valor de mensalidade de R$ 500,00 e o valor de adesão de R$ 300,00
-- O valor da adesão, caso tenha sido recebido dentro do CRM, será creditado na "conta virtual" do João dentro do sistema quando o associado efetuar o pagamento.
-- João receberá uma notificação: "Você ganhou R$ 300,00 de comissão!"
-- Sobre o valor da mensalidade, o sistema automaticamente calcula quanto João vai ganhar de comissão (digamos, 8% = R$ 40,00)
-- Esse valor será creditado na "conta virtual" do João dentro do sistema quando o associado efetuar o pagamento da primeira mensalidade.
-- João receberá uma notificação: "Você ganhou R$ 40,00 de residual!"
+---
 
-**2. O Dinheiro Fica Disponível**
-- João pode acessar o sistema a qualquer momento e ver seu saldo
-- Ele vê um extrato com todas as entradas: comissões, bonificações, residuais
-- O saldo vai acumulando conforme João faz mais vendas
+### 🟢 FLUXO DA COMISSÃO (Adesão)
 
-**3. João Decide Sacar**
-- Quando João quer receber o dinheiro, ele solicita um saque
-- Ele pode sacar tudo, um valor específico, ou apenas o que ganhou em um período
-- O sistema verifica se está tudo certo (dados bancários, documentos, etc.)
+**1. A Venda é Fechada**
+- João fecha uma proposta de um plano Ouro
+- Valor da mensalidade: R$ 500,00
+- Valor da adesão: R$ 300,00
 
-**4. Nota Fiscal é Emitida**
-- Automaticamente, o sistema emite a nota fiscal de serviço
-- Se João é MEI, sai uma NFS-e; se é empresa, sai uma NF-e
-- O XML e PDF ficam guardados para João consultar quando quiser
-- 
+**2. Cliente Paga a Adesão**
+- O cliente faz o pagamento da adesão
+- O sistema confirma a baixa do pagamento
 
-**5. O Pagamento é Processado**
-- O sistema cria uma ordem de pagamento no financeiro da empresa
-- O valor é transferido via PIX para a conta do João
-- João recebe o comprovante e uma notificação de que o dinheiro caiu
+**3. Comissão é Creditada**
+- O sistema credita R$ 300,00 na conta virtual do João (conta de comissões)
+- João recebe notificação: "Você recebeu R$ 300,00 de comissão!"
 
-**6. Tudo Fica Registrado**
-- João pode ver todo o histórico: quando vendeu, quanto ganhou, quando sacou
-- Se precisar, pode baixar demonstrativos e relatórios
-- A contabilidade da empresa também recebe os lançamentos automaticamente
+**4. João Pode Sacar Quando Quiser**
+- João acessa o sistema ou app
+- Vê que tem R$ 300,00 disponíveis em comissões
+- Pode sacar agora, amanhã, ou quando precisar
+- Não precisa esperar ninguém aprovar
+
+**5. Processo de Saque (quando João decidir)**
+- João clica em "Sacar"
+- Sistema emite a NF automaticamente
+- Sistema abre ordem de pagamento
+- PIX cai na conta do João
+
+---
+
+### 🔵 FLUXO DO RESIDUAL (Mensalidades)
+
+**1. Mês se Passa, Clientes Pagam Mensalidades**
+- João tem 50 clientes na carteira
+- Durante janeiro, 45 clientes pagaram suas mensalidades
+- Total de mensalidades: R$ 22.500,00
+
+**2. Sistema Calcula os Residuais**
+- No fechamento do período (ex: dia 5 de fevereiro)
+- Sistema aplica as regras do Motor de Regras
+- Calcula: João ganha 1% sobre mensalidades = R$ 225,00
+
+**3. Demonstrativo é Gerado**
+- Sistema gera o demonstrativo financeiro do João
+- Lista cada cliente, cada mensalidade, cada cálculo
+- Envia notificação: "Seu demonstrativo de janeiro está disponível"
+
+**4. João Confere o Demonstrativo**
+- João acessa o App do Consultor ou o sistema web
+- Vê a lista completa: qual cliente pagou, quanto, qual o residual
+- Confere se está tudo certo
+- Se tiver dúvida, pode contestar antes de confirmar
+
+**5. João Confirma os Valores**
+- Após conferir tudo, João clica em "Confirmar valores"
+- Isso significa: "Li, conferi e concordo com os valores"
+- **Só após essa confirmação o processo continua**
+
+**6. Sistema Emite NF Automaticamente**
+- Imediatamente após a confirmação
+- NF é gerada e enviada para João
+- XML e PDF ficam disponíveis no sistema
+
+**7. Solicitação de Pagamento**
+- Sistema abre automaticamente uma solicitação no financeiro
+- Anexa a NF e todos os documentos
+
+**8. Ordem de Pagamento é Processada**
+- Financeiro recebe a solicitação
+- Processa a ordem de pagamento no MGF/Sankhya
+
+**9. PIX é Realizado**
+- Valor é transferido para a conta do João
+- João recebe notificação: "Seu residual de R$ 225,00 foi pago!"
+- Comprovante fica disponível no sistema
+
+---
+
+## A Conta Virtual do Consultor
+
+Todo consultor tem **duas áreas separadas** na sua conta virtual:
+
+### Saldo de Comissões
+- Valores das adesões recebidas
+- Pode sacar a qualquer momento
+- Extrato próprio de comissões
+
+### Saldo de Residuais
+- Valores das mensalidades (após conferência)
+- Só libera após confirmar demonstrativo
+- Extrato próprio de residuais
+
+**Na tela principal, o consultor vê:**
+```
+┌─────────────────────────────────────────┐
+│         MINHA CONTA FINANCEIRA          │
+├─────────────────────────────────────────┤
+│                                         │
+│   💰 COMISSÕES DISPONÍVEIS              │
+│   R$ 1.250,00                           │
+│   [Sacar Agora]                         │
+│                                         │
+├─────────────────────────────────────────┤
+│                                         │
+│   📊 RESIDUAIS                          │
+│   R$ 450,00 (pendente confirmação)      │
+│   [Ver Demonstrativo]                   │
+│                                         │
+│   R$ 225,00 (confirmado, aguardando)    │
+│   Status: Processando pagamento         │
+│                                         │
+└─────────────────────────────────────────┘
+```
 
 ---
 
@@ -64,19 +215,29 @@ Imagine que um consultor chamado João acabou de fechar uma venda de um plano de
 
 ### Parte 1: A Conta do Consultor
 
-Todo consultor tem uma "conta virtual" no sistema. É como uma conta bancária, mas interna. Nela, o consultor pode:
+Todo consultor tem uma "conta virtual" no sistema, dividida em **duas áreas**:
 
-**Ver seu saldo disponível** — A qualquer momento, o consultor sabe exatamente quanto tem para sacar. O valor aparece na tela principal, sempre atualizado.
+#### Área de Comissões (Adesões)
+- Recebe os valores das adesões automaticamente
+- Consultor pode sacar a qualquer momento
+- Não precisa de aprovação prévia
 
-**Consultar o extrato** — Uma lista de todas as movimentações: entradas (comissões, bonificações, prêmios) e saídas (saques, estornos). Com data, valor e descrição de cada uma.
+#### Área de Residuais (Mensalidades)
+- Recebe os valores calculados sobre mensalidades
+- Consultor precisa conferir e confirmar o demonstrativo
+- Só libera para pagamento após confirmação
 
-**Solicitar saque total** — Com um clique, o consultor pede para receber tudo que tem disponível. Simples e rápido.
+**O que o consultor pode fazer:**
 
-**Solicitar saque parcial** — Se preferir, pode sacar apenas uma parte. Por exemplo: "Tenho R$ 1.000, mas quero sacar só R$ 500 agora".
+**Ver saldos separados** — O consultor vê claramente quanto tem de comissões (pode sacar agora) e quanto tem de residuais (precisa confirmar).
 
-**Solicitar saque por período** — Útil para organização: "Quero sacar só o que ganhei em janeiro" ou "Só as comissões do último trimestre".
+**Consultar extratos por tipo** — Uma lista separada para cada tipo de recebimento, com data, valor e descrição.
 
-**Receber créditos automaticamente** — O consultor não precisa fazer nada. Fechou a venda, a comissão entra na conta dele automaticamente.
+**Solicitar saque de comissões** — A qualquer momento, o consultor pode sacar suas comissões. Total, parcial ou por período.
+
+**Conferir demonstrativo de residuais** — Todo mês, o consultor acessa o demonstrativo, confere os valores e confirma.
+
+**Receber créditos automaticamente** — Fechou a venda e cliente pagou a adesão? Comissão entra na conta. Mensalidade foi paga? Residual é calculado no fechamento do período.
 
 ---
 
@@ -148,17 +309,23 @@ Aqui é onde a mágica acontece. O sistema calcula automaticamente quanto cada c
 
 ---
 
-### Parte 7: Demonstrativos Financeiros
+### Parte 7: Demonstrativos Financeiros e Conferência de Residuais
 
-O consultor precisa saber exatamente o que ganhou e por quê:
+O demonstrativo é fundamental, especialmente para os **residuais**:
 
-**Demonstrativo analítico** — Mostra cada venda, cada comissão, cada bonificação. Linha por linha, com todos os detalhes.
+**Demonstrativo de Residuais (mensal)** — Lista todos os clientes da carteira, quais pagaram, quanto pagou cada um, e quanto o consultor ganha de residual. **O consultor DEVE conferir e confirmar este demonstrativo para receber.**
 
-**Demonstrativo sintético** — Um resumo: "Total de comissões: R$ X, Total de bonificações: R$ Y, Total geral: R$ Z".
+**Demonstrativo de Comissões** — Histórico de todas as comissões recebidas sobre adesões. Para consulta e controle.
 
-**Envio automático** — Todo mês (ou na frequência configurada), o consultor recebe seu demonstrativo por e-mail.
+**Conferência obrigatória** — Para residuais, o consultor precisa acessar o demonstrativo (no App ou sistema) e clicar em "Confirmar valores". Só depois disso o sistema emite a NF e libera o pagamento.
 
-**Contestação de valores** — Se o consultor discordar de algum valor, pode contestar pelo sistema. O gestor analisa e responde.
+**Contestação de valores** — Se o consultor encontrar algo errado, pode contestar **antes de confirmar**. O gestor analisa e corrige se necessário.
+
+**Prazo para conferência** — O consultor tem um prazo (configurável) para conferir. Se não conferir, o gestor é avisado.
+
+**Envio automático** — O demonstrativo é enviado por e-mail e push notification assim que fica disponível.
+
+**Histórico completo** — Todos os demonstrativos ficam guardados. O consultor pode consultar meses anteriores a qualquer momento.
 
 ---
 
@@ -166,13 +333,15 @@ O consultor precisa saber exatamente o que ganhou e por quê:
 
 Para quem quer ir além do básico:
 
-**Acesso pelo App** — O consultor pode ver seus demonstrativos e saldos pelo celular, a qualquer hora.
+**Acesso pelo App** — O consultor pode ver seus saldos (comissões e residuais separados), conferir demonstrativos e confirmar valores pelo celular.
 
-**Notificações push** — "Você recebeu R$ 40,00 de comissão!" direto no celular do consultor.
+**Notificações push** — "Você recebeu R$ 300,00 de comissão!" ou "Seu demonstrativo de residuais está pronto para conferência!" direto no celular.
 
-**Dashboard do gestor** — Visão consolidada: quanto a equipe toda ganhou, quanto foi pago, tendências.
+**Dashboard do gestor** — Visão consolidada: quanto a equipe ganhou de comissões, quanto de residuais, quem já confirmou demonstrativo, quem está pendente.
 
-**Residuais automáticos** — Quando um cliente paga a mensalidade, o residual do consultor é creditado automaticamente.
+**Cálculo automático de residuais** — No fechamento do período, o sistema calcula automaticamente os residuais de todos os consultores com base nas mensalidades recebidas.
+
+**Alertas de pendência** — Se um consultor não conferiu o demonstrativo em X dias, o gestor recebe um alerta.
 
 **Exportação de relatórios** — Excel, PDF, CSV. Para quem precisa analisar os dados em outras ferramentas.
 
@@ -295,11 +464,20 @@ Para funcionar completamente, o módulo se conecta com:
 
 Algumas regras que o sistema sempre respeita:
 
-**Para sacar:**
-- Saldo mínimo de R$ 50,00
+**Para COMISSÕES (Adesões):**
+- Valor disponível assim que cliente paga e sistema confirma a baixa
+- Consultor pode sacar a qualquer momento
+- Saldo mínimo de R$ 50,00 para saque
 - Dados bancários e PIX cadastrados
-- Dados fiscais completos (CPF/CNPJ)
-- Só pode ter um saque em andamento por vez
+- NF emitida no momento do saque
+
+**Para RESIDUAIS (Mensalidades):**
+- Calculado no fechamento do período (mensal)
+- Consultor DEVE conferir o demonstrativo (App ou sistema)
+- Consultor DEVE confirmar que valores estão corretos
+- NF emitida SOMENTE após confirmação do consultor
+- Se não conferir, pagamento não é processado
+- Pode contestar ANTES de confirmar
 
 **Para notas fiscais:**
 - MEI e autônomo emitem NFS-e
@@ -307,7 +485,7 @@ Algumas regras que o sistema sempre respeita:
 - Cancelamento até 24h (NF-e) ou conforme regra municipal (NFS-e)
 
 **Para estornos:**
-- Cancelou a venda = estorno automático
+- Cancelou a venda = estorno automático na conta de comissões
 - Estornos acima de R$ 500 precisam de aprovação
 - Cliente recebe devolução via PIX
 
@@ -341,9 +519,20 @@ Como sabemos se o módulo está funcionando bem:
 
 Este módulo é essencial para manter os consultores motivados e pagos corretamente. Ele automatiza todo o processo que antes era manual:
 
-- ✅ Calcula comissões automaticamente
-- ✅ Emite notas fiscais sem intervenção humana
-- ✅ Paga via PIX em menos de 24h
+**Para COMISSÕES (Adesões):**
+- ✅ Credita automaticamente quando cliente paga
+- ✅ Consultor saca quando quiser
+- ✅ NF emitida no momento do saque
+- ✅ PIX em menos de 24h
+
+**Para RESIDUAIS (Mensalidades):**
+- ✅ Calcula automaticamente no fechamento do período
+- ✅ Gera demonstrativo detalhado para conferência
+- ✅ Consultor confere e confirma pelo App/Sistema
+- ✅ NF emitida automaticamente após confirmação
+- ✅ Pagamento processado sem intervenção manual
+
+**Para ambos:**
 - ✅ Mantém histórico completo para auditoria
 - ✅ Oferece transparência total para o consultor
 - ✅ Permite regras flexíveis de comissionamento
@@ -360,6 +549,7 @@ Este módulo é essencial para manter os consultores motivados e pagos corretame
 | 1.0 | 29/01/2026 | Versão inicial com conta, NF, pagamento e motor básico |
 | 2.0 | 29/01/2026 | Adicionado motor avançado, metas, transparência e políticas |
 | 2.1 | 29/01/2026 | Adicionada distribuição hierárquica (filiação) |
+| 2.2 | 29/01/2026 | Separação clara entre Comissões (adesão) e Residuais (mensalidade) |
 
 ---
 

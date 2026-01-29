@@ -4,7 +4,7 @@
 |----------|-------|
 | **Módulo** | CRM-Financeiro |
 | **Código** | CRM-FIN |
-| **Versão** | 2.1 |
+| **Versão** | 2.2 |
 | **Data** | 29/01/2026 |
 | **Responsável** | Product Owner - CRM |
 | **Status** | Planejado |
@@ -55,27 +55,99 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 
 ### 1.3 Subfluxos
 
-#### 1.3.1 Fluxo Principal - Solicitação de Saque
+> **IMPORTANTE:** O consultor possui dois tipos de recebimentos com fluxos distintos:
+> - **COMISSÃO**: sobre Valor da Adesão → saque livre a qualquer momento
+> - **RESIDUAL**: sobre Mensalidades → requer conferência e confirmação do demonstrativo
+
+#### 1.3.1 Fluxo de Comissão (Valor da Adesão)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                              FLUXO DE SAQUE                                         │
+│                     FLUXO DE COMISSÃO (ADESÃO) - SAQUE LIVRE                        │
 ├─────────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                     │
-│   1. Consultor visualiza saldo disponível (total ou por período)                    │
-│   2. Consultor solicita saque (total ou parcial)                                    │
-│   3. Sistema abre ticket de solicitação no Banco Digital/Setor Financeiro           │
-│   4. Sistema emite NF-e/NFS-e automaticamente (SEFAZ/SRF)                           │
-│   5. Sistema arquiva XML e PDF da NF                                                │
-│   6. Sistema realiza lançamento contábil                                            │
-│   7. Sistema gera ordem de pagamento no MGF/Sankhya com anexos                      │
-│   8. Sistema processa pagamento via PIX na conta do consultor                       │
-│   9. Sistema atualiza extrato e histórico de pagamentos                             │
+│   [Cliente Paga Adesão]                                                             │
+│          │                                                                          │
+│          ▼                                                                          │
+│   ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│   │ 1. Sistema confirma baixa do pagamento                                       │  │
+│   │ 2. Sistema credita COMISSÃO na conta do consultor (automático)               │  │
+│   │ 3. Consultor recebe notificação de crédito                                   │  │
+│   │ 4. Valor fica DISPONÍVEL IMEDIATAMENTE                                       │  │
+│   └──────────────────────────────────────────────────────────────────────────────┘  │
+│          │                                                                          │
+│          ▼                                                                          │
+│   [Consultor Decide Sacar - A QUALQUER MOMENTO]                                     │
+│          │                                                                          │
+│          ▼                                                                          │
+│   ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│   │ 5. Consultor solicita saque (total, parcial ou por período)                  │  │
+│   │ 6. Sistema emite NF-e/NFS-e automaticamente                                  │  │
+│   │ 7. Sistema gera ordem de pagamento no MGF/Sankhya                            │  │
+│   │ 8. Sistema processa pagamento via PIX                                        │  │
+│   │ 9. Consultor recebe valor na conta bancária                                  │  │
+│   └──────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                     │
+│   CARACTERÍSTICAS:                                                                  │
+│   • Consultor pode sacar quando quiser ou precisar                                  │
+│   • Não precisa aguardar aprovação                                                  │
+│   • Não precisa conferir demonstrativo                                              │
+│   • Contabilização independente (conta de comissões)                                │
 │                                                                                     │
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### 1.3.2 Fluxo de Cancelamento/Estorno
+#### 1.3.2 Fluxo de Residual (Mensalidades)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                FLUXO DE RESIDUAL (MENSALIDADES) - CONFERÊNCIA OBRIGATÓRIA           │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│   [Clientes Pagam Mensalidades Durante o Período]                                   │
+│          │                                                                          │
+│          ▼                                                                          │
+│   ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│   │ 1. Sistema registra todas as mensalidades recebidas                          │  │
+│   │ 2. No fechamento do período (mensal), Motor de Regras calcula residuais      │  │
+│   │ 3. Sistema gera DEMONSTRATIVO FINANCEIRO detalhado                           │  │
+│   │ 4. Consultor recebe notificação: "Demonstrativo disponível para conferência" │  │
+│   └──────────────────────────────────────────────────────────────────────────────┘  │
+│          │                                                                          │
+│          ▼                                                                          │
+│   [Consultor DEVE Conferir - App ou Sistema Web]                                    │
+│          │                                                                          │
+│          ▼                                                                          │
+│   ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│   │ 5. Consultor acessa demonstrativo (App Consultor ou Sistema)                 │  │
+│   │ 6. Consultor confere cada valor: clientes, mensalidades, percentuais         │  │
+│   │ 7. Se houver erro: consultor CONTESTA antes de confirmar                     │  │
+│   │ 8. Consultor clica em "CONFIRMAR QUE VALORES ESTÃO CORRETOS"                 │  │
+│   └──────────────────────────────────────────────────────────────────────────────┘  │
+│          │                                                                          │
+│          ▼                                                                          │
+│   [SOMENTE APÓS CONFIRMAÇÃO - Processo Automático]                                  │
+│          │                                                                          │
+│          ▼                                                                          │
+│   ┌──────────────────────────────────────────────────────────────────────────────┐  │
+│   │ 9. Sistema emite NF-e/NFS-e AUTOMATICAMENTE                                  │  │
+│   │ 10. Sistema abre SOLICITAÇÃO DE PAGAMENTO no financeiro                      │  │
+│   │ 11. Financeiro processa ORDEM DE PAGAMENTO                                   │  │
+│   │ 12. Sistema efetua PAGAMENTO VIA PIX                                         │  │
+│   │ 13. Consultor recebe valor na conta bancária                                 │  │
+│   └──────────────────────────────────────────────────────────────────────────────┘  │
+│                                                                                     │
+│   CARACTERÍSTICAS:                                                                  │
+│   • Consultor NÃO pode sacar sem antes conferir e confirmar                         │
+│   • Contestação deve ser feita ANTES da confirmação                                 │
+│   • NF só é emitida APÓS confirmação do consultor                                   │
+│   • Contabilização independente (conta de residuais)                                │
+│   • Prazo para conferência (configurável, alerta ao gestor se exceder)              │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 1.3.3 Fluxo de Cancelamento/Estorno
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
@@ -103,7 +175,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### 1.3.3 Motor de Regras - Comissões e Remuneração Variável
+#### 1.3.4 Motor de Regras - Comissões e Remuneração Variável
 
 > **Inspirado em:** SplitC - Plataforma de automação de remuneração variável
 
@@ -191,7 +263,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### 1.3.4 Gestão de Metas Avançada
+#### 1.3.5 Gestão de Metas Avançada
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
@@ -225,7 +297,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### 1.3.5 Portal de Transparência
+#### 1.3.6 Portal de Transparência
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
@@ -265,7 +337,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### 1.3.6 Aceite Digital de Políticas
+#### 1.3.7 Aceite Digital de Políticas
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────┐
@@ -302,7 +374,7 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### 1.3.7 Distribuição Hierárquica de Comissões (Filiação)
+#### 1.3.8 Distribuição Hierárquica de Comissões (Filiação)
 
 > **Contexto:** Configuração de comissões e repasses sobre o **Valor da Adesão** recebido do lead/cliente.  
 > **Níveis:** Fixos (não configuráveis por empresa)  
@@ -1185,6 +1257,25 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | US-CRM-FIN-062 | Como consultor, quero visualizar o detalhamento da distribuição de uma filiação | Importante | 5 |
 | US-CRM-FIN-063 | Como gestor, quero visualizar relatório de distribuições por nível hierárquico | Importante | 8 |
 
+### 3.14 Separação Comissões (Adesão) vs Residuais (Mensalidade)
+
+> **Nova funcionalidade:** Fluxos distintos para dois tipos de recebimento do consultor
+
+| ID | História | Prioridade | SP |
+|----|----------|------------|-----|
+| US-CRM-FIN-064 | Como consultor, quero ver meu saldo de COMISSÕES separado do saldo de RESIDUAIS | Essencial | 8 |
+| US-CRM-FIN-065 | Como consultor, quero sacar minhas COMISSÕES (adesões) a qualquer momento | Essencial | 5 |
+| US-CRM-FIN-066 | Como sistema, quero creditar COMISSÃO na conta do consultor quando cliente pagar a ADESÃO | Essencial | 8 |
+| US-CRM-FIN-067 | Como sistema, quero calcular RESIDUAIS mensalmente sobre mensalidades recebidas | Essencial | 13 |
+| US-CRM-FIN-068 | Como sistema, quero gerar DEMONSTRATIVO de residuais para conferência do consultor | Essencial | 13 |
+| US-CRM-FIN-069 | Como consultor, quero conferir e CONFIRMAR meu demonstrativo de residuais no App/Sistema | Essencial | 8 |
+| US-CRM-FIN-070 | Como sistema, quero emitir NF de residuais SOMENTE após confirmação do consultor | Essencial | 5 |
+| US-CRM-FIN-071 | Como sistema, quero abrir solicitação de pagamento automaticamente após confirmação do residual | Essencial | 5 |
+| US-CRM-FIN-072 | Como consultor, quero CONTESTAR valores do demonstrativo antes de confirmar | Importante | 8 |
+| US-CRM-FIN-073 | Como gestor, quero visualizar consultores com demonstrativo pendente de confirmação | Importante | 5 |
+| US-CRM-FIN-074 | Como gestor, quero configurar prazo máximo para conferência do demonstrativo | Desejável | 3 |
+| US-CRM-FIN-075 | Como sistema, quero alertar gestor quando consultor exceder prazo de conferência | Desejável | 3 |
+
 ---
 
 ## 4. Regras de Negócio
@@ -1257,13 +1348,38 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | RN-FIN-032 | Tipo obrigatório | Todo usuário deve ter tipo definido: COMISSÃO ou REPASSE |
 | RN-FIN-033 | Validação prévia | Sistema deve validar configuração antes de aplicar em filiação |
 
+### 4.8 Regras de Comissões (Adesão)
+
+| Código | Regra | Validação |
+|--------|-------|-----------|
+| RN-FIN-034 | Base de cálculo | COMISSÃO calculada sobre VALOR DA ADESÃO |
+| RN-FIN-035 | Disponibilidade | Comissão disponível IMEDIATAMENTE após confirmação de pagamento |
+| RN-FIN-036 | Saque livre | Consultor pode sacar comissões A QUALQUER MOMENTO |
+| RN-FIN-037 | Contabilização separada | Comissões contabilizadas em conta separada de residuais |
+| RN-FIN-038 | NF no saque | NF emitida no momento da SOLICITAÇÃO DE SAQUE |
+
+### 4.9 Regras de Residuais (Mensalidades)
+
+| Código | Regra | Validação |
+|--------|-------|-----------|
+| RN-FIN-039 | Base de cálculo | RESIDUAL calculado sobre MENSALIDADES RECEBIDAS |
+| RN-FIN-040 | Período de cálculo | Residuais calculados no FECHAMENTO DO PERÍODO (mensal) |
+| RN-FIN-041 | Conferência obrigatória | Consultor DEVE conferir demonstrativo antes de receber |
+| RN-FIN-042 | Confirmação obrigatória | Consultor DEVE confirmar valores para liberar pagamento |
+| RN-FIN-043 | NF após confirmação | NF emitida SOMENTE APÓS confirmação do consultor |
+| RN-FIN-044 | Contestação prévia | Consultor deve contestar ANTES de confirmar |
+| RN-FIN-045 | Prazo de conferência | Sistema deve ter prazo configurável para conferência |
+| RN-FIN-046 | Bloqueio sem confirmação | Sem confirmação, pagamento NÃO é processado |
+| RN-FIN-047 | Contabilização separada | Residuais contabilizados em conta separada de comissões |
+
 ---
 
 ## 5. Métricas (KPIs)
 
 | Métrica | Descrição | Meta |
 |---------|-----------|------|
-| Tempo médio saque → pagamento | Tempo do processo completo | < 24h |
+| Tempo médio saque comissão → pagamento | Tempo do processo de comissões | < 24h |
+| Tempo médio confirmação → pagamento residual | Tempo após confirmação do demonstrativo | < 48h |
 | Taxa de sucesso emissão NF | NFs emitidas sem erro | > 98% |
 | Taxa de sucesso PIX | PIXs efetivados | > 99% |
 | Volume diário de saques | Quantidade de solicitações | Monitorar |
@@ -1276,6 +1392,9 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | Uso do simulador | Simulações realizadas / consultores | Monitorar |
 | Distribuições por nível | Volume distribuído por nível hierárquico | Monitorar |
 | Valor médio restante | Média do % restante nas distribuições | Monitorar |
+| Tempo médio conferência demonstrativo | Dias entre disponibilização e confirmação | < 5 dias |
+| Taxa de demonstrativos pendentes | Pendentes de confirmação / total | < 10% |
+| Taxa de contestações | Contestações / demonstrativos | < 5% |
 
 ---
 
@@ -1286,10 +1405,11 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | 29/01/2026 | 1.0 | Product Owner | Versão inicial - Estrutura completa do módulo CRM-Financeiro |
 | 29/01/2026 | 2.0 | Product Owner | Motor de Regras Avançado inspirado SplitC: +21 histórias (+181 SP) |
 | 29/01/2026 | 2.1 | Product Owner | Distribuição Hierárquica de Comissões (Filiação): +8 histórias (+52 SP) |
+| 29/01/2026 | 2.2 | Product Owner | **Separação Comissões vs Residuais**: +12 histórias (+84 SP), +14 regras negócio, fluxos distintos com conferência obrigatória para residuais |
 
 ---
 
-**Versão**: 2.1  
+**Versão**: 2.2  
 **Data**: 29/01/2026  
 **Responsável**: Product Owner - CRM  
 **Tipo DDD**: Core Domain
@@ -1311,17 +1431,18 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **Portal de Transparência (FIN-049 a FIN-051)** | **3** | **21 SP** |
 | **Aceite Digital de Políticas (FIN-052 a FIN-055)** | **4** | **34 SP** |
 | **Distribuição Hierárquica - Filiação (FIN-056 a FIN-063)** | **8** | **52 SP** |
-| **TOTAL CRM-Financeiro** | **63** | **617 SP** |
+| **Separação Comissões vs Residuais (FIN-064 a FIN-075)** | **12** | **84 SP** |
+| **TOTAL CRM-Financeiro** | **75** | **701 SP** |
 
 ### 7.1 Comparativo de Evolução
 
-| Métrica | v1.0 | v2.0 | v2.1 | Δ Total |
-|---------|------|------|------|---------|
-| Histórias de Usuário | 34 | 55 | 63 | +29 (+85%) |
-| Story Points | 374 SP | 565 SP | 617 SP | +243 SP (+65%) |
-| Entidades DDD | 12 | 16 | 19 | +7 (+58%) |
-| Eventos de Domínio | 12 | 18 | 18 | +6 (+50%) |
-| Regras de Negócio | 17 | 25 | 33 | +16 (+94%) |
+| Métrica | v1.0 | v2.0 | v2.1 | v2.2 | Δ Total |
+|---------|------|------|------|------|---------|
+| Histórias de Usuário | 34 | 55 | 63 | 75 | +41 (+121%) |
+| Story Points | 374 SP | 565 SP | 617 SP | 701 SP | +327 SP (+87%) |
+| Entidades DDD | 12 | 16 | 19 | 19 | +7 (+58%) |
+| Eventos de Domínio | 12 | 18 | 18 | 20 | +8 (+67%) |
+| Regras de Negócio | 17 | 25 | 33 | 47 | +30 (+176%) |
 
 ### 7.2 Novas Funcionalidades (SplitC-inspired)
 
@@ -1346,6 +1467,23 @@ O módulo **CRM-Financeiro** é responsável pela gestão completa do ciclo fina
 | **Cálculo Automático** | Distribuição automática na filiação | 8 SP |
 | **Imutabilidade** | Valores fixos após pagamento | 5 SP |
 | **Relatórios** | Detalhamento e consolidação por nível | 13 SP |
+
+### 7.4 Novas Funcionalidades (Separação Comissões vs Residuais)
+
+| Funcionalidade | Descrição | SP |
+|----------------|-----------|-----|
+| **Saldos Separados** | Conta de comissões separada de conta de residuais | 8 SP |
+| **Saque Livre de Comissões** | Consultor saca comissões a qualquer momento | 5 SP |
+| **Crédito Automático Adesão** | Comissão creditada quando cliente paga adesão | 8 SP |
+| **Cálculo Mensal Residuais** | Motor de regras calcula residuais sobre mensalidades | 13 SP |
+| **Demonstrativo para Conferência** | Sistema gera demonstrativo detalhado | 13 SP |
+| **Confirmação Obrigatória** | Consultor deve confirmar valores no App/Sistema | 8 SP |
+| **NF Após Confirmação** | NF de residuais só emitida após confirmação | 5 SP |
+| **Fluxo Automático Pós-Confirmação** | Solicitação de pagamento automática | 5 SP |
+| **Contestação Prévia** | Consultor contesta antes de confirmar | 8 SP |
+| **Gestão de Pendências** | Gestor visualiza conferências pendentes | 5 SP |
+| **Prazo Configurável** | Prazo máximo para conferência | 3 SP |
+| **Alertas de Prazo** | Alerta quando prazo é excedido | 3 SP |
 
 ---
 
