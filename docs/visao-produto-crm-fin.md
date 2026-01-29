@@ -14,7 +14,7 @@
 
 O **Módulo Financeiro do Consultor** é a parte do sistema responsável por cuidar de todo o dinheiro que os consultores ganham com suas vendas. Desde o momento em que uma venda é fechada até o dinheiro cair na conta do consultor, este módulo controla tudo.
 
-Pense nele como um "banco interno" da empresa para os consultores: ele guarda os valores, emite nota fiscal, faz os pagamentos via PIX e mantém todo o histórico organizado.
+Pense nele como um "banco interno", que será chamado ContaTop, para os consultores: ele guarda os valores, emite nota fiscal, faz os pagamentos via PIX e mantém todo o histórico organizado. A emissão da nota fiscal ocorre através da integração o sistema contábil, para os consultores que aderirem ao serviço de contabilidade virtual, integrada ao CRM.
 
 ---
 
@@ -22,7 +22,7 @@ Pense nele como um "banco interno" da empresa para os consultores: ele guarda os
 
 O consultor recebe dinheiro de **duas formas diferentes**, e cada uma tem seu próprio fluxo:
 
-### 💰 COMISSÃO (sobre Valor da Adesão)
+### COMISSÃO (sobre Valor da Adesão)
 
 **O que é?**  
 É o valor que o consultor ganha quando fecha uma venda. É calculado sobre o **Valor da Adesão** que o cliente paga para entrar no plano.
@@ -41,7 +41,7 @@ O consultor pode sacar **a qualquer momento** que quiser ou precisar. É só sol
 
 ---
 
-### 📊 RESIDUAL (sobre Mensalidades Recebidas)
+### RESIDUAL (sobre Mensalidades Recebidas)
 
 **O que é?**  
 É o valor variável que o consultor ganha todo mês, calculado com base nas **mensalidades pagas pelos clientes** da sua carteira. O valor é definido pelo Motor de Regras da empresa.
@@ -60,7 +60,7 @@ O fluxo do residual é **diferente e mais controlado**:
 6. **Ordem de pagamento** — O financeiro processa a ordem de pagamento
 7. **PIX é realizado** — O valor cai na conta do consultor
 
-**⚠️ Importante:** O consultor **não pode sacar o residual a qualquer momento**. Ele precisa primeiro conferir e confirmar o demonstrativo.
+**Importante:** O consultor **não pode sacar o residual a qualquer momento**. Ele precisa primeiro conferir e confirmar o demonstrativo.
 
 **Exemplo:**  
 - João tem 50 clientes na carteira
@@ -81,8 +81,8 @@ O fluxo do residual é **diferente e mais controlado**:
 | **Base de cálculo** | Valor da Adesão | Mensalidades recebidas |
 | **Frequência** | Por venda | Mensal |
 | **Disponibilidade** | Imediata (após baixa) | Após conferência do demonstrativo |
-| **Pode sacar quando quiser?** | ✅ Sim | ❌ Não, precisa confirmar primeiro |
-| **Precisa confirmar valores?** | ❌ Não | ✅ Sim, obrigatório |
+| **Pode sacar quando quiser?** | Sim | Não, precisa confirmar primeiro |
+| **Precisa confirmar valores?** | Não | Sim, obrigatório |
 | **NF emitida quando?** | No momento do saque | Após confirmação |
 | **Contestação** | Pode contestar depois | Contesta antes de confirmar |
 
@@ -96,7 +96,7 @@ Imagine que um consultor chamado João acabou de fechar uma venda de um plano de
 
 ---
 
-### 🟢 FLUXO DA COMISSÃO (Adesão)
+### FLUXO DA COMISSÃO (Adesão)
 
 **1. A Venda é Fechada**
 - João fecha uma proposta de um plano Ouro
@@ -125,7 +125,7 @@ Imagine que um consultor chamado João acabou de fechar uma venda de um plano de
 
 ---
 
-### 🔵 FLUXO DO RESIDUAL (Mensalidades)
+### FLUXO DO RESIDUAL (Mensalidades)
 
 **1. Mês se Passa, Clientes Pagam Mensalidades**
 - João tem 50 clientes na carteira
@@ -193,13 +193,13 @@ Todo consultor tem **duas áreas separadas** na sua conta virtual:
 │         MINHA CONTA FINANCEIRA          │
 ├─────────────────────────────────────────┤
 │                                         │
-│   💰 COMISSÕES DISPONÍVEIS              │
+│   COMISSÕES DISPONÍVEIS                 │
 │   R$ 1.250,00                           │
 │   [Sacar Agora]                         │
 │                                         │
 ├─────────────────────────────────────────┤
 │                                         │
-│   📊 RESIDUAIS                          │
+│   RESIDUAIS                             │
 │   R$ 450,00 (pendente confirmação)      │
 │   [Ver Demonstrativo]                   │
 │                                         │
@@ -520,23 +520,23 @@ Como sabemos se o módulo está funcionando bem:
 Este módulo é essencial para manter os consultores motivados e pagos corretamente. Ele automatiza todo o processo que antes era manual:
 
 **Para COMISSÕES (Adesões):**
-- ✅ Credita automaticamente quando cliente paga
-- ✅ Consultor saca quando quiser
-- ✅ NF emitida no momento do saque
-- ✅ PIX em menos de 24h
+- Credita automaticamente quando cliente paga
+- Consultor saca quando quiser
+- NF emitida no momento do saque
+- PIX em menos de 24h
 
 **Para RESIDUAIS (Mensalidades):**
-- ✅ Calcula automaticamente no fechamento do período
-- ✅ Gera demonstrativo detalhado para conferência
-- ✅ Consultor confere e confirma pelo App/Sistema
-- ✅ NF emitida automaticamente após confirmação
-- ✅ Pagamento processado sem intervenção manual
+- Calcula automaticamente no fechamento do período
+- Gera demonstrativo detalhado para conferência
+- Consultor confere e confirma pelo App/Sistema
+- NF emitida automaticamente após confirmação
+- Pagamento processado sem intervenção manual
 
 **Para ambos:**
-- ✅ Mantém histórico completo para auditoria
-- ✅ Oferece transparência total para o consultor
-- ✅ Permite regras flexíveis de comissionamento
-- ✅ Distribui valores corretamente em estruturas hierárquicas
+- Mantém histórico completo para auditoria
+- Oferece transparência total para o consultor
+- Permite regras flexíveis de comissionamento
+- Distribui valores corretamente em estruturas hierárquicas
 
 **Total: 63 funcionalidades que transformam um processo manual e propenso a erros em algo totalmente automatizado, transparente e confiável.**
 
