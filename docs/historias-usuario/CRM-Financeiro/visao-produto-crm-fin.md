@@ -41,13 +41,13 @@ O consultor pode sacar **a qualquer momento** que quiser ou precisar. É só sol
 
 ---
 
-### RESIDUAL (sobre Placas/Veículos Ativos)
+### RESIDUAL (sobre Placas/Veículos Ativos e com mensalidades recebidas)
 
 **O que é?**  
-É o valor variável que o consultor ganha todo mês, calculado com base na **quantidade de placas/veículos ativos** da sua carteira (ou seja, clientes que pagaram a mensalidade). O valor por placa é definido pelo Motor de Regras da empresa.
+É o valor variável que o consultor ganha todo mês, calculado com base na **quantidade de placas/veículos ativos e adimplentes** da sua carteira (ou seja, clientes que pagaram a mensalidade). O valor por placa é definido pelo Motor de Regras da empresa.
 
 **Quando fica disponível?**  
-Os valores são calculados mensalmente com base na quantidade de placas/veículos cujos clientes pagaram a mensalidade.
+Os valores são calculados mensalmente com base na quantidade de placas/veículos cujos clientes pagaram a mensalidade na base de veículos do consultor.
 
 **Como sacar?**  
 O fluxo do residual é **diferente e mais controlado**:
@@ -64,7 +64,7 @@ O fluxo do residual é **diferente e mais controlado**:
 
 **Exemplo:**  
 - João tem 50 placas/veículos na carteira
-- Em janeiro, 45 clientes pagaram a mensalidade
+- Em janeiro, 45 associados pagaram a mensalidade
 - O sistema calcula: João ganha R$ 5,00 por placa ativa = 45 × R$ 5,00 = R$ 225,00 de residual
 - João acessa o demonstrativo e confere cada valor
 - João clica em "Confirmar que os valores estão corretos"
@@ -78,7 +78,7 @@ O fluxo do residual é **diferente e mais controlado**:
 
 | Característica | COMISSÃO | RESIDUAL |
 |----------------|----------|----------|
-| **Base de cálculo** | Valor da Adesão | Quantidade de placas/veículos ativos |
+| **Base de cálculo** | Valor da Adesão | Quantidade de placas/veículos ativos e adimplentes |
 | **Frequência** | Por venda | Mensal |
 | **Disponibilidade** | Imediata (após baixa) | Após conferência do demonstrativo |
 | **Pode sacar quando quiser?** | Sim | Não, precisa confirmar primeiro |
@@ -228,8 +228,8 @@ Todo consultor tem uma "conta virtual" no sistema, dividida em **duas áreas**:
 - Consultor pode sacar a qualquer momento
 - Não precisa de aprovação prévia
 
-#### Área de Residuais (Placas Ativas)
-- Recebe os valores calculados por quantidade de placas/veículos ativos
+#### Área de Residuais (Placas Ativas e adimplentes) 
+- Recebe os valores calculados por quantidade de placas/veículos ativos e adimplentes
 - Consultor precisa conferir e confirmar o demonstrativo
 - Só libera para pagamento após confirmação
 
@@ -447,10 +447,10 @@ Quando um novo associado é captado, o valor da adesão é dividido entre vário
 **Configuração flexível** — O gestor define o percentual de cada nível. O sistema garante que a soma não passe de 100%.
 
 **Comissão vs Repasse** — Para cada nível hierárquico, define-se o tipo de operação:
-- **Comissão**: O valor é creditado na conta virtual do usuário (ele recebe)
-- **Repasse**: O usuário deve pagar esse valor para a empresa (é um débito, não um crédito)
+- **Comissão**: O valor é creditado na conta virtual do consultor (ele recebe)
+- **Repasse**: O consultor deve pagar esse valor para a empresa (é um débito, não um crédito)
 
-Exemplo: O Gerente pode ter configurado que recebe 1,5% como "Repasse". Isso significa que ele precisa repassar esse valor para a empresa, não que ele vai receber.
+Exemplo: O Gestor pode ter configurado para que o consultor faça o repasse de um valor especifico para a associacao "Repasse". Isso significa que ele precisa repassar esse valor para a empresa, não que ele vai receber.
 
 **Imutabilidade** — Depois que o pagamento é feito, os valores são travados. Ninguém pode alterar. Isso evita confusões.
 
@@ -527,13 +527,13 @@ Este módulo é essencial para manter os consultores motivados e pagos corretame
 - NF emitida no momento do saque
 - PIX em menos de 24h
 
-**Para RESIDUAIS (Placas Ativas):**
+**Para RESIDUAIS (Placas Ativas e adimplentes):**
 - Calcula automaticamente no fechamento do período
-- Gera demonstrativo analítico (detalhado) ou sintético para conferência
+- Gera demonstrativo analítico(detalhado) ou sintético para conferência
 - Consultor confere e confirma pelo App/Sistema
 - NF emitida automaticamente após confirmação
 - Pagamento processado sem intervenção manual
-- Registro contábil sem intervenção manual
+- Registro contabiel sim intervenção manual
 
 **Para ambos:**
 - Mantém histórico completo para auditoria
@@ -542,21 +542,4 @@ Este módulo é essencial para manter os consultores motivados e pagos corretame
 - Distribui valores corretamente em estruturas hierárquicas
 
 **Total: 63 funcionalidades que transformam um processo semi-manual (planilhas, calculos excel, confirmacoes por whatsapp) e propenso a erros em algo totalmente automatizado, transparente e confiável.**
-
----
-
-## Histórico de Versões
-
-| Versão | Data | O que mudou |
-|--------|------|-------------|
-| 1.0 | 29/01/2026 | Versão inicial com conta, NF, pagamento e motor básico |
-| 2.0 | 29/01/2026 | Adicionado motor avançado, metas, transparência e políticas |
-| 2.1 | 29/01/2026 | Adicionada distribuição hierárquica (filiação) |
-| 2.2 | 29/01/2026 | Separação clara entre Comissões (adesão) e Residuais (mensalidade) |
-| 2.3 | 29/01/2026 | **Residuais calculados por quantidade de placas/veículos** (não por valor R$). Nova definição Comissão vs Repasse. Descontos de rastreamento. Metas em placas. |
-
----
-
-*Documento elaborado pelo Product Owner — CRM*  
-*Última atualização: 29/01/2026*
 
