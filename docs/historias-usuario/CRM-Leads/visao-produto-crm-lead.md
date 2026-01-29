@@ -6,9 +6,7 @@
 
 ## O que é este módulo?
 
-O **Módulo de Captação de Leads** é a porta de entrada do sistema comercial. Ele é responsável por capturar, armazenar e qualificar todos os potenciais clientes (leads) que demonstram interesse em proteção veicular.
-
-Pense nele como uma "rede de pesca inteligente": ele captura interessados de diversos canais (landing page, WhatsApp, Facebook, Google), organiza as informações, e direciona cada lead para o consultor certo. Tudo de forma automática e rastreável.
+O **Módulo de Captação de Leads** é a porta de entrada do sistema comercial. Ele é responsável por capturar, armazenar e qualificar todos os potenciais associados (leads) que demonstram interesse em proteção veicular. Pense nele como uma "rede de pesca inteligente": ele captura interessados (prospects) de diversos canais (landing page, WhatsApp, Facebook, Google), organiza as informações, e direciona cada lead para o consultor certo ou permite que seja distribuido pelo gestor. Tudo de forma automática e rastreável.
 
 ---
 
@@ -17,7 +15,7 @@ Pense nele como uma "rede de pesca inteligente": ele captura interessados de div
 Sem leads, não há vendas. O módulo garante que:
 - **Nenhum interessado seja perdido** — Mesmo quem abandona o formulário na primeira etapa já fica cadastrado
 - **A origem seja rastreada** — Sabemos exatamente de onde cada lead veio (Google, Instagram, indicação, etc.)
-- **O consultor certo receba o lead** — Distribuição automática ou direcionamento por link personalizado
+- **O consultor certo receba o lead** — Distribuição automática/manual ou direcionamento por link personalizado
 - **O tempo de resposta seja mínimo** — Notificações em tempo real para o consultor
 
 ---
@@ -39,7 +37,7 @@ Imagine que Maria está interessada em proteção veicular para seu carro. Veja 
 
 **2. Formulário em 3 passos**
 
-O formulário é dividido em etapas para não assustar o visitante:
+O formulário é dividido em etapas para garantir a geração do lead:
 
 **Passo 1 — Dados de Contato**
 - Maria informa: nome, telefone e e-mail
@@ -47,22 +45,21 @@ O formulário é dividido em etapas para não assustar o visitante:
 - Se Maria desistir aqui, já temos como entrar em contato depois
 
 **Passo 2 — Dados do Veículo**
-- Maria seleciona: marca, modelo, ano e placa do veículo
-- O sistema busca automaticamente o valor FIPE
-- Se o veículo tiver restrições, o sistema avisa
+- Maria seleciona: marca, modelo, ano e tipo de uso do veículo
+- Isso determina quais planos estão disponíveis para o modelo/ano informado
 
 **Passo 3 — Localização**
 - Maria informa: estado e cidade onde mora
 - Isso determina quais planos estão disponíveis na região dela
 
 **3. Comparativo de Planos**
-- Após completar o formulário, Maria vê até 3 planos comparados
+- Após completar o formulário, Maria vê até 3 planos comparados, com um deles em destaque
 - Cada plano mostra: valor mensal, cobertura, franquia, se precisa de rastreador
 - Maria pode adicionar serviços extras e ver o valor atualizado
 
 **4. Consultor é Notificado**
-- O consultor responsável recebe uma notificação no celular
-- Ele vê todos os dados da Maria: nome, telefone, veículo, localização
+- O consultor responsável recebe uma notificação no whatsapp ou via push
+- Ele vê todos os dados da Maria: nome, telefone, veículo, cidade de circulação
 - Pode ligar ou mandar WhatsApp em poucos minutos
 
 ---
@@ -79,15 +76,17 @@ Além da landing page, o sistema captura leads de outros lugares:
 **Via Facebook/Instagram Ads**
 - Maria preenche um formulário direto no Facebook (sem sair do app)
 - O sistema recebe o lead automaticamente via webhook
-- Em segundos, o consultor já é notificado
+- Em segundos, o consultor já é notificado por whatsapp ou push
 
 **Via Google Ads**
 - Funciona igual ao Facebook: formulário direto no Google
 - Lead chega no sistema em tempo real
 
 **Via Formulário Embarcado**
-- Um site parceiro pode ter o formulário da TopBrasil embutido
-- O lead é capturado e atribuído ao parceiro automaticamente
+- Um site parceiro/indicador pode ter o formulário da TopBrasil embutido
+- O lead é capturado e atribuído ao parceiro/indicador automaticamente 
+- O lead é atribuido ao consultor que cadastrou o parceiro/indicador 
+- o consultor é notificado por whatsapp ou push
 
 **Via Cadastro Manual**
 - O consultor conhece alguém interessado
@@ -158,7 +157,7 @@ A landing page é o principal canal de entrada:
 
 **Formulário em 3 etapas** — Divide as informações para não sobrecarregar o visitante. Cada etapa já salva os dados, garantindo que mesmo quem abandona fique cadastrado.
 
-**Validação inteligente do telefone** — O sistema extrai o DDD automaticamente para analytics regionais. Também verifica se o telefone não é de um consultor (evita leads falsos).
+**Validação inteligente do telefone** — O sistema extrai o DDD automaticamente para analytics regionais. Também verifica se o telefone não é de um consultor (evita leads falsos ou com ocultação de dados).
 
 **Integração com FIPE** — Ao informar o veículo, o sistema busca automaticamente o valor de mercado.
 
@@ -172,11 +171,11 @@ Após o formulário, o lead vê os planos disponíveis:
 
 **Filtro automático** — Baseado no veículo e localização, o sistema mostra apenas planos válidos para aquele perfil.
 
-**Até 3 planos comparados** — Exibe lado a lado: valor mensal, adesão, franquia, coberturas e se precisa de rastreador.
+**Até 3 planos comparados** — Exibe lado a lado: valor mensal, adesão, franquia, coberturas e se precisa de rastreador. Um dos planos fica em destaque direcionando o fluxo.
 
 **Serviços adicionais** — O lead pode marcar serviços extras e ver o valor atualizado em tempo real.
 
-**Seleção simplificada** — Um clique em "Quero este plano" e o consultor é acionado.
+**Seleção simplificada** — Um clique em "Quero este plano" e um consultor é acionado ou o lead é qualificado.
 
 ---
 
@@ -201,18 +200,20 @@ O WhatsApp é o canal preferido dos brasileiros:
 **Dois modos de operação:**
 
 **Modo Landing Page Exclusiva:**
-- O consultor tem sua própria landing page (ex: joao.topbrasil.com.br)
+- O consultor tem sua própria landing page (ex: joao.topbrasilpv.com.br)
 - O botão de WhatsApp vai direto para o número pessoal do consultor
 - O lead já fica vinculado a ele automaticamente
 
 **Modo Link Direto TopCRM:**
-- A página principal da empresa (topbrasil.com.br)
+- A página principal da empresa (topbrasilpv.com.br)
 - O botão vai para o número oficial da empresa
 - Um chatbot coleta os dados e distribui para a fila de atendimento
 
 **Cadastro automático** — Ao iniciar a conversa, o sistema já cria o lead com os dados do WhatsApp.
 
 **Atendimento 24/7** — O chatbot pode atender fora do horário comercial e agendar contato.
+
+**Whatsapp conectado ao CRM** — O consultor pode conectar o proprio whatsapp ao sistema para que o mesmo faça as notificações e follow-ups automaticamente.
 
 ---
 
@@ -223,7 +224,7 @@ Leads direto do Facebook e Google:
 **Facebook/Instagram Lead Ads:**
 - O usuário preenche um formulário sem sair do app
 - O Meta envia os dados automaticamente para o sistema (webhook)
-- Em segundos, o consultor é notificado
+- Em segundos, o consultor é notificado via whatsapp e push
 - Origem registrada como "ADS_META"
 
 **Google Ads (Lead Form Extensions):**
@@ -247,7 +248,7 @@ Funcionalidades para organizar a base:
 
 **Cadastro manual** — Consultor pode cadastrar leads que conheceu pessoalmente. Fica vinculado à carteira dele.
 
-**Atribuição a consultor** — O gestor pode direcionar um lead para um consultor específico.
+**Atribuição a consultor** — O gestor pode direcionar um lead para um consultor específico e o sistema notifica o consultor via whatsapp e push.
 
 ---
 
@@ -271,7 +272,7 @@ Funcionalidades avançadas com IA:
 
 **Enriquecimento de Dados:**
 - APIs externas complementam informações do lead
-- Dados do veículo, histórico de multas, perfil de crédito
+- Dados do veículo, histórico de multas, perfil de crédito, históricos juridicos (PuxaCapivara)
 - Ajuda o consultor a se preparar melhor para a abordagem
 
 **Score Automático (Machine Learning):**
@@ -292,6 +293,7 @@ Funcionalidades avançadas com IA:
 |---------|----------------|
 | **API FIPE** | Buscar valor de mercado do veículo |
 | **IBGE** | Lista de estados e cidades |
+| **PUXACAPIVARA** | Busca restrições judiciais |
 | **WhatsApp Business API** | Receber mensagens e criar leads |
 | **Meta (Facebook/Instagram)** | Receber leads de anúncios |
 | **Google Ads** | Receber leads de anúncios |
@@ -326,28 +328,13 @@ Algumas regras que o sistema sempre respeita:
 
 ---
 
-## Métricas de Sucesso
-
-Como sabemos se o módulo está funcionando bem:
-
-| O que medimos | Meta |
-|---------------|------|
-| Taxa de conversão do formulário | Mais de 25% completam as 3 etapas |
-| Leads por dia | Monitorar tendência |
-| Taxa de qualificação | Mais de 30% são qualificados |
-| Tempo até primeiro contato | Menos de 5 minutos |
-| Taxa de duplicados | Menos de 5% |
-| Leads por origem | ROI positivo em cada canal |
-
----
-
 ## Resumo Geral
 
 Este módulo é essencial para abastecer o funil comercial com leads de qualidade. Ele automatiza todo o processo de captação:
 
 **Captação multicanal:**
 - Landing page com formulário em 3 etapas
-- WhatsApp (chatbot ou direto com consultor)
+- WhatsApp (chatbot, direto com consultor ou conexão direta)
 - Facebook/Instagram Lead Ads
 - Google Ads Lead Form
 - Formulário embarcado em parceiros
@@ -365,17 +352,4 @@ Este módulo é essencial para abastecer o funil comercial com leads de qualidad
 - Dashboard com analytics por região e canal
 - Histórico completo de interações
 
-**Total: 16 funcionalidades que garantem que nenhum interessado seja perdido e que os consultores tenham todas as informações para converter leads em clientes.**
-
----
-
-## Histórico de Versões
-
-| Versão | Data | O que mudou |
-|--------|------|-------------|
-| 1.0 | 29/01/2026 | Versão inicial do documento de visão |
-
----
-
-*Documento elaborado pelo Product Owner — CRM*  
-*Última atualização: 29/01/2026*
+**Resumoo Final: Funcionalidades que garantem que nenhum interessado seja perdido e que os consultores tenham todas as informações para converter leads em associados.**
